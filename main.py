@@ -6,6 +6,7 @@ def show_papers(papers):
         print(f"\nPaper {i}")
         print("Title:", paper.get("title"))
         print("Year:", paper.get("year"))
+        print("Abstract:", paper.get("abstract"))
         print("Link:", paper.get("url"))
         print("-" * 40)
 
