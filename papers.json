@@ -1,0 +1,111 @@
+{
+    "farming": [
+        {
+            "title": "Rooted in Nature: The Rise, Challenges, and Potential of Organic Farming and Fertilizers in Agroecosystems",
+            "authors": [
+                "D. Panday",
+                "Nikita Bhusal",
+                "Saurav Das",
+                "Arash Ghalehgolabbehbahani"
+            ],
+            "year": 2024,
+            "download_link": "https://www.semanticscholar.org/paper/4592e8443d619b2fa2f6e851b80c0b820ec63daf"
+        },
+        {
+            "title": "The Path to Smart Farming: Innovations and Opportunities in Precision Agriculture",
+            "authors": [
+                "F. Marinello",
+                "Xiuguo Zou",
+                "Zheng Liu",
+                "Xiaochen Zhu",
+                "Wentian Zhang",
+                "Yan Qian",
+                "Yuhua Li",
+                "E. Karunathilake",
+                "Anh Tuan Le",
+                "S. Heo",
+                "Y. Chung",
+                "Sheikh Mansoor"
+            ],
+            "year": 2023,
+            "download_link": "https://www.semanticscholar.org/paper/6293c0b276f3683aeeaf79dfa2a039f5ce8d9d08"
+        },
+        {
+            "title": "Ageing threatens sustainability of smallholder farming in China",
+            "authors": [
+                "Chenchen Ren",
+                "Xinyue Zhou",
+                "Chen Wang",
+                "Yaolin Guo",
+                "Yu Diao",
+                "Sisi Shen",
+                "Stefan Reis",
+                "Wanyue Li",
+                "Jianming Xu",
+                "Baojing Gu"
+            ],
+            "year": 2023,
+            "download_link": "https://www.semanticscholar.org/paper/238c0f47daa4b6de34bc92b2c4a2fb11738cf816"
+        }
+    ],
+    "water": [
+        {
+            "title": "The Water-Culture Method for Growing Plants Without Soil",
+            "authors": [
+                "D. R. Hoagland",
+                "D. Arnon"
+            ],
+            "year": 2018,
+            "download_link": "https://www.semanticscholar.org/paper/a0b7f89857e268e0066b34461183b3a4d2cad499"
+        },
+        {
+            "title": "High-resolution mapping of global surface water and its long-term changes",
+            "authors": [
+                "Jean-Fran\u00e7ois Pekel",
+                "A. Cottam",
+                "N. Gorelick",
+                "A. Belward"
+            ],
+            "year": 2016,
+            "download_link": "https://www.semanticscholar.org/paper/f55d60ce22f6beaa659e061efc444bd3a2a24ace"
+        },
+        {
+            "title": "Four billion people facing severe water scarcity",
+            "authors": [
+                "M. Mekonnen",
+                "A. Hoekstra"
+            ],
+            "year": 2016,
+            "download_link": "https://www.semanticscholar.org/paper/1956d8f3f6d08c0054a3b3c8dc44e390e93944d2"
+        }
+    ],
+    "eye sight": [
+        {
+            "title": "Understanding Acanthamoeba Keratitis: An In-Depth Review of a Sight-Threatening Eye Infection",
+            "authors": [
+                "Francesco Petrillo",
+                "Antonia Tortori",
+                "Veronica Vallino",
+                "Marilena Galdiero",
+                "A. Fea",
+                "Ugo de Sanctis",
+                "M. Reibaldi"
+            ],
+            "year": 2024,
+            "download_link": "https://www.semanticscholar.org/paper/7ad4f7033d4b05671e93b2bdba3ba2ec1c7978aa"
+        },
+        {
+            "title": "Bioactive Herbal Medicine Use for Eye Sight: A Meta Analysis",
+            "authors": [
+                "Vandana Sonaji Amle",
+                "Dharmaraj Arjun Rathod",
+                "Keshamma E.",
+                "Vijender Kumar",
+                "Roshan Kumar",
+                "Purabi Saha"
+            ],
+            "year": 2022,
+            "download_link": "https://www.semanticscholar.org/paper/1bfdbb5ed7dc98a856e5a2d8a2a24c0ed52b9741"
+        }
+    ]
+}
