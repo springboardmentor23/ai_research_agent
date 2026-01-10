@@ -1,0 +1,90 @@
+[
+    {
+        "title": "Circulating microRNAs as stable blood-based markers for cancer detection",
+        "authors": [
+            "P. S. Mitchell",
+            "R. K. Parkin",
+            "E. Kroh",
+            "B. Fritz",
+            "S. Wyman",
+            "E. Pogosova-Agadjanyan",
+            "Amelia C. Peterson",
+            "J. Noteboom",
+            "K. O'Briant",
+            "A. Allen",
+            "D. Lin",
+            "N. Urban",
+            "C. Drescher",
+            "B. Knudsen",
+            "D. Stirewalt",
+            "R. Gentleman",
+            "R. Vessella",
+            "P. Nelson",
+            "Daniel B. Martin",
+            "M. Tewari"
+        ],
+        "year": 2008,
+        "abstract": null,
+        "paper_url": "https://www.semanticscholar.org/paper/e91b525f219422be3abb5d8198e2cbdbf1306dfa"
+    },
+    {
+        "title": "A National Cancer Institute Workshop on Microsatellite Instability for cancer detection and familial predisposition: development of international criteria for the determination of microsatellite instability in colorectal cancer.",
+        "authors": [
+            "C. Boland",
+            "S. Thibodeau",
+            "S. Hamilton",
+            "D. Sidransky",
+            "J. Eshleman",
+            "R. Burt",
+            "S. Meltzer",
+            "M. Rodriguez-Bigas",
+            "R. Fodde",
+            "G. Ranzani",
+            "S. Srivastava"
+        ],
+        "year": 1998,
+        "abstract": null,
+        "paper_url": "https://www.semanticscholar.org/paper/d5b0760c94f06b5f1473e63c124d2360892d747d"
+    },
+    {
+        "title": "SKIN CANCER DETECTION USING IMAGE PROCESSING",
+        "authors": [
+            "N. Aishasiddhika",
+            "P. Jenovajosephine"
+        ],
+        "year": 2024,
+        "abstract": "Skin cancer, particularly malignant melanoma, poses a significant health threat, underscoring the critical need for accurate and timely detection. This project focuses on developing a skin cancer detection system using Convolutional Neural Networks (CNNs), specifically tailored to differentiate between benign and malignant melanomas. The utilization of artificial intelligence in medical image analysis aims to enhance early diagnosis, reduce manual examination reliance, and contribute to improved patient outcomes. By focusing on the differentiationbetween benign and malignant melanomas, theproject aimsto contributetopersonalized treatment plans, early intervention strategies, and improved prognostic outcomes for patients. Skin cancer is one of the most prevalent types of cancer worldwide, with early detection being crucial for effective treatment. we propose a comprehensive approach for the automated detection of skin cancer lesions leveraging image processing techniques and Convolutional Neural Network (CNN) classification. The proposed methodology comprises several stages. Firstly, preprocessing techniques are applied to enhance the quality of input images into RBG. Subsequently,Gray LevelCooccurrence Matrix (GLCM) features are extracted from the preprocessed images and converted into binary representations to capture texture information effectively. These binary GLCM features are then fed into a CNN-based classification algorithm. The CNN model is trained on a large dataset of annotated skin lesion images, allowing it to learn discriminative features indicative of malignant or benign characteristics. The trained CNN model is capable of classifying unseen skin lesion images accurately. The proposed approach offers several advantages, including automation, which reduces the dependence on manual inspection by dermatologists, thereby potentially increasing the efficiency and accuracy of skin cancer diagnosis. Moreover, by integrating both preprocessing techniques and advanced classification algorithms, the proposed system demonstrates robustness and effectiveness in detecting skin cancer lesions across diverse datasets. Experimental results on benchmark datasets demonstrate the efficacy of the proposed approach, achieving high accuracy rates in distinguishingbetween malignantandbenign skinlesions. The proposed methodologyholdspromise for aidinghealthcare professionals in early skin cancer detection, ultimately improving patient outcomes and reducing the burden on healthcare systems.",
+        "paper_url": "https://www.semanticscholar.org/paper/08eeaa22c7704bb2f9d447098f061c7bc059c287"
+    },
+    {
+        "title": "Skin Cancer Detection Using Deep Learning",
+        "authors": [
+            "Pradhumn Agrahari",
+            "Archit Agrawal",
+            "Subhashini N"
+        ],
+        "year": 2024,
+        "abstract": "Cancer is a deadly disease that arises due to the growth of uncontrollable body cells. Every year, a large number of people succumb to cancer and it’s been labeled as the most serious public health snag. Cancer can develop in any part of the human anatomy, which may consist of trillions of cellules. One of the most frequent type of cancer is skin cancer which develops in the upper layer of the skin. Previously, machine learning techniques have been used for skin cancer detection using protein sequences and different kinds of imaging modalities. The drawback of the machine learning approaches is that they require human engineered features, which is a very laborious and time-taking activity. Deep learning addressed this issue to some extent by providing the facility of automatic feature extraction. In this study, convolution-based deep neural networks have been used for skin cancer detection using ISIC public dataset. Cancer detection is a sensitive issue, which is prone to errors if not timely and accurately detected. The performance of the individual machine learning models to detect cancer is limited. The combined decision of individual learners is expected to be more accurate than the individual learners. The ensemble learning technique exploits the diversity of learners to yield a better decision. Thus, the prediction accuracy can be enhanced by combing the decision of individual learners for sensitive issues such as cancer detection. In this paper, an ensemble of deep learners has been developed using learners of VGG, CNN, and ResNet for skin cancer detection. The results show that the combined decision of deep learners is superior to the finding of individual learners in terms of sensitivity, accuracy, specificity, F-score, and precision. The experimental results of this study provide a compelling reason to be applied for other disease detection",
+        "paper_url": "https://www.semanticscholar.org/paper/23882f79e8669cad96a6be2320e0d05168f34d10"
+    },
+    {
+        "title": "Deep Machine Learning for Medical Diagnosis, Application to Lung Cancer Detection: A Review",
+        "authors": [
+            "Hadrien T. Gayap",
+            "M. Akhloufi"
+        ],
+        "year": 2024,
+        "abstract": "Deep learning has emerged as a powerful tool for medical image analysis and diagnosis, demonstrating high performance on tasks such as cancer detection. This literature review synthesizes current research on deep learning techniques applied to lung cancer screening and diagnosis. This review summarizes the state-of-the-art in deep learning for lung cancer detection, highlighting key advances, limitations, and future directions. We prioritized studies utilizing major public datasets, such as LIDC, LUNA16, and JSRT, to provide a comprehensive overview of the field. We focus on deep learning architectures, including 2D and 3D convolutional neural networks (CNNs), dual-path networks, Natural Language Processing (NLP) and vision transformers (ViT). Across studies, deep learning models consistently outperformed traditional machine learning techniques in terms of accuracy, sensitivity, and specificity for lung cancer detection in CT scans. This is attributed to the ability of deep learning models to automatically learn discriminative features from medical images and model complex spatial relationships. However, several challenges remain to be addressed before deep learning models can be widely deployed in clinical practice. These include model dependence on training data, generalization across datasets, integration of clinical metadata, and model interpretability. Overall, deep learning demonstrates great potential for lung cancer detection and precision medicine. However, more research is required to rigorously validate models and address risks. This review provides key insights for both computer scientists and clinicians, summarizing progress and future directions for deep learning in medical image analysis.",
+        "paper_url": "https://www.semanticscholar.org/paper/285a54f074b0c5af1ba14e972cfd59a6c7ac74f4"
+    },
+    {
+        "title": "Recent Advances in Hydrogel-Based Biosensors for Cancer Detection",
+        "authors": [
+            "Shengwei Sun",
+            "Jinju Chen"
+        ],
+        "year": 2024,
+        "abstract": "Early cancer detection is crucial for effective treatment, but current methods have limitations. Novel biomaterials, such as hydrogels, offer promising alternatives for developing biosensors for cancer detection. Hydrogels are three-dimensional and cross-linked networks of hydrophilic polymers that have properties similar to biological tissues. They can be combined with various biosensors to achieve high sensitivity, specificity, and stability. This review summarizes the recent advances in hydrogel-based biosensors for cancer detection, their synthesis, their applications, and their challenges. It also discusses the implications and future directions of this emerging field.",
+        "paper_url": "https://www.semanticscholar.org/paper/f694376b4e66c44499429ec11b833bcb51b27525"
+    }
+]
