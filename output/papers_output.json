@@ -1,0 +1,126 @@
+[
+  {
+    "paperId": "df01fd4996f1d6dc517c4b5e41d98309cd5dfb18",
+    "url": "https://www.semanticscholar.org/paper/df01fd4996f1d6dc517c4b5e41d98309cd5dfb18",
+    "title": "Hybrid feature optimized CNN for rice crop disease prediction",
+    "year": 2025,
+    "openAccessPdf": {
+      "url": "https://doi.org/10.1038/s41598-025-92646-w",
+      "status": "GOLD",
+      "license": "CCBY",
+      "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC11885545, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+    },
+    "authors": [
+      {
+        "authorId": "2348911954",
+        "name": "S. Vijayan"
+      },
+      {
+        "authorId": "7387778",
+        "name": "C. L. Chowdhary"
+      }
+    ],
+    "abstract": "The agricultural industry significantly relies on autonomous systems for detecting and analyzing rice diseases to minimize financial and resource losses, reduce yield reductions, improve processing efficiency, and ensure healthy crop production. Advances in deep learning have greatly enhanced disease diagnostic techniques in agriculture. Accurate identification of rice plant diseases is crucial to preventing the severe consequences these diseases can have on crop yield. Current methods often struggle with reliably diagnosing conditions and detecting issues in leaf images. Previously, leaf segmentation posed challenges, and while analyzing complex disease stages can be effective, it is computationally intensive. Therefore, segmentation methods need to be more accurate, cost-effective, and reliable. To address these challenges, we propose a hybrid bio-inspired algorithm, named the Hybrid WOA_APSO algorithm, which merges Adaptive Particle Swarm Optimization (APSO) with the Whale Optimization Algorithm (WOA). For disease classification in rice crops, we utilize a Convolutional Neural Network (CNN). Multiple experiments are conducted to evaluate the performance of the proposed model using benchmark datasets (Plantvillage), with a focus on feature extraction, segmentation, and preprocessing. Optimizing feature selection is a critical factor in enhancing the classification algorithm\u2019s accuracy. We compare the accuracy, sensitivity, and specificity of our model against industry-standard techniques such as Support Vector Machine (SVM), Artificial Neural Network (ANN), and conventional CNN models. The experimental results indicate that the proposed hybrid approach achieves an impressive accuracy of 97.5% (Refer Table 8), which could inspire further research in this field."
+  },
+  {
+    "paperId": "93a3bbb984542b1f80052397116837c90627caef",
+    "url": "https://www.semanticscholar.org/paper/93a3bbb984542b1f80052397116837c90627caef",
+    "title": "DeepCrop: Deep learning-based crop disease prediction with web application",
+    "year": 2023,
+    "openAccessPdf": {
+      "url": "https://doi.org/10.1016/j.jafr.2023.100764",
+      "status": "GOLD",
+      "license": "CCBY",
+      "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1016/j.jafr.2023.100764?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1016/j.jafr.2023.100764, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+    },
+    "authors": [
+      {
+        "authorId": "30664619",
+        "name": "Md. Manowarul Islam"
+      },
+      {
+        "authorId": "2235568216",
+        "name": "Md Abdul Ahad Adil"
+      },
+      {
+        "authorId": "2144604120",
+        "name": "Md. Alamin Talukder"
+      },
+      {
+        "authorId": "2204429785",
+        "name": "Md. Khabir Uddin Ahamed"
+      },
+      {
+        "authorId": "2057473668",
+        "name": "Md. Ashraf Uddin"
+      },
+      {
+        "authorId": "2153634094",
+        "name": "Md Kamran Hasan"
+      },
+      {
+        "authorId": "2187088097",
+        "name": "Selina Sharmin"
+      },
+      {
+        "authorId": "123818979",
+        "name": "Md. Mahbubur Rahman"
+      },
+      {
+        "authorId": "34841707",
+        "name": "Sumon Kumar Debnath"
+      }
+    ],
+    "abstract": null
+  },
+  {
+    "paperId": "1d37f3962d82e00c7527b64e0476e5b7e10c1bc2",
+    "url": "https://www.semanticscholar.org/paper/1d37f3962d82e00c7527b64e0476e5b7e10c1bc2",
+    "title": "CropAI: Crop disease prediction and growth tracking using AI",
+    "year": 2025,
+    "openAccessPdf": {
+      "url": "",
+      "status": "CLOSED",
+      "license": null,
+      "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/CSNT64827.2025.10968757?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/CSNT64827.2025.10968757, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+    },
+    "authors": [
+      {
+        "authorId": "2356849727",
+        "name": "Kuruva Sree Sowmya"
+      },
+      {
+        "authorId": "2356872872",
+        "name": "S. Hupesh"
+      },
+      {
+        "authorId": "2356873980",
+        "name": "Naga Ketan"
+      }
+    ],
+    "abstract": "Recognizing plant diseases is essential to maintaining a nation with a high level of agricultural development. A successful agricultural industry and the reduction of financial and other resource waste depend on the timely and productive discovery of plant diseases. Many illnesses can affect crops, causing farmers to lose more money every year. By detecting diseases in plant foliage early on, deep learning systems can greatly help farmers prevent crop failures. To identify crop illnesses, we tested the effectiveness of Convolutional Neural Network(CNN), VGG16, VGG19, and ResNet50 models using the 10,101 images of the Plant Village from the huge data records. The 98.60%, 92.99%, 97.85%, and 99.29% accuracy percentages attained for Convolutional Neural Network (CNN), ResNet50, VGG16, and VGG19, in that order. With a fidelity of 98.17%, the solution shows that the ResNet50 execute great results when compared to other models. The goal is to enable early diagnosis of plant diseases and provide prompt treatment to abet the farmers in preserving resources and minimal financial losses."
+  },
+  {
+    "paperId": "0deaf4f645c5da52ece4b5647166ab86af32ee55",
+    "url": "https://www.semanticscholar.org/paper/0deaf4f645c5da52ece4b5647166ab86af32ee55",
+    "title": "An efficient IoT based crop disease prediction and crop recommendation for precision agriculture",
+    "year": 2024,
+    "openAccessPdf": {
+      "url": "",
+      "status": "CLOSED",
+      "license": null,
+      "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1007/s10586-023-04246-w?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/s10586-023-04246-w, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+    },
+    "authors": [
+      {
+        "authorId": "2213520820",
+        "name": "Gunaganti Sravanthi"
+      },
+      {
+        "authorId": "51446994",
+        "name": "Nageswara Rao Moparthi"
+      }
+    ],
+    "abstract": null
+  }
+]
