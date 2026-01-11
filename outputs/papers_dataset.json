@@ -1,0 +1,43 @@
+[
+  {
+    "title": "FakeShield: Explainable Image Forgery Detection and Localization via Multi-modal Large Language Models",
+    "authors": [
+      "Zhipei Xu",
+      "Xuanyu Zhang",
+      "Runyi Li",
+      "Zecheng Tang",
+      "Qing Huang",
+      "Jian Zhang"
+    ],
+    "year": 2024,
+    "abstract": "The rapid development of generative AI is a double-edged sword, which not only facilitates content creation but also makes image manipulation easier and more difficult to detect. Although current image forgery detection and localization (IFDL) methods are generally effective, they tend to face two challenges: \\textbf{1)} black-box nature with unknown detection principle, \\textbf{2)} limited generalization across diverse tampering methods (e.g., Photoshop, DeepFake, AIGC-Editing). To address these issues, we propose the explainable IFDL task and design FakeShield, a multi-modal framework capable of evaluating image authenticity, generating tampered region masks, and providing a judgment basis based on pixel-level and image-level tampering clues. Additionally, we leverage GPT-4o to enhance existing IFDL datasets, creating the Multi-Modal Tamper Description dataSet (MMTD-Set) for training FakeShield's tampering analysis capabilities. Meanwhile, we incorporate a Domain Tag-guided Explainable Forgery Detection Module (DTE-FDM) and a Multi-modal Forgery Localization Module (MFLM) to address various types of tamper detection interpretation and achieve forgery localization guided by detailed textual descriptions. Extensive experiments demonstrate that FakeShield effectively detects and localizes various tampering techniques, offering an explainable and superior solution compared to previous IFDL methods. The code is available at https://github.com/zhipeixu/FakeShield.",
+    "paper_url": "https://www.semanticscholar.org/paper/efacfe7e734e5c8cedddf5ee02c3afb25f6401f2"
+  },
+  {
+    "title": "Hierarchical Fine-Grained Image Forgery Detection and Localization",
+    "authors": [
+      "Xiao-qiang Guo",
+      "Xiaohong Liu",
+      "Zhiyuan Ren",
+      "Steven A. Grosz",
+      "I. Masi",
+      "Xiaoming Liu"
+    ],
+    "year": 2023,
+    "abstract": "Differences in forgery attributes of images generated in CNN-synthesized and image-editing domains are large, and such differences make a unified image forgery detection and localization (IFDL) challenging. To this end, we present a hierarchical fine-grained formulation for IFDL representation learning. Specifically, we first represent forgery attributes of a manipulated image with multiple labels at different levels. Then we perform fine-grained classification at these levels using the hierarchical dependency between them. As a result, the algorithm is encouraged to learn both comprehensive features and inherent hierarchical nature of different forgery attributes, thereby improving the IFDL representation. Our proposed IFDL framework contains three components: multi-branch feature extractor, localization and classification modules. Each branch of the feature extractor learns to classify forgery attributes at one level, while localization and classification modules segment the pixel-level forgery region and detect image-level forgery, respectively. Lastly, we construct a hierarchical fine-grained dataset to facilitate our study. We demonstrate the effectiveness of our method on 7 different benchmarks, for both tasks of IFDL and forgery attribute classification. Our source code and dataset can be found: github.com/CHELSEA234/HiFi-IFDL.",
+    "paper_url": "https://www.semanticscholar.org/paper/0bddd6d9ef05d2e7a86965b5a5b37216c330dac6"
+  },
+  {
+    "title": "TruFor: Leveraging All-Round Clues for Trustworthy Image Forgery Detection and Localization",
+    "authors": [
+      "Fabrizio Guillaro",
+      "D. Cozzolino",
+      "Avneesh Sud",
+      "Nick Dufour",
+      "L. Verdoliva"
+    ],
+    "year": 2022,
+    "abstract": "In this paper we present TruFor, a forensic framework that can be applied to a large variety of image manipulation methods, from classic cheapfakes to more recent manipulations based on deep learning. We rely on the extraction of both high-level and low-level traces through a transformer-based fusion architecture that combines the RGB image and a learned noise-sensitive fingerprint. The latter learns to embed the artifacts related to the camera internal and external processing by training only on real data in a self-supervised manner. Forgeries are detected as deviations from the expected regular pattern that characterizes each pristine image. Looking for anomalies makes the approach able to robustly detect a variety of local manipulations, ensuring generalization. In addition to a pixel-level localization map and a whole-image integrity score, our approach outputs a reliability map that highlights areas where localization predictions may be error-prone. This is particularly important in forensic applications in order to reduce false alarms and allow for a large scale analysis. Extensive experiments on several datasets show that our method is able to reliably detect and localize both cheapfakes and deepfakes manipulations outperforming state-of-the-art works. Code is publicly available at https://grip-unina.github.io/TruFor/",
+    "paper_url": "https://www.semanticscholar.org/paper/e6bbd4b0e2b7fa49c75bdb40329e88ff11b5fb23"
+  }
+]
