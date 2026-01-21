@@ -8,7 +8,7 @@ def fetch_papers(topic, limit=5):
     params = {
         "query": topic,
         "limit": limit,
-        "fields": "title,authors,year,abstract,url"
+        "fields": "title,authors,year,abstract,url,openAccessPdf"
     }
 
     response = requests.get(url, params=params)
