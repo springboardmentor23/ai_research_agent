@@ -1,0 +1,33 @@
+{
+    "paper_1": [
+        "jf\nAutoML: A survey of the state-of-the-art\nHe, Xin; Zhao, Kaiyong; Chu, Xiaowen\nKnowledge-Based Systems, Vol"
+    ],
+    "paper_2": [
+        "In addition to that, we examined\ndifferent domains and subdomains in AI showing what researchers have observed with regard to unfair outcomes\nin the state-of-the-art methods and ways they have tried to address them",
+        "Last, we will focus on different families of machine learning approaches, how fairness\nmanifests differently in each one, and the current state-of-the-art for tackling them in Section 5,\nfollowed by potential areas of future work in each of the domains in Section 6",
+        "Aggregation bias (or ecological fallacy) arises when false conclusions are\ndrawn about individuals from observing the entire population",
+        "The\nheterogeneous cohorts can bias cross-sectional analysis, leading to different conclusions than\nlongitudinal analysis",
+        "In-processing techniques try to modify and change state-of-the-art learning\nalgorithms in order to remove discrimination during the model training process [43]",
+        "In [20] authors noticed that while using state-of-the-art word embeddings\nin word analogy tests, \u201cman\u201d would be mapped to \u201ccomputer programmer\u201d and \u201cwoman\u201d would\nbe mapped to \u201chomemaker",
+        "In addition to that, they introduce a data-augmentation technique that removes bias in the existing\nstate-of-the-art coreferencing methods, in combination with using word2vec debiasing techniques",
+        "In another work [134], authors also show\nthe existence of gender bias in three state-of-the-art coreference resolution systems by observing that\nfor many occupations, these systems resolve pronouns in a biased fashion by preferring one gender\nover the other",
+        "They used state-of-the-art sentence encoding techniques, such as CBoW,\nGPT, ELMo, and BERT, and find that although there was varying evidence of human-like bias in\nsentence encoders using SEAT, more recent methods like BERT are more immune to biases",
+        "7\nCONCLUSION\nIn this survey we introduced problems that can adversely affect AI systems in terms of bias and\nunfairness"
+    ],
+    "paper_3": [],
+    "paper_4": [
+        "In this paper, we present a comprehensive view on these machine\nlearning algorithms that can be applied to enhance the intelligence and\nthe capabilities of an application",
+        "State-of-the-art\nspeech recognition with sequence-to-sequence models"
+    ],
+    "paper_5": [
+        "By contrast, the membership inference problem we\nstudy in this paper is essentially the same as the well-known\nproblem of identifying the presence of an individual\u2019s data in a\nmixed pool given some statistics about the pool [3], [15], [21],\n[29]",
+        "Our experimental results show that models created using\nmachine-learning-as-a-service platforms can leak a lot of in-\nformation about their training datasets",
+        "All inference attacks we\ndemonstrate in this paper are performed entirely through the\nservices\u2019 standard APIs",
+        "Binary\nclassi\ufb01cation is a standard machine learning task, thus we can\nuse any state-of-the-art machine learning framework or service\nto build the attack model",
+        "Our approach is independent of the\nspeci\ufb01c method used for attack model training",
+        "In this paper,\nwe show another harm of over\ufb01tting: the leakage of sensitive\ninformation about the training data",
+        "By de\ufb01nition, differentially pri-\nvate models limit the success probability of membership\ninference attacks based solely on the model, which includes\nthe attacks described in this paper",
+        "CONCLUSIONS\nWe have designed, implemented, and evaluated the \ufb01rst\nmembership inference attack against machine learning models,\nnotably black-box models trained in the cloud using Google\nPrediction API and Amazon ML",
+        "We demonstrate that shadow models used in this\nattack can be effectively created using synthetic or noisy data"
+    ]
+}
