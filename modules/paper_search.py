@@ -1,5 +1,6 @@
 import requests
 import time
+import os
 
 def fetch_papers(topic, limit=3, retries=3, wait_seconds=5):
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
@@ -7,20 +8,36 @@ def fetch_papers(topic, limit=3, retries=3, wait_seconds=5):
     params = {
         "query": topic,
         "limit": limit,
-        "fields": "title,authors,year,abstract,url"
+        "fields": "title,authors,year,abstract,url,openAccessPdf"
     }
 
+    # 🔐 API Key from environment
+    api_key = os.getenv("SEMANTIC_SCHOLAR_API_KEY")
+
+    headers = {
+        "User-Agent": "AI-Research-Agent/1.0"
+    }
+
+    if api_key:
+        headers["x-api-key"] = api_key
+
     for attempt in range(retries):
-        response = requests.get(url, params=params)
+        response = requests.get(
+            url,
+            params=params,
+            headers=headers,
+            timeout=15
+        )
 
         if response.status_code == 200:
-            return response.json()["data"]
+            return response.json().get("data", [])
 
         elif response.status_code == 429:
             print(f"Rate limit hit. Waiting {wait_seconds} seconds...")
             time.sleep(wait_seconds)
 
         else:
+            print("Error:", response.status_code)
             response.raise_for_status()
 
     print("Failed after multiple retries.")
