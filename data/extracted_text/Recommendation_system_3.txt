@@ -1,0 +1,985 @@
+An Introduction to Matrix factorization and Factorization
+Machines in Recommendation System, and Beyond
+Yuefeng Zhang
+yuefeng.zhang@pku.edu.cn
+Abstract
+This paper aims at a better understanding of matrix factorization (MF), factorization machines (FM),
+and their combination with deep algorithms’ application in recommendation systems. Speciﬁcally, this
+paper will focus on Singular Value Decomposition (SVD) and its derivations, e.g Funk-SVD, SVD++,
+etc. Step-by-step formula calculation and explainable pictures are displayed. What’s more, we explain
+the DeepFM model in which FM is assisted by deep learning. Through numerical examples, we attempt
+to tie the theory to real-world problems.
+Contents
+1
+Introduction and Overview
+2
+1.1
+Problem Deﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+1.2
+Matrix factorization (MF) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+1.2.1
+MF for diﬀerent data sets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+1.2.2
+Comparison between MF and collaborative ﬁltering algorithms . . . . . . . . . . . . .
+3
+2
+Matrix factorization (MF)
+3
+2.1
+Traditional SVD
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3
+2.1.1
+Example - Complete Matrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6
+2.1.2
+Example - Incomplete Matrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6
+2.1.3
+Example - Numerical Decomposition of Matrices . . . . . . . . . . . . . . . . . . . . .
+7
+2.2
+Funk-SVD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8
+2.3
+SVD++ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+10
+3
+Factorization Machine (FM)
+11
+3.0.1
+Field-Aware Factorization Machine (FFM)
+. . . . . . . . . . . . . . . . . . . . . . . .
+13
+3.1
+With Deep Learning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+13
+3.1.1
+DeepFM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+13
+3.1.2
+Model Ensemble
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+14
+3.1.3
+Optimization Algorithms
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+14
+We would like to thank Gaurav Khanna for the valuable comments and help.
+1
+arXiv:2203.11026v1  [cs.IR]  12 Mar 2022
+1
+Introduction and Overview
+General overview of MF and SVD algorithms’ usage in the ﬁeld of recommendation system.
+1.1
+Problem Deﬁnition
+To start understanding matrix factorization for recommender systems, we deﬁne the following matrices: a
+rating matrix R which is in general an R ∈Rm×n matrix. Each row of R represents a user and each column
+represents an item. The values Rui represent the rating (or score) that user u has given to item i.
+The problem we are trying to solve is as follows: For any collection of users and items, we have the situation
+where not all users have given ratings to all the items. In fact, if examined the values of R, we would ﬁnd
+that several values are incomplete. However, we wish to recommend certain items to users. How do we
+do that? One way is to simply recommend any item the user has not already rated to them; this could
+mean sending a message to the user daily with a recommendation for an item. However, we quickly see the
+issue with this; if we keep recommending items to users that they don’t like, they will very quickly start
+ignoring our messages. We would lose credibility with the user and they may eventually unsubscribe from
+our messages.
+So then we have to ask, “What are the items a user may like?”. This is equivalent to asking, “Of the items
+the user has not yet rated, what is our best guess for their ratings by a user?”. If we could come up with
+a system to guess this well, then we could send a daily email to the user recommending items which our
+system has predicted the user would rate highly.
+Because the user will not rate all items, we expect missing values in this matrix. Our goal is to ﬁll up those
+values. We use ˆR to represent the predicted matrix according to our algorithm.
+There are two kinds of rating forms: implicit rating and explicit rating. Take movie recommendation as an
+example:
+1. Implicit: We only know the historical data whether the user watch the movie or not. The data can be
+represented as 0 and 1 format that 0 means un-watch and 1 means watch.
+2. Explicit: Users explicitly rate all the movie they watch in the past. The data can be represented in
+discrete range, e.g 1, 2, · · · , 5.
+1.2
+Matrix factorization (MF)
+One technique we can try is to use historical data to do recommendation. The most famous method for this
+problem is collaboration ﬁlter algorithm: neighborhood methods and Latent Factor Models (LFM). Matrix
+factorization is a successful implementation of the latter method. In fact, LFM and MF are talking about
+the same thing: how to auto-complete the score matrix by using dimension reduction methods.
+1.2.1
+MF for diﬀerent data sets
+There are two types of recommendation data set: explicit representing feedback data and implicit represent-
+ing feedback data. The former one has score data while the later one only contains users’ preference instead
+of numeric representation. So the implicit representing feedback data set only knows what users like but
+doesn’t know what they hate.
+MF or LFM can perform great on the former data set because they are like machine learning’s regression
+problem.
+For the later data set, we normally treat it as the top-N recommendation problem and need
+reconstruct input data which can ﬁt the algorithm. So we need to create negative data. There are two rules
+to construct negative samples for users:
+1. Make the number of positive and negative samples balanced.
+2
+2. Prior to choose those popular items which aren’t liked by the user. Because in this situation it’s more
+likely for this user to unlike this particular popular item. The ratio of negative sample number to
+positive sample number usually set as 3 in real problems. Experiments show that this ratio has eﬀects
+in exploring recommendation system’s long tail problem.
+1.2.2
+Comparison between MF and collaborative ﬁltering algorithms
+Factorization machine and collaborative ﬁltering algorithms are two major kinds of recommendation algo-
+rithms. There are two kinds of collaborative ﬁltering algorithms: user-based and item-based. User-based
+collaborative ﬁltering algorithm is to recommend the items which similar users have liked while item-based
+one is to recommend similar items according to users’ part behaviour. Because internet products usually
+have much larger user number than item number, they prefer to use the item-based collaboration to the
+user-bases one in their recommendation system considering the computation complexity.
+The biggest diﬀerence between MF and collaborative ﬁltering (CF) algorithm is that the former one has
+the learning process and the latter one is based on statistics method. We are going to compare MF and
+collaborative ﬁltering algorithms from the following aspects. Suppose we have M users and N items and the
+MF’s latent factor dimension is F.
+• Oﬄine Computation Space Complexity: For user-based CF, space complexity O(M · M); for
+item-based CF, it is O(N · N). For MF , the space complexity is O(F · (M + N)). Since F is far less
+then M or N, so MF method saves more memory,
+• Oﬄine Computation Time Complexity: Suppose we have K records of users’ rating on items. For
+user-based CF, time complexity is O(N · (N/K)2); for item-based CF, it’s O(M · (M/K)2). Suppose
+we have S iterations in MF, then its time complexity should be O(S · F · K).
+• Online recommendation Time Complexity: For CF algorithms, it can be done in real-time. In
+contrast, MF’s recommendation process is time-consuming that its time complexity for generating
+a new recommendation result list is O(F · M · N).
+So it’s hard for MF method to do real-time
+recommendations. Nowadays, MF recommendation methods is usually divided into two steps: recall
+and rank. Recall is to select hundreds of potential items from the whole data set and rank is to ﬁnely
+rank those potential items into ordered recommendation list.
+2
+Matrix factorization (MF)
+2.1
+Traditional SVD
+SVD[1] was ﬁrst used by Billsus and Pazzani in 1998 in recommendation service.
+They explored a few
+machine learning algorithms for collaborative ﬁltering tasks and identiﬁed SVD as the best-performing one.
+Eigendecomposition is used for square matrix and for non-square matrix we have SVD [2]. Assume we have
+m users and n items then score matrix will be R ∈Rm×n. First, we complete missing values in score matrix
+as R′, e.g. using global average value or user/item average value. Then, we use SVD to decompose R′ as
+following[1]:
+R′ = USV T
+(1)
+U ∈Rm×m and V ∈Rn×n are unitary matrices, S ∈Rk×k is diagonal matrix which k ≤min(m, n) is the
+rank of R′ and values on its diagonal are the singular values of matrix R in descending order.
+We can try to understand SVD in the aspect of geometric transformation. Let’s think matrix R′ is trans-
+formation operation. The SVD factors one transformation matrix into three: (orthogonal) x (diagonal) x
+(orthogonal) which can be viewed from geometric aspect: (rotation) x (stretching) x (rotation). Figure
+shows this process. USV T x starts with the rotation to V T x. Then S stretches that vector to SV T x, and U
+rotates to Ax = USV T x.
+3
+Figure 1: SVD geometry explanation.
+In order to do decomposition, we can choose the f singular values to compose diagonal matrix Sf and ﬁnd
+corresponding rows and columns of those f singular values in U, V as Uf, Vf. Suppose the rank of S is
+r. Only r values in matrix S are not empty. Values on S’s diagonal are in descending order which mean
+s1,1 ≤s2,2 ≤· · · ≤sr,r. We choose the f by calculating the power of matrix Sf to satisfy the equation 2.
+The threshold is deﬁned by ourselves and usually is set as 95%.
+P
+k S2
+k,k
+P
+i S2
+i,i
+× 100% ≥threshold
+(2)
+Besides this heuristic method of choosing the rank k, there is a rule of thumb: choose k such that the sum
+of the top k singular values is at least c times as big as the sum of the other singular values, where c is a
+domain-dependent constant (like 10, say). [3]
+f
+X
+1
+Sk ≈10 ×
+k
+X
+f+1
+Sk
+(3)
+Then we can represent the score matrix after dimension decomposition as equation 4.
+R⋆
+f = UfSfV T
+f
+(4)
+R⋆
+f(u, i) is the forecast rating score of user u to item i using decomposition representation. Equation 4 is the
+ﬁnal representation of SVD usage in recommendation system. Figure 2 explains how SVD works. By using
+Uf, Sf, Vf we can learn latent user’s preference in an eﬃcient way.
+Figure 2: How SVD does decomposition.
+We can use SVD to decompose input matrix and utilize item-base collaboration method to recommend. The
+reason why we prefer item-base method to user-base method here is that for real applications user number
+is always larger than item number.
+4
+The Ri column vector represents all of the ratings from users for item i. Similarly, Rj represents all of the
+users rating for item j. We want to get a sense of whether items i and j are “similar”. One way to measure
+this is to see how “close” these vectors are to one another. For example, if all the users gave both items i
+and j high ratings (i.e., “4” or “5:), then we would say that items i and j are similar. From a vector point
+of view, these two vectors would likely be close to one another in R1×n. However, if all the users gave item
+i a very high ratings (all “5”s) but gave item j very bad ratings (all “1”s), then we might say that items i
+and j are not similar. From a vector point of view, these two vectors would be far away from one another
+in R1×n.
+To express the similarity in mathematical terms, we can utilize the dot product between two vectors. We
+can use Euclidean distance, Manhattan distance etc to measure the similarity. Here we choose the cosine
+similarity as the similarity metric. Concretely, we can deﬁne the cosine similarity between two items as
+cos(Ri, Rj) =
+Ri · Rj
+∥Ri∥∥Rj∥
+(5)
+When calculating the similarity score between R⋆
+i and R⋆
+j, for the item-based collaboration, we only consider
+those values which aren’t empty in input rating matrix. So we deﬁne a mask matrix, maskij which has the
+following values.
+maskij =
+(
+1,
+if Rij isn’t empty
+0,
+if Rij is empty
+(6)
+Essentially, this matrix places a value of 1 in positions where the original rating matrix, R, had a value;
+similarly, it places a value of zero where R had a missing value.
+For each empty value in rating matrix R, we calculate ˆRu,i based on user u’s rating of item j (the rest of
+items) and the similarity score between item i and item j. The process can be showed in equation 7.
+similaritytotal =
+X
+j∈n,j̸=i
+cos(R⋆
+i ◦maski, R⋆
+j ◦maskj)
+ˆRu,i =
+X
+j∈n,j̸=i
+cos(R⋆
+i ◦maski, R⋆
+j ◦mask,j)
+similaritytotal
+· R⋆
+j
+(7)
+where Ri is matrix R’s ith column vector, ◦represents for the element-wise product (Hadamard product).
+Recall that the Hadamard Product between two matrices is deﬁned as
+[A ◦B]ij = [A]ij [B]ij
+(8)
+for all 1 ≤i ≤m and 1 ≤j ≤n. In order for this product to be deﬁned, the matrices A and B have to be the
+same dimension but not necessarily square. We should also emphasize that the end result of the Hadamard
+product is a matrix of the same size. Therefore, the Hadamard product between two R1×n vectors is also a
+R1×n vector, and not a scalar as we would expect from a dot product.
+Now we get the predicted matrix ˆR by using SVD decomposition and item-base collaboration ﬁlter. The
+reason why we need the traditional SVD algorithm in recommendation is we want to do decomposition.
+Solving real world recommendation problems, we will face thousands and millions of users and items to be
+recommended. It’s a huge challenge for us to solve this problem in limited storage resources and computation
+resources. Matrix decomposition methods, e.g traditional SVD, help us to achieve the goal within those
+restrictions.
+We may ask what do the U, S, and V represent physically? Do they have any physical signiﬁcance? For
+example each element in Rui represents the rating that user u gave to item i. Can we say the same for the
+elements in U and V ? The meaning of U, S, V - they do not have a physical analogy like the matrix R.
+5
+The values in the matrix can be negative, e.g the numeric example in section2.1.2, so that alone tells us that
+they are not representing any “rating”. But they can still be explained in an intuitive way.
+Every row of the matrix U represents user’s relationship with the particular category that every value means
+the category’s importance (or relativity), the bigger the value is the more related they are. The matrix U’s
+column number is the category number we mention here and U’s row number is the number of users. Every
+column of the matrix V represents the item’s relationship with the particular category. The matrix V ’s row
+number is the category number we mention here and V ’s column number is the number of users. Matrix S’s
+values on the diagonal represent the relationship between users’ category and items’ category, the bigger the
+value is the more related they are. To better explain this part, especially what the category means, we will
+revisit this through the numerical example after equation 9.
+2.1.1
+Example - Complete Matrix
+Show example of how reducing dimsensionality (only selecting f = 2 can recreate an approximation of the
+original R.
+2.1.2
+Example - Incomplete Matrix
+We’ll ﬁrst show an example of the power of SVD.
+Here we take a small rank score matrix R as an example to explain how this works visually. The rating
+system allows a user to give 1 - 5 discrete stars. As image 3 shows, we have score matrix R ∈R4×4. Of the
+items the user has not yet rated, we use global average value or user/item average value to ﬁll in. Then we
+use SVD on this already ﬁlled up matrix R′.
+Figure 3: SVD example.
+Two diﬀerent ways to complete the empty values:
+1. Use global average: use the average value of all the existing values in rating matrix R. In our
+example, global average is calculated by
+r1,1 + r1,2 + r1,4 + r2,1 + · · · r4,4
+numbernon−empty
+= 1 + 3 + 4 + 5 + · · · + 5
+11
+= 37
+11 = 3.36
+2. Use user average: use the average value of the existing ratings for the speciﬁc user by averaging
+across the rows for that user in matrix R. For user 1, the empty rating value can be calculated by
+r⋆
+1,3 = r1,1r1,2 + r1,4
+3
+= 1 + 3 + 4
+3
+= 2.67
+Suppose we choose to use user average value to ﬁll in empty values. We can set f as 2. We can calculate
+the singular power percentage as equation 2 which should be
+(14.592 + 3.222)/(14.592 + 3.222 + 1.112 + 0.232) × 100% = 99.42%
+6
+Then the reconstructed matrix from rank 2 the R⋆will be :
+R⋆= U2S2V T
+2
+=
+
+
+
+
+−0.37
+0.67
+−0.64
+−0.15
+−0.28
+−0.72
+−0.62
+0.08
+
+
+
+·
+ 14.59
+0
+0
+3.22
+
+·
+ −0.51
+−0.51
+−0.47
+−0.51
+−0.81
+0.07
+0.20
+0.55
+
+=
+
+
+
+
+0.98
+2.87
+2.96
+3.88
+5.14
+4.7
+4.32
+4.46
+3.94
+1.88
+1.45
+0.76
+4.39
+4.60
+4.33
+4.71
+
+
+
+
+(9)
+Let’s recall the SVD’s physical explanation. First we want to be clear with a new concept category which
+means the latent classes we want to project users’ information or items’ information into. In the SV D
+equation, the category for user is the column number of U and the category for item is the column number
+of V . In R⋆’s reconstruction, we set the f to 2 so the category we use to project the users’ and items’
+latent information is 2. For example, the 1st row and 1th column value −0.37 of U2 represents for user 1’s
+relationship with user category 1. The the 1st row and 1th column value 0.98 of V T
+2 represents for user 1’s
+relationship with item category 1. And ﬁrst value 14.59 on S2’s diagonal means the importance between
+user category 1 and item category 2.
+Then we can combine the SVD decomposition with item-based collaboration to do predictions. Here we will
+explain how to predict one empty value detailedly. We can get the mask matrix according to equation 6.
+mask =
+
+
+
+
+1
+1
+0
+1
+1
+0
+1
+1
+1
+0
+1
+1
+0
+0
+1
+1
+
+
+
+
+(10)
+For the empty value R3,2, we ﬁrst calculate the total similarity score:
+similaritytotal = cos (R⋆
+2 ◦mask2, R⋆
+1 ◦mask1) + cos (R⋆
+2 ◦mask2, R⋆
+3 ◦mask3) + cos (R⋆
+2 ◦mask2, R⋆
+4 ◦mask4)
+=
+
+
+
+
+2.87
+0
+0
+0
+
+
+
+·
+
+
+
+
+0.98
+5.14
+3.94
+0
+
+
+
++
+
+
+
+
+2.87
+0
+0
+0
+
+
+
+·
+
+
+
+
+0
+4.32
+1.45
+4.33
+
+
+
++
+
+
+
+
+2.87
+0
+0
+0
+
+
+
+·
+
+
+
+
+3.88
+4.46
+0.76
+4.71
+
+
+
+
+= 2.8086 + 0 + 11.1356
+= 13.94
+(11)
+We calculate the predicted value ˆR3,2 as following:
+ˆR3,2 = cos(R⋆
+2 ◦mask2, R⋆
+1 ◦mask1)R⋆
+3,1 + cos(R⋆
+2 ◦mask2, R⋆
+3 ◦mask3)R⋆
+3,3 + cos(R⋆
+2 ◦mask2, R⋆
+4 ◦mask4)R⋆
+3,4
+similaritytotal
+= 3.94 × 2.81 + 0 + 0.76 × 11.14
+13.94
+= 19.5289/13.94
+= 1.4
+(12)
+So we gain the predicted value ˆR3,2. If we want to use discrete ratings 1, 2, · · · , 5 we can take the value 1.4
+in round to 1. The rest missing values can be predicted in the same manner.
+2.1.3
+Example - Numerical Decomposition of Matrices
+χ2 = (1 −l11u11 + l12u21)2 + (3 −l11u12 + l12u22) + ...
+(13)
+7
+2.2
+Funk-SVD
+Traditional SVD needs large storage for completed matrix and its computation complexity is high. In order to
+solve those two shortcomings, Simon Funk proposed Funk-SVD[4] in 2006 during the ongoing of Netﬂix Prize
+competition. Funk-SVD isn’t based on heuristic similarity but applies explicit learning process. Funk-SVD
+can also be called by latent factor model (LFM).
+As we saw in our SVD example, we want to take advantage of an important fact: that the matrices that
+result in the decomposition can have signiﬁcantly lower dimension than the original matrix. Here, f is chosen
+arbitrarily and is a smaller number compared with m and n. However, unlike SVD, we do not make any
+assumptions about the character of the P and Q matrices in ˆR = P T Q. That is, in SVD we knew that U
+and V were unitary matrices and S was a diagonal matrix. In general, for A = LU decomposition, we know
+that L and U are upper-triangular and lower-triangular matrices, respectively. In the Funk SVD process,
+we do not place any expectations on P and Q; they are simply two component matrices whose product will
+approximate the original rating matrix.
+Let’s deﬁne score matrix R ∈Rm×n, where m is the number of users and n is the number of items. Each
+value in this matrix represents user’s rating on item, e.g ˆR(u, i) is user u’s rating on item i. Because we can
+tens of thousands (if not more) of diﬀerent items in a real-world scenario, so the dimension of ˆR can have
+problems in computation eﬃciency. So based on the idea of SVD, Funk proposed this algorithm to compute
+users’ preference more eﬃciently.
+As we saw with SVD, we can decompose R into three matrices. In the Funk-SVD process, we can decompose
+score matrix R into the multiplication of two low-dimensional matrices, P ∈Rf×m and Q ∈Rf×n[4].
+As we saw in our SVD example, we want to take advantage of an important fact: that the matrices that
+result in the decomposition can have signiﬁcantly lower dimension than the original matrix. Here, f is chosen
+arbitrarily and is a smaller number compared with m and n. However, unlike SVD, we do not make any
+assumptions about the character of the P and Q matrices in ˆR = P T Q. That is, in SVD we knew that U
+and V were unitary matrices and S was a diagonal matrix. In general, for A = LU decomposition, we know
+that L and U are upper-triangular and lower-triangular matrices, respectively. In the Funk SVD process,
+we do not expect the same for P and Q.
+The mathematics of Funk-SVD can be written as follows:
+ˆR = P T Q
+ˆR(u, i) = ˆrui
+ˆrui =
+X
+f
+pT
+ufqif
+(14)
+where ˆrui is the predicted value which can be calculated by P and Q matrices. So the input rating matrix
+ˆR can have many empty value in it and we use the multiplication of P and Q to represent it. Then we can
+predict those empty values which are our interested parts though the multiplication result of P and Q. By
+using a simple example as ﬁgure 4, we can ﬁgure out how this decomposition and prediction process works.
+8
+Figure 4: How Funk-SVD works.
+In this example, our input rating matrix R ∈R4×4 has four users and fours items and we use the multipli-
+cation result of user matrix P T ∈R4×2 and item matrix Q ∈R2×4 to represent it. For the already existing
+value RAY = 2.0 is nearly represented by P T
+A × QY = 1.2 ∗1.0 + 0.8 ∗1.1 = 2.08. After obtaining those two
+decomposition matrices P, Q we can predict the missing values in the rating matrix from P, Q’s product.
+In our example, the missing value RAZ can be gained by P T
+A ∗QZ = 1.2 ∗0.8 + 0.8 ∗0.4 = 1.28.
+After mastering the whole process of Funk-SVD, we can focus on how to get P and Q. Not like the
+traditional SVD algorithm, we can apply implicit learning process to get those two matrices, i.e we can set
+the aim to minimum cost on training data to learn P, Q matrices. The loss function C(p, q) contains two
+parts: squared loss and regularization.
+C(p, q) =
+X
+(u.i)∈Train
+
+rui −
+F
+X
+f=1
+pufqif
+
+
+2
++ λ
+
+∥pu∥2 + ∥qi∥2
+(15)
+Here λ is the regularization parameter. Stochastic gradient descent (SGD) and other optimization algorithms
+can be applied to learn the minimum loss and its corresponding P, Q. We have two target parameters here
+puf and qif, so we ﬁrst calculate C(p, q)’s partial derivation over them:
+∂C
+∂puk
+=
+X
+i
+2(rui −
+X
+f
+pufqif)(−qik) + 2λpuk
+∂C
+∂qik
+=
+X
+u
+2(rui −
+X
+f
+pufqif)(−puk) + 2λqik
+(16)
+Here we use k to represent the f variable. For each u or i, deﬁne errui = rui −P
+f pufqif. We will talk about
+the details of SGD and other optimization functions in section 3.1.3. And according to SGD, we update
+parameters as equation 17 for each i or u in the loop.
+puk = puk + α (qik · errui −λpuk)
+qik = qik + α (puk · errui −λqik)
+(17)
+9
+where k ∈[0, f], α is the learning rate. The pseudo-code of Funk-SVD is as algorithm 1.
+Algorithm 1: Funk-SVD Algorithm
+Initialize P, Q:
+pik, qi,k ←random()/sqrt(f)
+for step = 1 : n do
+for u, i, rui in train.items() do
+errui ←rui−< p[u, : f + 1], q[i, : f + 1] >
+Update p, q:
+for k = 1 : f do
+puk+ = α · (qik · errui −λpuk)
+qik+ = α · (puk · errui −λqik)
+end for
+end for
+end for
+return P, Q
+There are many diﬀerent implements of this algorithm and we follow what Funk did in his original paper.
+The logic behind why this implement update each k dimension one by one, quote from Funk:
+“Anyway, this will train one feature (aspect), and in particular will ﬁnd the most prominent
+feature remaining (the one that will most reduce the error that’s left over after previously trained
+features have done their best). When it’s as good as it’s going to get, shift it onto the pile of done
+features, and start a new one. For eﬃciency’s sake, cache the residuals (all 100 million of them)
+so when you’re training feature 72 you don’t have to wait for predictRating() to re-compute the
+contributions of the previous 71 features. You will need 2 Gig of ram, a C compiler, and good
+programming habits to do this.”
+2.3
+SVD++
+SVD++[5] is raised by Yehuda Koren etc. in Netﬂix Prize competition. It includes users’ historical scored
+items into LFM models which takes neighbour eﬀects into consideration. SVD++, like Funk-SVD, learns
+neighbour relationship by minimize a global loss.
+SVD++[5] is the explicit learning improvement of Item-to-Item Collaboration Filtering (ItemCF) algo-
+rithm [6]. Let’s ﬁrst review how ItemCF works. ItemCF ﬁrst calculates the similarity between items which is
+represented as wi,j and then uses item similarity score and users’ historical behaviour to ﬁll up score matrix.
+Assume puj is user u’s score on item j. ItemCF calculated puj as equation 18.
+puj =
+X
+i∈N(u)∩S(j,K)
+wjirui
+(18)
+where N(u) is user u’s rated item set, S(j, K) is set of top-K most related items to item j, rui is user u’s
+score on item i. In ItemCF wi,j is deﬁned by wij = |N(i) ∩N(j)|
+|N(i)|
+where |N(i)|, |N(j)| are the number of
+users who are interested in item i, j, but in SVD++ wij is a learnable parameter. Based on ItemCF’s idea
+and assume wij is a learnable parameter, we can write the SVD++ equation as 19. SVD++ can be seen as
+an extension of Funk-SVD to implicit rating value.
+ˆrui =
+1
+p
+|N(u)|
+X
+j∈N(u)
+wij
+(19)
+Where ˆrui is the predicted score of user u on item i. Like Funk-SVD algorithm, loss object of SVD++ can
+10
+be deﬁned as following equation:
+C(w) =
+X
+(u,i)∈Train
+
+rui −
+X
+j∈N(u)
+wijruj
+
+
+2
++ λw2
+ij
+(20)
+where λ is the regularization parameter. Because wij’s number of parameters can be very large, so Koren
+proposed to do dimensionality reduction on w. We can decompose w into two low-dimension vectors’ product.
+Then equation 19 can be rewritten as following equation21.
+ˆrui =
+1
+p
+|N(u)|
+X
+j∈N(u)
+xT
+i yj
+=
+1
+p
+|N(u)|
+xT
+i
+X
+j∈N(u)
+yj
+(21)
+where xi, yj are two F-dimension vectors, so w’s number of parameters is eliminated from O(i·j)to O(2·n·F).
+Moreover, we can add bias terms into equation 21 and combine it with Funk-SVD 1.
+ˆrui = µ + bu + bi + pT
+u · qi +
+1
+p
+|N(u)|
+xT
+i
+X
+j∈N(u)
+yj
+(22)
+where µ is global average score of the rating matrix, bu is user bias, bi is item bias. Those two bias vectors
+bu and bi are learnable parameters. Also, in order to not have too many parameters to cause over-ﬁtting,
+we can arbitrarily set x = q to reduce the number of parameters. So the ﬁnal SVD++ can be written as the
+following equation23.
+ˆrui = µ + bu + bi + qT
+i · (pu +
+1
+p
+|N(u)|
+X
+j∈N(u)
+yj)
+(23)
+The learning process of parameters bu, bi, p, q is similar to Funk-SVD. We can apply SGD according to their
+partial derivations.
+3
+Factorization Machine (FM)
+Factorization Machine (FM)[7] is designed to combine Support Vector Machine (SVM) and MF. It can
+handle large sparse data and subsumes MF and SVD++. FM does not only use ﬁrst-order feature linear
+components but also second-order (cross-product) of the features to capture more potential relationship
+inside the features.
+Suppose we have x as input matrix (rating and other features) and ˆy as output. 2-way FM can be written
+as equation24 which only concerns ﬁrst-order and second-order feature interactions. An example of the input
+and output data format as ﬁgure.
+11
+Figure 5: Example of FM’s input and output data format.
+ˆy(x) = w0 +
+n
+X
+i=1
+wixi +
+n
+X
+i=1
+n
+X
+j=i+1
+⟨vi, vj⟩xixj
+⟨vi, vj⟩=
+k
+X
+f=1
+vi,f · vj,f
+(24)
+where we have three parameters: w0 ∈R, w ∈Rn, V ∈Rn×k that w0 is the global bias, wi models
+the strength of the i-th variable, ˆwi,j := ⟨vi, vj⟩models the interaction between the ith and j-th variable
+which idea is similar with FM that can do dimensionality reduction on w. We can prove the computation
+complexity of equation 24 is linear.
+n
+X
+i=1
+n
+X
+j=i+1
+⟨vi, vj⟩xixj
+=1
+2
+n
+X
+i=1
+n
+X
+j=1
+⟨vi, vj⟩xixj −1
+2
+n
+X
+i=1
+⟨vi, vi⟩xixi
+=1
+2
+
+
+n
+X
+i=1
+n
+X
+j=1
+k
+X
+f=1
+vi,fvj,fxixj −
+n
+X
+i=1
+k
+X
+f=1
+vi,fvi,fxixi
+
+
+=1
+2
+k
+X
+f=1
+
+
+ n
+X
+i=1
+vi,fxi
+! 
+
+n
+X
+j=1
+vj,fxj
+
+−
+n
+X
+i=1
+v2
+i,fx2
+i
+
+
+=1
+2
+k
+X
+f=1
+
+
+ n
+X
+i=1
+vi,fxi
+!2
+−
+n
+X
+i=1
+v2
+i,fx2
+i
+
+
+(25)
+So equation 24’s computation complexity is O(k · n) where k is latent factor’s dimension and n is input x’s
+dimension. We can compute those model parameters with gradient decent methods for a variety of losses.
+The partial gradient of parameters in equation 24 can be computed as following:
+∂
+∂θ ˆy(x) =
+
+
+
+1,
+if θ is w0
+xi,
+if θ is wi
+xi
+Pn
+j=1 vj,fxj −vi,fx2
+i ,
+if θ is vi,f
+(26)
+“In practice, usually a two-way FM model is used, i.e., only the second-order feature interactions are consid-
+ered to favor computational eﬃciency.”[8] The equation for the multi-way feature interactions can be found
+in the original paper[7].
+12
+3.0.1
+Field-Aware Factorization Machine (FFM)
+Field-aware factorization machine (FFM) [9] is an extension to FM. For traditional recommendation prob-
+lems, e.g. movie recommendation, there are only three available ﬁelds User, Item, and Tag. But when it
+comes to click-through-rate prediction problem, we can have multiple ﬁelds, e.g. Publisher (P), Advertiser
+(A), Gender (G), Click Result. We recognize those feature categories as ﬁelds. FFM is the upgrade of
+factorization machine (FM) by adding the ﬁeld concept: it considers similar features as a same ﬁeld. The
+advantage of FFM over FM is that, it uses diﬀerent factorized latent factors for diﬀerent ﬁelds of features.
+“Putting features into ﬁelds resolves the issue that the latent factors shared by features that intuitively
+represent diﬀerent categories of information may not well generalize the correlation.”[8]
+Suppose X ∈Rn×k, k is latent factor’s dimension and f is the number of ﬁelds. FFM equation based on
+2-way FM equation can be written as following:
+θFFM(wx) =
+n
+X
+j1=1
+n
+X
+j2=j1+1
+< vj1,f2, vj2,f1 > xj1xj2
+(27)
+where f1 and f2 are respectively the ﬁelds of j1 and j2 . FFM’s number of variables is O(f · n · k), equation
+27’s computation complexity is O(n2k).
+3.1
+With Deep Learning
+3.1.1
+DeepFM
+Factorization-Machine based neural network(DeepFM) is a evolutional model of Wide & Deep model from
+Google. DeepFM has a share input of its ’wide’ and ’deep’ part which behind idea is quit simliar with the
+traditional CTR model, Factorization Machine(FM). The model aims at predicting CTR by exphasizing
+both low- and high- order feature interactions.
+DeepFM has two components: FM component and deep component. The input of these two components is
+the same embedding of input features. The output of the model is the sigmoid result of the combination of
+this two components.
+The architecture of DeepFM model is as ﬁgure 6.
+Figure 6: Architecture of DeepFM model.
+FM part of DeepFM don’t need the feature engineering for inputs but it only realizes ﬁrst-order and second-
+order feature interactions because of the parameter number.
+Suppose we have m ﬁelds and embedding
+13
+dimension is k, second-order feature interaction needs O(k × m2) parameters while third-order needs O(k ×
+m3). Deep & Cross Net [10] is proposed to solve the parameters’ rapid growth problem.
+3.1.2
+Model Ensemble
+The concept of model ensemble is like the concept of wisdom of the crowd. We can take the advantage of a
+bunch independent models. To be more clear, adopt each one’s good points and avoid its shortcomings. A
+list of common ensemble methods[11]:
+1. Vote
+2. Linear blending / weighted blending
+3. Bootstrap aggregation (Bagging)
+4. Stacking
+3.1.3
+Optimization Algorithms
+We can use one frame to explain all optimization algorithms since all those algorithms can be simpliﬁed into
+those four steps[12].
+Algorithm 2: Outline of general optimization algorithms
+Model parameters: θ ∈Rd
+Target function: J(θ)
+Learning rate: α
+for Each epoch t do
+(1) Calculate target function’s gradients over model current parameters:
+gt = ∇J (θt)
+(2) Calculate 1st and 2nd order momentum based on past gradients:
+mt = φ (g1, g2, · · · , gt) ; Vt = ψ (g1, g2, · · · , gt)
+(3) Calculate the gradient should be eliminated:
+ηt = α · mt/(√Vt + ϵ)
+ϵ is a minimal value to protect denominator from zero, usually set ϵ = 1e −8
+(4) Update parameters:
+θt+1 = θt −ηt
+end for
+14
+References
+[1] D. Billsus, M. J. Pazzani et al., “Learning collaborative information ﬁlters.” in Icml, vol. 98, 1998, pp.
+46–54.
+[2] [Online]. Available: https://www.cnblogs.com/pinard/p/6251584.html
+[3] [Online]. Available: https://web.stanford.edu/class/cs168/l/l9.pdf
+[4] S. Funk, 2006. [Online]. Available: http://sifter.org/∼simon/journal/20061211.html
+[5] Y. Koren, “Factor in the neighbors: Scalable and accurate collaborative ﬁltering,” ACM Transactions
+on Knowledge Discovery from Data (TKDD), vol. 4, no. 1, pp. 1–24, 2010.
+[6] G. Linden, B. Smith, and J. York, “Amazon. com recommendations: Item-to-item collaborative ﬁlter-
+ing,” IEEE Internet computing, vol. 7, no. 1, pp. 76–80, 2003.
+[7] S. Rendle, “Factorization machines,” in 2010 IEEE International Conference on Data Mining, 2010, pp.
+995–1000.
+[8] [Online]. Available:
+https://github.com/microsoft/recommenders/blob/master/notebooks/02 model/
+fm deep dive.ipynb
+[9] Y. Juan, D. Lefortier, and O. Chapelle, “Field-aware factorization machines in a real-world online ad-
+vertising system,” in Proceedings of the 26th International Conference on World Wide Web Companion,
+2017, pp. 680–688.
+[10] R. Wang, B. Fu, G. Fu, and M. Wang, “Deep & cross network for ad click predictions,” in Proceedings
+of the ADKDD’17, 2017, pp. 1–7.
+[11] [Online]. Available: https://zhuanlan.zhihu.com/p/25836678
+[12] [Online]. Available: https://zhuanlan.zhihu.com/p/32230623
+15

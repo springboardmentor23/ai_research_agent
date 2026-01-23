@@ -1,42 +1,39 @@
-import os
 import json
-
+import os
 
 def prepare_cleaned_dataset(papers_by_topic):
-    """
-    Converts raw paper data into a cleaned dataset
-    suitable for analysis.
-    """
-
-    cleaned_dataset = []
+    dataset = []
 
     for topic, papers in papers_by_topic.items():
         for paper in papers:
-            record = {
+
+            raw_authors = paper.get("authors", [])
+            authors = []
+
+            # Handle both Semantic Scholar and arXiv formats
+            for a in raw_authors:
+                if isinstance(a, dict):
+                    authors.append(a.get("name"))
+                elif isinstance(a, str):
+                    authors.append(a)
+
+            dataset.append({
                 "topic": topic,
                 "title": paper.get("title"),
-                "authors": paper.get("authors", []),
+                "authors": authors,
                 "year": paper.get("year"),
                 "abstract": paper.get("abstract"),
-                "paper_url": paper.get("paper_url")
-            }
-            cleaned_dataset.append(record)
+                "url": paper.get("url") or paper.get("paper_url")
+            })
 
-    return cleaned_dataset
+    return dataset
 
 
-def save_cleaned_dataset(cleaned_dataset):
-    """
-    Saves the cleaned dataset into
-    data/datasets/cleaned_dataset.json
-    """
 
-    folder_path = os.path.join("data", "datasets")
-    os.makedirs(folder_path, exist_ok=True)
+def save_cleaned_dataset(dataset):
+    os.makedirs("data/datasets", exist_ok=True)
 
-    file_path = os.path.join(folder_path, "cleaned_dataset.json")
+    with open("data/datasets/cleaned_dataset.json", "w", encoding="utf-8") as f:
+        json.dump(dataset, f, indent=4)
 
-    with open(file_path, "w", encoding="utf-8") as file:
-        json.dump(cleaned_dataset, file, indent=4)
-
-    print("Cleaned dataset saved at:", file_path)
+    print("Cleaned dataset saved at: data/datasets/cleaned_dataset.json")

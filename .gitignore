@@ -1,8 +1,5 @@
 env/
 https://api.semanticscholar.org/graph/v1/paper/search/
 
-# Ignore Milestone 2 (not ready yet)
-src/milestone_2/
-data/extracted_text/
-data/section_wise_text/
-main_week2.py/
+
+

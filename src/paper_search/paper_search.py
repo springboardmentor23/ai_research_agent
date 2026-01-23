@@ -3,30 +3,31 @@ from urllib import response
 import requests
 
 
-# fetch papers
-def fetch_papers(topic, limit=5, retries=3, wait_seconds=3):
+#fetch papers
+def fetch_from_semantic_scholar(topic, limit=5):
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
 
     params = {
         "query": topic,
         "limit": limit,
-        "fields": "paperId,title,authors,year,abstract,url"
+        "fields": "paperId,title,authors,year,abstract,url,openAccessPdf"
     }
 
-    for attempt in range(retries):
-        response = requests.get(url, params=params)
+    try:
+        response = requests.get(url, params=params, timeout=10)
 
         if response.status_code == 200:
             return response.json().get("data", [])
 
-        elif response.status_code == 429:
-            print("Rate limit reached. Waiting...")
-            time.sleep(wait_seconds)
+        if response.status_code == 429:
+            print("Semantic Scholar rate limited.")
+            return None
 
-        else:
-            response.raise_for_status()
+    except requests.exceptions.RequestException:
+        return None
 
     return []
+
 
 
 def show_papers(topic, papers):
@@ -45,34 +46,29 @@ def show_papers(topic, papers):
         print("-" * 40)
 
 
-def fetch_references(paper_id, limit=4):
-    url = f"https://api.semanticscholar.org/graph/v1/paper/{paper_id}/references"
+def fetch_from_semantic_scholar(topic, limit=5):
+    url = "https://api.semanticscholar.org/graph/v1/paper/search"
 
     params = {
+        "query": topic,
         "limit": limit,
-        "fields": "title,authors,year,url"
+        "fields": "paperId,title,authors,year,abstract,url,openAccessPdf"
     }
 
-    response = requests.get(url, params=params)
+    try:
+        response = requests.get(url, params=params, timeout=10)
 
-    if response.status_code != 200:
-        print("Failed to fetch references")
-        return []
+        if response.status_code == 200:
+            return response.json().get("data", [])
 
-    data = response.json().get("data")
+        if response.status_code == 429:
+            print("Semantic Scholar rate limited.")
+            return None
 
-# SAFETY CHECK (IMPORTANT)
-    if not data:
-        return []
+    except requests.exceptions.RequestException:
+        return None
 
-    references = []
-
-    for r in data:
-        cited = r.get("citedPaper")
-    if cited:
-        references.append(cited)
-
-    return references
+    return []
 
  
 

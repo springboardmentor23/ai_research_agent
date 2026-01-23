@@ -1,1 +1,166 @@
-[]
+[
+    {
+        "topic": "Healthcare",
+        "title": "AMSTAR 2: a critical appraisal tool for systematic reviews that include randomised or non-randomised studies of healthcare interventions, or both",
+        "authors": [
+            "B. Shea",
+            "Barnaby C Reeves",
+            "George Wells",
+            "Micere Thuku",
+            "Candyce Hamel",
+            "Julian Moran",
+            "D. Moher",
+            "P. Tugwell",
+            "Vivian Welch",
+            "Elizabeth Kristjansson",
+            "David A Henry"
+        ],
+        "year": 2017,
+        "abstract": "The number of published systematic reviews of studies of healthcare interventions has increased rapidly and these are used extensively for clinical and policy decisions. Systematic reviews are subject to a range of biases and increasingly include non-randomised studies of interventions. It is important that users can distinguish high quality reviews. Many instruments have been designed to evaluate different aspects of reviews, but there are few comprehensive critical appraisal instruments. AMSTAR was developed to evaluate systematic reviews of randomised trials. In this paper, we report on the updating of AMSTAR and its adaptation to enable more detailed assessment of systematic reviews that include randomised or non-randomised studies of healthcare interventions, or both. With moves to base more decisions on real world observational evidence we believe that AMSTAR 2 will assist decision makers in the identification of high quality systematic reviews, including those based on non-randomised studies of healthcare interventions.",
+        "url": "https://www.semanticscholar.org/paper/d926f7ad7cc14b4ec56b04b27138ffbb7131f10d"
+    },
+    {
+        "topic": "Healthcare",
+        "title": "ChatGPT Utility in Healthcare Education, Research, and Practice: Systematic Review on the Promising Perspectives and Valid Concerns",
+        "authors": [
+            "Malik Sallam"
+        ],
+        "year": 2023,
+        "abstract": "ChatGPT is an artificial intelligence (AI)-based conversational large language model (LLM). The potential applications of LLMs in health care education, research, and practice could be promising if the associated valid concerns are proactively examined and addressed. The current systematic review aimed to investigate the utility of ChatGPT in health care education, research, and practice and to highlight its potential limitations. Using the PRIMSA guidelines, a systematic search was conducted to retrieve English records in PubMed/MEDLINE and Google Scholar (published research or preprints) that examined ChatGPT in the context of health care education, research, or practice. A total of 60 records were eligible for inclusion. Benefits of ChatGPT were cited in 51/60 (85.0%) records and included: (1) improved scientific writing and enhancing research equity and versatility; (2) utility in health care research (efficient analysis of datasets, code generation, literature reviews, saving time to focus on experimental design, and drug discovery and development); (3) benefits in health care practice (streamlining the workflow, cost saving, documentation, personalized medicine, and improved health literacy); and (4) benefits in health care education including improved personalized learning and the focus on critical thinking and problem-based learning. Concerns regarding ChatGPT use were stated in 58/60 (96.7%) records including ethical, copyright, transparency, and legal issues, the risk of bias, plagiarism, lack of originality, inaccurate content with risk of hallucination, limited knowledge, incorrect citations, cybersecurity issues, and risk of infodemics. The promising applications of ChatGPT can induce paradigm shifts in health care education, research, and practice. However, the embrace of this AI chatbot should be conducted with extreme caution considering its potential limitations. As it currently stands, ChatGPT does not qualify to be listed as an author in scientific articles unless the ICMJE/COPE guidelines are revised or amended. An initiative involving all stakeholders in health care education, research, and practice is urgently needed. This will help to set a code of ethics to guide the responsible use of ChatGPT among other LLMs in health care and academia.",
+        "url": "https://www.semanticscholar.org/paper/dfdf7ff01aa6f691831e663fd29bc71890be39e2"
+    },
+    {
+        "topic": "Healthcare",
+        "title": "A guide to deep learning in healthcare",
+        "authors": [
+            "A. Esteva",
+            "Alexandre Robicquet",
+            "Bharath Ramsundar",
+            "Volodymyr Kuleshov",
+            "M. DePristo",
+            "Katherine Chou",
+            "Claire Cui",
+            "Greg S. Corrado",
+            "S. Thrun",
+            "J. Dean"
+        ],
+        "year": 2019,
+        "abstract": null,
+        "url": "https://www.semanticscholar.org/paper/44e1dd74f0446ec91221189ad3a65edb1a0208fe"
+    },
+    {
+        "topic": "Healthcare",
+        "title": "Revolutionizing healthcare: the role of artificial intelligence in clinical practice",
+        "authors": [
+            "Shuroug A. Alowais",
+            "Sahar S. Alghamdi",
+            "Nada Alsuhebany",
+            "Tariq Alqahtani",
+            "Abdulrahman I. Alshaya",
+            "Sumaya N Almohareb",
+            "Atheer Aldairem",
+            "Mohammed A. Alrashed",
+            "Khalid Bin saleh",
+            "H. Badreldin",
+            "Majed S. Al Yami",
+            "Shmeylan A. Al Harbi",
+            "Abdulkareem M. Albekairy"
+        ],
+        "year": 2023,
+        "abstract": "Introduction Healthcare systems are complex and challenging for all stakeholders, but artificial intelligence (AI) has transformed various fields, including healthcare, with the potential to improve patient care and quality of life. Rapid AI advancements can revolutionize healthcare by integrating it into clinical practice. Reporting AI\u2019s role in clinical practice is crucial for successful implementation by equipping healthcare providers with essential knowledge and tools. Research Significance This review article provides a comprehensive and up-to-date overview of the current state of AI in clinical practice, including its potential applications in disease diagnosis, treatment recommendations, and patient engagement. It also discusses the associated challenges, covering ethical and legal considerations and the need for human expertise. By doing so, it enhances understanding of AI\u2019s significance in healthcare and supports healthcare organizations in effectively adopting AI technologies. Materials and Methods The current investigation analyzed the use of AI in the healthcare system with a comprehensive review of relevant indexed literature, such as PubMed/Medline, Scopus, and EMBASE, with no time constraints but limited to articles published in English. The focused question explores the impact of applying AI in healthcare settings and the potential outcomes of this application. Results Integrating AI into healthcare holds excellent potential for improving disease diagnosis, treatment selection, and clinical laboratory testing. AI tools can leverage large datasets and identify patterns to surpass human performance in several healthcare aspects. AI offers increased accuracy, reduced costs, and time savings while minimizing human errors. It can revolutionize personalized medicine, optimize medication dosages, enhance population health management, establish guidelines, provide virtual health assistants, support mental health care, improve patient education, and influence patient-physician trust. Conclusion AI can be used to diagnose diseases, develop personalized treatment plans, and assist clinicians with decision-making. Rather than simply automating tasks, AI is about developing technologies that can enhance patient care across healthcare settings. However, challenges related to data privacy, bias, and the need for human expertise must be addressed for the responsible and effective implementation of AI in healthcare.",
+        "url": "https://www.semanticscholar.org/paper/5cde474869cb230a29b3ba0f6f685f5162b1a1a1"
+    },
+    {
+        "topic": "Healthcare",
+        "title": "Artificial intelligence in healthcare: past, present and future",
+        "authors": [
+            "F. Jiang",
+            "Yong Jiang",
+            "Hui Zhi",
+            "Yi Dong",
+            "Hao Li",
+            "Sufeng Ma",
+            "Yilong Wang",
+            "Q. Dong",
+            "Haipeng Shen",
+            "Yongjun Wang"
+        ],
+        "year": 2017,
+        "abstract": "Artificial intelligence (AI) aims to mimic human cognitive functions. It is bringing a paradigm shift to healthcare, powered by increasing availability of healthcare data and rapid progress of analytics techniques. We survey the current status of AI applications in healthcare and discuss its future. AI can be applied to various types of healthcare data (structured and unstructured). Popular AI techniques include machine learning methods for structured data, such as the classical support vector machine and neural network, and the modern deep learning, as well as natural language processing for unstructured data. Major disease areas that use AI tools include cancer, neurology and cardiology. We then review in more details the AI applications in stroke, in the three major areas of early detection and diagnosis, treatment, as well as outcome prediction and prognosis evaluation. We conclude with discussion about pioneer AI systems, such as IBM Watson, and hurdles for real-life deployment of AI.",
+        "url": "https://www.semanticscholar.org/paper/10f919b1a5161b560504c225cfb2d1b3a4768f80"
+    },
+    {
+        "topic": "Recommendation system",
+        "title": "SynerGen: Contextualized Generative Recommender for Unified Search and Recommendation",
+        "authors": [
+            "Vianne R. Gao",
+            "Chen Xue",
+            "Marc Versage",
+            "Xie Zhou",
+            "Zhongruo Wang",
+            "Chao Li",
+            "Yeon Seonwoo",
+            "Nan Chen",
+            "Zhen Ge",
+            "Gourab Kundu",
+            "Weiqi Zhang",
+            "Tian Wang",
+            "Qingjun Cui",
+            "Trishul Chilimbi"
+        ],
+        "year": "2025",
+        "abstract": "The dominant retrieve-then-rank pipeline in large-scale recommender systems suffers from mis-calibration and engineering overhead due to its architectural split and differing optimization objectives. While recent generative sequence models have shown promise in unifying retrieval and ranking by auto-regressively generating ranked items, existing solutions typically address either personalized search or query-free recommendation, often exhibiting performance trade-offs when attempting to unify both. We introduce \\textit{SynerGen}, a novel generative recommender model that bridges this critical gap by providing a single generative backbone for both personalized search and recommendation, while simultaneously excelling at retrieval and ranking tasks. Trained on behavioral sequences, our decoder-only Transformer leverages joint optimization with InfoNCE for retrieval and a hybrid pointwise-pairwise loss for ranking, allowing semantic signals from search to improve recommendation and vice versa. We also propose a novel time-aware rotary positional embedding to effectively incorporate time information into the attention mechanism. \\textit{SynerGen} achieves significant improvements on widely adopted recommendation and search benchmarks compared to strong generative recommender and joint search and recommendation baselines. This work demonstrates the viability of a single generative foundation model for industrial-scale unified information access.",
+        "url": "https://arxiv.org/abs/2509.21777v1"
+    },
+    {
+        "topic": "Recommendation system",
+        "title": "Mitigating Popularity Bias in Recommendation with Unbalanced Interactions: A Gradient Perspective",
+        "authors": [
+            "Weijieying Ren",
+            "Lei Wang",
+            "Kunpeng Liu",
+            "Ruocheng Guo",
+            "Lim Ee Peng",
+            "Yanjie Fu"
+        ],
+        "year": "2022",
+        "abstract": "Recommender systems learn from historical user-item interactions to identify preferred items for target users. These observed interactions are usually unbalanced following a long-tailed distribution. Such long-tailed data lead to popularity bias to recommend popular but not personalized items to users. We present a gradient perspective to understand two negative impacts of popularity bias in recommendation model optimization: (i) the gradient direction of popular item embeddings is closer to that of positive interactions, and (ii) the magnitude of positive gradient for popular items are much greater than that of unpopular items. To address these issues, we propose a simple yet efficient framework to mitigate popularity bias from a gradient perspective. Specifically, we first normalize each user embedding and record accumulated gradients of users and items via popularity bias measures in model training. To address the popularity bias issues, we develop a gradient-based embedding adjustment approach used in model testing. This strategy is generic, model-agnostic, and can be seamlessly integrated into most existing recommender systems. Our extensive experiments on two classic recommendation models and four real-world datasets demonstrate the effectiveness of our method over state-of-the-art debiasing baselines.",
+        "url": "https://arxiv.org/abs/2211.01154v1"
+    },
+    {
+        "topic": "Recommendation system",
+        "title": "An Introduction to Matrix factorization and Factorization Machines in Recommendation System, and Beyond",
+        "authors": [
+            "Yuefeng Zhang"
+        ],
+        "year": "2022",
+        "abstract": "This paper aims at a better understanding of matrix factorization (MF), factorization machines (FM), and their combination with deep algorithms' application in recommendation systems. Specifically, this paper will focus on Singular Value Decomposition (SVD) and its derivations, e.g Funk-SVD, SVD++, etc. Step-by-step formula calculation and explainable pictures are displayed. What's more, we explain the DeepFM model in which FM is assisted by deep learning. Through numerical examples, we attempt to tie the theory to real-world problems.",
+        "url": "https://arxiv.org/abs/2203.11026v1"
+    },
+    {
+        "topic": "Recommendation system",
+        "title": "A Survey on the Fairness of Recommender Systems",
+        "authors": [
+            "Yifan Wang",
+            "Weizhi Ma",
+            "Min Zhang",
+            "Yiqun Liu",
+            "Shaoping Ma"
+        ],
+        "year": "2022",
+        "abstract": "Recommender systems are an essential tool to relieve the information overload challenge and play an important role in people's daily lives. Since recommendations involve allocations of social resources (e.g., job recommendation), an important issue is whether recommendations are fair. Unfair recommendations are not only unethical but also harm the long-term interests of the recommender system itself. As a result, fairness issues in recommender systems have recently attracted increasing attention. However, due to multiple complex resource allocation processes and various fairness definitions, the research on fairness in recommendation is scattered. To fill this gap, we review over 60 papers published in top conferences/journals, including TOIS, SIGIR, and WWW. First, we summarize fairness definitions in the recommendation and provide several views to classify fairness issues. Then, we review recommendation datasets and measurements in fairness studies and provide an elaborate taxonomy of fairness methods in the recommendation. Finally, we conclude this survey by outlining some promising future directions.",
+        "url": "https://arxiv.org/abs/2206.03761v2"
+    },
+    {
+        "topic": "Recommendation system",
+        "title": "Research on Conversational Recommender System Considering Consumer Types",
+        "authors": [
+            "Yaying Luo",
+            "Hui Fang",
+            "Zhu Sun"
+        ],
+        "year": "2025",
+        "abstract": "Conversational Recommender Systems (CRS) provide personalized services through multi-turn interactions, yet most existing methods overlook users' heterogeneous decision-making styles and knowledge levels, which constrains both accuracy and efficiency. To address this gap, we propose CT-CRS (Consumer Type-Enhanced Conversational Recommender System), a framework that integrates consumer type modeling into dialogue recommendation. Based on consumer type theory, we define four user categories--dependent, efficient, cautious, and expert--derived from two dimensions: decision-making style (maximizers vs. satisficers) and knowledge level (high vs. low). CT-CRS employs interaction histories and fine-tunes the large language model to automatically infer user types in real time, avoiding reliance on static questionnaires. We incorporate user types into state representation and design a type-adaptive policy that dynamically adjusts recommendation granularity, diversity, and attribute query complexity. To further optimize the dialogue policy, we adopt Inverse Reinforcement Learning (IRL), enabling the agent to approximate expert-like strategies conditioned on consumer type. Experiments on LastFM, Amazon-Book, and Yelp show that CTCRS improves recommendation success rate and reduces interaction turns compared to strong baselines. Ablation studies confirm that both consumer type modeling and IRL contribute significantly to performance gains. These results demonstrate that CT-CRS offers a scalable and interpretable solution for enhancing CRS personalization through the integration of psychological modeling and advanced policy optimization.",
+        "url": "https://arxiv.org/abs/2508.13209v2"
+    }
+]
