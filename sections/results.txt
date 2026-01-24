@@ -1,0 +1,113 @@
+results. This stage is also
+the integration point for many other techniques which will be discussed later, possibly including:
+secure aggregation for added privacy, lossy compression of aggregates for communication efﬁciency,
+and noise addition and update clipping for differential privacy.
+5.Model update: The server locally updates the shared model based on the aggregated update computed
+from the clients that participated in the current round.
+Table 2 gives typical order-of-magnitude sizes for the quantities involved in a typical federated learning
+application on mobile devices.
+8
+The separation of the client computation, aggregation, and model update phases is not a strict require-
+ment of federated learning, and it indeed excludes certain classes of algorithms, for example asynchronous
+SGD where each client’s update is immediately applied to the model, before any aggregation with updates
+from other clients. Such asynchronous approaches may simplify some aspects of system design, and also
+be beneﬁcial from an optimization perspective (though this point can be debated). However, the approach
+presented above has a substantial advantage in affording a separation of concerns between different lines of
+research: advances in compression, differential privacy, and secure multi-party computation can be devel-
+oped for standard primitives like computing sums or means over decentralized updates, and then composed
+with arbitrary optimization or analytics algorithms, so long as those algorithms are expressed in terms of
+aggregation primitives.
+It is also worth emphasizing that in two respects, the FL training process should not impact the user
+experience. First, as outlined above, even though model parameters are typically sent to some devices
+during the broadcast phase of each round of federated training, these models are an ephemeral part of the
+training process, and not used to make “live” predictions shown to the user. This is crucial, because training
+ML models is challenging, and a misconﬁguration of hyperparameters can produce a model that makes bad
+predictions. Instead, user-visible use of the model is deferred to a rollout process as detailed above in Step 6
+of the model lifecycle. Second, the training itself is intended to be invisible to the user — as described
+under client selection, training does not slow the device or drain the battery because it only executes when
+the device is idle and connected to power. However, the limited availability these constraints introduce
+leads directly to open research challenges which will be discussed subsequently, such as semi-cyclic data
+availability and the potential for bias in client selection.
+1.2 Federated Learning Research
+The remainder of this paper surveys many open problems that are motivated by the constraints and chal-
+lenges of real-world federated learning settings, from training models on medical data from a hospital sys-
+tem to training using hundreds of millions of mobile devices. Needless to say, most researchers working on
+federated learning problems will likely not be deploying production FL systems, nor have access to ﬂeets of
+millions of real-world devices. This leads to a key distinction between the practical settings that motivate the
+work and experiments conducted in simulation which provide evidence of the suitability of a given approach
+to the motivating problem.
+This makes FL research somewhat different than other ML ﬁelds from an experimental perspective, lead-
+ing to additional considerations in conducting FL research. In particular, when highlighting open problems,
+we have attempted, when possible, to also indicate relevant performance metrics which can be measured
+in simulation, the characteristics of datasets which will make them more representative of real-world per-
+formance, etc. The need for simulation also has ramiﬁcations for the presentation of FL research. While
+not intended to be authoritative or absolute, we make the following modest suggestions for presenting FL
+research that addresses the open problems we describe:
+• As shown in Table 1, the FL setting can encompass a wide range of problems. Compared to ﬁelds
+where the setting and goals are well-established, it is important to precisely describe the details of
+the particular FL setting of interest, particularly when the proposed approach makes assumptions that
+may not be appropriate in all settings (e.g. stateful clients that participate in all rounds).
+• Of course, details of any simulations should be presented in order to make the research reproducible.
+But it is also important to explain which aspects of the real-world setting the simulation is designed
+to capture (and which it is not), in order to effectively make the case that success on the simulated
+9
+problem implies useful progress on the real-world objective. We hope that the guidance in this paper
+will help with this.
+• Privacy and communication efﬁciency are always ﬁrst-order concerns in FL, even if the experiments
+are simulations running on a single machine using public data. More so than with other types of ML,
+for any proposed approach it is important to be unambiguous about where computation happens as
+well as what is communicated .
+Software libraries for federated learning simulation as well as standard datasets can help ease the chal-
+lenges of conducting effective FL research; Appendix A summarizes some of the currently available options.
+Developing standard evaluation metrics and establishing standard benchmark datasets for different federated
+learning settings (cross-device and cross-silo) remain highly important directions for ongoing work.
+1.3 Organization
+Section 2 builds on the ideas in Table 1, exploring other FL settings and problems beyond the original
+focus on cross-device settings. Section 3 then turns to core questions around improving the efﬁciency
+and effectiveness of federated learning. Section 4 undertakes a careful consideration of threat models and
+considers a range of technologies toward the goal of achieving rigorous privacy protections. As with all
+machine learning systems, in federated learning applications there may be incentives to manipulate the
+models being trained, and failures of various kinds are inevitable; these challenges are discussed in Section 5.
+Finally, we address the important challenges of providing fair and unbiased models in Section 6.
+10
+2 Relaxing the Core FL Assumptions: Applications to Emerging Settings
+and Scenarios
+In this section, we will discuss areas of research related to the topics discussed in the previous section. Even
+though not being the main focus of the remainder of the paper, progress in these areas could motivate design
+of the next generation of production systems.
+2.1 Fully Decentralized / Peer-to-Peer Distributed Learning
+In federated learning, a central server orchestrates the training process and receives the contributions of
+all clients. The server is thus a central player which also potentially represents a single point of failure.
+While large companies or organizations can play this role in some application scenarios, a reliable and
+powerful central server may not always be available or desirable in more collaborative learning scenarios
+[459]. Furthermore, the server may even become a bottleneck when the number of clients is very large, as
+demonstrated by Lian et al. [305] (though this can be mitigated by careful system design, e.g. [81]).
+The key idea of fully decentralized learning is to replace communication with the server by peer-to-
+peer communication between individual clients. The communication topology is represented as a connected
+graph in which nodes are the clients and an edge indicates a communication channel between two clients.
+The network graph is typically chosen to be sparse with small maximum degree so that each node only
+needs to send/receive messages to/from a small number of peers; this is in contrast to the star graph of the
+server-client architecture. In fully decentralized algorithms, a round corresponds to each client performing
+a local update and exchanging information with their neighbors in the graph2. In the context of machine
+learning, the local update is typically a local (stochastic) gradient step and the communication consists in
+averaging one’s local model parameters with the neighbors. Note that there is no longer a global state of the
+model as in standard federated learning, but the process can be designed such that all local models converge
+to the desired global solution, i.e., the individual models gradually reach consensus. While multi-agent
+optimization has a long history in the control community, fully decentralized variants of SGD and other
+optimization algorithms have recently been considered in machine learning both for improved scalability
+in datacenters [29] as well as for decentralized networks of devices [127, 459, 443, 59, 278, 291, 173].
+They consider undirected network graphs, although the case of directed networks (encoding unidirectional
+channels which may arise in real-world scenarios such as social networks or data markets) has also been
+studied in [29, 226].
+It is worth noting that even in the decentralized setting outlined above, a central authority may still be in
+charge of setting up the learning task. Consider for instance the following questions: Who decides what is
+the model to be trained in the decentralized setting? What algorithm to use? What hyperparameters? Who
+is responsible for debugging when something does not work as expected? A certain degree of trust of the
+participating clients in a central authority would still be needed to answer these questions. Alternatively, the
+decisions could be taken by the client who proposes the learning task, or collaboratively through a consensus
+scheme (see Section 2.1.2).
+Table 3 provides a comparison between federated and peer-to-peer learning. While the architectural
+assumptions of decentralized learning are distinct from those of federated learning, it can often be applied to
+similar problem domains, many of the same challenges arise, and there is signiﬁcant overlap in the research
+communities. Thus, we consider decentralized learning in this paper as well; in this section challenges
+2Note, however, that the notion of a round does not need to even make sense in this setting. See for instance the

@@ -1,0 +1,9 @@
+Active learning for data streams: a survey
+Davide Cacciarelli1,2* and Murat Kulahci1,3
+1Department of Applied Mathematics and Computer Science, Technical University of Denmark,
+Kgs. Lyngby, Denmark.
+2Department of Mathematical Sciences, Norwegian University of Science and Technology,
+Trondheim, Norway.
+3Department of Business Administration, Technology and Social Sciences, Lule˚a University of
+Technology, Lule˚a, Sweden.
+*Corresponding author(s). E-mail(s): dcac@dtu.dk;

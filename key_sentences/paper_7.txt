@@ -1,0 +1,5 @@
+deeplearningbaseddetection
+severalresearchworksuseddeeplearningmodelstodetectfakenews.wangetal.builtahybridconvolutionalneural
+networkmodelthatoutperformsothertraditionalmachinelearningmodels[63].rashkinetal.performedanextensive
+analysis of linguistic features and showed promising result with lstm [50].
+

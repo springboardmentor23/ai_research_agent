@@ -1,0 +1,6 @@
+in both cases we demonstrate substantial speed up and improvement in
+performance.
+
+amongthememeapproaches,theuseoflegendremoments,which
+applyorthogonallegendrepolynomialbases,outperformstheuseofsimplepowermoments.
+

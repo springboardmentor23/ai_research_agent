@@ -1,0 +1,8 @@
+we introduce a comprehensive framework that synergizes
+the granularity of rough set theory with the uncertainty quantification of shannon entropy, applied
+across a spectrum of machine learning algorithms.
+
+our methodology is rigorously tested on various
+datasets, showcasing its capability to not only assess predictive performance but also to illuminate the
+underlying data complexity and model robustness.
+

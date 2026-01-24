@@ -1,0 +1,6 @@
+using methods from the physical sciences, we propose a novel approach as a next step towards
+interpretableneuralnetworks.
+
+toidentify
+distinct groups of minima, usually called funnels, we introduce the notion of levels and nodes.
+

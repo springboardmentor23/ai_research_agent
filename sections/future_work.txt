@@ -1,0 +1,843 @@
+future work would be to explore the use of zero-knowledge proofs to ensure that users are
+submitting updates with pre-speciﬁed properties. Solutions based on hardware attestation could also be
+considered. For instance, a user’s mobile phone might have the ability to attest that the shared model
+updates were computed correctly using images produced by the phone’s camera.
+Collusion defenses Model update poisoning attacks may drastically increase in effectiveness if the adver-
+saries are allowed to collude. This collusion can allow the adversaries to create model update attacks that are
+both more effective and more difﬁcult to detect [52]. This paradigm is strongly related to sybil attacks [160],
+in which clients are allowed to join and leave the system at will. Since the server is unable to view client
+data, detecting sybil attacks may be much more difﬁcult in federated learning. Recent work has shown that
+federated learning is vulnerable to both targeted and untargeted sybil attacks [190]. Potential challenges for
+federated learning involve defending against collusion or detecting colluding adversaries, without directly
+inspecting the data of nodes.
+5.1.3 Data Poisoning Attacks
+A potentially more restrictive class of attack than model update poisoning is data poisoning. In this paradigm,
+the adversary cannot directly corrupt reports to the central node. Instead, the adversary can only manipulate
+client data, perhaps by replacing labels or speciﬁc features of the data. As with model update poisoning,
+data poisoning can be performed both for targeted attacks [69, 115, 275] and untargeted attacks [319, 44].
+This attack model may be more natural when the adversary can only inﬂuence the data collection process
+at the edge of the federated learning system, but cannot directly corrupt derived quantities within the learning
+system (e.g. model updates).
+Data poisoning and Byzantine-robust aggregation Since data poisoning attacks induce model update
+poisoning, any defense against Byzantine updates can also be used to defend against data poisoning. For
+example Xie et al. [487], Xie [484] and Xie et al. [486] proposed Byzantine-robust aggregators that success-
+fully defended against label-ﬂipping data poisoning attacks on convolutional neural networks. As discussed
+in Section 5.1.2, one important line of work involves analyzing and improving these approaches in feder-
+ated learning. Non-IID data and unreliability of clients all present serious challenges and disrupt common
+assumptions in works on Byzantine-robust aggregation. For data poisoning, there is a possibility that the
+Byzantine threat model is too strong. By restricting to data poisoning (instead of general model update poi-
+soning), it may be possible to design a more tailored and effective Byzantine-robust aggregator. We discuss
+67
+this in more detail in at the end of Section 5.1.3.
+Data sanitization and network pruning Defenses designed speciﬁcally for data poisoning attacks fre-
+quently rely on “data sanitization” methods [141], which aim to remove poisoned or otherwise anomalous
+data. More recent work has developed improved data sanitization methods using robust statistics [432, 416,
+454, 152], which often have the beneﬁt of being provably robust to small numbers of outliers [152]. Such
+methods can be applied to both targeted and untargeted attacks, with some degree of empirical success [416].
+A related class of defenses used for defending against backdoor attacks are “pruning” defenses. Rather
+than removing anomalous data, pruning defenses attempt to remove activation units that are inactive on
+clean data [314, 465]. Such methods are motivated by previous studies which showed empirically that poi-
+soned data designed to introduce a backdoor often triggers so-called “backdoor neurons” [214]. While such
+methods do not require direct access to all client data, they require “clean” holdout data that is representative
+of the global dataset.
+Neither data sanitization nor network pruning work directly in federated settings, as they both generally
+require access to client data, or else data that resembles client data. Thus, it is an open question whether
+data sanitization methods and network pruning methods can be used in federated settings without privacy
+loss, or whether or not defenses against data poisoning require new federated approaches. Furthermore, Koh
+et al. [276] recently showed that many heuristic defenses based on data sanitization remain vulnerable to
+adaptive poisoning attacks, suggesting that even a federated approach to data sanitization may not be enough
+to defend against data poisoning.
+Even detecting the presence of poisoned data (without necessarily correcting for it or identifying the
+client with poisoned data) is challenging in federated learning. This difﬁculty becomes ampliﬁed when the
+data poisoning is meant to insert a backdoor, as then even metrics such as global training accuracy or per
+client training accuracy may not be enough to detect the presence of a backdoor.
+Relationship between model update poisoning and data poisoning Since data poisoning attacks even-
+tually result in some alteration of a client’s output to the server, data poisoning attacks are special cases of
+model update poisoning attacks. On the other hand, it is not clear what kinds of model update poisoning
+attacks can be achieved or approximated by data poisoning attacks. Recent work by Bhagoji et al. [67]
+suggests that data poisoning may be weaker, especially in settings with limited participation rate (see Table
+11). One interesting line of study would be to quantify the gap between these two types of attacks, and relate
+this gap to the relative strength of an adversary operating under these attack models. While this question
+can be posed independently of federated learning, it is particularly important in federated learning due to
+differences in adversary capabilities (see Table 11). For example, the maximum number of clients that can
+perform data poisoning attacks may be much higher than the number that can perform model update poison-
+ing attacks, especially in cross-device settings. Thus, understanding the relation between these two attack
+types, especially as they relate to the number of adversarial clients, would greatly help our understanding of
+the threat landscape in federated learning.
+This problem can be tackled in a variety of manners. Empirically, one could study the discrepancy
+in performance of various attacks. or investigate whether various model update poisoning attacks can be
+approximated by data poisoning attacks, and would develop methods for doing so. Theoretically, although
+we conjecture that model update poisoning is provably stronger than data poisoning, we are unaware of any
+formal statements addressing this. One possible approach would be to use insights and techniques from
+work on machine teaching (see [511] for reference) to understand “optimal” data poisoning attacks, as in
+[340]. Any formal statement will likely depend on quantities such as the number of corrupted clients and
+68
+the function class of interest. Intuitively, the relation between model update poisoning and data poisoning
+should depend on the overparameterization of the model with respect to the data.
+5.1.4 Inference-Time Evasion Attacks
+In evasion attacks, an adversary may attempt to circumvent a deployed model by carefully manipulating
+samples that are fed into the model. One well-studied form of evasion attacks are so-called “adversarial ex-
+amples.” These are perturbed versions of test inputs which seem almost indistinguishable from the original
+test input to a human, but fool the trained model [70, 441]. In image and audio domains, adversarial exam-
+ples are generally constructed by adding norm-bounded perturbations to test examples, though more recent
+works explore other distortions [176, 477, 259]. In the white-box setting, the aforementioned perturbations
+can be generated by attempting to maximize the loss function subject to a norm constraint via constrained
+optimization methods such as projected gradient ascent [284, 328]. Such attacks can frequently cause nat-
+urally trained models to achieve zero accuracy on image classiﬁcation benchmarks such as CIFAR-10 or
+ImageNet [98]. In the black-box setting, models have also been shown to be vulnerable to attacks based on
+query-access to the model [113, 90] or based on substitute models trained on similar data [441, 366, 452].
+While black-box attacks may be more natural to consider in datacenter settings, the model broadcast step in
+federated learning means that the model may be accessible to any malicious client. Thus, federated learning
+increases the need for defenses against white-box evasion attacks.
+Various methods have been proposed to make models more robust to evasion attacks. Here, robustness
+is often measured by the model performance on white-box adversarial examples. Unfortunately, many
+proposed defenses have been shown to only provide a superﬁcial sense of security [30]. On the other
+hand, adversarial training, in which a robust model is trained with adversarial examples, generally provides
+some robustness to white-box evasion attacks [328, 483, 412]. Adversarial training is often formulated as
+a minimax optimization problem, where the adversarial examples and the model weights are alternatively
+updated. We note that there is no canonical formulation of adversarial training, and choices such as the
+minimax optimization problem and hyperparameters such as learning rate can signiﬁcantly affect the model
+robustness, especially for large-scale dataset like ImageNet. Moreover, adversarial training typically only
+improves robustness to the speciﬁc type of adversarial examples incorporated during training, potentially
+leaving the trained model vulnerable to other forms of adversarial noise [176, 448, 414].
+Adapting adversarial training methods to federated learning brings a host of open questions. For ex-
+ample, adversarial training can require many epochs before obtaining signiﬁcant robustness. However, in
+federated learning, especially cross-device federated learning, each training sample may only be seen a lim-
+ited number of times. More generally, adversarial training was developed primarily for IID data, and it is
+unclear how it performs in non-IID settings. For example, setting appropriate bounds on the norm of pertur-
+bations to perform adversarial training (a challenging problem even in the IID setting [453]) becomes harder
+in federated settings where the training data cannot be inspected ahead of training. Another issue is that
+generating adversarial examples is relatively expensive. While some adversarial training frameworks have
+attempted to minimize this cost by reusing adversarial examples [412], these approaches would still require
+signiﬁcant compute resources from clients. This is potentially problematic in cross-device settings, where
+adversarial example generation may exacerbate memory or power constraints. Therefore, new on-device
+robust optimization techniques may be required in the federated learning setting.
+Relationship between training-time and inference-time attacks The aforementioned discussion of eva-
+sion attacks generally assumes the adversary has white-box access (potentially due to systems-level realities
+of federated learning) at inference time. This ignores the reality that an adversary could corrupt the training
+69
+process in order to create or enhance inference-time vulnerabilities of a model, as in [115]. This could be
+approached in both untargeted and targeted ways by an adversary; An adversary could use targeted attacks
+to create vulnerabilities to speciﬁc types of adversarial examples [115, 214] or use untargeted attacks to
+degrade the effectiveness of adversarial training.
+One possible defense against combined training- and inference-time adversaries are methods to detect
+backdoor attacks [454, 108, 465, 122]. Difﬁculties in applying previous defenses (such as those cited above)
+to the federated setting were discussed in more detail in Section 5.1.3. However, purely detecting backdoors
+may be insufﬁcient in many federated settings where we want robustness guarantees on the output model
+at inference time. More sophisticated solutions could potentially combine training-time defenses (such as
+robust aggregation or differential privacy) with adversarial training. Other open work in this area could
+involve quantifying how various types of training-time attacks impact the inference-time vulnerability of
+a model. Given the existing challenges in defending against purely training-time or purely inference-time
+attacks, this line of work is necessarily more speculative and unexplored.
+5.1.5 Defensive Capabilities from Privacy Guarantees
+Many challenges in federated learning systems can be viewed as ensuring some amount of robustness :
+whether maliciously or not, clean data is corrupted or otherwise tampered with. Recent work on data privacy,
+notably differential privacy (DP) [167], deﬁnes privacy in terms of robustness. In short, random noise is
+added at training or test time in order to reduce the inﬂuence of speciﬁc data points. For a more detailed
+explanation on differential privacy, see Section 4.2.2. As a defense technique, differential privacy has several
+compelling strengths. First, it provides strong, worst-case protections against a variety of attacks. Second,
+there are many known differentially private algorithms, and the defense can be applied to many machine
+learning tasks. Finally, differential privacy is known to be closed under composition, where the inputs to
+later algorithms are determined after observing the results of earlier algorithms.
+We brieﬂy describe the use of differential privacy as a defense against the three kinds of attacks that we
+have seen above.
+Defending against model update poisoning attacks The service provider can bound the contribution of
+any individual client to the overall model by (1) enforcing a norm constraint on the client model update (e.g.
+by clipping the client updates), (2) aggregating the clipped updates, (3) and adding Gaussian noise to the
+aggregate. This approach prevents over-ﬁtting to any individual update (or a small group of malicious indi-
+viduals), and is identical to training with differential privacy (discussed in Section 4.3.2). This approach has
+been recently explored by Sun et al. [438], which shows preliminary success in applying differential privacy
+as a defense against targeted attacks. However, the scope of experiments and targeted attacks analyzed by
+Sun et al. [438] should be extended to include more general adversarial attacks. In particular, Wang et al.
+[466], show that the use of edge case backdoors, generated from data samples with low probability in the
+underlying distribution, is able to bypass differential privacy defenses. They further demonstrate that the
+existence of adversarial examples implies the existence of edge-case backdoors, indicating that defenses for
+the two threats may need to be developed in tandem. Therefore, more work remains to verify whether or
+not DP can indeed be an effective defense. More importantly, it is still unclear how hyperparameters for DP
+(such as the size of `2norm bounds and noise variance) can be chosen as a function of the model size and
+architecture, as well as the fraction of malicious devices.
+70
+Defending against data poisoning attacks Data poisoning can be thought of as a failure of a learning
+algorithm to be robust: a few attacked training examples may strongly affect the learned model. Thus, one
+natural way to defend against these attacks is to make the learning algorithm differentially private, improving
+robustness. Recent work has explored differential privacy as a defense against data poisoning [326], and in
+particular in the federated learning context [199]. Intuitively, an adversary who is only able to modify a few
+training examples cannot cause a large change in the distribution over learned models.
+While differential privacy is a ﬂexible defense against data poisoning, it also has some drawbacks. The
+main weakness is that noise must be injected into the learning procedure. While this is not necessarily
+a problem—common learning algorithms like stochastic gradient descent already inject noise—the added
+noise can hurt the performance of the learned model. Furthermore, the adversary can only control a small
+number of devices.10Accordingly, differential privacy can be viewed as both a strong and a weak defense
+against data poisoning—it is strong in that it is extremely general and provides worst case protection no
+matter the goals of the adversary, and it is weak in that the adversary must be restricted and noise must be
+added to the federated learning process.
+Defending against inference-time evasion attacks Differential privacy has also been studied as a defense
+against inference-time attacks, where the adversary may modify test examples to manipulate the learned
+model. A straightforward approach is to make the predictor itself differentially private; however, this has
+the drawback that prediction becomes randomized, a usually undesirable feature that can also hurt inter-
+pretability. More sophisticated approaches [296] add noise and then release the prediction with the highest
+probability. We believe that there are other opportunities for further exploration in this direction.
+5.2 Non-Malicious Failure Modes
+Compared to datacenter training, federated learning is particularly susceptible to non-malicious failures from
+unreliable clients outside the control of the service provider. Just as with adversarial attacks, systems factors
+and data constraints also exacerbate non-malicious failures present in datacenter settings. We also note
+that techniques (described in the following sections) which are designed to address worst-case adversarial
+robustness are also able to effectively address non-malicious failures. While non-malicious failures are
+generally less damaging than malicious attacks, they are potentially more common, and share common
+roots and complications with the malicious attacks. We therefore expect progress in understanding and
+guarding against non-malicious failures to also inform defenses against malicious attacks.
+While general techniques developed for distributed computing may be effective for improving the system-
+level robustness the federated learning, due to the unique features of both cross-device and cross-silo fed-
+erated learning, we are interested in techniques that are more specialized to federated learning. Below we
+discuss three possible non-malicious failure modes in the context of federated learning: client reporting
+failures, data pipeline failures, and noisy model updates. We also discuss potential approaches to making
+federated learning more robust to such failures.
+Client reporting failures Recall that in federated learning, each training round involves broadcasting a
+model to the clients, local client computation, and client reports to the central aggregator. For any partic-
+ipating client, systems factors may cause failures at any of these steps. Such failures are especially likely
+in cross-device federated learning, where network bandwidth becomes more of a constraint, and the client
+10Technically, robustness to poisoning multiple examples is derived from the group privacy property of differential privacy; this
+protection degrades exponentially as the number of attacked points increases.
+71
+devices are more likely to be edge devices with limited compute power. Even if there is no explicit failure,
+there may be straggler clients, which take much longer to report their output than other nodes in the same
+round. If the stragglers take long enough to report, they may be omitted from a communication round for
+efﬁciency’s sake, effectively reducing the number of participating clients. In “vanilla” federated learning,
+this requires no real algorithmic changes, as federated averaging can be applied to whatever clients report
+model updates.
+Unfortunately, unresponsive clients become more challenging to contend with when using secure ag-
+gregation (SecAgg) [80, 58], especially if the clients drop out during the SecAgg protocol. While SecAgg
+is designed to be robust to signiﬁcant numbers of dropouts [81], there is still the potential for failure. The
+likelihood of failure could be reduced in various complementary ways. One simple method would be to
+select more devices than required within each round. This helps ensure that stragglers and failed devices
+have minimal effect on the overall convergence [81]. However, in unreliable network settings, this may not
+be enough. A more sophisticated way to reduce the failure probability would be to improve the efﬁciency
+of SecAgg. This reduces the window of time during which client dropouts would adversely affect SecAgg.
+Another possibility would be to develop an asynchronous version of SecAgg that does not require clients to
+participate during a ﬁxed window of time, possibly by adapting techniques from general asynchronous se-
+cure multi-party distributed computation protocols [430]. More speculatively, it may be possible to perform
+versions of SecAgg that aggregate over multiple computation rounds. This would allow straggler nodes to
+be included in subsequent rounds, rather than dropping out of the current round altogether.
+Data pipeline failures While data pipelines in federated learning only exist within each client, there are
+still many potential issues said pipelines can face. In particular, any federated learning system still must
+deﬁne how raw user data is accessed and preprocessed in to training data. Bugs or unintended actions in this
+pipeline can drastically alter the federated learning process. While data pipeline bugs can often be discovered
+via standard data analysis tools in the data center setting, the data restrictions in federated learning makes
+detection signiﬁcantly more challenging. For example, feature-level preprocessing issues (such as inverting
+pixels, concatenating words, etc.) can not be directly detected by the server [31]. One possible solution is to
+train generative models using federated methods with differential privacy, and then using these to synthesize
+new data samples that can be used to debug the underlying data pipelines [31]. Developing general-purpose
+debugging methods for machine learning that do not directly inspect raw data remains a challenge.
+Noisy model updates In Section 5.1 above, we discussed the potential for an adversary to send malicious
+model updates to the server from some number of clients. Even if no adversary is present, the model updates
+sent to the server may become distorted due to network and architectural factors. This is especially likely
+in cross-client settings, where separate entities control the server, clients, and network. Similar distortions
+can occur due to the client data. Even if the data on a client is not intentionally malicious, it may have noisy
+features [350] (eg. in vision applications, a client may have a low-resolution camera whose output is scaled
+to a higher resolution) or noisy labels [356] (eg. if the user indicates that a recommendation by an app is
+not relevant accidentally). While clients in cross-silo federated learning systems (see Table 1) may perform
+data cleaning to remove such corruptions, such processing is unlikely to occur in cross-device settings due
+to data privacy restrictions. In the end, these aforementioned corruptions may harm the convergence of the
+federated learning process, whether they are due to network factors or noisy data.
+Since these corruptions can be viewed as mild forms of model update and data poisoning attacks, one
+mitigation strategy would be to use defenses for adversarial model update and data poisoning attacks. Given
+the current lack of demonstrably robust training methods in the federated setting, this may not be a prac-
+tical option. Moreover, even if such techniques existed, they may be too computation-intensive for many
+72
+federated learning applications. Thus, open work here involves developing training methods that are robust
+to small to moderate levels of noise. Another possibility is that standard federated training methods (such
+as federated averaging [337]) are inherently robust to small amounts of noise. Investigating the robustness
+of various federated training methods to varying levels amount of noise would shed light on how to ensure
+robustness of federated learning systems to non-malicious failure modes.
+5.3 Exploring the Tension between Privacy and Robustness
+One primary technique used to enforce privacy is secure aggregation (SecAgg) (see 4.2.1). In short, SecAgg
+is a tool used to ensure that the server only sees an aggregate of the client updates, not any individual
+client updates. While useful for ensuring privacy, SecAgg generally makes defenses against adversarial
+attacks more difﬁcult to implement, as the central server only sees the aggregate of the client updates.
+Therefore, it is of fundamental interest to investigate how to defend against adversarial attacks when secure
+aggregation is used. Existing approaches based on range proofs (e.g. Bulletproofs [92]) can guarantee that
+the DP-based clipping defense described above is compatible with SecAgg, but developing computation-
+and communication-efﬁcient range proofs is still an active research direction.
+SecAgg also introduces challenges for other defense methods. For example, many existing Byzantine-
+robust aggregation methods utilize non-linear operations on the server Xie et al. [486], and it is not yet known
+if these methods are efﬁciently compatible with secure aggregation which was originally designed for linear
+aggregation. Recent work has found ways to approximate the geometric median under SecAgg [379] by
+using a handful of SecAgg calls in a more general aggregation loop. However, it is not clear in general
+which aggregators can be computed under the use of SecAgg.
+5.4 Executive Summary
+• Third-party participants in the training process introduces new capabilities and attack vectors for
+adversaries, categorized in Table 11.
+• Federated learning introduces a new kind of poisoning attacks, model update poisoning (Section
+5.1.2), while also being susceptible to traditional data poisoning in (Section 5.1.3).
+• Training participants can inﬂuence the optimization process possibly exacerbating inference-time
+(Section evasion attacks ) 5.1.4, and communication and computation constraints may render pre-
+viously proposed defenses impractical.
+• Non-malicious failure modes (Section 5.2) are can be especially different to deal with, as access to
+raw data is not available in the federated setting, though through some lens they may be related to
+poisoning attacks.
+• Tension may exist when trying to simultaneously improve robustness and privacy in machine learning
+(Section 5.3).
+Areas identiﬁed for further exploration include:
+• Quantify the relationship between data poisoning and model update poisoning attacks. Are there
+scenarios where they are not equivalent? [5.1.3]
+73
+• Quantify how training time attacks impact inference-time vulnerabilities. Improving inference-time
+robustness guarantees requires going beyond detecting backdoor attacks. [5.1.4]
+• Adversarial training has been used as a defense in the centralized setting, but can be impractical in the
+edge-compute limited cross-device federated setting. [5.1.5]
+• Federated learning requires new methods and tools to support the developer, as access to raw data is
+restricted debugging ML pipelines is especially difﬁcult. [5.2]
+• Tensions exists between robustness and fairness, as machine learning models can tend to discard
+updates far from the median as detrimental. However the federated setting can give rise to a long tail
+of users that may be mistaken for noisy model updates [5.2].
+• Cryptography-based aggregation methods and robustness techniques present integration challenges:
+protecting participant identity can be at odds with detecting adversarial participants. Proposed tech-
+niques remain beyond the scope of practicality, requiring the need of new communication and com-
+putation efﬁcient algorithms. [5.3]
+74
+6 Ensuring Fairness and Addressing Sources of Bias
+Machine learning models can often exhibit surprising and unintended behaviours. When such behaviours
+lead to patterns of undesirable effects on users, we might categorize the model as “unfair” according to
+some criteria. For example, if people with similar characteristics receive quite different outcomes, then this
+violates the criterion of individual fairness [169]. If certain sensitive groups (races, genders, etc.) receive
+different patterns of outcomes—such as different false negative rates—this can violate various criteria of de-
+mographic fairness , see for instance [51, 349] for surveys. The criterion of counterfactual fairness requires
+that a user receive the same treatment as they would have if they had been a member of a different group
+(race, gender, etc), after taking all causally relevant pathways into account [287].
+Federated learning raises several opportunities for fairness research, some of which extend prior research
+directions in the non-federated setting, and others that are unique to federated learning. This section raises
+open problems in both categories.
+6.1 Bias in Training Data
+One driver of unfairness in machine-learned models is bias in the training data, including cognitive, sam-
+pling, reporting, and conﬁrmation bias. One common antipattern is that minority or marginalized social
+groups are under-represented in the training data, and thus the learner weights these groups less during
+training [258], leading to inferior quality predictions for members of these groups (e.g. [93]).
+Just as the data access processes used in federated learning may introduce dataset shift and non-independence
+(Section 3.1), there is also a risk of introducing biases. For example:
+• If devices are selected for updates when plugged-in or fully charged, then model updates and evalua-
+tions computed at different times of day may be correlated with factors such as day-shift vs night-shift
+work schedules.
+• If devices are selected for updates from among the pool of eligible devices at a given time, then
+devices that are connected at times when few other devices are connected (e.g. night-shift or unusual
+time zone) may be over-represented in the aggregated output.
+• If selected devices are more likely to have their output kept when the output is computed faster,
+then: a) output from devices with faster processors may be over-represented, with these devices likely
+newer devices and thus correlated with socioeconomic status; and b) devices with less data may be
+over-represented, with these devices possibly representing users who use the product less frequently.
+• If data nodes have different amounts of data, then federated learning may weigh higher the contribu-
+tions of populations which are heavy users of the product or feature generating the data.
+• If the update frequency depends on latency, then certain geographic regions and populations with
+slower devices or networks may be under-represented.
+• If populations of potential users do not own devices for socio-economic reasons, they may be under-
+represented in the training dataset, and subsequently also under- (or un-)represented in model training
+and evaluation.
+• Unweighted aggregation of the model loss across selected devices during federated training may dis-
+advantage model performance on certain devices [302].
+75
+It has been observed that biases in the data-generating process can also drive unfairness in the result-
+ing models learned from this data (see e.g. [170, 394]). For example, suppose training data is based on
+user interactions with a product which has failed to incorporate inclusive design principles. Then, the user
+interactions with the product might not express user intents (cf. [403], for example) but rather might ex-
+press coping strategies around uninclusive product designs (and hence might require a fundamental ﬁx to
+the product interaction model). Learning from such interactions might then ignore or perpetuate poor expe-
+riences for some groups of product users in ways which can be difﬁcult to detect while maintaining privacy
+in a federated setting. This risk is shared by all machine learning scenarios where training data is derived
+from user interaction, but is of particular note in the federated setting when data is collected from apps on
+individual devices.
+Investigating the degree to which biases in the data-generated process can be identiﬁed or mitigated
+is a crucial problem for both federated learning research and ML research more broadly. Similarly, while
+limited prior research has demonstrated methods to identify and correct bias in already collected data in the
+federated setting (e.g. via adversarial methods in [255]), further research in this area is needed. Finally,
+methods for applying post-hoc fairness corrections to models learned from potentially biased training data
+are also a valuable direction for future work.
+6.2 Fairness Without Access to Sensitive Attributes
+Having explicit access to demographic information (race, gender, etc) is critical to many existing fairness
+criteria, including those discussed in Section 6.1. However, the contexts in which federated learning are
+often deployed also give rise to considerations of fairness when individual sensitive attributes are notavail-
+able. For example, this can occur when developing personalized language models or developing fair medical
+image classiﬁers without knowing any additional demographic information about individuals. Even more
+fundamentally, the assumed one-to-one relationship between individuals and devices often breaks down,
+especially in non-Western contexts [403]. Both measuring and correcting unfairness in contexts where there
+is no data regarding sensitive group membership is a key area for federated learning researchers to address.
+Limited existing research has examined fairness without access to sensitive attributes. For example,
+this has been addressed using distributionally-robust optimization (DRO) which optimizes for the worst-
+case outcome across all individuals during training [225], and via multicalibration, which calibrates for
+fairness across subsets of the training data [232]. Even these existing approaches have not been applied in
+the federated setting, raising opportunities for future empirical work. The challenge of how to make these
+approaches work for large-scale, high-dimensional data typical to federated settings is also an open problem,
+as DRO and multicalibration both pose challenges of scaling with large nandp. Finally, the development
+of additional theoretical approaches to deﬁning fairness without respect to “sensitive attributes” is a critical
+area for further research.
+Other ways to approach this include reframing the existing notions of fairness, which are primarily
+concerned with equalizing the probability of an outcome (one of which is considered “positive” and another
+“negative” for the affected individual). Instead, fairness without access to sensitive attributes might be
+reframed as equal access to effective models . Under this interpretation of fairness, the goal is to maximize
+model utility across all individuals, regardless of their (unknown) demographic identities, and regardless of
+the “goodness“ of an individual outcome. Again, this matches the contexts in which federated learning is
+most commonly used, such as language modeling or medical image classiﬁcation, where there is no clear
+notion of an outcome which is “good” for a user, and instead the aim is simply to make correct predictions
+for users, regardless of the outcome.
+76
+Existing federated learning research suggests possible ways to meet such an interpretation of fairness,
+e.g. via personalization [250, 472]. A similar conception of fairness, as “a more fair distribution of the
+model performance across devices”, is employed in [302].
+The application of attribute-independent methods explicitly to ensure equitable model performance is an
+open opportunity for future federated learning research, and is particularly important as federated learning
+reaches maturity and sees increasing deployment with real populations of users without knowledge of their
+sensitive identities.
+6.3 Fairness, Privacy, and Robustness
+Fairness and data privacy seem to be complementary ethical concepts: in many of the real-world contexts
+where privacy protection is desired, fairness is also desired. Often this is due to the sensitivity of the
+underlying data. Because federated learning is most likely to be deployed in contexts of sensitive data where
+both privacy and fairness are desirable, it is important that FL research examines how FL might be able to
+address existing concerns about fairness in machine learning, and whether FL raises new fairness-related
+issues.
+In some ways, however, the ideal of fairness seems to be in tension with the notions of privacy for
+which FL seeks to provide guarantees: differentially-private learning typically seeks to obscure individually-
+identifying characteristics, while fairness often requires knowing individuals’ membership in sensitive groups
+in order to measure or ensure fair predictions are being made. While the trade-off between differential pri-
+vacy and fairness has been investigated in the non-federated setting [246, 145], there has been little work on
+how (or whether) FL may be able to uniquely address concerns about fairness.
+Recent evidence suggesting that differentially-private learning can have disparate impact on sensitive
+subgroups [43, 145, 246, 283] provides further motivation to investigate whether FL may be able to ad-
+dress such concerns. A potential solution to relax the tension between privacy (which aims to protect the
+model from being too dependent on individuals) and fairness (which encourages the model to perform well
+on under-represented classes) may be the application of techniques such as personalization (discussed in
+Section 3.3) and “hybrid differential privacy,” where some users donate data with lesser privacy guarantees
+[40].
+Furthermore, current differentially-private optimization schemes are applied without respect to sensi-
+tive attributes – from this perspective, it might be expected that empirical studies have shown evidence that
+differentially-private optimization impacts minority subgroups the most [43]. Modiﬁcations to differentially-
+private optimization algorithms which explicitly seek to preserve performance on minority subgroups, e.g.
+by adapting the noise and clipping mechanisms to account for the representation of groups within the data,
+would also likely do a great deal to limit potential disparate impacts of differentially-private modeling on
+minority subgroups in federated models trained with differential privacy. However, implementing such
+adaptive differentially-private mechanisms in a way that provides some form of privacy guarantee presents
+both algorithmic and theoretical challenges which need to be addressed by future work.
+Further research is also needed to determine the extent to which the issues above arise in the federated
+setting. Furthermore, as noted in Section 6.2, the challenge of evaluating the impact of differential privacy
+on model fairness becomes particularly difﬁcult when sensitive attributes are not available, as it is unclear
+how to identify subgroups for which a model is behaving badly and to quantify the “price” of differential
+privacy – investigating and addressing these challenges is an open problem for future work.
+More broadly, one could more generally examine the relation between privacy, fairness, and robustness
+(see Section 5). Many previous works on machine learning, including federated learning, typically focus on
+77
+isolated aspects of robustness (either against poisoning, or against evasion), privacy, or fairness. An impor-
+tant open challenge is to develop a joint understanding of federated learning systems that are robust, private,
+and fair. Such an integrated approach can provide opportunities to beneﬁt from disparate but complemen-
+tary mechanisms. Differential privacy mechanisms can be used to both mitigate data inference attacks, and
+provide a foundation for robustness against data poisoning. On the other hand, such an integrated approach
+also reveals new vulnerabilities. For example, recent work has revealed a trade-off between privacy and
+robustness against adversarial examples [429].
+Finally, privacy and fairness naturally meet in the context of learning data representations that are in-
+dependent of some sensitive attributes while preserving utility for a task of interest. Indeed, this objective
+can be motivated both in terms of privacy: to transform data so as to hide private attributes, and fairness: as
+a way to make models trained on such representations fair with respect to the attributes. In the centralized
+setting, one way to learn such representations is through adversarial training techniques, which have been
+applied to image and speech data [255, 186, 327, 65, 431]. In the federated learning scenario, clients could
+apply the transformation locally to their data in order to enforce or improve privacy and/or fairness guar-
+antees for the FL process. However, learning this transformation in a federated fashion (potentially under
+privacy and/or fairness constraints) is itself an open question.
+6.4 Leveraging Federation to Improve Model Diversity
+Federated learning presents the opportunity to integrate, through distributed training, datasets which may
+have previously been impractical or even illegal to combine in a single location. For example, the Health
+Insurance Portability and Accountability Act (HIPAA) and the Family Educational Rights and Privacy Act
+(FERPA) constrain the sharing of medical patient data and student educational data, respectively, in the
+United States. To date, these restrictions have led to modeling occurring in institutional silos: for example,
+using electronic health records or clinical images from individual medical institutions instead of pooling
+data and models across institutions [91, 104]. In contexts where membership in institutional datasets is
+correlated with individuals’ speciﬁc sensitive attributes, or their behavior and outcomes more broadly, this
+can lead to poor representation for users in groups underrepresented at those institutions. Importantly, this
+lack of representation and diversity in the training data has been shown to lead to poor performance, e.g. in
+genetic disease models [333] and image classiﬁcation models [93].
+Federated learning presents an opportunity to leverage uniquely diverse datasets by providing efﬁcient
+decentralized training protocols along with privacy and non-identiﬁability guarantees for the resulting mod-
+els. This means that federated learning enables training on multi-instutitional datasets in many domains
+where this was previously not possible. This provides a practical opportunity to leverage larger, more di-
+verse datasets and explore the generalizability of models which were previously limited to small populations.
+More importantly, it provides an opportunity to improve the fairness of these models by combining data
+across boundaries which are likely to have been correlated with sensitive attributes. For instance, attendance
+at speciﬁc health or educational institutions may be correlated with individuals’ ethnicity or socioeconomic
+status. As noted in Section 6.1 above, underrepresentation in training data is a proven driver of model
+unfairness.
+Future federated learning research should investigate the degree to which improving diversity in a feder-
+ated training setting also improves the fairness of the resulting model, and the degree to which the differential
+privacy mechanisms required in such settings may limit fairness and performance gains from increased di-
+versity. This includes a need for both empirical research which applies federated learning and quantiﬁes
+the interplay between diversity, fairness, privacy, and performance; along with theoretical research which
+provides a foundation for concepts such as diversity in the context of machine learning fairness.
+78
+6.5 Federated Fairness: New Opportunities and Challenges
+It is important to note that federated learning provides unique opportunities and challenges for fairness
+researchers. For example, by allowing for datasets which are distributed both by observation, but even
+by features, federated learning can enable modeling and research using partitioned data which may be too
+sensitive to share directly [215, 224]. Increased availability of datasets which can be used in a federated
+manner can help to improve the diversity of training data available for machine learning models, which can
+advance fair modeling theory and practice.
+Researchers and practitioners also need to address the unique fairness-related challenges created by fed-
+erated learning. For example, federated learning can introduce new sources of bias through the decision
+of which clients to sample based on considerations such as connection type/quality, device type, location,
+activity patterns, and local dataset size [81]. Future work could investigate the degree to which these vari-
+ous sampling constraints affect the fairness of the resulting model, and how such impacts can be mitigated
+within the federated framework, e.g. [302, 289, 158]. Frameworks such as agnostic federated learning
+[352] provide approaches to control for bias in the training objective. Work to improve the fairness of exist-
+ing federated training algorithms will be particularly important as advances begin to approach the technical
+limits of other components of FL systems, such as model compression, which initially helped to broaden
+the diversity of candidate clients during federated training processes. There is no unique fairness criterion
+generally adopted in the study of fairness, and multiple criteria have been proven to be mutually incompat-
+ible. One way to deal with this question is the online fairness framework and algorithms of Awasthi et al.
+[41]. Adapting such solutions to the federated learning setting and further improving upon them will be
+challenging research questions in ML fairness theory and algorithms.
+In the classical centralized machine learning setting, a substantial amount of advancement has been made
+in the past decade to train fair classiﬁers, such as constrained optimization, post-shifting approaches, and
+distributionally-robust optimization [223, 503, 225]. It is an open question whether such approaches, which
+have demonstrated utility for improving fairness in centralized training, could be used under the setting of
+federated learning (and if so, under what additional assumptions) in which data are located in a decentralized
+fashion and practitioners may not obtain an unbiased sample of the data that match the distribution of the
+population.
+6.6 Executive Summary
+In addition to inheriting the already signiﬁcant challenges related to bias, fairness, and privacy in centralized
+machine learning, federated learning also brings a new set of distinct challenges and opportunities in these
+areas. The importance of these considerations will likely continue to grow as the real-world deployment of
+FL expands to more users, domains, and applications.
+• Bias in training data (Section 6.1) is a key consideration related to bias and fairness in FL models,
+particularly due to the additional sampling steps germane to federation (e.g., client sampling) and the
+transfer of some model computation to client devices.
+• The lack of data regarding sensitive attributes in many FL deployments can pose challenges for mea-
+suring and ensuring fairness, and also suggests potential reframing of fairness problems in ways that
+do not require such data (Section 6.2).
+• Since FL is often deployed in contexts which are both privacy- and fairness-sensitive, this can magnify
+tensions between privacy and fairness objectives in practice. Further work is needed to address the
+79
+potential tension between methods which achieve privacy, fairness, and robustness in both federated
+and centralized learning (Section 6.3).
+• Federated learning presents unique opportunities to improve the diversity of stakeholders and data
+incorporated into learning, which could improve both the overall quality of downstream models, as
+well as their fairness due to more representative datasets (Section 6.4).
+• Federated learning presents fairness-related challenges not present in the centralized training regime,
+but also affords new solutions (Section 6.5).
+80
+7 Addressing System Challenges
+As we will see in this section, the challenges in building systems for federated learning can be split fairly
+cleanly into the two separate settings of cross-device and cross-silo federated learning (see Sections 1.1
+and 2.2). We start with a brief discussion of the difﬁculties inherent to any large scale deployment of
+software on end-user devices (although exacerbated by the complexity of a federated learning stack); we
+then focus on key challenges speciﬁc to the cross-device learning—bias, tuning, and efﬁcient device-side
+execution of ML workﬂows—before concluding with a brief treatment of the cross-silo setting.
+7.1 Platform Development and Deployment Challenges
+Running computations on end-user devices is considerably different from the data center setting:
+• Due to the heterogeneity of the ﬂeet (devices may differ in hardware, software, connectivity, perfor-
+mance and persisted state) the space of potential problems and edge cases is vast and cannot typically
+be covered in sufﬁcient detail with automated testing.
+• Monitoring and debugging are harder because telemetry is limited, delayed, and there is no physical
+access to devices for interactive troubleshooting.
+• Running computations should not affect device performance or stability, i.e. should be invisible to
+users.
+Code Deployment Installing, updating and running software on end user devices may involve not only
+extensive manual and automated testing, but a gradual and reversible rollout (for example, through guard-
+ing new functionality with server-controlled feature ﬂags) while monitoring key performance metrics in
+a/b experiments such as crash rates, memory use, and application-dependent indicators such as latencies
+and engagement metrics. Such rollouts can take weeks or months depending on the percolation rate of
+updates (particularly challenging for devices with spotty connectivity) and the complexity of the upgrade
+(e.g. protocol changes). Hence, the install base at any given time will involve various releases. While
+this problem is not speciﬁc to federated learning, it has greater impact here due to the inherent collabo-
+rative nature of federated computations: devices constantly communicate with servers and indirectly with
+other devices to exchange models and parameter updates. Thus, compatibility concerns abound and must be
+addressed through stable exchange formats or, where not possible, detected upfront with extensive testing
+infrastructure. We will revisit this problem in Section 7.4.
+Monitoring and Debugging Another signiﬁcant complication is the limited ability to monitor devices
+and interactively debug problems. While telemetry from end user devices is necessary to detect problems,
+privacy concerns severely restrict what can be logged, who can access such logs, and how long they are
+retained. Once a regression is detected, drilling down into the root cause can be very cumbersome due to
+the lack of detailed context, the vast problem space (a cross product of software versions, hardware, models,
+and device state), and very limited ability for interactive debugging short of successfully reproducing the
+problem in a controlled environment.
+These challenges are exacerbated in the federated learning setting where a) raw input data on devices
+cannot be accessed, and b) contributions from individual devices are by design anonymous, ephemeral, and
+exposed only in aggregate. These properties preserve privacy, but also may make it hard or impossible to
+81
+investigate problems with traditional approaches —by looking for correlations with hardware or software
+version, or testing hypotheses that require access to raw data. Reproducing a problem in a controlled set-
+ting is often difﬁcult due to the gap between such an environment and reality: hundreds of heterogeneous
+embedded stateful devices with non-iid data.
+Interestingly, federated technologies themselves can help to mitigate this problem—for instance, the use
+of federated analytics [382] to collect logs in a privacy preserving manner, or training generative models of
+the system behavior or raw data for sampling during debugging (see sections 3.4.3, 5.2, and [31]). Keeping a
+federated learning system up and running thus requires investing into upfront detection of problems through
+a) extensive automated, continuous test coverage of all software layers through both unit and integration
+tests; b) feature ﬂags and a/b rollouts; and c) continuous monitoring of performance indicators for regres-
+sions. That poses a signiﬁcant investment that may come at too high a cost for smaller entities who would
+beneﬁt greatly from shared and tested infrastructure for federated learning.
+7.2 System Induced Bias
+Deployment, monitoring and debugging may not concern users of a federated learning platform, e.g. model
+authors or data analysts. For them, the key differences between data center and cross-device settings fall
+largely into the following two categories:
+1.Availability of devices for computations is not a given, but varies over time and across devices. Con-
+nections are initiated by devices and subject to interruptions due to changes in device state, operating
+system quotas, and network connectivity. Hence, in iterative processes like federated learning, the
+loop body is run on a small subset of all devices only, and the system must tolerate a certain failure
+rate among those devices.
+2.Capabilities of devices (network bandwidth and latency, compute performance, memory) vary, and
+are typically much lower than those of compute nodes in the data center, though the number of nodes
+is typically higher. The amount and type of data across devices may lead to variations in execution
+proﬁle, e.g. more and larger examples lead to increased resource use and processing time.
+In the following sections we discuss how these variations might introduce bias, referring to it as system
+induced bias to differentiate it from platform-independent bias in the raw data (such as ownership or usage
+patterns differing across demographics)—for the latter, see Section 6.1.
+7.2.1 Device Availability Proﬁles
+At the core of cross-device federated learning is the principle that devices only connect to the server and run
+computations when various constraints are met:
+•Hard constraints , which might include requiring that the device is turned on, has network connec-
+tivity to the server, and is allowed to run a computation by the operating system.
+•Soft constraints , which might include the conditions on device state chosen to ensure that federated
+learning does not incur charges or affect usability. For the common case of mobile phones [81, 26],
+requirements may include idleness, charging and/or above a certain battery level, being connected to
+an unmetered network, and that no other federated learning tasks are running at the same time.
+82
+Taken together, these constraints induce an unknown, time-varying and device-speciﬁc function Ai(t)
+for a device i, and a ﬂeet-wide availability proﬁle A(t) =P
+iAi(t). Round completion rates and server
+trafﬁc patterns [81, 491] suggest that availability proﬁles for mobile phones are clustered into periodic
+functions with a period of 1 day, varying across devices in phase, shape and amplitude through factors
+such as demographics, geography etc. Availability for other end user devices such as laptops, tablets, or
+stationary devices such as smart speakers, displays and cameras, will differ, but the challenges discussed in
+the following sections apply there as well, albeit to a possibly lesser extent.
+7.2.2 Examples of System Induced Bias
+Sources of bias will depend on the speciﬁc way in which devices are selected to participate in training,
+and how the system inﬂuences which devices end up contributing to the ﬁnal aggregated model update.
+Thus, it is useful to discuss these issues in light of a simpliﬁed but representative system design. In an
+iterative federated learning algorithm, such as Federated Averaging (Section 1.1.2, [337]), rounds are run
+consecutively on sets of at least Mdevices. To accommodate a fraction dof devices not contributing due to
+changes in device conditions, time-outs, or slowness (server-side aborts to avoid slow-downs by stragglers),
+an over-allocation scheme is used where
+1. Rounds are started when at least M0=M
+1 ddevices are available.
+2. Rounds are closed as
+(a)Aborted when more than M0 Mdevices have disconnected, or
+(b)Successful when at least Mdevices have reported. One possible design choice is to stop after
+exactlyMdevices; another possibility would be to keep waiting for stragglers (possibly up to
+some maximum time).
+This sequence, when combined with variable availability proﬁles, may introduce various forms of bias:
+1. Selection Bias - whether a device is included in a round at time t depends on both
+(a) Its availability proﬁle Ai(t)
+(b) The number of simultaneously connected devices: <M0and a round cannot be started; M0
+and the probability of a single device being included becomes very small. In effect, devices
+active only at either ﬂeet-wide availability peaks or troughs may be under-represented.
+2. Survival Bias
+(a) Since a server might choose to close a round at any point after the ﬁrst Mdevices have reported,
+contributions are biased towards devices with better network connections, faster processors,
+lower CPU load, and less data to process.
+(b) Devices drop out of rounds when they are interrupted by the operating system, which may hap-
+pen due to changes in device conditions as described by Ai(t), or due to e.g. excessive memory
+use.
+As can be seen, the probability of a device contributing to a round of federated learning is a complex
+function of both internal (e.g. device speciﬁc) and external (ﬂeet dynamic) factors. When this probability
+is correlated with statistics of the data distribution, aggregate results may be biased. For instance, language
+83
+models may over-represent demographics that have high quality internet connections or high end devices;
+and ranking models may not incorporate enough contributions from high engagement users who produce a
+lot of training data and hence longer training times.
+Thus, designing systems that explicitly take such factors into account and integrate algorithms designed
+to both quantify and mitigate these effects are a fundamentally important research direction.
+7.2.3 Open Challenges in Quantifying and Mitigating System Induced Bias
+While the potential for bias in federated learning has been addressed in the literature (Section 6, [81, 302,
+171]), a systematic study that qualiﬁes and quantiﬁes bias in realistic settings and its sources is a direction for
+future research. Conducting the necessary work may be hampered by both access to the necessary resources,
+and the difﬁculty in quantifying bias in a ﬁnal statistical estimate due to the inherent lack of ground truth
+value.
+We want to encourage further research to study how bias can be quantiﬁed and subsequently mitigated.
+A useful proxy metric for bias is to study the expected rate of contribution of a device to federated learning.
+In an unbiased system, this rate would be identical for every device; if it is not, the non-uniformity may
+provide a measure of bias. Studying the root causes for this non-uniformity may then provide important
+hints for how to mitigate bias, for example:
+• When there is a strong correlation between devices ﬁnishing a round, and the number of examples
+they process or model size, possible ﬁxes may include early stopping, or decreasing the model size.
+• If the expected rate of contribution depends on factors outside our control, such as device model,
+network connectivity, location etc., one can view these factors as deﬁning strata and applying post-
+stratiﬁcation [312], that is, correcting for bias by scaling up or down contributions from devices
+depending on their stratum. It may also be possible to apply stratiﬁed sampling - e.g. change schedul-
+ing, or server selection policies, to affect the probability of including devices in a round as a function
+of their stratum.
+• A very general, root-cause-agnostic mitigation could base the weight of a contribution solely on a
+device’s past contribution proﬁle (e.g. the number of rounds started or completed thus far). As
+a special case, consider sampling without replacement which could be implemented at the system
+level (stop connecting after one successful contribution) or at the model level (weight all but the ﬁrst
+contribution with 0). This approach might not be sufﬁcient when a population is large enough for most
+devices to contribute only infrequently (mostly one or zero times); in such cases, clustering devices
+based on some similarity metric and using cluster membership as stratum could help.
+• Alternatives to the synchronous, round based execution described in the previous section may also
+help to mitigate bias. In particular, certain types of analytics may beneﬁt from softening or elim-
+inating the competition between devices for inclusion, by running rounds for long times with very
+large numbers of participants and without applying time-outs to stragglers. Such a method may not
+be applicable to algorithms where the iterative aspect (running many individual, chained rounds) is
+important.
+The biggest obstacle to enabling such research is access to a representative ﬂeet of end user devices, or a
+detailed description (e.g. in the form of a statistical model of a realistic distribution over Ai(t)functions) of
+a ﬂeet that can be used in simulations. Here, maintainers of FL production stacks are uniquely positioned to
+84
+provide such statistics or models to academic partners in a privacy preserving fashion; a further promising
+direction is the recent introduction of the Flower framework [66] for federated learning research.
+7.3 System Parameter Tuning
+Practical federated learning is a form of multi-objective optimization: while the ﬁrst order goal is maximiz-
+ing model quality metrics such as loss or accuracy, other important considerations are
+• Convergence speed
+• Throughput (e.g. number of rounds, amount of data, or number of devices)
+• Model fairness, privacy and robustness (see section 6.3)
+• Resource use on server and clients
+These goals may be in tension. For instance, maximizing round throughput may introduce bias or
+hurt accuracy by preferring performant devices with little or no data. Maximizing for low training loss by
+increasing model complexity will put devices with less memory, many or large examples, or slow CPUs at a
+disadvantage. Bias or fairness induced in such a way during training may be hard to detect in the evaluation
+phase since it typically uses the same platform and hence is subject to similar biases.
+Various controls affect the above listed indicators. Some are familiar from the datacenter setting, in
+particular model speciﬁc settings and learning algorithm hyperparameters. Others are speciﬁc to federated
+learning:
+•Clients per round : The minimum number of devices required to complete a round, M, and the
+number of devices required to start a round, M0.
+•Server-side scheduling : In all but the simplest cases, a federated learning system will operate on more
+than one model at a time: to support multiple tenants; to train models on the same data for different
+use cases; to support experimentation and architecture or hyper-parameter grid search; and to run
+training and evaluation workloads concurrently. The server needs to decide which task to serve to
+incoming devices, an instance of a scheduling problem: assigning work (training or evaluation tasks)
+to resources (devices). Accordingly, the usual challenges arise: ideal resource assignment should be
+fair, avoid starvation, minimize wait times, and support relative priorities all at once.
+•Device-side scheduling : As described in Section 7.2, various constraints govern when a device can
+connect to the server and execute work. Within these constraints, various scheduling choices can be
+made. One extreme is to connect to the server and run computations as often as possible, leading to
+high load and resource use on both server and devices. Another choice are ﬁxed intervals, but they
+need to be adjusted to reﬂect external factors such as number of devices overall and per round. The
+federated learning system developed at Google aims to strike a balance with a ﬂow control mechanism
+called pace steering [81] whereby the server instructs devices when to return. Such a dynamic system
+enables temporal load balancing for large populations as well as “focusing” connection attempts to
+speciﬁc points in time to reach the threshold M0. Developing such a mechanism is difﬁcult due to
+stochastic and dynamic nature of device availability, the lack of a predictive model of population
+behavior, and feedback loops.
+85
+Deﬁning reasonable composite objective functions, and designing algorithms to automatically tune these
+settings, has not been explored yet in the context of federated learning systems and hence remains a topic of
+future research.
+7.4 On-Device Runtime
+While numerous frameworks exist for data center training, the options for training models on resource con-
+strained devices are fairly limited. Machine Learning models and training procedures are typically authored
+in a high level language such as Python. For federated learning, this description encompasses device and
+server computations that are executed on the target platform and exchange data over a network connection,
+necessitating
+• A means of serializing and dynamically transmitting local pieces of the total computation (e.g., the
+server-side update to the model, or the local client training procedure).
+• A means to interpret or execute such a computation on the target platform (server or device).
+• A stable network protocol for data exchange between participating devices and servers.
+One extreme form of a representation is the original high-level description, e.g. a Python TensorFlow
+program [2]. This would require a Python interpreter with TensorFlow backend, which may not be a feasible
+choice for end-user devices due to resource constraints (binary size, memory use), performance limitations,
+or security concerns.
+Another extreme representation of a computation is machine code of the target architecture, e.g. ARM64
+instructions. This requires a compiler or re-implementation of a model in a lower-level language such as
+C++, and deployment computations will typically be subject to the restrictions that apply to deployment of
+binary code (see Section 7.1), introducing prohibitive latencies for executing novel computations.
+Intermediate representations that can be compiled or interpreted with a runtime on the target platform
+strike a balance between ﬂexibility and efﬁciency. However, such runtimes are currently not widely avail-
+able. For instance, Google’s FL system [81] relies on TensorFlow for both server and device side execution
+as well as model and parameter transfer, but this choice suffers from several shortcomings:
+• It offers no easy path to devices for alternative front ends such as PyTorch [370], JAX [86] or CNTK
+[410].
+• The runtime is not developed or optimized for resource constrained environments, incurring a large
+binary size, high memory use and comparatively low performance.
+• The intermediate representation GraphDef used by TensorFlow is not standardized or stable, and
+version skew between the frontend and older on-device backends causes frequent compatibility chal-
+lenges.
+Other alternatives include more specialized runtimes that support only a subset of the frontend’s capa-
+bilities, for instance training speciﬁc model types only, requiring changes and long update cycles whenever
+new model architectures or training algorithms are to be used. An extreme case would be a runtime that is
+limited and optimized to train a single type of model.
+An ideal on-device runtime would have the following characteristics:
+86
+1. Lightweight: small binary size, or pre-installed; low memory and power proﬁle.
+2. Performant: low startup latency; high throughput, supports hardware acceleration.
+3. Expressive: supports common data types and computations including backpropagation, variables,
+control ﬂow, custom extensions.
+4. Stable and compact format for expressing data and computations.
+5. Widely available: portable open source implementation.
+6. Targetable by commonly used ML frameworks / languages..
+7. Ideally also supports inference, or if not, building personalized models for an inference runtime.
+To our best knowledge no solution exists yet that satisﬁes these requirements, and we expect the limited
+ability to run ML training on end user devices to become a hindrance to adoption of federated technologies.
+7.5 The Cross-Silo Setting
+The system challenges arising in the scenario of cross-silo federated learning take a considerably different
+form. As outlined in Table 1, clients are fewer in number, more powerful, reliable, and known / addressable,
+eliminating many of the challenges from the cross-device setting, while allowing for authentication and
+veriﬁcation, accounting, and contractually enforced penalties for misbehavior. Nonetheless, there are other
+sources of heterogeneity, including the features and distribution of data, and possibly the software stack used
+for training.
+While the infrastructure in the cross-device setting (from the device-side data generation to the server
+logic) is typically operated by one or few organizational entities (the application, operating system, or de-
+vice manufacturer), in the cross-silo setting, many different entities are involved. This may lead to high
+coordination and operational cost due to differences in:
+•How data is generated, pre-processed and labeled. Learning across silos will require data normaliza-
+tion which may be difﬁcult when such data is collected and stored differently (e.g. use of different
+medical imaging systems, and inconsistencies in labeling procedures, annotations, and storage for-
+mats).
+•Which software at which version powers training. Using the same software stack in every silo—
+possibly delivered alongside the model using container technologies as done by FATE [33]—eliminates
+compatibility concerns, but such frequent and centrally distributed software delivery may not be ac-
+ceptable to all involved parties. An alternative that is more similar to the cross-device setting would be
+to standardize data and model formats and communication protocols. See IEEE P3652.1 “Federated
+Machine Learning Working Group” for a related effort in this direction.
+•The approval process for how data may or may not be used. While this process is typically central-
+ized in the cross-device scenario, the situation is likely different in cross-silo settings where many
+organizational entities are involved, and may be increasingly difﬁcult when training spans differ-
+ent jurisdictions with varying data protection regulations. Technical infrastructure may be of help
+here by establishing data annotations that encode access policies, and infrastructure enforce them;
+for instance, limiting the use of certain data to speciﬁc models, or encoding minimum aggregation
+requirements such as “require at least Mclients per round”.
+87
+Another potential difference in the cross-silo setting is data partitioning: Data in the cross-device setting
+is typically assumed to be partitioned by examples, all of which have the same features (horizontal partition-
+ing). In the cross-silo setting, in addition to partitioning by examples, partitioning by features is of practical
+relevance (vertical partitioning). An example would be two organizations, e.g. a bank and a retail company,
+with an overlapping set of customers, but different information (features) associated with them. For a dis-
+cussion focusing on the algorithmic aspects, please see section 2.2. Learning with feature-partitioned data
+may require different communication patterns and additional processing steps e.g. for entity alignment and
+dealing with missing features.
+7.6 Executive Summary
+While production grade systems for cross-device federated learning operate successfully [81, 26], various
+challenges remain:
+• Frequent and large scale deployment of updates, monitoring, and debugging is challenging (Sec-
+tion 7.1).
+• Differences in device availability induce various forms of bias; deﬁning, quantifying and mitigating
+them remains a direction for future research (Section 7.2).
+• Tuning system parameters is difﬁcult due to the existence of multiple, potentially conﬂicting objec-
+tives (Section 7.3).
+• Running ML workloads on end user devices is hampered by the lack of a portable, fast, small footprint,
+and ﬂexible runtime for on-device training (Section 7.4).
+Systems for cross-silo settings (Section 7.5) face largely different issues owing to differences in the
+capabilities of compute nodes and the nature of the data being processed.
+88
+8 Concluding Remarks
+Federated learning enables distributed client devices to collaboratively learn a shared prediction model while
+keeping all the training data on device, decoupling the ability to do machine learning from the need to store
+the data in the cloud. This goes beyond the use of local models that make predictions on mobile devices by
+bringing model training to the device as well.
+In recent years, this topic has undergone an explosive growth of interest, both in industry and academia.
+Major technology companies have already deployed federated learning in production, and a number of
+startups were founded with the objective of using federated learning to address privacy and data collection
+challenges in various industries. Further, the breadth of papers surveyed in this work suggests that federated
+learning is gaining traction in a wide range of interdisciplinary ﬁelds: from machine learning to optimization
+to information theory and statistics to cryptography, fairness, and privacy.
+Motivated by the growing interest in federated learning research, this paper discusses recent advances
+and presents an extensive collection of open problems and challenges. The system constraints impose efﬁ-
+ciency requirements on the algorithms in order to be practical, many of which are not particularly challeng-
+ing in other settings. We argue that data privacy is not binary and present a range of threat models that are
+relevant under a variety of assumptions, each of which provides its own unique challenges.
+The open problems discussed in this work are certainly not comprehensive, they reﬂect the interests
+and backgrounds of the authors. In particular, we do not discuss any non-learning problems which need
+to be solved in the course of a practical machine learning project, and might need to be solved based on
+decentralized data [382]. This can include simple problems such as computing basic descriptive statistics,
+or more complex objectives such as computing the head of a histogram over an open set [510]. Existing
+algorithms for solving such problems often do not always have an obvious “federated version” that would
+be efﬁcient under the system assumptions motivating this work or do not admit a useful notion of data
+protection. Yet another set of important topics that were not discussed are the legal and business issues that
+may motivate or constrain the use of federated learning.
+We hope this work will be helpful in scoping further research in federated learning and related areas.
+Acknowledgments
+The authors would like to thank Alex Ingerman and David Petrou for their useful suggestions and insightful
+comments during the review process.

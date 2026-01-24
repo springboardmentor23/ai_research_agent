@@ -1,0 +1,45 @@
+[1] C. E. Shannon, A Mathematical Theory of Communication, Bell System Technical Journal 27
+(3) (1948) 379–423. doi:10.1002/j.1538-7305.1948.tb01338.x.
+[2] Z. Pawlak, Rough sets, Int. J. Comput. Inf. Sci. 11 (1982) 341–356.
+[3] Z. Wang, X. Zhang, J. Deng, The uncertainty measures for covering rough set models, Soft
+Computing 24 (2020) 11909–11929. doi:10.1007/s00500-020-05098-x.
+[4] M. A. Geetha, D. P. Acharjya, N. Ch. S. N. Iyengar, Algebraic properties and measures of
+uncertainty in rough set on two universal sets based on multi-granulation, in: Proceedings of
+the 6th ACM India Computing Convention, ACM, 2013, doi: 10.1145/2522548.2523168.
+[5] J. Xu, K. Qu, X. Meng, Y. Sun, Q. Hou, Feature selection based on multiview entropy measures
+in multiperspective rough set, International Journal of Intelligent Systems 37 (2022) 7200–
+7234. doi:10.1002/int.22878.
+[6] J. Gawlikowski et al., A Survey of Uncertainty in Deep Neural Networks, arXiv preprint
+arXiv:2107.03342, 2021. doi:10.48550/ARXIV.2107.03342.
+[7] A. R. Asadi, An Entropy-Based Model for Hierarchical Learning, arXiv preprint
+arXiv:2212.14681, 2022. doi:10.48550/arXiv.2212.14681.
+[8] J. Mosiński, P. Biliński, T. Merritt, A. Ezzerg, D. Korzekwa, AE-Flow: AutoEncoder Normalizing
+Flow, arXiv:2312.16552, 2023. doi:10.48550/ arXiv.2312.16552.
+[9] T. Ge, J. Hu, L. Wang, X. Wang, S.-Q. Chen, F. Wei, In-context Autoencoder for Context
+Compression in a Large Language Model, arXiv, 2023. doi:10.48550/ARXIV.2307.06945.
+[10] R. Shwartz-Ziv, Information Flow in Deep Neural Networks, arXiv preprint
+arXiv:2202.06749, 2022. doi:10.48550/arXiv.2202.06749.
+[11] A. Thuy, D. F. Benoit, Explainability through uncertainty: Trustworthy decision-making with
+neural networks, European Journal of Operational Research (2023).
+doi:10.1016/j.ejor.2023.09.009.
+[12] D. Tiapkin et al., Fast Rates for Maximum Entropy Exploration, arXiv preprint
+arXiv:2303.08059, 2023. doi:10.48550/ arXiv.2303.08059.
+[13] A. Mao, M. Mohri, Y. Zhong, Cross-Entropy Loss Functions: Theoretical Analysis and
+Applications, arXiv (2023). doi:10.48550/ arXiv.2304.07288.
+[14] D. Reshetova, Y. Bai, X. Wu, A. Ozgur, Understanding Entropic Regularization in GANs,
+arXiv:2111.01387, 2021. doi:10.48550/ arXiv.2111.01387.
+[15] D. Sitnikov, O. Ryabov, An Algebraic Approach To Defining Rough Set Approximations And
+Generating Logic Rules, in: Data Mining V, WIT Press, 2004, pp. (specific page numbers if
+available). doi:10.2495/data040171.
+[16] L. Zhao, Y. Yao, Subsethood Measures of Spatial Granules, arXiv, 2023. doi:10.48550/
+arXiv.2309.02662.
+[17] W. Cukierski, Titanic - Machine Learning from Disaster, 2012. URL:
+https://kaggle.com/competitions/titanic.
+[18] R. Ronen, M. Radu, C. Feuerstein, E. Yom-Tov, M. Ahmadi, Microsoft Malware Classification
+Challenge, arXiv (2018). doi:10.48550/ARXIV.1802.10135.
+[19] D. Chernyshov, D. Sytnikov, Binary classification based on a combination of rough set theory
+and decision trees, Innovative Technologies and Scientific Solutions for Industries, (2023).
+doi:10.30837/itssi.2023.26.087.
+[20] G. Chiaselotti, T. Gentile, F. Infusino, Decision systems in rough set theory: A set operatorial
+perspective, J. Algebra Its Appl. 18 (01) (2019) 1950004. doi:10.1142/s021949881950004x.
+

@@ -1,0 +1,9 @@
+through a
+​
+community-driven consensus, we propose a list of minimal requirements asked as questions to ml
+implementers (box 1) that, if followed, will help to assess the quality and reliability of the proposed
+methods more faithfully.
+
+in box 1, we propose a set of questions under the section ‘data
+splits’ that should help to evaluate potential overlap between train and test data.
+

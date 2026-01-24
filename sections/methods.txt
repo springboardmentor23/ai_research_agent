@@ -1,0 +1,201 @@
+methods
+for computing on encrypted data were developed starting in the early 1980s [396, 492], and Agrawal and
+Srikant [11] and Vaidya et al. [457] are early examples of work that sought to learn from local data using
+a centralized server while preserving privacy. Conversely, even since the introduction of the term federated
+learning, we are aware of no single work that directly addresses the full set of FL challenges. Thus, the term
+federated learning provides a convenient shorthand for a set of characteristics, constraints, and challenges
+that often co-occur in applied ML problems on decentralized data where privacy is paramount.
+This paper originated at the Workshop on Federated Learning and Analytics held June 17–18th, 2019,
+hosted at Google’s Seattle ofﬁce. During the course of this two-day event, the need for a broad paper
+surveying the many open challenges in the area of federated learning became clear.1
+A key property of many of the problems discussed is that they are inherently interdisciplinary — solving
+them likely requires not just machine learning, but techniques from distributed optimization, cryptography,
+security, differential privacy, fairness, compressed sensing, systems, information theory, statistics, and more.
+Many of the hardest problems are at the intersections of these areas, and so we believe collaboration will be
+essential to ongoing progress. One of the goals of this work is to highlight the ways in which techniques from
+these ﬁelds can potentially be combined, raising both interesting possibilities as well as new challenges.
+Since the term federated learning was initially introduced with an emphasis on mobile and edge device
+applications [337, 334], interest in applying FL to other applications has greatly increased, including some
+which might involve only a small number of relatively reliable clients, for example multiple organizations
+collaborating to train a model. We term these two federated learning settings “cross-device” and “cross-silo”
+respectively. Given these variations, we propose a somewhat broader deﬁnition of federated learning:
+Federated learning is a machine learning setting where multiple entities (clients) collaborate
+in solving a machine learning problem, under the coordination of a central server or service
+provider. Each client’s raw data is stored locally and not exchanged or transferred; instead,
+1During the preparation of this work, Li et al. [301] independently released an excellent but less comprehensive survey.
+4
+focused updates intended for immediate aggregation are used to achieve the learning objective.
+Focused updates are updates narrowly scoped to contain the minimum information necessary for the speciﬁc
+learning task at hand; aggregation is performed as early as possible in the service of data minimization. We
+note that this deﬁnition distinguishes federated learning from fully decentralized (peer-to-peer) learning
+techniques as discussed in Section 2.1.
+Although privacy-preserving data analysis has been studied for more than 50 years, only in the past
+decade have solutions been widely deployed at scale (e.g. [177, 154]). Cross-device federated learning and
+federated data analysis are now being applied in consumer digital products. Google makes extensive use of
+federated learning in the Gboard mobile keyboard [376, 222, 491, 112, 383], as well as in features on Pixel
+phones [14] and in Android Messages [439]. While Google has pioneered cross-device FL, interest in this
+setting is now much broader, for example: Apple is using cross-device FL in iOS 13 [25], for applications
+like the QuickType keyboard and the vocal classiﬁer for “Hey Siri” [26]; doc.ai is developing cross-device
+FL solutions for medical research [149], and Snips has explored cross-device FL for hotword detection
+[298].
+Cross-silo applications have also been proposed or described in myriad domains including ﬁnance risk
+prediction for reinsurance [476], pharmaceuticals discovery [179], electronic health records mining [184],
+medical data segmentation [15, 139], and smart manufacturing [354].
+The growing demand for federated learning technology has resulted in a number of tools and frameworks
+becoming available. These include TensorFlow Federated [38], Federated AI Technology Enabler [33],
+PySyft [399], Leaf [35], PaddleFL [36] and Clara Training Framework [125]; more details in Appendix A.
+Commercial data platforms incorporating federated learning are in development from established technology
+companies as well as smaller start-ups.
+Table 1 contrasts both cross-device and cross-silo federated learning with traditional single-datacenter
+distributed learning across a range of axes. These characteristics establish many of the constraints that
+practical federated learning systems must typically satisfy, and hence serve to both motivate and inform the
+open challenges in federated learning. They will be discussed at length in the sections that follow.
+These two FL variants are called out as representative and important examples, but different FL settings
+may have different combinations of these characteristics. For the remainder of this paper, we consider the
+cross-device FL setting unless otherwise noted, though many of the problems apply to other FL settings as
+well. Section 2 speciﬁcally addresses some of the many other variations and applications.
+Next, we consider cross-device federated learning in more detail, focusing on practical aspects common
+to a typical large-scale deployment of the technology; Bonawitz et al. [81] provides even more detail for a
+particular production system, including a discussion of speciﬁc architectural choices and considerations.
+1.1 The Cross-Device Federated Learning Setting
+This section takes an applied perspective, and unlike the previous section, does not attempt to be deﬁnitional.
+Rather, the goal is to describe some of the practical issues in cross-device FL and how they might ﬁt into a
+broader machine learning development and deployment ecosystem. The hope is to provide useful context
+and motivation for the open problems that follow, as well as to aid researchers in estimating how straight-
+forward it would be to deploy a particular new approach in a real-world system. We begin by sketching the
+lifecycle of a model before considering a FL training process.
+5
+Datacenter
+distributed learningCross-silo
+federated learningCross-device
+federated learning
+Setting Training a model on a large
+but “ﬂat” dataset. Clients
+are compute nodes in a sin-
+gle cluster or datacenter.Training a model on siloed data.
+Clients are different organiza-
+tions (e.g. medical or ﬁnancial)
+or geo-distributed datacenters.The clients are a very large number of
+mobile or IoT devices.
+Data
+distributionData is centrally stored and
+can be shufﬂed and balanced
+across clients. Any client can
+read any part of the dataset.Data is generated locally and remains decentralized. Each client stores
+its own data and cannot read the data of other clients. Data is not indepen-
+dently or identically distributed.
+Orchestration Centrally orchestrated. A central orchestration server/service organizes the training , but never
+sees raw data.
+Wide-area
+communicationNone (fully connected
+clients in one datacen-
+ter/cluster).Typically a hub-and-spoke topology, with the hub representing a coordi-
+nating service provider (typically without data) and the spokes connecting
+to clients.
+Data
+availabilityAll clients are almost always available. Only a fraction of clients are available at
+any one time, often with diurnal or other
+variations.
+Distribution
+scaleTypically 1 - 1000 clients. Typically 2 - 100 clients. Massively parallel, up to 1010clients.
+Primary
+bottleneckComputation is more often
+the bottleneck in the datacen-
+ter, where very fast networks
+can be assumed.Might be computation or com-
+munication.Communication is often the primary
+bottleneck, though it depends on the
+task. Generally, cross-device federated
+computations use wi-ﬁ or slower con-
+nections.
+Addressability Each client has an identity or name that allows the system to
+access it speciﬁcally.Clients cannot be indexed directly (i.e.,
+no use of client identiﬁers).
+Client
+statefulnessStateful — each client may participate in each round of the com-
+putation, carrying state from round to round.Stateless — each client will likely par-
+ticipate only once in a task, so gener-
+ally a fresh sample of never-before-seen
+clients in each round of computation is
+assumed.
+Client
+reliabilityRelatively few failures. Highly unreliable — 5% or more of the
+clients participating in a round of com-
+putation are expected to fail or drop out
+(e.g. because the device becomes ineli-
+gible when battery, network, or idleness
+requirements are violated).
+Data partition
+axisData can be partitioned / re-
+partitioned arbitrarily across
+clients.Partition is ﬁxed. Could be
+example-partitioned (horizontal)
+or feature-partitioned (vertical).Fixed partitioning by example (horizon-
+tal).
+Table 1: Typical characteristics of federated learning settings vs. distributed learning in the datacenter (e.g. [150]).
+Cross-device and cross-silo federated learning are two examples of FL domains, but are not intended to be exhaustive.
+The primary deﬁning characteristics of FL are highlighted in bold, but the other characteristics are also critical in
+determining which techniques are applicable.
+6
+clients server 
+engineers 
+& analysts 
+model 
+deployment model 
+testing 
+federated 
+learning rest of 
+the world admin Figure 1: The lifecycle of an FL-trained model and the various actors in a federated learning system. This
+ﬁgure is revisited in Section 4 from a threat models perspective.
+1.1.1 The Lifecycle of a Model in Federated Learning
+The FL process is typically driven by a model engineer developing a model for a particular application. For
+example, a domain expert in natural language processing may develop a next word prediction model for
+use in a virtual keyboard. Figure 1 shows the primary components and actors. At a high level, a typical
+workﬂow is:
+1.Problem identiﬁcation: The model engineer identiﬁes a problem to be solved with FL.
+2.Client instrumentation: If needed, the clients (e.g. an app running on mobile phones) are instru-
+mented to store locally (with limits on time and quantity) the necessary training data. In many cases,
+the app already will have stored this data (e.g. a text messaging app must store text messages, a photo
+management app already stores photos). However, in some cases additional data or metadata might
+need to be maintained, e.g. user interaction data to provide labels for a supervised learning task.
+3.Simulation prototyping (optional): The model engineer may prototype model architectures and test
+learning hyperparameters in an FL simulation using a proxy dataset.
+4.Federated model training: Multiple federated training tasks are started to train different variations
+of the model, or use different optimization hyperparameters.
+5.(Federated) model evaluation: After the tasks have trained sufﬁciently (typically a few days, see
+below), the models are analyzed and good candidates selected. Analysis may include metrics com-
+puted on standard datasets in the datacenter, or federated evaluation wherein the models are pushed to
+held-out clients for evaluation on local client data.
+6.Deployment: Finally, once a good model is selected, it goes through a standard model launch process,
+including manual quality assurance, live A/B testing (usually by using the new model on some devices
+and the previous generation model on other devices to compare their in-vivo performance), and a
+7
+Total population size 106–1010devices
+Devices selected for one round of training 50 – 5000
+Total devices that participate in training one model 105–107
+Number of rounds for model convergence 500 – 10000
+Wall-clock training time 1 – 10 days
+Table 2: Order-of-magnitude sizes for typical cross-device federated learning applications.
+staged rollout (so that poor behavior can be discovered and rolled back before affecting too many
+users). The speciﬁc launch process for a model is set by the owner of the application and is usually
+independent of how the model is trained. In other words, this step would apply equally to a model
+trained with federated learning or with a traditional datacenter approach.
+One of the primary practical challenges an FL system faces is making the above workﬂow as straight-
+forward as possible, ideally approaching the ease-of-use achieved by ML systems for centralized training.
+While much of this paper concerns federated training speciﬁcally, there are many other components in-
+cluding federated analytics tasks like model evaluation and debugging. Improving these is the focus of
+Section 3.4. For now, we consider in more detail the training of a single FL model (Step 4 above).
+1.1.2 A Typical Federated Training Process
+We now consider a template for FL training that encompasses the Federated Averaging algorithm of McMa-
+han et al. [337] and many others; again, variations are possible, but this gives a common starting point.
+A server (service provider) orchestrates the training process, by repeating the following steps until train-
+ing is stopped (at the discretion of the model engineer who is monitoring the training process):
+1.Client selection: The server samples from a set of clients meeting eligibility requirements. For
+example, mobile phones might only check in to the server if they are plugged in, on an unmetered
+wi-ﬁ connection, and idle, in order to avoid impacting the user of the device.
+2.Broadcast: The selected clients download the current model weights and a training program (e.g. a
+TensorFlow graph [2]) from the server.
+3.Client computation: Each selected device locally computes an update to the model by executing the
+training program, which might for example run SGD on the local data (as in Federated Averaging).
+4.Aggregation: The server collects an aggregate of the device updates. For efﬁciency, stragglers might
+be dropped at this point once a sufﬁcient number of devices have reported

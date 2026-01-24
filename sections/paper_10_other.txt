@@ -1,0 +1,5 @@
+Generalizing Machine Learning Evaluation through the
+Integration of Shannon Entropy and Rough Set Theory
+Olga Cherednichenko1, Dmytro Chernyshov 2, Dmytro Sytnikov2and Polina Sytnikova2
+1 University of Lyon 2, 5 avenue Mendès, Lyon, 69676, France
+2 National University of RadioElectronics, Nauky ave. 14, Kharkiv, 61166, Ukraine

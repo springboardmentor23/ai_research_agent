@@ -1,0 +1,341 @@
+1. Baron, C. S. ​et al. Cell Type Purification by Single-Cell Transcriptome-Trained Sorting. ​Cell 179,
+​ ​ ​
+527-542.e19 (2019).
+2. Libbrecht, M. W. & Noble, W. S. Machine learning applications in genetics and genomics. ​Nat. Rev.
+Genet. 16, 321–332 (2015).
+​ ​
+3. Radivojac, P. ​et al. A large-scale evaluation of computational protein function prediction. ​Nat.
+​
+Methods 10, 221–227 (2013).
+​ ​
+4. Franciosa, G., Martinez-Val, A. & Olsen, J. V. Deciphering the human phosphoproteome. ​Nat.
+Biotechnol. 1–2 (2020) doi:10.1038/s41587-020-0441-3.
+​
+5. Yang, J. H. ​et al. A White-Box Machine Learning Approach for Revealing Antibiotic Mechanisms of
+​
+Action. ​Cell 177, 1649-1661.e9 (2019).
+​ ​
+6. Vamathevan, J. ​et al. Applications of machine learning in drug discovery and development. ​Nat.
+​
+Rev. Drug Discov. 18, 463–477 (2019).
+​ ​
+7. Rajkomar, A., Dean, J. & Kohane, I. Machine Learning in Medicine. ​N. Engl. J. Med. 380,
+​ ​
+1347–1358 (2019).
+8. Ascent of machine learning in medicine. ​Nat. Mater. 18, 407 (2019).
+​ ​
+9. Littmann, M. ​et al. Validity of machine learning in biology and medicine increased through
+​
+collaborations across fields of expertise. ​Nat. Mach. Intell. 2, 18–24 (2020).
+​ ​
+10. Walsh, I., Pollastri, G. & Tosatto, S. C. E. Correct machine learning on protein sequences: a
+13
+peer-reviewing perspective. ​Brief. Bioinform. 17, 831–840 (2016).
+​ ​
+11. Bishop, D. Rein in the four horsemen of irreproducibility. ​Nature 568, 435 (2019).
+​ ​
+12. Hutson, M. Artificial intelligence faces reproducibility crisis. ​Science 359, 725–726 (2018).
+​ ​
+13. Schwartz, D. Prediction of lysine post-translational modifications using bioinformatic tools. ​Essays
+Biochem. 52, 165–177 (2012).
+​ ​
+14. Piovesan, D. ​et al. Assessing predictors for new post translational modification sites: a case study
+​
+on hydroxylation. ​bioRxiv (2020).
+​
+15. Wilkinson, M. D. ​et al. The FAIR Guiding Principles for scientific data management and stewardship.
+​
+Sci. Data 3, 160018 (2016).
+​ ​
+16. Sandve, G. K., Nekrutenko, A., Taylor, J. & Hovig, E. Ten Simple Rules for Reproducible
+Computational Research. ​PLOS Comput. Biol. 9, e1003285 (2013).
+​ ​
+17. Grüning, B. ​et al. Practical Computational Reproducibility in the Life Sciences. ​Cell Syst. 6, 631–635
+​ ​ ​
+(2018).
+18. Jones, D. T. Setting the standards for machine learning in biology. ​Nat. Rev. Mol. Cell Biol. 20,
+​ ​
+659–660 (2019).
+19. Norgeot, B. ​et al. Minimum information about clinical artificial intelligence modeling: the MI-CLAIM
+​
+checklist. ​Nat. Med. 26, 1320–1324 (2020).
+​ ​
+20. Luo, W. ​et al. Guidelines for Developing and Reporting Machine Learning Predictive Models in
+​
+Biomedical Research: A Multidisciplinary View. ​J. Med. Internet Res. 18, e323 (2016).
+​ ​
+21. ELIXIR: Providing a Sustainable Infrastructure for Federated Access to Life Science Data at
+European Scale. ​submitted.
+​
+22. Kohavi, R. A study of cross-validation and bootstrap for accuracy estimation and model selection. in
+vol. 14 1137–1145 (Montreal, Canada, 1995).
+23. Hobohm, U., Scharf, M., Schneider, R. & Sander, C. Selection of representative protein data sets.
+Protein Sci. 1, 409–417 (1992).
+​ ​
+24. Xi, W. & Beer, M. A. Local epigenomic state cannot discriminate interacting and non-interacting
+enhancer-promoter pairs with high accuracy. ​PLoS Comput. Biol. 14, e1006625 (2018).
+​ ​
+25. Zhou, X., Hu, J., Zhang, C., Zhang, G. & Zhang, Y. Assembling multidomain protein structures
+14
+through analogous global structural alignments. ​Proc. Natl. Acad. Sci. 116, 15930–15938 (2019).
+​ ​
+26. Chawla, N. V., Bowyer, K. W., Hall, L. O. & Kegelmeyer, W. P. SMOTE: synthetic minority
+over-sampling technique. ​J. Artif. Intell. Res. 16, 321–357 (2002).
+​ ​
+27. He, H., Bai, Y., Garcia, E. A. & Li, S. ADASYN: Adaptive synthetic sampling approach for
+imbalanced learning. in 1322–1328 (IEEE, 2008).
+28. Daneshjou, R. ​et al. Working toward precision medicine: Predicting phenotypes from exomes in the
+​
+Critical Assessment of Genome Interpretation (CAGI) challenges. ​Hum. Mutat. 38, 1182–1192
+​ ​
+(2017).
+29. Pan, S. J. & Yang, Q. A Survey on Transfer Learning. ​IEEE Trans. Knowl. Data Eng. 22, 1345–1359
+​ ​
+(2010).
+30. Vinyals, O., Blundell, C., Lillicrap, T. & Wierstra, D. Matching networks for one shot learning. in
+3630–3638 (2016).
+31. Mehta, P. ​et al. A high-bias, low-variance introduction to machine learning for physicists. ​Phys. Rep.
+​
+(2019).
+32. Guyon, I. & Elisseeff, A. An introduction to variable and feature selection. ​J. Mach. Learn. Res. 3,
+​ ​
+1157–1182 (2003).
+33. He, J. ​et al. The practical implementation of artificial intelligence technologies in medicine. ​Nat. Med.
+​
+25, 30–36 (2019).
+​
+34. Rudin, C. Stop explaining black box machine learning models for high stakes decisions and use
+interpretable models instead. ​Nat. Mach. Intell. 1, 206–215 (2019).
+​ ​
+35. Baldi, P., Brunak, S., Chauvin, Y., Andersen, C. A. & Nielsen, H. Assessing the accuracy of
+prediction algorithms for classification: an overview. ​Bioinforma. Oxf. Engl. 16, 412–424 (2000).
+​ ​
+36. Goecks, J., Nekrutenko, A., Taylor, J., & Galaxy Team. Galaxy: a comprehensive approach for
+supporting accessible, reproducible, and transparent computational research in the life sciences.
+Genome Biol. 11, R86 (2010).
+​ ​
+37. Di Tommaso, P. ​et al. Nextflow enables reproducible computational workflows. ​Nat. Biotechnol. 35,
+​ ​ ​
+316–319 (2017).
+38. Arrieta, A. B. ​et al. Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and
+​
+15
+challenges toward responsible AI. ​Inf. Fusion 58, 82–115 (2020).
+​ ​
+39. Guidotti, R. ​et al. A survey of methods for explaining black box models. ​ACM Comput. Surv. CSUR
+​
+51, 1–42 (2018).
+​
+40. Adadi, A. & Berrada, M. Peeking inside the black-box: A survey on Explainable Artificial Intelligence
+(XAI). ​IEEE Access 6, 52138–52160 (2018).
+​ ​
+41. Holm, E. A. In defense of the black box. ​Science 364, 26–27 (2019).
+​ ​
+42. O’Mahony, S. The governance of open source initiatives: what does it mean to be community
+managed? ​J. Manag. Gov. 11, 139–150 (2007).
+​ ​
+43. Brazma, A. ​et al. Minimum information about a microarray experiment (MIAME)—toward standards
+​
+for microarray data. ​Nat. Genet. 29, 365–371 (2001).
+​ ​
+44. Hermjakob, H. ​et al. The HUPO PSI’s Molecular Interaction format—a community standard for the
+​
+representation of protein interaction data. ​Nat. Biotechnol. 22, 177–183 (2004).
+​ ​
+16
+Supplementary Material
+Machine learning summary table:
+DOME Version 1.0
+Data Provenance Source of data, data points (positive, N / negative, N ). Used by
+​pos ​neg
+previous papers and/or community. ​ ​
+Dataset splits Size of N and N of training set, validation set (if present), test set.
+​pos ​neg
+Distribution​ of N a​nd N across sets.
+​pos ​neg
+​ ​
+(section to be Redundancy Independence between sets. Strategy used to make examples
+repeated for each between data representative (e.g. eliminating data points more similar than X%).
+Comparison relative to other datasets.
+dataset) splits
+Availability of Yes/no for datasets. If yes: Supporting information, website URL,
+data license.
+Optimization Algorithm ML class (e.g. neural network, random forest, SVM). If novel
+approach, reason is it not previously published.
+(section to be Meta-predictions Yes/No. If yes: how other methods are used and whether the datasets
+repeated for each are clearly independent.
+trained model)
+Data encoding How input data is transformed (e.g. global features, sliding window on
+sequence).
+Parameters Number of ML model parameters (p), e.g. tunable weights in neural
+networks. Protocol used to select p.
+Features Number of ML input features (f), i.e. encoding of data points. In case
+of feature selection: Protocol used, indicating whether it was
+performed on training data only.
+Fitting Justification for excluding over- (if p >> N +N or f > 100) and
+​pos, train ​neg, train
+under-fitting (if p << N +N or f < 5). ​ ​
+​pos, train ​neg, train
+​ ​
+Regularization Yes/no for overfitting prevention. If yes: specify details and parameters
+of technique used.
+Availability of Yes/no for hyper-parameter configuration and model files. If yes:
+Supporting information, website URL, license.
+configuration
+Model Interpretability Black box or transparent. If transparent, provide examples.
+(section to be Output Specify whether the model produces a classification (e.g. binary
+repeated for each predictions) or regression (e.g. probability score).
+trained model)
+Execution time CPU time of single representative execution on standard hardware
+(e.g. seconds on desktop PC).
+Availability of Source code repository (e.g. GitHub), software container, website
+software URL, license.
+17
+Evaluation Evaluation Cross-validation, independent dataset or novel experiments.
+method
+Performance Accuracy, sensitivity, specificity, etc.
+measures
+Comparison Name of other methods and, if available, definition of baselines
+compared to. Justification of representativeness.
+Confidence Confidence intervals and statistical significance. Justification for
+claiming performance differences.
+Availability of Yes/no for raw evaluation files (e.g. assignments for comparison and
+evaluation baselines, confusion matrices). If yes: Supporting information, website
+URL, license.
+Example tables for author reference:
+The following is an example for a primary ML summary table built from (Walsh et al., Bioinformatics
+2012).
+DOME Version 1.0
+Data: X-ray Provenance Protein Data Bank (PDB) X-ray structures until May 2008 (training) and
+​
+from May 2008 until September 2010 (test). 3,813 proteins total. N =
+disorder ​pos
+44,433 residues. N = 710,207 residues. Not previously used. ​
+​neg
+​
+Dataset splits N = 37,495. N = 622,625. N = 6,938. N = 87,582
+​pos,train ​neg,train ​pos,test ​neg,test
+residue​s. No separate va​lidation set. 5.68%​ positives on trai​ning set.
+7.34% positives on test set.
+Redundancy Maximum pairwise identity within and between training and test set is
+between data splits 25% enforced with UniqueProt tool.
+Availability of data Yes, URL: http://protein.bio.unipd.it/espritz/.
+Free use license.
+Data: Provenance DisProt version 3.7 (January 2008) for training set, DisProt version 5.7
+for test set. 536 proteins total. N = 63,841 residues. N = 164,682
+DisProt ​pos ​neg
+residues. Not previously used. ​ ​
+disorder
+Dataset splits N = 56,414. N = 163,010. N = 7,427. N = 1,672
+​pos,train ​neg,train ​pos,test ​neg,test
+residue​s. No separate va​lidation set. 25.71%​ positives on tra​ining set.
+41.04% positives on test set.
+Redundancy Maximum pairwise identity within and between training and test set is
+between data splits 40% enforced with UniqueProt tool. Less stringent threshold used to
+maintain adequate dataset size.
+Availability of data Yes, URL: http://protein.bio.unipd.it/espritz/.
+Free use license.
+18
+Data: NMR Provenance Protein Data Bank (PDB) NMR structures until May 2008 (training) and
+​
+from May 2008 until September 2010 (test) analyzed using the Mobi
+disorder
+software. 2,858 proteins total. N = 40,368 residues. N = 192,170
+​pos ​neg
+residues. Not previously used. ​ ​
+Dataset splits N = 29,263. N = 143,891. N = 11,105. N = 48,279
+​pos,train ​neg,train ​pos,test ​neg,test
+residue​s. No separate va​lidation set. 16.9%​ positives on train​ing set.
+18.7% positives on test set.
+Redundancy Maximum pairwise identity within and between training and test set is
+between data splits 25% enforced with UniqueProt tool.
+Availability of data Yes, URL: http://protein.bio.unipd.it/espritz/.
+Free use license.
+Optimization Algorithm BRNN (Bi-directional recurrent neural network) with ensemble
+averaging.
+Meta-predictions No.
+Data encoding Sliding window of length 23 residues on input sequence with “one hot”
+encoding (i.e. 20 inputs per residue).
+Parameters ESpritz p = 4,647 to 5,886 depending on model used. No optimization.
+Features ESpritz f = 460 for sliding window of 23 residues with 20 inputs per
+residue. No feature selection.
+Fitting The number of training examples is between 30 and 100 times p,
+suggesting neither over- nor under-fitting.
+Regularization No. The training data is 30-100 times the number of model parameters.
+Availability of No.
+configuration
+Model Interpretability Black box, as correlation between input and output is masked. No
+attempt was made to make the model transparent.
+Output Regression, i.e. probability of residues being disordered.
+Execution time ESpritzS ca. 1 sec / protein, ESpritzP ca. 1,500 sec / protein on a
+single Intel Xeon core.
+Availability of Web server, URL: http://protein.bio.unipd.it/espritz/
+software Linux executable, URL: http://protein.bio.unipd.it/download/.
+Bespoke license free for academic use.
+Evaluation Evaluation method Independent datasets.
+Performance Accuracy, sensitivity, specificity, selectivity, F-measure, MCC, AUC are
+measures standard. S = Sens + Spec -1.
+​w
+​
+Comparison Disopred, MULTICOM, DisEMBL, IUpred, PONDR-FIT, Spritz, CSpritz.
+Wide range of popular predictors used for comparison.
+Confidence Bootstrapping was used to estimate statistical significance as in
+CASP-8 (Noivirt-Brik et al, Proteins 2009). 80% of target proteins were
+randomly selected 1000 times, and the standard error of the scores
+was
+19
+calculated (i.e. 1.96 × standard_error gives 95% confidence around
+mean for normal distributions).
+Availability of No.
+evaluation
+The following is an example for meta-predictor ML summary built from (Necci et al., Bioinformatics
+2017).
+DOME Version 1.0
+Data Provenance Protein Data Bank (PDB). X-ray structures missing residues. N =
+​pos
+339,603 residues. N = 6,168,717 residues. Previously used in ​
+​neg
+(Walsh et al., Bioinform​ atics 2015) as an independent benchmark set.
+Dataset splits training set: N/A
+N = 339,603 residues. N = 6,168,717 residues. No validation
+​pos,test ​neg,test
+set. 5.​22% positives on the test se​t.
+Redundancy Not applicable.
+between data splits
+Availability of data Yes, URL: http://protein.bio.unipd.it/mobidblite/.
+Free use license.
+Optimization Algorithm Majority-based consensus classification based on 8 primary ML
+methods and post-processing.
+Meta-predictions Yes, predictor output is a binary prediction computed from the
+consensus of other methods; Independence of training sets of other
+methods with test set of meta-predictor was not tested since datasets
+from other methods were not available.
+Data encoding Label-wise average of 8 binary predictions.
+Parameters p = 3 (Consensus score threshold, expansion-erosion window, length
+threshold). No optimization.
+Features Not applicable.
+Fitting Single input ML methods are used with default parameters.
+Optimization is a simple majority.
+Regularization No.
+Availability of Not applicable.
+configuration
+Model Interpretability Transparent, in so far as meta-prediction is concerned. Consensus and
+post processing over other methods predictions (which are mostly
+balck boxes). No attempt was made to make the meta-prediction a
+black box.
+Output Classification, i.e. residues thought to be disordered.
+20
+Execution time ca. 1 second per representative on a desktop PC.
+Availability of Yes, URL: http://protein.bio.unipd.it/mobidblite/.
+software Bespoke license free for academic use.
+Evaluation Evaluation method Independent dataset
+Performance Balanced Accuracy, Precision, Sensitivity, Specificity, F1, MCC.
+measures
+Comparison DisEmbl-465, DisEmbl-HL, ESpritz Disprot, ESpritz NMR, ESpritz
+Xray, Globplot, IUPred long, IUPred short, VSL2b. Chosen methods
+are the methods from which the meta prediction is obtained.
+Confidence Not calculated.
+Availability of No.
+evaluation
+21
+

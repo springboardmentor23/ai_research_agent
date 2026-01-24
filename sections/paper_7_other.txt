@@ -1,0 +1,10 @@
+A Benchmark Study of Machine Learning Models for Online Fake
+News Detection
+JunaedYounusKhan*1,Md.TawkatIslamKhondaker*1,SadiaAfroz2,GiasUddin3 andAnindya
+Iqbal1
+1DepartmentofComputerScienceandEngineering,BangladeshUniversityofEngineeringandTechnology
+2InternationalComputerScienceInstitute
+3DepartmentofElectricalandComputerEngineering,UniversityofCalgary
+1405051.jyk@ugrad.cse.buet.ac.bd,1405036.mtik@ugrad.cse.buet.ac.bd,sadia@icsi.berkeley.edu,gias.uddin@ucalgary.ca,
+anindya@cse.buet.ac.bd
+March29,2021

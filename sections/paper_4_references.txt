@@ -1,0 +1,594 @@
+Agarwal S, Arora H, Anand S, et al (2020) Contextual diversity for active learning. European Conference on
+Computer Vision 2020 https://doi.org/https://doi.org/10.1007/978-3-030-58517-4 9, URL http://arxiv.org/
+abs/2008.05723
+Aggarwal CC, Kong X, Gu Q, et al (2014) Data Classification (Chapter: ”Active Learning: A Survey”). Taylor
+& Francis, URL http://charuaggarwal.net/active-survey.pdf
+AguiarG,KrawczykB,CanoA(2023)Asurveyonlearningfromimbalanceddatastreams:taxonomy,challenges,
+empirical study, and reproducible experimental framework. Machine Learning pp 1–79
+Alabdulrahman R, Viktor H, Paquet E (2016) An active learning approach for ensemble-based data stream
+mining. In: International Conference on Knowledge Discovery and Information Retrieval, SCITEPRESS, pp
+275–282
+AshJT,ZhangC,KrishnamurthyA,etal(2019)Deepbatchactivelearningbydiverse,uncertaingradientlower
+bounds. 2020 International Conference on Learning Representations URL http://arxiv.org/abs/1906.03671
+Asprey S, Macchietto S (2002) Designing robust optimal dynamic experiments. Journal of Process Control
+12:545–556. https://doi.org/10.1016/S0959-1524(01)00020-8
+Audibert JY, Munos R (2010) Best arm identification in multi-armed bandits. COLT - 23th Conference on
+Learning Theory URL http://certis.enpc.fr/∼audibert/Mes%20articles/COLT10.pdf
+Avadhanula V, Colini Baldeschi R, Leonardi S, et al (2021) Stochastic bandits for multi-platform budget
+optimization in online advertising. In: Proceedings of the Web Conference 2021, pp 2805–2817
+Azizi MJ, Kveton B, Ghavamzadeh M (2022) Fixed-budget best-arm identification in structured bandits.
+Proceedings of the Thirty-First International Joint Conference on Artificial Intelligence (IJCAI-22) URL
+https://www.ijcai.org/proceedings/2022/0388.pdf
+BaierL,Schl¨orT,Sch¨offerJ,etal(2021)Detectingconceptdriftwithneuralnetworkmodeluncertainty.Hawaii
+International Conference on System Sciences (HICSS) 2023 URL http://arxiv.org/abs/2107.01873
+Balcan MF, Broder A, Zhang T (2007) Margin based active learning. COLT - 23th Conference on Learning
+Theory 4739. https://doi.org/https://doi.org/10.1007/978-3-540-72927-3 5
+Bassily R, Smith A, Thakurta A (2014) Private empirical risk minimization: Efficient algorithms and tight
+error bounds. 2014 IEEE 55th Annual Symposium on Foundations of Computer Science pp 464–473. https:
+//doi.org/10.1109/FOCS.2014.56
+BaumE,LangK(1992)Querylearningcanworkpoorlywhenahumanoracleisused.ProceedingsoftheIEEE
+International Joint Conference on Neural Networks
+34
+Baykal C, Trinh K, Iliopoulos F, et al (2022) Robust active distillation. URL http://arxiv.org/abs/2210.01213
+Beck N, Kothawade S, Shenoy P, et al (2023) Streamline: Streaming active learning for realistic multi-
+distributional settings. arXiv preprint arXiv:230510643
+BifetA,Gavald`aR(2007)Learningfromtime-changingdatawithadaptivewindowing.Proceedingsofthe2007
+SIAM International Conference on Data Mining pp 443–448. https://doi.org/10.1137/1.9781611972771.42
+Bifet A, Gavald`a R (2009) Adaptive learning from evolving data streams. IDA 2009: Advances in Intelligent
+Data Analysis VIII pp 249–260. https://doi.org/10.1007/978-3-642-03915-7 22
+BifetA,HolmesG,PfahringerB,etal(2010)Moa:Massiveonlineanalysis,aframeworkforstreamclassification
+and clustering. In: Proceedings of the first workshop on applications of pattern analysis, PMLR, pp 44–50
+Bisgaard S, Kulahci M (2011) Time series analysis and forecasting by example. John Wiley & Sons
+Bordes A, Ertekin S, Weston J, et al (2005) Fast kernel classifiers with online and active learning. The Journal
+of Machine Learning Research 6. URL https://jmlr.csail.mit.edu/papers/v6/bordes05a.html
+Bouchachia A, Vanaret C (2014) Gt2fc: An online growing interval type-2 self-learning fuzzy classifier. IEEE
+Transactions on Fuzzy Systems 22:999–1018. https://doi.org/10.1109/TFUZZ.2013.2279554
+Brzezinski D, Stefanowski J (2015) Prequential auc for classifier evaluation and drift detection in evolving data
+streams. 3rd International Workshop on New Frontiers in Mining Complex Patterns, (NFMCP 2014) pp
+87–101. https://doi.org/10.1007/978-3-319-17876-9 6
+Brzezinski D, Stefanowski J (2017) Prequential auc: properties of the area under the roc curve for data
+streams with concept drift. Knowledge and Information Systems 52:531–562. https://doi.org/10.1007/
+s10115-017-1022-8
+Burbidge R, Rowland JJ, King RD (2007) Active learning for regression based on query by committee. 8th
+International Conference on Intelligent Data Engineering and Automated Learning, IDEAL 2007 https://doi.
+org/10.1007/978-3-540-77226-2 22
+CacciarelliD,BorestaM(2021)Whatdrivesadonor?amachinelearning-basedapproachforpredictingresponses
+of nonprofit direct marketing campaigns. International Journal of Nonprofit and Voluntary Sector Marketing
+https://doi.org/10.1002/nvsm.1724
+Cacciarelli D, Kulahci M (2022) A novel fault detection and diagnosis approach based on orthogonal autoen-
+coders.Computers&ChemicalEngineering163:107853.https://doi.org/10.1016/j.compchemeng.2022.107853
+Cacciarelli D, Kulahci M (2023) Hidden dimensions of the data: Pca vs autoencoders. Quality Engineering pp
+1–10
+Cacciarelli D, Kulahci M, Tyssedal J (2022a) Online active learning for soft sensor development using semi-
+supervisedautoencoders.ICML2022WorkshoponAdaptiveExperimentalDesignandActiveLearninginthe
+Real World URL https://arxiv.org/abs/2212.13067
+CacciarelliD,KulahciM,TyssedalJS(2022b)Stream-basedactivelearningwithlinearmodels.Knowledge-Based
+Systems 254:109664. https://doi.org/10.1016/j.knosys.2022.109664
+Cacciarelli D, Kulahci M, Tyssedal JS (2023) Robust online active learning. Quality and Reliability Engineer-
+ingInternationalhttps://doi.org/https://doi.org/10.1002/qre.3392,URLhttps://onlinelibrary.wiley.com/doi/
+abs/10.1002/qre.3392, https://onlinelibrary.wiley.com/doi/pdf/10.1002/qre.3392
+CaiW,ZhangY,ZhouJ(2013)Maximizingexpectedmodelchangeforactivelearninginregression.Proceedings
+- IEEE International Conference on Data Mining, ICDM pp 51–60. https://doi.org/10.1109/ICDM.2013.104
+CamilleriR,XiongZ,FazelM,etal(2021)Selectivesamplingforonlinebest-armidentification.35thConference
+on Neural Information Processing Systems (NeurIPS 2021) URL http://arxiv.org/abs/2110.14864
+35
+Carcillo F, Le Borgne YA, Caelen O, et al (2017) An assessment of streaming active learning strategies for real-
+life credit card fraud detection. In: 2017 ieee international conference on data science and advanced analytics
+(dsaa), IEEE, pp 631–639
+Carcillo F, Le Borgne YA, Caelen O, et al (2018) Streaming active learning strategies for real-life credit card
+fraud detection: assessment and visualization. International Journal of Data Science and Analytics 5:285–300
+Carnein M, Trautmann H (2019) Customer segmentation based on transactional data using stream clustering.
+In: Advances in Knowledge Discovery and Data Mining: 23rd Pacific-Asia Conference, PAKDD 2019, Macau,
+China, April 14-17, 2019, Proceedings, Part I 23, Springer, pp 280–292
+Carpentier A, Lazaric A, Ghavamzadeh M, et al (2015) Upper-confidence-bound algorithms for active learning
+in multi-armed bandits
+Castellani A, Schmitt S, Hammer B (2022) Stream-based active learning with verification latency in non-
+stationary environments. https://doi.org/10.1007/978-3-031-15937-4 22, URL http://arxiv.org/abs/2204.
+06822http://dx.doi.org/10.1007/978-3-031-15937-4 22
+Cernuda C, Lughofer E, Mayr G, et al (2014) Incremental and decremental active learning for optimized self-
+adaptivecalibrationinviscoseproduction.ChemometricsandIntelligentLaboratorySystems138:14–29.https:
+//doi.org/10.1016/j.chemolab.2014.07.008
+Cerqueira V, Torgo L, Mozetiˇc I (2020) Evaluating time series forecasting models: an empirical study on perfor-
+mance estimation methods. Machine Learning 109:1997–2028. https://doi.org/10.1007/s10994-020-05910-7
+Cesa-Bianchi N, Lugosi G (2006) Prediction, Learning, and Games. Cambridge University Press, https://doi.
+org/10.1017/CBO9780511546921
+Cesa-Bianchi N, Gentile C, Zaniboni L (2004) Worst-case analysis of selective sampling for linear-threshold
+algorithms. Advances in Neural Information Processing Systems URL https://proceedings.neurips.cc/paper
+files/paper/2004/hash/92426b262d11b0ade77387cf8416e153-Abstract.html
+Cesa-Bianchi N, Gentile C, Zaniboni L (2006) Worst-case analysis of selective sampling for linear classification.
+The Journal of Machine Learning Research 7. URL https://www.jmlr.org/papers/volume7/cesa-bianchi06b/
+cesa-bianchi06b.pdf
+Chae J, Hong S (2021) Stream-based active learning with multiple kernels. 2021 International Conference on
+Information Networking (ICOIN) pp 718–722. https://doi.org/10.1109/ICOIN50884.2021.9333940
+Chan LLT, Wu QY, Chen J (2018) Dynamic soft sensors with active forward-update learning for selection
+of useful data from historical big database. Chemometrics and Intelligent Laboratory Systems 175:87–103.
+https://doi.org/10.1016/j.chemolab.2018.01.015
+Cheng J, Zheng Z, Guo Y, et al (2023) Active broad learning with multi-objective evolution for data stream
+classification. Complex & Intelligent Systems pp 1–18
+Chu W, Zinkevich M, Li L, et al (2011) Unbiased online active learning in data streams. Proceedings of the
+17th ACM SIGKDD international conference on Knowledge discovery and data mining - KDD ’11 p 195.
+https://doi.org/10.1145/2020408.2020444
+Citovsky G, DeSalvo G, Gentile C, et al (2021) Batch active learning at scale. 35th Conference on Neural
+Information Processing Systems, NeurIPS 2021 URL http://arxiv.org/abs/2107.14263
+Cohn DA, Ghahramani Z, Jordan MI (1996) Active learning with statistical models. Journal of Artiicial
+Intelligence Research 4:129–145. https://doi.org/10.1613/jair.295
+Crammer K, Dekel O, Keshet J, et al (2006) Online passive-aggressive algorithms. The Journal of Machine
+Learning Research URL https://jmlr.csail.mit.edu/papers/volume7/crammer06a/crammer06a.pdf
+36
+Dasgupta S, Kalai AT, Monteleoni C (2005) Analysis of perceptron-based active learning. COLT ’05 - Interna-
+tional Conference on Computational Learning Theory pp 249–263. https://doi.org/10.1007/11503415 17
+DesalvoG,GentileC,ThuneTS(2021)Onlineactivelearningwithsurrogatelossfunctions.AdvancesinNeural
+Information Processing Systems 34 (NeurIPS 2021) URL https://proceedings.neurips.cc/paper/2021/hash/
+c1619d2ad66f7629c12c87fe21d32a58-Abstract.html
+Donmez P, Carbonell J, Bennet P (2007) Dual strategy active learning. 18th European Conference on Machine
+Learning, ECML 2007 4701. https://doi.org/10.1007/978-3-540-74958-5 14
+Duchi JC, Jordan MI, Wainwright MJ (2013) Local privacy and statistical minimax rates. 2013 IEEE 54th
+Annual Symposium on Foundations of ComputerScience pp 429–438.https://doi.org/10.1109/FOCS.2013.53
+Ebbinghaus H (2013) Memory: A contribution to experimental psychology. Annals of Neurosciences 20. https:
+//doi.org/10.5214/ans.0972.7531.200408
+Fang M, Li Y, Cohn T (2017) Learning how to active learn: A deep reinforcement learning approach. URL
+https://arxiv.org/abs/1708.02383
+Ferdowsi Z, Ghani R, Settimi R (2013) Online active learning with imbalanced classes. 2013 IEEE 13th
+International Conference on Data Mining pp 1043–1048. https://doi.org/10.1109/ICDM.2013.12
+Feuz KD, Cook DJ (2013) Real-time annotation tool (rat). In: Workshops at the Twenty-Seventh AAAI
+Conference on Artificial Intelligence
+Fiez T, Jain L, Jamieson K, et al (2019) Sequential experimental design for transductive linear bandits. 33rd
+Conference on Neural Information Processing Systems (NeurIPS 2019) URL https://proceedings.neurips.cc/
+paper files/paper/2019/file/8ba6c657b03fc7c8dd4dff8e45defcd2-Paper.pdf
+FilippiS,CappeO,GarivierA,etal(2010)Parametricbandits:Thegeneralizedlinearcase.AdvancesinNeural
+Information Processing Systems 23 (NIPS 2010) URL https://papers.nips.cc/paper files/paper/2010/hash/
+c2626d850c80ea07e7511bbae4c76f4b-Abstract.html
+Fontaine X, Perrault P, Valko M, et al (2021) Online a-optimal design and active linear regression. URL http:
+//proceedings.mlr.press/v139/fontaine21a/fontaine21a.pdf
+Fortuna L, Graziani S, Rizzo A, et al (2007) Soft sensors for monitoring and control of industrial processes,
+vol 22. Springer, URL https://link.springer.com/book/10.1007/978-1-84628-480-9
+Fowler K, Kokilepersaud K, Prabhushankar M, et al (2023) Clinical trial active learning. In: The 14th ACM
+Conference on Bioinformatics, Computational Biology and Health Informatics (ACM-BCB)
+FreemanPR(1983)Thesecretaryproblemanditsextensions:Areview.InternationalStatisticalReview51:189–
+206. URL https://www.jstor.org/stable/1402748
+FreundY,SeungHS,ShamirE,etal(1997)Selectivesamplingusingthequerybycommitteealgorithm.Machine
+Learning 28:133–168. https://doi.org/10.1023/a:1007330508534
+Friedman M (1940) A comparison of alternative tests of significance for the problem of m rankings. The Annals
+of Mathematical Statistics 11:86–92. https://doi.org/10.1214/aoms/1177731944
+Frumosu FD, Kulahci M (2018) Big data analytics using semi-supervised learning methods. Quality and
+Reliability Engineering International 34:1413–1423. https://doi.org/10.1002/qre.2338
+FuY,ZhuX,LiB(2013)Asurveyoninstanceselectionforactivelearning.KnowledgeandInformationSystems
+35:249–283. https://doi.org/10.1007/s10115-012-0507-8
+Fujii K, Kashima H (2016) Budgeted stream-based active learning via adaptive submodular maximization. 30th
+Annual Conference on Neural Information Processing Systems, NIPS 2016 URL https://proceedings.neurips.
+cc/paper/2016/hash/07cdfd23373b17c6b337251c22b7ea57-Abstract.html
+37
+Gajjar S, Kulahci M, Palazoglu A (2018) Real-time fault detection and diagnosis using sparse principal
+component analysis. Journal of Process Control 67:112–128. https://doi.org/10.1016/j.jprocont.2017.03.005
+Galvanin F (2010) Optimal model-based design of experiments in dynamic systems: novel techniques and
+unconventional applications. Thesis URL https://hdl.handle.net/11577/3427095
+Gama J, Medas P, Castillo G, et al (2004) Learning with drift detection. Lecture Notes in Computer Science
+(includingsubseriesLectureNotesinArtificialIntelligenceandLectureNotesinBioinformatics)3171:286–295.
+https://doi.org/10.1007/978-3-540-28645-5 29
+Gama J, Sebastiao R, Rodrigues PP (2009) Issues in evaluation of stream learning algorithms. In: Proceedings
+of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining, pp 329–338
+GamaJ,SebastiaoR,RodriguesPP(2013)Onevaluatingstreamlearningalgorithms.Machinelearning90:317–
+346
+Garivier A, Moulines E (2008) On upper-confidence bound policies for non-stationary bandit problems. URL
+https://arxiv.org/abs/0805.3415
+Ge D, Zeng XJ (2020) Learning data streams online — an evolving fuzzy system approach with self-
+learning/adaptive thresholds. Information Sciences 507:172–184. https://doi.org/10.1016/j.ins.2019.08.036
+Ge Z (2014) Active learning strategy for smart soft sensor development under a small number of labeled data
+samples. Journal of Process Control 24:1454–1461. https://doi.org/10.1016/j.jprocont.2014.06.015
+Gemaque RN, Costa AFJ, Giusti R, et al (2020) An overview of unsupervised drift detection methods. Wiley
+Interdisciplinary Reviews: Data Mining and Knowledge Discovery 10. https://doi.org/10.1002/widm.1381
+Ghassemi M, Sarwate AD, Wright RN (2016) Differentially private online active learning with applications
+to anomaly detection. AISec 2016 - Proceedings of the 2016 ACM Workshop on Artificial Intelligence and
+Security, co-located with CCS 2016 pp 117–128. https://doi.org/10.1145/2996758.2996766
+Ghiasi S, Pazzi G, Del Grosso C, et al (2023) Combining thermodynamics-based model of the centrifugal com-
+pressors and active machine learning for enhanced industrial design optimization. In: 1st Workshop on the
+Synergy of Scientific and Machine Learning Modeling@ ICML2023
+GoodfellowIJ,Pouget-AbadieJ,MirzaM,etal(2014)Generativeadversarialnetworks.URLhttps://arxiv.org/
+abs/1406.2661
+Gouk H, Pfahringer B, Frank E (2019) Stochastic gradient trees. URL http://proceedings.mlr.press/v101/
+gouk19a/gouk19a.pdf
+Gu X, Han J, Shen Q, et al (2022) Autonomous learning for fuzzy systems: a review. Artificial Intelligence
+Review https://doi.org/10.1007/s10462-022-10355-6
+Gu X, Han J, Shen Q, et al (2023) Autonomous learning for fuzzy systems: a review. Artificial Intelligence
+Review 56(8):7549–7595
+Halder B, Hasan KA, Amagasa T, et al (2023) Autonomic active learning strategy using cluster-based ensemble
+classifier for concept drifts in imbalanced data stream. Expert Systems with Applications p 120578
+Hanneke S (2014) Theory of disagreement-based active learning. Foundations and Trends in Machine Learning
+7:131–309. https://doi.org/10.1561/2200000037
+Hanneke S, Yang L (2021) Toward a general theory of online selective sampling: Trading off mistakes and
+queries. Proceedings of The 24th International Conference on Artificial Intelligence and Statistics URL https:
+//proceedings.mlr.press/v130/hanneke21a.html
+Hao S, Hu P, Zhao P, et al (2018a) Online active learning with expert advice. ACM Transactions on Knowledge
+Discovery from Data 12. https://doi.org/10.1145/3201604
+38
+Hao S, Lu J, Zhao P, et al (2018b) Second-order online active learning and its applications. IEEE Transactions
+on Knowledge and Data Engineering 30:1338–1351. https://doi.org/10.1109/TKDE.2017.2778097
+Haussmann E, Fenzi M, Chitta K, et al (2020) Scalable active learning for object detection. Proceedings 31st
+IEEE Intelligent Vehicles Symposium (IV) https://doi.org/https://doi.org/10.1109/IV47402.2020.9304793
+He K, Zhang X, Ren S, et al (2015) Deep residual learning for image recognition. Proceedings of the IEEE
+Computer Society Conference on Computer Vision and Pattern Recognition https://doi.org/10.1109/CVPR.
+2016.90
+Hoang TN, Hong S, Xiao C, et al (2021) Aid: Active distillation machine to leverage pre-trained black-box
+models in private data settings. Proceedings of the Web Conference 2021 pp 3569–3581. https://doi.org/10.
+1145/3442381.3449944
+HodgesJ,LehmannE(1962)Rankmethodsforcombinationofindependentexperimentsinanalysisofvariance.
+The Annals of Mathematical Statistics
+Hoffmann H (2007) Kernel pca for novelty detection. Pattern Recognition 40:863–874. https://doi.org/10.1016/
+j.patcog.2006.07.009
+Hoi SC, Sahoo D, Lu J, et al (2021) Online learning: A comprehensive survey. Neurocomputing 459:249–289.
+https://doi.org/10.1016/j.neucom.2021.04.112
+Hoi SCH, Jin R, Zhao P, et al (2013) Online multiple kernel classification. Machine Learning 90:289–316. https:
+//doi.org/10.1007/s10994-012-5319-2
+Houlsby N, Hernandez-Lobato JM, Ghahramani Z (2014) Cold-start active learning with robust ordinal matrix
+factorization. 31st International Conference on Machine Learning URL https://proceedings.mlr.press/v32/
+houlsby14.html
+Hua J, Xiong Z, Lowey J, et al (2005) Optimal number of features as a function of sample size for various
+classification rules. Bioinformatics 21:1509–1515. https://doi.org/10.1093/bioinformatics/bti171
+Huang B, Salgia S, Zhao Q (2022) Disagreement-based active learning in online settings. IEEE Transactions on
+Signal Processing 70:1947–1958. https://doi.org/10.1109/TSP.2022.3159388
+Huang GB, Zhu QY, Siew CK (2006) Extreme learning machine: Theory and applications. Neurocomputing
+70:489–501. https://doi.org/10.1016/j.neucom.2005.12.126
+Huang SJ, Jin R, Zhou ZH (2014) Active learning by querying informative and representative examples. IEEE
+Transactions on Pattern Analysis and Machine Intelligence 36:1936–1949. https://doi.org/10.1109/TPAMI.
+2014.2307881
+Hulten G, Spencer L, Domingos P (2001) Mining time-changing data streams. Proceedings of the seventh ACM
+SIGKDD international conference on Knowledge discovery and data mining - KDD ’01 pp 97–106. https:
+//doi.org/10.1145/502512.502529
+Ienco D, Bifet A, Zliobaite, et al (2013) Clustering based active learning for evolving data streams. 16th
+International Conference on Discovery Science https://doi.org/10.1007/978-3-642-40897-7 6
+Ienco D, Pfahringer B, Zˇliobaite˙ I (2014) High density-focused uncertainty sampling for active learning over
+evolving stream data. BIGMINE’14: Proceedings of the 3rd International Conference on Big Data, Streams
+and Heterogeneous Source Mining: Algorithms, Systems, Programming Models and Applications URL https:
+//proceedings.mlr.press/v36/ienco14.html
+Iman RL, Davenport JM (1980) Approximations of the critical region of the fbietkan statistic. Communications
+in Statistics - Theory and Methods 9:571–595. https://doi.org/10.1080/03610928008827904
+Istrate R, Malossi ACI, Bekas C, et al (2018) Incremental training of deep convolutional neural networks. URL
+https://arxiv.org/abs/1803.10232
+39
+Jamieson K (2018) Online and adaptive machine learning. regression (part 7). URL https://courses.cs.
+washington.edu/courses/cse599i/18wi/
+JamiesonK, NowakR (2014)Best-armidentification algorithmsformulti-armed banditsinthefixed confidence
+setting. 2014 48th Annual Conference on Information Sciences and Systems (CISS) pp 1–6. https://doi.org/
+10.1109/CISS.2014.6814096
+Jamil S, Khan A (2016) Churn comprehension analysis for telecommunication industry using alba. In: 2016
+International Conference on Emerging Technologies (ICET), IEEE, pp 1–5
+Jedra Y, Proutiere A (2020) Optimal best-arm identification in linear bandits. 34th Conference on Neu-
+ral Information Processing Systems (NeurIPS 2020) URL https://proceedings.neurips.cc/paper/2020/file/
+7212a6567c8a6c513f33b858d868ff80-Paper.pdf
+Jin Q, Yuan M, Li S, et al (2022) Cold-start active learning for image classification. Information Sciences
+616:16–36. https://doi.org/10.1016/j.ins.2022.10.066
+JinR,HoiS,YangT(2010)Onlinemultiplekernellearning:Algorithmsandmistakebounds.Proceedingsofthe
+21stInternationalConferenceonAlgorithmicLearningTheoryhttps://doi.org/10.1007/978-3-642-16108-7 31
+John RCS, Draper NR (1975) D-optimality for regression designs: A review. Technometrics 17:15–23. https:
+//doi.org/10.1080/00401706.1975.10489266
+Joshi AJ, Porikli F, Papanikolopoulos N (2009) Multi-class active learning for image classification. 2009 IEEE
+ConferenceonComputerVisionandPatternRecognitionpp2372–2379.https://doi.org/10.1109/CVPR.2009.
+5206627
+Joyce JM (2011) Kullback-leibler divergence. https://doi.org/10.1007/978-3-642-04898-2 327
+KarlinS,StuddenWJ(1966)Optimalexperimentaldesigns.TheAnnalsofMathematicalStatistics37:783–815.
+URL https://www.jstor.org/stable/2238570
+KieferJ(1959)Optimumexperimentaldesigns.JournaloftheRoyalStatisticalSocietySeriesB(Methodological)
+URL https://www.jstor.org/stable/2983802
+Kingma DP, Welling M (2013) Auto-encoding variational bayes. 2nd International Conference on Learning
+Representations, ICLR URL https://arxiv.org/abs/1312.6114
+Kottke D, Krempl G, Spiliopoulou M (2015) Probabilistic active learning in datastreams. https://doi.org/10.
+1007/978-3-319-24465-5 13
+Kranjc J, Smailovi´c J, Podpeˇcan V, et al (2015) Active learning for sentiment analysis on data streams:
+Methodologyandworkflowimplementationintheclowdflowsplatform.InformationProcessing&Management
+51(2):187–203
+Kraskov A, St¨ogbauer H, Grassberger P (2004) Estimating mutual information. Physical Review E 69:066138.
+https://doi.org/10.1103/PhysRevE.69.066138
+KrawczykB,MinkuLL,GamaJ,etal(2017)Ensemblelearningfordatastreamanalysis:Asurvey.Information
+Fusion 37:132–156
+Krawczyk B, Pfahringer B, Wozniak M (2018) Combining active learning with concept drift detection for data
+stream mining. 2018 IEEE International Conference on Big Data (Big Data) pp 2239–2244. https://doi.org/
+10.1109/BigData.2018.8622549
+Kulkarni RV, Patil SH, Subhashini R (2016) An overview of learning in data streams with label scarcity.
+Proceedings of the International Conference on Inventive Computation Technologies, ICICT 2016 2. https:
+//doi.org/10.1109/INVENTIVE.2016.7824874
+40
+KumarP,GuptaA(2020)Activelearningquerystrategiesforclassification,regression,andclustering:Asurvey.
+Journal of Computer Science and Technology 35:913–945. https://doi.org/10.1007/s11390-020-9487-4
+Kurlej B, Wo´zniak M (2011) Learning curve in concept drift while using active learning paradigm. https://doi.
+org/10.1007/978-3-642-23857-4 13
+Kwak B, Kim Y, Kim YJ, et al (2022) Trustal: Trustworthy active learning using knowledge distillation. The
+Thirty-Sixth AAAI Conference on Artificial Intelligence (AAAI-22) URL https://arxiv.org/abs/2201.11661
+Lakshminarayanan B, Roy D, Teh YW (2014) Mondrian forests: Efficient online random forests. Advances in
+Neural Information Processing Systems (NIPS) URL https://proceedings.neurips.cc/paper files/paper/2014/
+file/d1dc3a8270a6f9394f88847d7f0050cf-Paper.pdf
+Li A, Boyd A, Smyth P, et al (2021) Detecting and adapting to irregular distribution shifts in bayesian online
+learning. 35th Conference on Neural Information Processing Systems (NeurIPS 2021) URL https://papers.
+nips.cc/paper/2021/file/362387494f6be6613daea643a7706a42-Paper.pdf
+LiX,GuoY(2013)Adaptiveactivelearningforimageclassification.2013IEEEConferenceonComputerVision
+and Pattern Recognition pp 859–866. https://doi.org/10.1109/CVPR.2013.116
+Lieber D, Konrad B, Deuse J, et al (2012) Sustainable interlinked manufacturing processes through real-time
+quality prediction. In: Leveraging Technology for a Sustainable World: Proceedings of the 19th CIRP Confer-
+enceonLifeCycleEngineering,UniversityofCaliforniaatBerkeley,Berkeley,USA,May23-25,2012,Springer,
+pp 393–398
+Lima M, Neto M, Filho TS, et al (2022) Learning under concept drift for regression—a systematic literature
+review. IEEE Access 10:45410–45429. https://doi.org/10.1109/ACCESS.2022.3169785
+Liu S, Xue S, Wu J, et al (2021) Online active learning for drifting data streams. IEEE Transactions on Neural
+Networks and Learning Systems https://doi.org/10.1109/TNNLS.2021.3091681
+Long J, Yin J, Zhao W, et al (2008) Graph-based active learning based on label propagation. MDAI 2008:
+Modeling Decisions for Artificial Intelligence pp 179–190. https://doi.org/10.1007/978-3-540-88269-5 17
+Loy CC, Hospedales TM, Xiang T, et al (2012) Stream-based joint exploration-exploitation active learning.
+Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition pp
+1560–1567. https://doi.org/10.1109/CVPR.2012.6247847
+Lu J, Zhao P, Hoi SCH (2016) Online passive-aggressive active learning. Machine Learning 103:141–183. https:
+//doi.org/10.1007/s10994-016-5555-y
+Lu J, Liu A, Dong F, et al (2018) Learning under concept drift: A review. IEEE Transactions on Knowledge
+and Data Engineering pp 1–1. https://doi.org/10.1109/TKDE.2018.2876857
+Lughofer E (2011) Evolving Fuzzy Systems – Methodologies, Advanced Concepts and Applications, vol 266.
+Springer Berlin Heidelberg, https://doi.org/10.1007/978-3-642-18087-3
+Lughofer E (2012) Single-pass active learning with conflict and ignorance. Evolving Systems 3:251–271. https:
+//doi.org/10.1007/s12530-012-9060-7
+Lughofer E (2017) On-line active learning: A new paradigm to improve practical useability of data stream
+modeling methods. Information Sciences 415-416:356–376. https://doi.org/10.1016/j.ins.2017.06.038
+Lughofer E, Pratama M (2018) Online active learning in data stream regression using uncertainty sampling
+based on evolving generalized fuzzy models. IEEE Transactions on Fuzzy Systems 26:292–309. https://doi.
+org/10.1109/TFUZZ.2017.2654504
+Lughofer E, Sˇkrjanc I (2023) Online active learning for evolving error feedback fuzzy models within a multi-
+innovation context. IEEE Transactions on Fuzzy Systems
+41
+Ma L, Destercke S, Wang Y (2016) Online active learning of decision trees with evidential data. Pattern
+Recognition 52:33–45. https://doi.org/10.1016/j.patcog.2015.10.014
+Mammen E, Tsybakov AB (1999) Smooth discrimination analysis. The Annals of Statistics 27. https://doi.org/
+10.1214/aos/1017939240
+ManjahD,CacciarelliD,StandaertB,etal(2023)Stream-basedactivedistillationforscalablemodeldeployment.
+Proceedings of the IEEE/CVF Computer Vision and Pattern Recognition (CVPR) Workshops
+Manwani N, Desai K, Sasidharan S, et al (2013) Double ramp loss based reject option classifier. 19th Pacific-
+Asia Conference on Advances in Knowledge Discovery and Data Mining (PAKDD) https://doi.org/10.1007/
+978-3-319-57454-7 53
+Martins VE, Cano A, Junior SB (2023) Meta-learning for dynamic tuning of active learning on stream
+classification. Pattern Recognition 138:109359
+McSherry F, Talwar K (2007) Mechanism design via differential privacy. 48th Annual IEEE Symposium on
+Foundations of Computer Science (FOCS’07) pp 94–103. https://doi.org/10.1109/FOCS.2007.41
+Menard P, Domingues OD, Jonsson A, et al (2021) Fast active learning for pure exploration in reinforcement
+learning.Proceedingsofthe38thInternationalConferenceonMachineLearningURLhttp://proceedings.mlr.
+press/v139/menard21a/menard21a-supp.pdf
+Min F, Zhang SM, Ciucci D, et al (2020) Three-way active learning through clustering selection. International
+Journal of Machine Learning and Cybernetics 11:1033–1046. https://doi.org/10.1007/s13042-020-01099-2
+MinkaTP(2001)Afamilyofalgorithmsforapproximatebayesianinference.ThesisURLhttps://hd.media.mit.
+edu/tech-reports/TR-533.pdf
+Miu T, Missier P, Pl¨otz T (2015) Bootstrapping personalised human activity recognition models using online
+activelearning.In:2015IEEEInternationalConferenceonComputerandInformationTechnology;Ubiquitous
+Computing and Communications; Dependable, Autonomic and Secure Computing; Pervasive Intelligence and
+Computing, IEEE, pp 1138–1147
+Mohamad S, Bouchachia A, Sayed-Mouchaweh M (2018) A bi-criteria active learning algorithm for dynamic
+data streams. IEEE Transactions on Neural Networks and Learning Systems 29:74–86. https://doi.org/10.
+1109/TNNLS.2016.2614393
+Mohamad S, Sayed-Mouchaweh M, Bouchachia A (2020) Online active learning for human activity recognition
+from sensory data streams. Neurocomputing 390:341–358. https://doi.org/10.1016/j.neucom.2019.08.092
+Mohamadi S, Amindavar H (2020) Deep bayesian active learning, a brief survey on recent advances. URL
+https://arxiv.org/abs/2012.08044
+MontgomeryDC(2012)DesignandAnalysisofExperiments.JohnWiley&Sons,Inc.,https://doi.org/10.1002/
+9781118147634
+Myers RH, Montgomery D, Anderson-Cook CM (2016) Response surface methodology: process and prod-
+uct optimization using designed experiments. Wiley, URL https://www.wiley.com/en-au/Response+
+Surface+Methodology:+Process+and+Product+Optimization+Using+Designed+Experiments,+4th+
+Edition-p-9781118916018
+NaranjoJE,SoteloMA,GonzalezC,etal(2007)Usingfuzzylogicinautomatedvehiclecontrol.IEEEintelligent
+systems 22(1):36–45
+Narr A, Triebel R, Cremers D (2016) Stream-based active learning for efficient and adaptive classification of
+3d objects. Proceedings - IEEE International Conference on Robotics and Automation 2016-June:227–233.
+https://doi.org/10.1109/ICRA.2016.7487138
+42
+Nguyen HT, Smeulders A (2004) Active learning using pre-clustering. Proceedings of the twenty-first interna-
+tional conference on Machine learning https://doi.org/https://doi.org/10.1145/1015330.1015349
+Nixon C, Sedky M, Hassan M (2021) Reviews in online data stream and active learning for cyber intrusion
+detection-a systematic literature review. In: 2021 Sixth International Conference on Fog and Mobile Edge
+Computing (FMEC), IEEE, pp 1–6
+PhamT,KottkeD,KremplG,etal(2022)Stream-basedactivelearningforslidingwindowsundertheinfluence
+of verification latency. Machine Learning 111:2011–2036. https://doi.org/10.1007/s10994-021-06099-z
+Pitman J, Yor M (1997) The two-parameter poisson-dirichlet distribution derived from a stable subordinator.
+The Annals of Probability 25. URL https://www.jstor.org/stable/20680193
+Polikar R, Upda L, Upda S, et al (2001) Learn++: an incremental learning algorithm for supervised neural
+networks. IEEE Transactions on Systems, Man and Cybernetics, Part C (Applications and Reviews) 31:497–
+508. https://doi.org/10.1109/5326.983933
+Prabhu V, Chandrasekaran A, Saenko K, et al (2020) Active domain adaptation via clustering uncertainty-
+weighted embeddings. URL https://github.com/virajprabhu/CLUE.
+Pratama M, Anavatti SG, Lu J (2015) Recurrent classifier based on an incremental metacognitive-based scaf-
+foldingalgorithm.IEEETransactionsonFuzzySystems23:2048–2066.https://doi.org/10.1109/TFUZZ.2015.
+2402683
+Qin J, Wang C, Zou Q, et al (2021) Active learning with extreme learning machine for online imbalanced
+multiclassclassification.Knowledge-BasedSystems231:107385.https://doi.org/10.1016/j.knosys.2021.107385
+Quade D (1979) Using weighted rankings in the analysis of complete blocks with additive block effects. Journal
+of the American Statistical Association 74:680. https://doi.org/10.2307/2286991
+R´eda C, Kaufmann E, Delahaye-Duriez A (2020) Machine learning applications in drug development. Compu-
+tational and structural biotechnology journal 18:241–252
+Ren P, Xiao Y, Chang X, et al (2022) A survey of deep active learning. ACM Computing Surveys 54:1–40.
+https://doi.org/10.1145/3472291
+ReyesO,AltalhiAH,VenturaS(2018)Statisticalcomparisonsofactivelearningstrategiesovermultipledatasets.
+Knowledge-Based Systems 145:274–288. https://doi.org/10.1016/j.knosys.2018.01.033
+Riis C, Antunes F, Hu¨ttel FB, et al (2022) Bayesian active learning with fully bayesian gaussian processes.
+In Proceedings of Advances in Neural Information Processing Systems 35 (NeurIPS 2022) URL https://
+proceedings.neurips.cc/paper files/paper/2022/file/4f1fba885f266d87653900fd3045e8af-Paper-Conference.pdf
+RiquelmeC(2017)Onlineactivelearningwithlinearmodels.ThesisURLhttp://purl.stanford.edu/rp382fv8012
+Riquelme C, Ghavamzadeh M, Lazaric A (2017a) Active learning for accurate estimation of linear models.
+Proceedings of the 34th International Conference on Machine Learning URL http://proceedings.mlr.press/
+v70/riquelme17a/riquelme17a.pdf
+Riquelme C, Johari R, Zhang B (2017b) Online active linear regression via thresholding. Thirty-First AAAI
+Conference on Artificial Intelligence URL www.aaai.org
+RosenblattF(1958)Theperceptron:Aprobabilisticmodelforinformationstorageandorganizationinthebrain.
+Psychological Review 65:386–408. https://doi.org/10.1037/h0042519
+Roth D, Small K (2006) Margin-based active learning for structured output spaces. Machine Learning: ECML
+2006 pp 413–424. https://doi.org/10.1007/11871842 40
+Roy N, Mccallum A (2001) Toward optimal active learning through sampling estimation of error reduction.
+Proceedings of the Eighteenth International Conference on Machine Learning URL https://dl.acm.org/doi/
+43
+10.5555/645530.655646
+Roˇzanec JM, Trajkova E, Dam P, et al (2022) Streaming machine learning and online active learning for
+automated visual inspection. IFAC-PapersOnLine 55:277–282. https://doi.org/10.1016/j.ifacol.2022.04.206
+Ruan Y, Yang J, Zhou Y (2020) Linear bandits with limited adaptivity and learning distributional optimal
+design. STOC 2021: Proceedings of the 53rd Annual ACM SIGACT Symposium on Theory of Computing
+https://doi.org/https://doi.org/10.1145/3406325.3451004
+RudovicO,ZhangM,SchullerB,etal(2019)Multi-modalactivelearningfromhumandata:Adeepreinforcement
+learning approach. 2019 International Conference on Multimodal Interaction pp 6–15. https://doi.org/10.
+1145/3340555.3353742
+Saran A, Yousefi S, Krishnamurthy A, et al (2023) Streaming active learning with deep neural networks. In:
+KrauseA,BrunskillE,ChoK,etal(eds)Proceedingsofthe40thInternationalConferenceonMachineLearn-
+ing, Proceedings of Machine Learning Research, vol 202. PMLR, pp 30005–30021, URL https://proceedings.
+mlr.press/v202/saran23a.html
+Schmidt S, Rao Q, Tatsch J, et al (2020) Advanced active learning strategies for object detection. 2020 IEEE
+Intelligent Vehicles Symposium (IV) pp 871–876. https://doi.org/10.1109/IV47402.2020.9304565
+Schmitt R, Jatzkowski P, Peterek M (2013) Traceable measurements using machine tools. In: Laser metrology
+andmachineperformanceX:10thInternationalConferenceandExhibitiononLaserMetrology,MachineTool,
+CMM & Robotic Performance, Lamdamap, pp 20–21
+Sculley D(2007) Onlineactivelearning methodsfor fast label efficient spam filtering.Proceedings ofthe Fourth
+Conference on Email and AntiSpam
+Sener O, Savarese S (2017) Active learning for convolutional neural networks: A core-set approach. ICLR
+Settles B (2009) Active learning literature survey. Technical Report 1648, University of Wisconsin-Madison
+Department of Computer Sciences URL https://burrsettles.com/pub/settles.activelearning.pdf
+Seung HS, Opper M, Sompolinsky H (1992) Query by committee. Proceedings of the fifth annual workshop on
+Computational learning theory - COLT ’92 pp 287–294. https://doi.org/10.1145/130385.130417
+ShahK,ManwaniN(2020)Onlineactivelearningofrejectoptionclassifiers.ProceedingsoftheAAAIConference
+on Artificial Intelligence 34:5652–5659. https://doi.org/10.1609/aaai.v34i04.6019
+ShanJ,ZhangH,LiuW,etal(2019)Onlineactivelearningensembleframeworkfordrifteddatastreams.IEEE
+Transactions on Neural Networks and Learning Systems 30:486–498. https://doi.org/10.1109/TNNLS.2018.
+2844332
+Shannon E (1948) A mathematical theory of communication. The Bell System Technical Journal
+ShengVS,ProvostF,IpeirotisPG(2008)Getanotherlabel?improvingdataqualityanddataminingusingmul-
+tiple, noisy labelers. Proceeding of the 14th ACM SIGKDD international conference on Knowledge discovery
+and data mining - KDD 08 p 614. https://doi.org/10.1145/1401890.1401965
+ShiX,XiongW(2018)Approximatelineardependencecriteriawithactivelearningforsmartsoftsensordesign.
+ChemometricsandIntelligentLaboratorySystems180:88–95.https://doi.org/10.1016/j.chemolab.2018.07.009
+Shilton A, Palaniswami M, Ralph D, et al (2005) Incremental training of support vector machines. IEEE
+Transactions on Neural Networks 16:114–131. https://doi.org/10.1109/TNN.2004.836201
+SoareM,LazaricA,MunosR(2013)Activelearninginlinearstochasticbandits.BayesianOptimizationinThe-
+ory and Practice URL https://www.univ-orleans.fr/lifo/Members/soare/files/active learning linear bandit.
+pdf
+44
+Soare M, Lazaric A, Munos R (2014) Best-arm identification in linear bandits. 27th Conference on Neural
+Information Processing Systems (NeurIPS 2014)
+Song S, Chaudhuri K, Sarwate AD (2013) Stochastic gradient descent with differentially private updates.
+2013 IEEE Global Conference on Signal and Information Processing pp 245–248. https://doi.org/10.1109/
+GlobalSIP.2013.6736861
+Souza V, Pinho T, Batista G (2018) Evaluating stream classifiers with delayed labels information. 2018 7th
+Brazilian Conference on Intelligent Systems (BRACIS) pp 408–413. https://doi.org/10.1109/BRACIS.2018.
+00077
+SteelRGD(1959)Amultiplecomparisonsigntest:Treatmentsversuscontrol.JournaloftheAmericanStatistical
+Association 54:767. https://doi.org/10.2307/2282500
+Steve H, Liu Y (2014) Minimax analysis of active learning. Journal of Machine Learning Research URL https:
+//www.jmlr.org/papers/volume16/hanneke15a/hanneke15a.pdf
+Subramanian K, Das AK, Sundaram S, et al (2014) A meta-cognitive interval type-2 fuzzy inference sys-
+tem and its projection based learning algorithm. Evolving Systems 5:219–230. https://doi.org/10.1007/
+s12530-013-9102-9
+Sudarsanam N, Ravindran B (2018) Using linear stochastic bandits to extend traditional offline designed
+experiments to online settings. Computers & Industrial Engineering 115:471–485
+Suresh S, Sundararajan N, Saratchandran P (2008) Risk-sensitive loss functions for sparse multi-category
+classification problems. Information Sciences 178:2621–2638. https://doi.org/10.1016/j.ins.2008.02.009
+Suzuki K, Sunagawa T, Sasaki T, et al (2021) Annotation cost reduction of stream-based active learning by
+automated weak labeling using a robot arm. 2021 IEEE/RSJ International Conference on Intelligent Robots
+and Systems (IROS) pp 9000–9007. https://doi.org/10.1109/IROS51168.2021.9636355
+Su´arez-CetruloAL,KumarA,Miralles-Pechu´anL(2021)Modellingthecovid-19virusevolutionwithincremental
+machine learning. 29th Irish Conference on Artificial Intelligence and Cognitive Science, AICS 2021 URL
+https://ceur-ws.org/Vol-3105/paper1.pdf
+Su´arez-CetruloAL,QuintanaD,CervantesA(2023)Asurveyonmachinelearningforrecurringconceptdrifting
+data streams. Expert Systems with Applications 213:118934. https://doi.org/10.1016/j.eswa.2022.118934
+TangQ,LiD,XiY(2018)Anewactivelearningstrategyforsoftsensormodelingbasedonfeaturereconstruction
+and uncertainty evaluation. Chemometrics and Intelligent Laboratory Systems 172:43–51. https://doi.org/10.
+1016/j.chemolab.2017.11.001
+Taylor G, Hinton G (2009) Factored conditional restricted boltzmann machines for modeling motion style.
+Proceedings of the 26th International Conference on Machine Learning, Montreal, Canada, 2009 https://doi.
+org/https://doi.org/10.1145/1553374.1553505
+TaylorG,HintonG,RoweisS(2006)Modelinghumanmotionusingbinarylatentvariables.AdvancesinNeural
+Information Processing Systems 19 (NIPS 2006) URL https://papers.nips.cc/paper files/paper/2006/hash/
+1091660f3dff84fd648efe31391c5524-Abstract.html
+ThompsonJ,WaltersWP,FengJA,etal(2022)Optimizingactivelearningforfreeenergycalculations.Artificial
+Intelligence in the Life Sciences 2:100050. https://doi.org/10.1016/j.ailsci.2022.100050
+Tieppo E, dos Santos RR, Barddal JP, et al (2022) Hierarchical classification of data streams: a systematic
+literature review. Artificial Intelligence Review 55:3243–3282. https://doi.org/10.1007/s10462-021-10087-z
+Tong S, Koller D (2002) Support vector machine active learning with applications to text classification. The
+Journal of Machine Learning Research 2. https://doi.org/10.1162/153244302760185243
+45
+Tran T, Pham T, Carneiro G, et al (2017) A bayesian data augmentation approach for learning deep models.
+31stConferenceonNeuralInformationProcessingSystems(NIPS2017)URLhttps://proceedings.neurips.cc/
+paper files/paper/2017/file/076023edc9187cf1ac1f1163470e479a-Paper.pdf
+Tran T, Do TT, Reid I, et al (2019) Bayesian generative active deep learning. Proceedings of the 36th
+International Conference on Machine Learning URL https://arxiv.org/abs/1904.11643
+Tsybakov AB (2004) Optimal aggregation of classifiers in statistical learning. The Annals of Statistics https:
+//doi.org/10.1214/aos/1079120131
+Tsymbal A, Pechenizkiy M, Cunningham P, et al (2008) Dynamic integration of classifiers for handling concept
+drift. Information Fusion 9:56–68. https://doi.org/10.1016/j.inffus.2006.11.002
+Vahdat A, Belbahri M, Nia VP (2019) Active learning for high-dimensional binary features. 15th Interna-
+tional Conference on Network and Service Management (CNSM) URL https://www.computer.org/csdl/
+proceedings-article/cnsm/2019/09012676/1hQr3hscsJG
+Vanhatalo E, Kulahci M (2016) Impact of autocorrelation on principal components and their use in statistical
+process control. Quality and Reliability Engineering International 32:1483–1500. https://doi.org/10.1002/qre.
+1858
+Vanhatalo E, Kulahci M, Bergquist B (2017) On the structure of dynamic principal component analysis used in
+statistical process monitoring. Chemometrics and Intelligent Laboratory Systems 167:1–11. https://doi.org/
+10.1016/j.chemolab.2017.05.016
+Wang L (2011) Smoothness, disagreement coefficient, and the label complexity of agnostic active learning. The
+Journal of Machine Learning Research URL https://www.jmlr.org/papers/volume12/wang11b/wang11b.pdf
+Wang X, Fu M, Ma H, et al (2015) Lateral control of autonomous vehicles based on fuzzy logic. Control
+Engineering Practice 34:1–17
+WassermannS,CuvelierT,CasasP(2019)Ral-improvingstream-basedactivelearningbyreinforcementlearning.
+URL https://hal.archives-ouvertes.fr/hal-02265426
+Weigl E, Heidl W, Lughofer E, et al (2016) On improving performance of surface inspection systems by online
+active learning and flexible classifier updates. Machine Vision and Applications 27:103–127. https://doi.org/
+10.1007/s00138-015-0731-9
+Wilcoxon F (1945) Individual comparisons by ranking methods. Biometrics Bulletin 1:80. https://doi.org/10.
+2307/3001968
+Woodward M, Finn C (2017) Active one-shot learning. NIPS 2016, Deep Reinforcement Learning Workshop
+URL http://arxiv.org/abs/1702.06559
+Wo´zniak M, Zyblewski P, Ksieniewicz P (2023) Active weighted aging ensemble for drifted data stream
+classification. Information Sciences 630:286–304
+Wu J, Chen J, Huang D (2022) Entropy-based active learning for object detection with progressive diversity
+constraint. 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) https://doi.
+org/10.1109/CVPR52688.2022.00918
+Wu R, Guo C, Su Y, et al (2021) Online adaptation to label distribution shift. 35th Conference on Neural
+Information Processing Systems (NeurIPS 2021) URL https://www.kaggle.com/Cornell-University/arxiv
+WuY,ChenY,WangL,etal(2019)Largescaleincrementallearning.2019IEEE/CVFConferenceonComputer
+Vision and Pattern Recognition (CVPR) https://doi.org/10.1109/CVPR.2019.00046
+Xu W, Zhao F, Lu Z (2016) Active learning over evolving data streams using paired ensemble framework.
+2016 Eighth International Conference on Advanced Computational Intelligence (ICACI) pp 180–185. https:
+//doi.org/10.1109/ICACI.2016.7449823
+46
+Yan X, Sarkar M, Lartey B, et al (2023) An online learning framework for sensor fault diagnosis analysis in
+autonomous cars. IEEE Transactions on Intelligent Transportation Systems
+Yin C, Chen S, Yin Z (2023) Clustering-based active learning classification towards data stream. ACM
+Transactions on Intelligent Systems and Technology 14(2):1–18
+Yu H, Sun C, Yang W, et al (2015) Al-elm: One uncertainty-based active learning algorithm using extreme
+learning machine. Neurocomputing 166:140–150. https://doi.org/10.1016/j.neucom.2015.04.019
+Yu K, Bi J, Tresp V (2006) Active learning via transductive experimental design. Proceedings of the 23rd
+International Conference on Machine Learning https://doi.org/https://doi.org/10.1145/1143844.1143980
+Yuan M, Lin HT, Boyd-Graber J (2020) Cold-start active learning through self-supervised language modeling.
+roceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP) https:
+//doi.org/10.18653/v1/2020.emnlp-main.637
+ZhangH,LiuW,ShanJ,etal(2018)Onlineactivelearningpairedensembleforconceptdriftandclassimbalance.
+IEEE Access 6:73815–73828. https://doi.org/10.1109/ACCESS.2018.2882872
+Zhang H, Liu W, Sun L, et al (2020a) Analyzing network traffic for protocol identification: An ensemble
+online active learning method. Proceedings - 2020 6th International Conference on Big Data and Information
+Analytics, BigDIA 2020 pp 167–172. https://doi.org/10.1109/BigDIA51454.2020.00035
+Zhang H, Ravi SS, Davidson I (2020b) A graph-based approach for active learning in regression. Proceedings of
+the 2020 SIAM International Conference on Data Mining (SDM) https://doi.org/https://doi.org/10.1137/1.
+9781611976236.32
+Zhang H, Liu W, Liu Q (2022) Reinforcement online active learning ensemble for drifting imbalanced data
+streams. IEEE Transactions on Knowledge and Data Engineering 34:3971–3983. https://doi.org/10.1109/
+TKDE.2020.3026196
+ZhangK,LiuS,ChenY(2023)Onlineactivelearningframeworkfordatastreamclassificationwithdensity-peaks
+recognition. IEEE Access 11:27853–27864
+ZhangT(2004)Statisticalbehaviorandconsistencyofclassificationmethodsbasedonconvexriskminimization.
+The Annals of Statistics 32. https://doi.org/10.1214/aos/1079120130
+Zheng Z, Padmanabhan B (2006) Selectively acquiring customer information: A new data acquisition problem
+and an active learning-based solution. Management Science 52(5):697–712
+Zhou C, Ma X, Michel P, et al (2021) Examining and combating spurious features under distribution shift.
+Proceedings of the 38 th International Conference on Machine Learning URL https://github.com/violet-zct/
+Zhu JJ, Bento J (2017) Generative adversarial active learning. URL https://arxiv.org/abs/1702.07956
+Zhu X, Zhang P, Lin X, et al (2007) Active learning from data streams. Proceedings - IEEE International
+Conference on Data Mining, ICDM pp 757–762. https://doi.org/10.1109/ICDM.2007.101
+Zliobaite I, Bifet A, Pfahringer B, et al (2014) Active learning with drifting streaming data. IEEE Transactions
+on Neural Networks and Learning Systems 25:27–39. https://doi.org/10.1109/TNNLS.2012.2236570
+Zwanka RJ, Buff C (2021) Covid-19 generation: A conceptual framework of the consumer behavioral shifts to
+becausedbythecovid-19pandemic.JournalofInternationalConsumerMarketing33:58–67.https://doi.org/
+10.1080/08961530.2020.1771646
+Zyblewski P, Ksieniewicz P, Wo´zniak M (2020) Combination of active and random labeling strategy in the
+non-stationary data stream classification. In: International Conference on Artificial Intelligence and Soft
+Computing, Springer, pp 576–585
+47
+Sˇkrjanc I (2009) Confidence interval of fuzzy models: An example using a waste-water treatment plant.
+Chemometrics and Intelligent Laboratory Systems 96:182–187. https://doi.org/10.1016/j.chemolab.2009.01.
+009
+48
+

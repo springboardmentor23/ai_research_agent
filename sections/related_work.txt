@@ -1,0 +1,3 @@
+related work predates the introduction of the term federated learning. A longstanding goal
+pursued by many research communities (including cryptography, databases, and machine learning) is to ana-
+lyze and learn from data distributed among many owners without exposing that data. Cryptographic

@@ -1,0 +1,28 @@
+DOME: Recommendations for supervised machine
+learning validation in biology
+Ian Walsh1,* ​, Dmytro Fishman2,* ​, Dario Garcia-Gasulla3 ​, Tiina Titma4 ​, Gianluca Pollastri5 ​, The ELIXIR
+​ ​ ​ ​ ​
+Machine Learning focus group# ​, Jennifer Harrow6,+ ​, Fotis E. Psomopoulos7,+ ​ & Silvio C.E. Tosatto8,+
+​ ​ ​ ​
+1Bioprocessing Technology Institute, Agency for Science, Technology and Research, Singapore, 2Institute of
+​ ​
+​
+Computer Science, University of Tartu, Estonia, 3Barcelona Supercomputing Center (BSC), Barcelona, Spain,
+​
+​
+4School of Information Technologies, Tallinn University of Technology, Estonia, 5School of Computer Science,
+​ ​
+​
+University College Dublin, Ireland, 6ELIXIR HUB, South building, Wellcome Genome Campus, Hinxton, Cambridge,
+​
+​
+UK, 7Institute of Applied Biosciences, Centre for Research and Technology Hellas, Thessaloniki, Greece, 8Dept. of
+​ ​
+​ ​
+Biomedical Sciences, University of Padua, Padua, Italy.
+*contributed equally
+​
+#see list of co-authors at the end of the manuscript
+​
++corresponding authors
+​

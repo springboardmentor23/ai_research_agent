@@ -1,0 +1,10 @@
+Springer Nature 2021 LATEX template
+Learning Curves for Decision Making in
+Supervised Machine Learning: A Survey
+Felix Mohr1* and Jan N. van Rijn2
+1Universidad de La Sabana, Ch´ıa, Cundinamarca, Colombia.
+2Leiden Institute of Advanced Computer Science, Leiden
+University, Leiden, The Netherlands.
+*Corresponding author(s). E-mail(s):
+felix.mohr@unisabana.edu.co;
+Contributing authors: j.n.van.rijn@liacs.leidenuniv.nl;
