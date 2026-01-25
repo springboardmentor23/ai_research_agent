@@ -1,0 +1,36 @@
+Key Phrases from: Rethinking_the_Inception_Architecture_for_Computer_Vision.txt
+Total Words: 6387
+================================================================================
+
+TOP KEYWORDS (Frequency-Based):
+--------------------------------------------------------------------------------
+ 1. inception                                (frequency: 47)
+ 2. network                                  (frequency: 47)
+ 3. networks                                 (frequency: 39)
+ 4. layer                                    (frequency: 25)
+ 5. cost                                     (frequency: 23)
+ 6. results                                  (frequency: 22)
+ 7. using                                    (frequency: 21)
+ 8. model                                    (frequency: 20)
+ 9. size                                     (frequency: 20)
+10. training                                 (frequency: 20)
+11. computational                            (frequency: 20)
+12. grid                                     (frequency: 19)
+13. vision                                   (frequency: 17)
+14. quality                                  (frequency: 17)
+15. example                                  (frequency: 16)
+16. convolutional                            (frequency: 15)
+17. deep                                     (frequency: 15)
+18. figure                                   (frequency: 15)
+19. label                                    (frequency: 15)
+20. neural                                   (frequency: 14)
+21. computation                              (frequency: 13)
+22. single                                   (frequency: 13)
+23. googlenet                                (frequency: 13)
+24. high                                     (frequency: 13)
+25. input                                    (frequency: 13)
+26. pooling                                  (frequency: 13)
+27. resolution                               (frequency: 13)
+28. computer                                 (frequency: 12)
+29. over                                     (frequency: 12)
+30. much                                     (frequency: 12)

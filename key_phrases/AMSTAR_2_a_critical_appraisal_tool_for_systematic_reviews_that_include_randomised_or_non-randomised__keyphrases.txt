@@ -1,0 +1,36 @@
+Key Phrases from: AMSTAR_2_a_critical_appraisal_tool_for_systematic_reviews_that_include_randomised_or_non-randomised_.txt
+Total Words: 9044
+================================================================================
+
+TOP KEYWORDS (Frequency-Based):
+--------------------------------------------------------------------------------
+ 1. studies                                  (frequency: 106)
+ 2. review                                   (frequency: 101)
+ 3. reviews                                  (frequency: 96)
+ 4. systematic                               (frequency: 92)
+ 5. amstar                                   (frequency: 88)
+ 6. randomised                               (frequency: 71)
+ 7. bias                                     (frequency: 63)
+ 8. instrument                               (frequency: 55)
+ 9. authors                                  (frequency: 46)
+10. risk                                     (frequency: 46)
+11. original                                 (frequency: 40)
+12. items                                    (frequency: 39)
+13. meta                                     (frequency: 38)
+14. item                                     (frequency: 34)
+15. should                                   (frequency: 32)
+16. quality                                  (frequency: 30)
+17. critical                                 (frequency: 28)
+18. study                                    (frequency: 28)
+19. results                                  (frequency: 27)
+20. analysis                                 (frequency: 27)
+21. research                                 (frequency: 26)
+22. interventions                            (frequency: 26)
+23. trials                                   (frequency: 25)
+24. included                                 (frequency: 25)
+25. tool                                     (frequency: 24)
+26. they                                     (frequency: 23)
+27. group                                    (frequency: 22)
+28. development                              (frequency: 21)
+29. published                                (frequency: 20)
+30. observational                            (frequency: 20)

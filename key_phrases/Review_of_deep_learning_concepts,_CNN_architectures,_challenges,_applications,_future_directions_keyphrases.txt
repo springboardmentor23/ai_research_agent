@@ -1,0 +1,36 @@
+Key Phrases from: Review_of_deep_learning_concepts,_CNN_architectures,_challenges,_applications,_future_directions.txt
+Total Words: 36257
+================================================================================
+
+TOP KEYWORDS (Frequency-Based):
+--------------------------------------------------------------------------------
+ 1. learning                                 (frequency: 298)
+ 2. data                                     (frequency: 260)
+ 3. deep                                     (frequency: 249)
+ 4. network                                  (frequency: 195)
+ 5. neural                                   (frequency: 166)
+ 6. image                                    (frequency: 142)
+ 7. networks                                 (frequency: 136)
+ 8. using                                    (frequency: 119)
+ 9. layer                                    (frequency: 118)
+10. model                                    (frequency: 118)
+11. training                                 (frequency: 118)
+12. convolutional                            (frequency: 114)
+13. ieee                                     (frequency: 110)
+14. images                                   (frequency: 100)
+15. based                                    (frequency: 96)
+16. layers                                   (frequency: 90)
+17. input                                    (frequency: 87)
+18. classification                           (frequency: 86)
+19. feature                                  (frequency: 82)
+20. alzubaidi                                (frequency: 81)
+21. performance                              (frequency: 77)
+22. these                                    (frequency: 76)
+23. page                                     (frequency: 73)
+24. detection                                (frequency: 73)
+25. applications                             (frequency: 72)
+26. techniques                               (frequency: 62)
+27. architecture                             (frequency: 60)
+28. output                                   (frequency: 60)
+29. several                                  (frequency: 59)
+30. arxiv                                    (frequency: 58)
