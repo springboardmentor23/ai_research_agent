@@ -1,0 +1,36 @@
+Key Phrases from: nnU-Net_a_self-configuring_method_for_deep_learning-based_biomedical_image_segmentation.txt
+Total Words: 23835
+================================================================================
+
+TOP KEYWORDS (Frequency-Based):
+--------------------------------------------------------------------------------
+ 1. segmentation                             (frequency: 171)
+ 2. resolution                               (frequency: 149)
+ 3. training                                 (frequency: 143)
+ 4. size                                     (frequency: 134)
+ 5. test                                     (frequency: 118)
+ 6. image                                    (frequency: 117)
+ 7. challenge                                (frequency: 95)
+ 8. dataset                                  (frequency: 93)
+ 9. data                                     (frequency: 84)
+10. target                                   (frequency: 80)
+11. spacing                                  (frequency: 79)
+12. full                                     (frequency: 77)
+13. cases                                    (frequency: 74)
+14. best                                     (frequency: 70)
+15. patch                                    (frequency: 69)
+16. network                                  (frequency: 68)
+17. architecture                             (frequency: 63)
+18. datasets                                 (frequency: 63)
+19. downsampling                             (frequency: 61)
+20. validation                               (frequency: 59)
+21. results                                  (frequency: 57)
+22. images                                   (frequency: 57)
+23. dice                                     (frequency: 57)
+24. information                              (frequency: 55)
+25. note                                     (frequency: 54)
+26. kernel                                   (frequency: 54)
+27. cross                                    (frequency: 51)
+28. ensemble                                 (frequency: 50)
+29. batch                                    (frequency: 49)
+30. using                                    (frequency: 49)
