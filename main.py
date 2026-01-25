@@ -5,11 +5,11 @@ Orchestrates: Fetching → Downloading → Extraction → Key Finding Distillati
 
 import os
 import sys
-from fetching import fetch_papers
-from download import download_pdf
-from extractor import extract_text_from_pdf
-from key_finding import extract_key_findings
-from tf_idf import compute_similarity
+from src.fetching import fetch_papers
+from src.download import download_pdf
+from src.extractor import extract_text_from_pdf
+from src.key_finding import extract_key_findings
+from src.tf_idf import compute_similarity
 
 def ensure_directories():
     """Create necessary directories for the pipeline"""

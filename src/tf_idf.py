@@ -2,7 +2,7 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-KEY_FINDINGS_DIR = "data/dist_texts"
+KEY_FINDINGS_DIR = "../data/dist_texts"
 
 def load_documents():
     """Load all distilled text documents from data/dist_texts"""

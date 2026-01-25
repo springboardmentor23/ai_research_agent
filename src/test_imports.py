@@ -8,35 +8,35 @@ import os
 print("Testing imports...")
 
 try:
-    from fetching import fetch_papers
+    from src.fetching import fetch_papers
     print("✓ fetching.py imported successfully")
 except Exception as e:
     print(f"✗ Error importing fetching: {e}")
     sys.exit(1)
 
 try:
-    from download import download_pdf
+    from src.download import download_pdf
     print("✓ download.py imported successfully")
 except Exception as e:
     print(f"✗ Error importing download: {e}")
     sys.exit(1)
 
 try:
-    from extractor import extract_text_from_pdf
+    from src.extractor import extract_text_from_pdf
     print("✓ extractor.py imported successfully")
 except Exception as e:
     print(f"✗ Error importing extractor: {e}")
     sys.exit(1)
 
 try:
-    from key_finding import extract_key_findings
+    from src.key_finding import extract_key_findings
     print("✓ key_finding.py imported successfully")
 except Exception as e:
     print(f"✗ Error importing key_finding: {e}")
     sys.exit(1)
 
 try:
-    from tf_idf import compute_similarity, load_documents
+    from src.tf_idf import compute_similarity, load_documents
     print("✓ tf_idf.py imported successfully")
 except Exception as e:
     print(f"✗ Error importing tf_idf: {e}")
