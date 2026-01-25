@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data & Outputs (Keep structure, ignore content if preferred, or keep all)
+# If you want to keep the folders but hide the files:
+# data/*
+# !data/.gitkeep
+# outputs/*
+# !outputs/.gitkeep
+
+# For now, let's keep it simple and just ignore standard Python junk
+.venv/
+env/
+venv/
+ENV/
+
+# PDFs (Optional: ignore if you don't want large files in git)
+pdf/*.pdf
+
+# Local IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
