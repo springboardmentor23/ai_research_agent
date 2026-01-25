@@ -82,7 +82,7 @@ def extract_key_phrases_from_text(text_content, top_n=30):
     }
 
 
-def process_all_extracted_texts(input_folder='extracted_text', output_folder='key_phrases'):
+def process_all_extracted_texts(input_folder=os.path.join('outputs', 'extracted_text'), output_folder=os.path.join('outputs', 'key_phrases')):
     Path(output_folder).mkdir(parents=True, exist_ok=True)
     results = []
     

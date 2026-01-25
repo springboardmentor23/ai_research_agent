@@ -5,7 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 
-def load_extracted_texts(input_folder='extracted_text'):
+def load_extracted_texts(input_folder=os.path.join('outputs', 'extracted_text')):
     texts = {}
     
     if not os.path.exists(input_folder):
@@ -72,7 +72,7 @@ def display_similarity_scores(similarity_matrix, paper_names):
     print()
 
 
-def save_similarity_report(similarity_matrix, paper_names, output_folder='similarity_reports'):
+def save_similarity_report(similarity_matrix, paper_names, output_folder=os.path.join('outputs', 'similarity_reports')):
     Path(output_folder).mkdir(parents=True, exist_ok=True)
     
     output_file = os.path.join(output_folder, 'similarity_scores.txt')
@@ -111,7 +111,7 @@ def save_similarity_report(similarity_matrix, paper_names, output_folder='simila
         return False, str(e)
 
 
-def analyze_paper_similarity(input_folder='extracted_text'):
+def analyze_paper_similarity(input_folder=os.path.join('outputs', 'extracted_text')):
     print("\nLoading extracted texts...")
     texts = load_extracted_texts(input_folder)
     

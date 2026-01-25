@@ -1,6 +1,7 @@
 import sqlite3
+import os
 
-DB_FILE = "papers.db"
+DB_FILE = os.path.join("data", "papers.db")
 
 def create_table():
     conn = sqlite3.connect(DB_FILE)

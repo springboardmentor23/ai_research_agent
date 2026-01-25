@@ -21,7 +21,7 @@ def extract_text_from_pdf(pdf_path):
         return f"Error extracting text from {pdf_path}: {str(e)}"
 
 
-def save_extracted_text(text_content, output_filename, output_folder='extracted_text'):
+def save_extracted_text(text_content, output_filename, output_folder=os.path.join('outputs', 'extracted_text')):
     ensure_folder_exists(output_folder)
     output_path = os.path.join(output_folder, output_filename)
     try:
@@ -32,7 +32,7 @@ def save_extracted_text(text_content, output_filename, output_folder='extracted_
         return False, str(e)
 
 
-def extract_all_pdfs_text(pdf_folder='pdf', output_folder='extracted_text'):
+def extract_all_pdfs_text(pdf_folder='pdf', output_folder=os.path.join('outputs', 'extracted_text')):
     ensure_folder_exists(output_folder)
     results = []
     

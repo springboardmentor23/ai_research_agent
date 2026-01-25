@@ -1,7 +1,7 @@
 import json
 import os
 
-JSON_FILE = "papers.json"
+JSON_FILE = os.path.join("data", "papers.json")
 
 def save_to_json(topic, papers):
     data = {}

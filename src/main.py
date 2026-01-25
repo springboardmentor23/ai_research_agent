@@ -1,10 +1,10 @@
-from paper_retrieval import fetch_papers
-from database import create_table, insert_paper
-from json_store import save_to_json
-from pdf_downloader import download_all_pdfs, list_downloaded_pdfs
-from pdf_text_extractor import extract_all_pdfs_text
-from key_phrase_extractor import process_all_extracted_texts
-from cross_paper_analysis import create_cross_paper_analysis
+from .paper_retrieval import fetch_papers
+from .database import create_table, insert_paper
+from .json_store import save_to_json
+from .pdf_downloader import download_pdf, download_all_pdfs, list_downloaded_pdfs
+from .pdf_text_extractor import extract_all_pdfs_text
+from .key_phrase_extractor import process_all_extracted_texts
+from .cross_paper_analysis import create_cross_paper_analysis
 
 print("\n===== AI Research Paper Fetcher =====\n")
 
@@ -50,8 +50,8 @@ for paper in papers:
     insert_paper(topic, title, authors, year, url)
 
 print("\nPapers saved to:")
-print("SQLite Database: papers.db")
-print("JSON File: papers.json")
+print(f"SQLite Database: data/papers.db")
+print(f"JSON File: data/papers.json")
 
 list_downloaded_pdfs()
 

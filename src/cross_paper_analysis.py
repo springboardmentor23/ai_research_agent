@@ -18,7 +18,7 @@ KEY_PHRASES = [
 ]
 
 
-def load_extracted_texts(input_folder='extracted_text'):
+def load_extracted_texts(input_folder=os.path.join('outputs', 'extracted_text')):
     texts = {}
     
     if not os.path.exists(input_folder):
@@ -73,7 +73,7 @@ def get_pdf_names(pdf_folder='pdf'):
     return pdf_files
 
 
-def create_cross_paper_analysis(input_folder='extracted_text', output_folder='analysis'):
+def create_cross_paper_analysis(input_folder=os.path.join('outputs', 'extracted_text'), output_folder=os.path.join('outputs', 'analysis')):
     print("\nExtracting key findings...")
     texts = load_extracted_texts(input_folder)
     
@@ -116,7 +116,7 @@ def create_cross_paper_analysis(input_folder='extracted_text', output_folder='an
     print(f"Cross-paper analysis saved to: {output_file}")
 
 
-def save_table_report(pdf_names, findings_dict, similarity_matrix, output_folder='analysis'):
+def save_table_report(pdf_names, findings_dict, similarity_matrix, output_folder=os.path.join('outputs', 'analysis')):
     output_file = os.path.join(output_folder, 'similarity_table.txt')
     
     try:
