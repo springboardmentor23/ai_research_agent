@@ -1,0 +1,30 @@
+we developed the prisma statement and this explanatory
+document to help authors report a wide array of systematic
+reviews to assess the benefits and harms of a health care
+intervention.
+we present each checklist item and follow it with a published
+exemplar of good reporting for that item.
+we present the items numerically from 1 to 27; however,
+authors need not address items in this particular order in their
+reports.
+authors should tell readers whether their
+report is a new systematic review or an update of an existing one.
+‘‘we developed a data extraction sheet (based on
+the cochrane consumers and communication review
+group’s data extraction template), pilot-tested it on ten
+randomly-selected included studies, and refined it accord-
+ingly.
+study quality and risk of bias
+in this paper, and elsewhere [11], we sought to use a new
+term for many readers, namely, risk of bias, for evaluating
+each included study in a systematic review.
+therefore, we present analyses
+only on data for medications for which complete clinical trials’
+change was reported.’’ [147]
+explanation.
+discussion
+we developed the prisma statement using an approach for
+developing reporting guidelines that has evolved over several years
+[178].
+pawson r, greenhalgh t, harvey g, walshe k (2005) realist review—a new
+method of systematic review designed for complex policy interventions.

@@ -1,0 +1,4 @@
+2002), we developed a plug-in that allows cytoscape to read and simulate sbml-encoded bio-
+chemical models.
+functions of a new
+photoreceptor membrane.
