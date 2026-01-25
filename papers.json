@@ -1,111 +1,190 @@
 {
-    "farming": [
+    "ai": [
         {
-            "title": "Rooted in Nature: The Rise, Challenges, and Potential of Organic Farming and Fertilizers in Agroecosystems",
+            "title": "From local explanations to global understanding with explainable AI for trees",
             "authors": [
-                "D. Panday",
-                "Nikita Bhusal",
-                "Saurav Das",
-                "Arash Ghalehgolabbehbahani"
+                "Scott M. Lundberg",
+                "G. Erion",
+                "Hugh Chen",
+                "A. DeGrave",
+                "J. Prutkin",
+                "B. Nair",
+                "R. Katz",
+                "J. Himmelfarb",
+                "N. Bansal",
+                "Su-In Lee"
             ],
-            "year": 2024,
-            "download_link": "https://www.semanticscholar.org/paper/4592e8443d619b2fa2f6e851b80c0b820ec63daf"
+            "year": 2020,
+            "download_link": "https://www.semanticscholar.org/paper/81600fd653a828d69f6160705be6814dd101beb7"
         },
         {
-            "title": "The Path to Smart Farming: Innovations and Opportunities in Precision Agriculture",
+            "title": "Cosmos World Foundation Model Platform for Physical AI",
             "authors": [
-                "F. Marinello",
-                "Xiuguo Zou",
-                "Zheng Liu",
-                "Xiaochen Zhu",
-                "Wentian Zhang",
-                "Yan Qian",
-                "Yuhua Li",
-                "E. Karunathilake",
-                "Anh Tuan Le",
-                "S. Heo",
-                "Y. Chung",
-                "Sheikh Mansoor"
+                "Nvidia Niket Agarwal",
+                "Arslan Ali",
+                "Maciej Bala",
+                "Yogesh Balaji",
+                "Erik Barker",
+                "Tiffany Cai",
+                "Prithvijit Chattopadhyay",
+                "Yongxin Chen",
+                "Yin Cui",
+                "Yifan Ding",
+                "Daniel Dworakowski",
+                "Jiaojiao Fan",
+                "Michele Fenzi",
+                "Francesco Ferroni",
+                "Sanja Fidler",
+                "Dieter Fox",
+                "Songwei Ge",
+                "Yunhao Ge",
+                "Jinwei Gu",
+                "Siddharth Gururani",
+                "Ethan He",
+                "Jiahui Huang",
+                "J. Huffman",
+                "Pooya Jannaty",
+                "Jingyi Jin",
+                "Seung Wook Kim",
+                "Gergely Kl'ar",
+                "Grace Lam",
+                "Shiyi Lan",
+                "L. Leal-Taix\u00e9",
+                "Anqi Li",
+                "Zhaoshuo Li",
+                "Chen-Hsuan Lin",
+                "Tsung-Yi Lin",
+                "Huan Ling",
+                "Ming-Yu Liu",
+                "Xian Liu",
+                "Alice Luo",
+                "Qianli Ma",
+                "Hanzi Mao",
+                "Kaichun Mo",
+                "A. Mousavian",
+                "Seungjun Nah",
+                "Sriharsha Niverty",
+                "David Page",
+                "Despoina Paschalidou",
+                "Zeeshan Patel",
+                "Lindsey Pavao",
+                "Morteza Ramezanali",
+                "F. Reda",
+                "Xiao-Shuai Ren",
+                "Vasanth Rao Naik Sabavat",
+                "Ed Schmerling",
+                "Stella Shi",
+                "Bartosz Stefaniak",
+                "Shitao Tang",
+                "Lyne P. Tchapmi",
+                "Przemek Tredak",
+                "Wei-Cheng Tseng",
+                "J. Varghese",
+                "Hao Wang",
+                "Haoxiang Wang",
+                "Hengyi Wang",
+                "Tingwei Wang",
+                "Fangyin Wei",
+                "Xinyue Wei",
+                "Jay Zhangjie Wu",
+                "Jiashu Xu",
+                "Wei Yang",
+                "Lin Yen-Chen",
+                "Xiaohui Zeng",
+                "Yuan Zeng",
+                "Jing Zhang",
+                "Qinsheng Zhang",
+                "Yuxuan Zhang",
+                "Qingqing Zhao",
+                "Artur Zolkowski"
             ],
-            "year": 2023,
-            "download_link": "https://www.semanticscholar.org/paper/6293c0b276f3683aeeaf79dfa2a039f5ce8d9d08"
+            "year": 2025,
+            "download_link": "https://www.semanticscholar.org/paper/b95baf93d1cfb406b50aa370ce5ba18788b5891d"
         },
         {
-            "title": "Ageing threatens sustainability of smallholder farming in China",
+            "title": "Constitutional AI: Harmlessness from AI Feedback",
             "authors": [
-                "Chenchen Ren",
-                "Xinyue Zhou",
-                "Chen Wang",
-                "Yaolin Guo",
-                "Yu Diao",
-                "Sisi Shen",
-                "Stefan Reis",
-                "Wanyue Li",
-                "Jianming Xu",
-                "Baojing Gu"
-            ],
-            "year": 2023,
-            "download_link": "https://www.semanticscholar.org/paper/238c0f47daa4b6de34bc92b2c4a2fb11738cf816"
-        }
-    ],
-    "water": [
-        {
-            "title": "The Water-Culture Method for Growing Plants Without Soil",
-            "authors": [
-                "D. R. Hoagland",
-                "D. Arnon"
-            ],
-            "year": 2018,
-            "download_link": "https://www.semanticscholar.org/paper/a0b7f89857e268e0066b34461183b3a4d2cad499"
-        },
-        {
-            "title": "High-resolution mapping of global surface water and its long-term changes",
-            "authors": [
-                "Jean-Fran\u00e7ois Pekel",
-                "A. Cottam",
-                "N. Gorelick",
-                "A. Belward"
-            ],
-            "year": 2016,
-            "download_link": "https://www.semanticscholar.org/paper/f55d60ce22f6beaa659e061efc444bd3a2a24ace"
-        },
-        {
-            "title": "Four billion people facing severe water scarcity",
-            "authors": [
-                "M. Mekonnen",
-                "A. Hoekstra"
-            ],
-            "year": 2016,
-            "download_link": "https://www.semanticscholar.org/paper/1956d8f3f6d08c0054a3b3c8dc44e390e93944d2"
-        }
-    ],
-    "eye sight": [
-        {
-            "title": "Understanding Acanthamoeba Keratitis: An In-Depth Review of a Sight-Threatening Eye Infection",
-            "authors": [
-                "Francesco Petrillo",
-                "Antonia Tortori",
-                "Veronica Vallino",
-                "Marilena Galdiero",
-                "A. Fea",
-                "Ugo de Sanctis",
-                "M. Reibaldi"
-            ],
-            "year": 2024,
-            "download_link": "https://www.semanticscholar.org/paper/7ad4f7033d4b05671e93b2bdba3ba2ec1c7978aa"
-        },
-        {
-            "title": "Bioactive Herbal Medicine Use for Eye Sight: A Meta Analysis",
-            "authors": [
-                "Vandana Sonaji Amle",
-                "Dharmaraj Arjun Rathod",
-                "Keshamma E.",
-                "Vijender Kumar",
-                "Roshan Kumar",
-                "Purabi Saha"
+                "Yuntao Bai",
+                "Saurav Kadavath",
+                "Sandipan Kundu",
+                "Amanda Askell",
+                "John Kernion",
+                "Andy Jones",
+                "A. Chen",
+                "Anna Goldie",
+                "Azalia Mirhoseini",
+                "C. McKinnon",
+                "Carol Chen",
+                "Catherine Olsson",
+                "Chris Olah",
+                "Danny Hernandez",
+                "Dawn Drain",
+                "Deep Ganguli",
+                "Dustin Li",
+                "Eli Tran-Johnson",
+                "E. Perez",
+                "Jamie Kerr",
+                "J. Mueller",
+                "Jeffrey Ladish",
+                "J. Landau",
+                "Kamal Ndousse",
+                "Kamil\u0117 Luko\u0161i\u016bt\u0117",
+                "Liane Lovitt",
+                "M. Sellitto",
+                "Nelson Elhage",
+                "Nicholas Schiefer",
+                "Noem'i Mercado",
+                "Nova Dassarma",
+                "R. Lasenby",
+                "Robin Larson",
+                "Sam Ringer",
+                "Scott Johnston",
+                "Shauna Kravec",
+                "S. E. Showk",
+                "Stanislav Fort",
+                "Tamera Lanham",
+                "Timothy Telleen-Lawton",
+                "Tom Conerly",
+                "T. Henighan",
+                "Tristan Hume",
+                "Sam Bowman",
+                "Zac Hatfield-Dodds",
+                "Benjamin Mann",
+                "Dario Amodei",
+                "Nicholas Joseph",
+                "Sam McCandlish",
+                "Tom B. Brown",
+                "Jared Kaplan"
             ],
             "year": 2022,
-            "download_link": "https://www.semanticscholar.org/paper/1bfdbb5ed7dc98a856e5a2d8a2a24c0ed52b9741"
+            "download_link": "https://www.semanticscholar.org/paper/3936fd3c6187f606c6e4e2e20b196dbc41cc4654"
+        },
+        {
+            "title": "Education in the Era of Generative Artificial Intelligence (AI): Understanding the Potential Benefits of ChatGPT in Promoting Teaching and Learning",
+            "authors": [
+                "David Baidoo-Anu",
+                "Leticia Owusu Ansah"
+            ],
+            "year": 2023,
+            "download_link": "https://www.semanticscholar.org/paper/7b6a8c6d44e0f77bf930484e438d77b7465a69fb"
+        },
+        {
+            "title": "AI Tools in Society: Impacts on Cognitive Offloading and the Future of Critical Thinking",
+            "authors": [
+                "Michael Gerlich"
+            ],
+            "year": 2025,
+            "download_link": "https://www.semanticscholar.org/paper/cce6e863d5408244284d97f5a13e8c9ab103ad01"
+        },
+        {
+            "title": "Agentic AI: Autonomous Intelligence for Complex Goals\u2014A Comprehensive Survey",
+            "authors": [
+                "D. Acharya",
+                "Karthigeyan Kuppan",
+                "Divya Bhaskaracharya"
+            ],
+            "year": 2025,
+            "download_link": "https://www.semanticscholar.org/paper/09d8841eeb362a2c04f055f70f16d634093c83bc"
         }
     ]
 }

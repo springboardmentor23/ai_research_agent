@@ -11,7 +11,8 @@ def fetch_papers(topic, limit=3, retries=3, wait_seconds=5):
     params = {
         "query": topic,
         "limit": limit,
-        "fields": "paperId,title,authors,year,abstract,url"
+        "fields": "title,authors,year,abstract,url,openAccessPdf"
+
     }
 
     for _ in range(retries):

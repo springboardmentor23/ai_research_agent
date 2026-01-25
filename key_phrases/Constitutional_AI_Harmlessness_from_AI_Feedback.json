@@ -1,0 +1,5 @@
+[
+    ",2022] showed that rlhf significantly improves the models\u2019 ability to follow instructions, and the hh model is significantly moreharmlessthanthehelpfulmodel",
+    "5 arecritiquesnecessary? while our approach requires sampling a critique followed by a revision, we also consider simplifying our approachbyskippingthecritiquestepaltogether,andinstructingthemodeltogeneratearevisiondirectly",
+    "the constitutionalapproachshouldthusmakeitmucheasiertostudyhowdifferentaibehaviorstendtogeneralize and interfere, since by obviating human feedback, our methods lower the barrier to experimentation"
+]
