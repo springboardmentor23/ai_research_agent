@@ -1,0 +1,19 @@
+in this work, we address these shortcomings by
+(1) providing a robust deﬁnition of omr and its relationship to related ﬁelds, (2) analyzing how omr inverts the
+music encoding process to recover the musical notation and the musical semantics from documents, (3) proposing
+a taxonomy of omr, with most notably a novel taxonomy of applications.
+alternative names
+optical music recognition is a well-established term, and we do not seek to establish a new one.
+accidentals at the beginning of a
+measure indicate a new key signature that affects all subsequent notes.
+to account for this, we propose
+the following four categories that demand an increasing level of comprehension: document metadata
+extraction, search, replayability, and structured encoding (see fig.
+when it comes
+to recognizing, we are typically interested in the best hypothesis—the one that is proposed as an
+answer—forgetting the probability given to such hypothesis by the model.
+in a new companion to digital
+humanities, pages 213–228.
+a new edition of walton’s façade using automatic score recognition.
+doccreator: a new software for creating
+synthetic ground-truthed document images.

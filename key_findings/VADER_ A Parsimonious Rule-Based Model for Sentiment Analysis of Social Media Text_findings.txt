@@ -1,0 +1,57 @@
+we present vader, a simple rule-based model for general 
+sentiment analysis, and compare its effectiveness to eleven 
+typical state-of-practice benchmarks including liwc, 
+anew, the general inquirer, sentiwordnet, and machine 
+learning oriented techniques relying on naive bayes, max-
+imum entropy, and support vector machine (svm) algo-
+rithms.
+inter-
+estingly, using our parsimonious rule-based model to assess 
+the sentiment of tweets, we find that vader outperforms 
+individual human raters (f1 classification accuracy = 0.96 
+and 0.84, respectively), and generalizes more favorably 
+across contexts than any of our benchmarks.
+surprisingly, when we 
+further inspect the classification accuracy, we see that 
+vader (f1 = 0.96) actually even outperforms individual 
+human raters (f1 = 0.84) at correctly classifying the senti-
+ment of tweets into positive, neutral, or negative classes.
+just how favorably or unfavorably do people feel 
+about a new product, movie, or legislation bill?
+despite their ubiquity for evaluating sentiment in social 
+media contexts, there are generally three shortcomings of 
+lexicon-based sentiment analysis approaches: 1) they have 
+trouble with coverage, often ignoring important lexical 
+features which are especially relevant to social text in mi-
+croblogs, 2) some lexicons ignore general sentiment inten-
+sity differentials for features within the lexicon, and 3) 
+acquiring a new set of (human validated gold standard) 
+lexical features – along with their associated sentiment 
+valence scores – can be a very time consuming and labor 
+intensive process.
+================================================================================
+section: methods
+================================================================================
+
+our approach seeks to leverage the advantages of parsimo-
+nious rule-based modeling to construct a computational 
+sentiment analysis engine that 1) works well on social me-
+dia style text, yet readily generalizes to multiple domains, 
+2) requires no training data, but is constructed from a gen-
+eralizable, valence-based, human-curated gold standard 
+sentiment lexicon 3) is fast enough to be used online with 
+streaming data, and 4) does not severely suffer from a 
+speed-performance tradeoff.
+3.3 controlled experiments to evaluate impact of 
+grammatical and syntactical heuristics 
+using the general heuristics we just identified, we next 
+selected 30 baseline tweets and manufactured six to ten 
+variations of the exact same text, controlling the specific 
+grammatical or syntactical feature that is presented as an 
+independent variable in a small experiment.
+with all of the 
+variations, we end up with 200 contrived tweets, which we 
+then randomly insert into a new set of 800 tweets similar to 
+those used during our qualitative analysis.
+a new anew: evaluation of a word list 
+for sentiment analysis in microblogs.

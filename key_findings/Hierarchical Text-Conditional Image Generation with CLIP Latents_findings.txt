@@ -1,0 +1,24 @@
+to leverage these representations for
+image generation, we propose a two-stage model: a prior that generates a clip
+image embedding given a text caption, and a decoder that generates an image
+conditioned on the image embedding.
+we design our generative stack to produce
+images from captions using two components:
+• a prior p(zi|y) that produces clip image embeddings zi conditioned on captions y.
+3
+image manipulations
+our approach allows us to encode any given image x into a bipartite latent representation (zi, xt ) that is
+sufﬁcient for the decoder to produce an accurate reconstruction.
+to modify the image to reﬂect a new text description y, we ﬁrst obtain
+its clip text embedding zt, as well as the clip text embedding zt0 of a caption describing the current
+image4.
+in all cases (sections 5.2, 5.4, and 5.5), we ﬁnd that
+the diffusion prior outperforms the ar prior for comparable model size and reduced training compute.
+for diversity, we propose a new evaluation
+protocol in which humans are presented with two 4 × 4 grids of samples and must choose which is more
+diverse (with a third option, “not sure”).
+we present our results in table 1.
+we present results on this benchmark in table 2.
+we ﬁnd that, compared to these other zero-shot models, unclip achieves a new state-of-the-art
+fid of 10.39 when sampling with the diffusion prior.
+in figure 13, we present results on our aesthetic quality evaluation.

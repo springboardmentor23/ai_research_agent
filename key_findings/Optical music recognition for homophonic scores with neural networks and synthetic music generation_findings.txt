@@ -1,0 +1,12 @@
+for
+that, we propose four different types of music representa-
+tions that differ not in the encoding of the musical symbols
+itself, but in the way horizontal and vertical distributions of
+the musical symbols are represented.
+================================================================================
+section: experimental setup
+================================================================================
+
+in this section, we present the synthetic training dataset and
+the real rism test dataset, the neural model architecture, and
+the evaluation protocols used.

@@ -1,0 +1,79 @@
+emms1 &
+•  steven kelly
+  orcid: orcid.org/0000-0001-8583-53621 
+•  
+133k accesses
+•
+
+
+================================================================================
+section: citations
+================================================================================
+
+•
+
+
+================================================================================
+section: altmetric
+================================================================================
+
+•
+
+
+================================================================================
+section: mentions
+================================================================================
+
+•  explore all metrics
+
+
+================================================================================
+section: abstract
+================================================================================
+
+here, we present a major advance of the orthofinder method.
+each output is benchmarked on appropriate real or simulated datasets,
+and where comparable methods exist, orthofinder is equivalent to or
+outperforms these methods.
+here, we present a major update to orthofinder that addresses these
+challenges and significantly extends the scope of the original method.
+orthofinder implements a novel duplication-loss-
+coalescent algorithm for identifying gene duplication
+
+
+events and orthologs
+given a set of rooted orthogroup gene trees, the final major challenge in
+accurately dissecting phylogenetic relationships between genes is to
+account for incomplete lineage sorting and gene tree error.
+thus, to
+address this challenge, a novel, scalable algorithm based on the
+duplication-loss-coalescent model was developed (see the “methods”
+section).
+here, we present a substantial update to orthofinder that
+provides an easy-to-use, fast, accurate, and fully phylogenetic orthology
+inference software tool.
+from testing on community standard benchmarks, we demonstrate that
+orthofinder is the most accurate orthology inference method available.
+orthogroups are inferred using the original orthofinder
+algorithm [10]; an unrooted gene tree is inferred for each orthogroup
+using dendroblast [24]; the unrooted species tree is inferred from this
+set of unrooted orthogroup trees using the stag algorithm [33]; this
+stag species tree is then rooted using the stride algorithm by
+identifying high-confidence gene duplication events in the complete set
+of unrooted orthogroup trees [22]; the rooted species tree is used to root
+the orthogroup trees; orthologs and gene duplication events are inferred
+from the rooted orthogroup trees by a novel hybrid algorithm that
+
+
+combines the “species-overlap” method [31] and the duplication-loss-
+coalescent model [32] (described below); and comparative statistics are
+calculated.
+such a tree can be
+provided as a newick format text file.
+a new algorithm, species tree from all
+genes (stag), was developed to allow species tree inference even for
+species sets with few or no complete sets of one-to-one orthologs
+present in all species [33].
+since dlcpar (full) was the most accurate method on the simulated
+datasets but was unsuitable for analyzing gene trees with more than four
+species a novel hybrid algorithm was developed.
