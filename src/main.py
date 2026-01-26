@@ -1,91 +1,75 @@
-import os
-import time
 import json
-import requests
+import os
 
-# ---------------------------------------
-# Load API Key from Environment Variable
-# ---------------------------------------
-API_KEY = os.getenv("SEMANTIC_SCHOLAR_API_KEY")
-
-if not API_KEY:
-    raise ValueError("Semantic Scholar API key not found. Please set environment variable.")
-
-# ---------------------------------------
-# Fetch papers from Semantic Scholar
-# ---------------------------------------
-def fetch_papers(topic, limit=3, retries=3, wait_seconds=2):
-    url = "https://api.semanticscholar.org/graph/v1/paper/search"
-
-    headers = {
-        "x-api-key": API_KEY
-    }
-
-    params = {
-        "query": topic,
-        "limit": limit,
-        "fields": "title,authors,year,abstract,url"
-    }
-
-    for attempt in range(retries):
-        response = requests.get(url, params=params, headers=headers)
-
-        if response.status_code == 200:
-            return response.json().get("data", [])
-
-        elif response.status_code == 429:
-            print("Rate limit hit. Waiting...")
-            time.sleep(wait_seconds)
-
-        else:
-            print("Error:", response.status_code)
-            response.raise_for_status()
-
-    return []
+from paper_fetcher import fetch_papers
+from pdf_downloader import download_pdf
+from pdf_text_extractor import extract_text_from_pdf
+from section_parser import extract_sections
+from key_finder import extract_keywords
+from comparator import compare_keywords
+from validator import validate_sections
 
 
-# ---------------------------------------
-# Convert papers to structured dataset
-# ---------------------------------------
-def prepare_dataset(papers):
-    dataset = []
-
-    for paper in papers:
-        dataset.append({
-            "title": paper.get("title"),
-            "authors": [a["name"] for a in paper.get("authors", [])],
-            "year": paper.get("year"),
-            "abstract": paper.get("abstract"),
-            "paper_url": paper.get("url")
-        })
-
-    return dataset
+DATASET_PATH = "outputs/papers_dataset.json"
+PDF_FOLDER = "outputs/downloaded_pdfs"
 
 
-# ---------------------------------------
-# Main pipeline
-# ---------------------------------------
-def main():
-    topic = input("Enter research topic: ").strip()
+def milestone_1():
+    topic = input("Enter research topic: ")
 
     print("\nFetching papers...")
     papers = fetch_papers(topic)
 
     if not papers:
-        print("No papers found.")
-        return
+        print("No papers found. Exiting.")
+        return []
 
-    print(f"Fetched {len(papers)} papers.")
+    dataset = []
+    for paper in papers:
+        dataset.append({
+            "title": paper.get("title"),
+            "abstract": paper.get("abstract"),
+            "paper_url": paper.get("url")
+        })
 
-    dataset = prepare_dataset(papers)
-
-    os.makedirs("outputs", exist_ok=True)
-
-    output_path = "outputs/papers_dataset.json"
-    with open(output_path, "w", encoding="utf-8") as f:
+    with open(DATASET_PATH, "w", encoding="utf-8") as f:
         json.dump(dataset, f, indent=2)
 
-    print(f"Dataset saved successfully at: {output_path}")
+    print(f"Saved {len(dataset)} papers to papers_dataset.json")
+    return dataset
+
+
+def milestone_2(papers):
+    all_keywords = []
+
+    for idx, paper in enumerate(papers, start=1):
+        print(f"\nProcessing paper {idx}...")
+        pdf_path = f"{PDF_FOLDER}/paper_{idx}.pdf"
+
+        success = download_pdf(paper["paper_url"], pdf_path)
+        if not success:
+            print("PDF download failed. Skipping paper.")
+            continue
+
+        text = extract_text_from_pdf(pdf_path)
+        sections = extract_sections(text)
+        keywords = extract_keywords(text)
+        validation = validate_sections(sections)
+
+        all_keywords.append(keywords)
+
+    if all_keywords:
+        common = compare_keywords(all_keywords)
+    else:
+        common = []
+
+    print("\nMilestone 2 completed successfully.")
+
+
+def main():
+    papers = milestone_1()
+    if papers:
+        milestone_2(papers)
 
 
 if __name__ == "__main__":
