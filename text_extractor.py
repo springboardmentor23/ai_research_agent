@@ -1,62 +1,50 @@
-import pdfplumber
 import os
-import re
+import json
+import PyPDF2
+from pathlib import Path
 
-def segment_sections(text):
-    sections = {
-        "INTRODUCTION": "",
-        "METHODOLOGY": "",
-        "RESULTS": "",
-        "CONCLUSION": ""
-    }
 
-    patterns = {
-        "INTRODUCTION": r"\bintroduction\b",
-        "METHODOLOGY": r"\b(methodology|methods|materials and methods)\b",
-        "RESULTS": r"\b(results|experiments)\b",
-        "CONCLUSION": r"\b(conclusion|discussion|summary)\b"
-    }
-
-    text_lower = text.lower()
-    indices = {}
-
-    for sec, pat in patterns.items():
-        match = re.search(pat, text_lower)
-        if match:
-            indices[sec] = match.start()
-
-    sorted_sections = sorted(indices.items(), key=lambda x: x[1])
-
-    for i, (sec, start) in enumerate(sorted_sections):
-        end = sorted_sections[i + 1][1] if i + 1 < len(sorted_sections) else len(text)
-        sections[sec] = text[start:end].strip()
-
-    return sections
+def ensure_folder(folder):
+    Path(folder).mkdir(parents=True, exist_ok=True)
 
 
 def extract_text_from_pdf(pdf_path):
-    os.makedirs("extracted_texts", exist_ok=True)
-
-    file_name = os.path.basename(pdf_path).replace(".pdf", ".txt")
-    output_path = os.path.join("extracted_texts", file_name)
-
     full_text = ""
 
-    try:
-        with pdfplumber.open(pdf_path) as pdf:
-            for page in pdf.pages:
-                text = page.extract_text()
-                if text:
-                    full_text += text + "\n"
+    with open(pdf_path, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
 
-        sections = segment_sections(full_text)
+        for i, page in enumerate(reader.pages):
+            page_text = page.extract_text()
+
+            if page_text:
+                full_text += f"--- Page {i+1} ---\n"
+                full_text += page_text + "\n\n"
+
+    return full_text
+
+
+def extract_all_pdfs_text(pdf_folder="pdfs", output_folder="extracted_texts"):
+
+    ensure_folder(output_folder)
+
+    for pdf_file in os.listdir(pdf_folder):
+
+        if not pdf_file.endswith(".pdf"):
+            continue
+
+        pdf_path = os.path.join(pdf_folder, pdf_file)
+
+        print(f"📄 Extracting: {pdf_file}")
+
+        full_text = extract_text_from_pdf(pdf_path)
+
+        output_path = os.path.join(
+            output_folder,
+            pdf_file.replace(".pdf", ".txt")
+        )
 
         with open(output_path, "w", encoding="utf-8") as f:
-            for sec, content in sections.items():
-                f.write(f"\n===== {sec} =====\n")
-                f.write(content + "\n")
-        return output_path
+            f.write(full_text)
 
-    except Exception as e:
-        print(f"❌ Error extracting text from {pdf_path}: {e}")
-        return None
+    print("✅ All PDFs extracted into TXT files")

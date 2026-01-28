@@ -185,6 +185,56 @@
             ],
             "year": 2025,
             "download_link": "https://www.semanticscholar.org/paper/09d8841eeb362a2c04f055f70f16d634093c83bc"
+        },
+        {
+            "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+            "authors": [
+                "Gary S. Collins",
+                "K. Moons",
+                "P. Dhiman",
+                "R. Riley",
+                "A. L. Beam",
+                "Ben Van Calster",
+                "Marzyeh Ghassemi",
+                "Xiaoxuan Liu",
+                "Johannes B Reitsma",
+                "M. van Smeden",
+                "A. Boulesteix",
+                "J. Camaradou",
+                "L. Celi",
+                "S. Denaxas",
+                "A. Denniston",
+                "Ben Glocker",
+                "Robert M Golub",
+                "Hugh Harvey",
+                "G. Heinze",
+                "Michael M. Hoffman",
+                "A. Kengne",
+                "Emily Lam",
+                "Naomi Lee",
+                "Elizabeth W Loder",
+                "Lena Maier-Hein",
+                "B. Mateen",
+                "Melissa Mccradden",
+                "Lauren Oakden-Rayner",
+                "Johan Ordish",
+                "Richard Parnell",
+                "S. Rose",
+                "Karandeep Singh",
+                "L. Wynants",
+                "P. Logullo"
+            ],
+            "year": 2024,
+            "download_link": "https://www.semanticscholar.org/paper/6b0570e66cdf79704461e1f8a07dc761ac10d6b6"
+        },
+        {
+            "title": "Students\u2019 voices on generative AI: perceptions, benefits, and challenges in higher education",
+            "authors": [
+                "C. Chan",
+                "Wenjie Hu"
+            ],
+            "year": 2023,
+            "download_link": "https://www.semanticscholar.org/paper/49b66b980c91f989637b089c2e8284af443aaa25"
         }
     ]
 }
