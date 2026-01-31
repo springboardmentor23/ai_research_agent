@@ -69,10 +69,10 @@ if papers_metadata:
     with open("research_dataset.json", "w") as f:
         json.dump(complete_dataset, f, indent=4)
         
-    print("\n" + "="*30)
-    print("MILESTONE 1 COMPLETE")
+   
+   
     print(f"Dataset saved to 'research_dataset.json'")
     print(f"PDFs stored in 'downloaded_papers/' folder")
-    print("="*30)
+    
 else:
     print("No papers found for this topic.")
