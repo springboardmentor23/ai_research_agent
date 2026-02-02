@@ -1,0 +1,865 @@
+Designing and Implementing Data Warehouse
+for Agricultural Big Data
+Vuong M. Ngo, Nhien-An Le-Khac, and M-Tahar Kechadi
+School of Computer Science, University College Dublin,
+Belﬁeld, Dublin 4, Ireland
+vuong.ngo@ucd.ie, an.lekhac@ucd.ie, tahar.kechadi@ucd.ie
+Abstract. In recent years, precision agriculture that uses modern infor-
+mation and communication technologies is becoming very popular. Raw
+and semi-processed agricultural data are usually collected through vari-
+ous sources, such as: Internet of Thing (IoT), sensors, satellites, weather
+stations, robots, farm equipment, farmers and agribusinesses, etc. Be-
+sides, agricultural datasets are very large, complex, unstructured, het-
+erogeneous, non-standardized, and inconsistent. Hence, the agricultural
+data mining is considered as Big Data application in terms of volume,
+variety, velocity and veracity. It is a key foundation to establishing a
+crop intelligence platform, which will enable resource eﬃcient agronomy
+decision making and recommendations. In this paper, we designed and
+implemented a continental level agricultural data warehouse by combin-
+ing Hive, MongoDB and Cassandra. Our data warehouse capabilities: (1)
+ﬂexible schema; (2) data integration from real agricultural multi datasets;
+(3) data science and business intelligent support; (4) high performance;
+(5) high storage; (6) security; (7) governance and monitoring; (8) repli-
+cation and recovery; (9) consistency, availability and partition tolerant;
+(10) distributed and cloud deployment. We also evaluate the performance
+of our data warehouse.
+Keywords: Business intelligent, data warehouse, constellation schema,
+Big Data, precision agriculture.
+1
+Introduction
+In 2017 and 2018, annual world cereal productions were 2,608 million tons [32]
+and 2,595 million tons [6], respectively. However, there were also around 124
+million people in 51 countries faced food crisis and food insecurity [7]. According
+to United Nations [31], we need an increase 60% of cereal production to meet 9.8
+billion people needs by 2050. To satisfy the massively increase demand for food,
+crop yields must be signiﬁcantly increased by using new farming approaches,
+such as precision agriculture. As reported in [5], precision agriculture is vitally
+important for the future and can make a signiﬁcant contribution to food security
+and safety. Besides, precision agriculture promises both high quantity and quality
+of its products with minimum of resource usage, such as water, energy, fertilisers,
+and pesticides [28].
+arXiv:1905.12411v1  [cs.DB]  29 May 2019
+The precision agriculture’s current mission is to use the decision-support
+system based on Big Data approaches to provide precise information for more
+control of farming eﬃciency and waste, such as awareness, understanding, advice,
+early warning, forecasting and ﬁnancial services. An eﬃcient agricultural data
+warehouse (DW) is required to extract useful knowledge and support decision-
+making. However, currently there are very few reports in the literature that
+focus on the design of eﬃcient DWs with the view to enable Agricultural Big
+Data analysis and mining. The design of large scale agricultural DWs is very
+challenging. Moreover, the precision agriculture system can be used by diﬀerent
+kinds of users at the same time, for instance by both farmers and agronomists.
+Every type of user needs to analyse diﬀerent information sets thus requiring
+speciﬁc analytics. The agricultural data has all the features of Big Data:
+1. Volume: The amount of agricultural data is rapidly increasing and is inten-
+sively produced by endogenous and exogenous sources. The endogenous data
+is collected from operation systems, experimental results, sensors, weather
+stations, satellites and farm equipment. The systems and devices in the agri-
+cultural ecosystem can connect through IoT. The exogenous data concerns
+the external sources, such as farmers, government agencies, retail agronomists
+and seed companies. They can help with information about local pest and
+disease outbreak tracking, crop monitoring, market accessing, food security,
+products, prices and knowledge.
+2. Variety: Agricultural data has many diﬀerent forms and formats, such as
+structured and unstructured data, video, imagery, chart, metrics, geo-spatial,
+multi-media, model, equation and text.
+3. Velocity: The produced and collected data increases at high rate, as sens-
+ing technologies and other mobile devices are becoming more eﬃcient and
+cheaper. The datasets must be cleaned, aggregated and harmonised in real-
+time.
+4. Veracity: The tendency of agronomic data is uncertain, inconsistent, am-
+biguous and error prone because the data is gathered from heterogeneous
+sources, sensors and manual processes.
+In this research, ﬁrstly, we analyze popular DWs to handle agricultural Big
+Data. Secondly, an agricultural DW is designed and implemented by combin-
+ing Hive, MongoDB, Cassandra, and constellation schema on real agricultural
+datasets. Our DW has enough main features of a DW for agricultural Big Data.
+These are: (1) high storage, high performance and cloud computing adapt for the
+volume and velocity features; (2) ﬂexible schema and integrated storage struc-
+ture to adapt the variety feature; (3) data ingestion, pre-processing, governance,
+monitoring and security adapt for the veracity feature. Thirdly, the eﬀective busi-
+ness intelligent support is illustrated by executing complex HQL/SQL queries
+to answer diﬃcult data analysis requests. Besides, an experimental evaluation
+is conducted to present good performance of our DW storage. The rest of this
+paper is organised as follows: in the next Section, we reviewed the related work.
+In Sections 3, 4, and 5, we presented solutions for the above goals, respectively.
+Finally, Section 6 gives some concluding remarks.
+2
+Related Work
+Data mining can be used to design an analysis process for exploiting big agricul-
+tural datasets. Recently, many papers have been published that exploit machine
+learning algorithms on sensor data and build models to improve agricultural
+economics, such as [24], [25], [8] and [26]. In these, the paper [24] predicted crop
+yield by using self-organizing-maps supervised learning models; namely super-
+vised Kohonen networks, counter-propagation artiﬁcial networks and XY-fusion.
+The paper [25] predicted drought conditions by using three rule-based machine
+learning; namely random forest, boosted regression trees, and Cubist. The paper
+[8] estimated water evapotranspiration by using extreme learning machine and
+generalized regression neural network models which based on daily temperature
+data in six meteorological stations. Finally, the paper [26] predicted pest popu-
+lation dynamics by using time series clustering and structural change detection
+which detected groups of diﬀerent pest species. However, the proposed solutions
+are not satisﬁed the problems of agricultural Big Data, such as data integration,
+data schema, storage capacity, security and performance.
+From a Big Data point of view, the papers [15] and [27] have proposed smart
+agricultural frameworks. In [15], the platform used Hive to store and analyse
+sensor data about land, water and biodiversity which can help increase food
+production with lower environmental impact. In [27], the authors moved to-
+ward a notion of climate analytics-as-a-service by building a high-performance
+analytics and scalable data management platform which is based on modern
+infrastructures, such as Amazon web services, Hadoop and Cloudera. However,
+the two papers did not discuss how to build and implement a DW for a precision
+agriculture.
+Our approach is inspired by papers [30], [29], [21] and [20] which presented
+ways of building a DW for agricultural data. In [30], the authors extended entity-
+relationship model for modelling operational and analytical data which is called
+the multi-dimensional entity-relationship model. They introduced new represen-
+tation elements and showed the extension of an analytical schema. In [29], a
+relational database and an RDF triple store, were proposed to model the overall
+datasets. In that, the data are loaded into the DW in RDF format, and cached in
+the RDF triple store before being transformed into relational format. The actual
+data used for analysis was contained in the relational database. However, as the
+schemas in [30] and [29] were based on entity-relationship models, they cannot
+deal with high-performance, which is the key feature of a data warehouse.
+In [21], a star schema model was used. All data marts created by the star
+schemas are connected via some common dimension tables. However, a star
+schema is not enough to present complex agricultural information and it is dif-
+ﬁcult to create new data marts for data analytics. The number of dimensions of
+DW proposed by [21] is very small; only 3-dimensions namely, Species, Location,
+and Time. Moreover, the DW concerns livestock farming. Overcoming disadvan-
+tages of the star schema, the paper [20] proposed a constellation schema for
+an agricultural DW architecture in order to facilitate quality criteria of a DW.
+However, it does not describe how to implement the proposed DW.
+3
+Analyzing Cassandra, MongoDB and Hive in
+agricultural Big Data
+In general, a DW is a federated repository for all the data that an enterprise
+can collect through multiple heterogeneous data sources belonging to various
+enterprise’s business systems or external inputs [9], [14]. A quality DW should
+adapt many important criteria [1], [16], such as: (1) Making information easily
+accessible; (2) Presenting and providing right information at the right time; (3)
+Integrating data and adapting to change; (4) Achieving tangible and intangible
+beneﬁts; (5) Being a secure bastion that protects the information assets; and (6)
+Being accepted by DW users. So, to build an eﬃcient agricultural DW, we need
+to take into account these criteria.
+Currently, there are many popular databases that support eﬃcient DWs,
+such as such as Redshift, Mesa, Cassandra, MongoDB and Hive. Hence, we are
+analyzing the most popular and see which is the best suited for our data prob-
+lem. In these databases, Redshift is a fully managed, petabyte-scale DW service
+in the cloud which is part of the larger cloud-computing platform Amazon Web
+Services [2]. Mesa is highly scalable, petabyte data warehousing system which is
+designed to satisfy a complex and challenging set of users and systems require-
+ments related to Googles Internet advertising business [10]. However, Redshift
+and Mesa are not open source. While, Cassandra, MongoDB and Hive are open
+source databases, we want to use them to implement agriculture DW. Hence-
+forth, the Cassandra and MongoDB terms are used to refer to DWs of Cassandra
+and MongoDB databases.
+There are many papers studying Cassandra, MongoDB and Hive in the view
+of general DWs. In the following two subsections, we present advantages, dis-
+advantages, similarities and diﬀerences between Cassandra, MongoDB and Hive
+in the context of agricultural DW. Specially, we analyze to ﬁnd how to combine
+these DWs together to build a DW for agricultural Big Data, not necessarily
+best DW.
+3.1
+Advantages and disadvantages
+Cassandra, MongoDB and Hive are used widely for enterprise DWs. Cassandra1
+is a distributed, wide-column oriented DW from Apache that is highly scal-
+able and designed to handle very large amounts of structured data. It provides
+high availability with no single point of failure, tuneable and consistent. Cas-
+sandra oﬀers robust support for transactions and ﬂexible data storage based on
+ideas of DynamoDB and BigTable [12], [18]. While, MongoDB2 is a powerful,
+cross-platform, document oriented DW that provides, high performance, high
+availability, and scalability [3], [13]. It works on concept of collection and doc-
+ument, JSON-like documents, with dynamic schemas. So, documents and data
+structure can be changed over time. Secondly, MongoDB combines the ability
+to scale out with features, such as ad-hoc query, full-text search and secondary
+1 http://cassandra.apache.org
+2 http://mongodb.com
+index. This provides powerful ways to access and analyze datasets. Hive3 is an
+SQL data warehouse infrastructure on top of Hadoop4 for writing and running
+distributed applications to summarize Big Data [4], [17]. Hive can be used as an
+online analytical processing (OLAP) system and provides tools to enable data
+extract - transform - load (ETL). Hive’s metadata structure provides a high-
+level, table-like structure on top of HDFS (Hadoop Distributed File System).
+That will signiﬁcantly reduce the time to perform semantic checks during the
+query execution. Moreover, by using Hive Query Language (HQL), similar to
+SQL, users can make simple queries and analyse the data easily.
+Although, the three DWs have many advantages and have been used widely,
+they have major limitations. These limitations impact heavily on their use as
+agricultural DW.
+1. In Cassandra: (1) Query Language (CQL) does not support joint and sub-
+query, and has limited support for aggregations that are diﬃcult to analyze
+data; (2) Ordering is done per-partition and speciﬁed at table creation time.
+The sorting of thousands or millions of rows can be fast in development but
+sorting billion ones is a bad idea; (3) A single column value is recommended
+not be larger than 1MB that is diﬃcult to contain videos or high quality
+images, such as LiDAR images, 3-D images and satellite images.
+2. In MongoDB: (1) The maximum BSON document size is 16MB that is dif-
+ﬁcult to contain large data such as video, audio and high quality image; (2)
+JSONs expressive capabilities are limited because the only types are null,
+boolean, numeric, string, array, and object; (3) We cannot automatically
+rollback more than 300 MB of data. If we have more than that, manual
+intervention is needed.
+3. Hive is not designed for: (1) Online transaction processing; (2) Real-time
+queries; (3) Large data on network; (4) Trivial operations; (5) Row-level
+update; and (6) Iterative execution.
+3.2
+Feature Comparison
+Table 1 lists technical features used to compare Hive, MongoDB and Cassandra.
+For the ten overview features given in section A of Table 1, the three DWs diﬀer
+in data schema, query language and access methods. However, they all support
+map reduce. Moreover, the ETL feature is supported by Hive, limited to Cassan-
+dra and unsupported by MongoDB. The full-text search feature is only supported
+by MongoDB. The secondary index and ad-hoc query features are supported by
+Hive and MongoDB but not or restricted by Cassandra. The 9th feature being
+the Consistency
+Availability
+Partition tolerant classiﬁcation (CAP) theorem
+says how the database system behaves when facing network instability. It implies
+that in the presence of a network partition, one has to choose between consis-
+tency and availability. Hive and Cassandra choose availability. While, MongoDB
+chooses consistency. Finally, the structure of Hive and MongoDB are master -
+slave while Cassandra has peer - to - peer structure.
+3 http://hive.apache.org
+4 http://hadoop.apache.org
+Table 1. Technical Features
+No.
+Features
+Hive
+MongoDB
+Cassandra
+A. Overview Features
+1
+Data scheme
+Yes
+No-Schema
+Flexible Schema
+2
+Query language
+HQL
+JS-like syntax
+CQL
+3
+Accessing method
+JDBC, ODBC, Thrift
+JSON
+Thrift
+4
+Map reduce
+Yes
+Yes
+Yes
+5
+ETL
+Yes
+No
+Limited
+6
+Full-text search
+No
+Yes
+No
+7
+Ad-hoc query
+Yes
+Yes
+No
+8
+Secondary index
+Yes
+Yes
+Restricted
+9
+CAP
+AP
+CP
+AP
+10
+Structure
+Master Slave
+Master Slave
+Peer to Peer
+B. Industrial Features
+1
+Governance
+Yes (via Hadoop)
+Yes
+Yes (via JME)
+2
+Monitoring
+Yes
+Yes
+Yes
+3
+Data Lifecycle Management
+Yes (via Hadoop)
+Yes
+Yes
+4
+Workload Management
+Yes
+Yes
+Yes
+5
+Replication-Recovery
+Yes
+Yes
+Yes
+The section B of Table 1 describes ﬁve industrial features, such as governance,
+monitoring, data lifecycle management, workload management, and replication-
+recovery. All of Hive, MongoDB and Cassandra support these features. Hive
+supports governance and data lifecycle management features via Hadoop. Cas-
+sandra is based on Java Management Extensions (JME) for governance.
+Table 2. Data Management and Data Warehouse Features
+No.
+Features
+Hive
+MongoDB Cassandra
+A. Data Management Features
+1
+Security
+Yes
+Yes
+Yes
+2
+High Storage Capacity
+Yes (best)
+Yes
+Yes
+3
+Data Ingestion and Pre-processing
+Yes
+Yes
+No
+B. Data Warehouse Features
+1
+Business Intelligent
+Very good
+Limited
+Good
+2
+Data Science
+Very good
+Limited
+Limited
+3
+High Performance
+Non-real time
+Real time
+Real time
+The data management and DW features are described in section A and sec-
+tion B of Table 2, respectively. The data management features are security, high
+storage capacity, and data ingestion and pre-processing. The DWs have support
+for these features, except Cassandra does not support for data ingestion and
+pre-processing. Hive has the best for high storage capacity. The DW features are
+business intelligent, data science and high performance. Hive supports well busi-
+ness intelligent and data science but it is not suitable for real-time performance.
+MongoDB is very fast but it is limited in supporting for business intelligent and
+data science. Cassandra also is very fast and supports business intelligent but
+has limited capabilities for data science.
+4
+Agricultural Data Warehouse
+The general architecture of a typical DW includes four separate and distinct
+modules being Raw Data, ETL, Integrated Information and Data Mining. In
+the scope of this paper, we focus on the Integrated Information module which
+is a logically a centralised repository. It includes DW storage, data marts, data
+cubes and OLAP engine.
+The DW storage is organised, stored and accessed using a suitable schema
+deﬁned in the metadata. It can be either directly accessed or used to creating
+data marts which is usually oriented to a particular business function or enter-
+prise department. A data cube is a data structure that allows fast analysis of
+data according to the multiple dimensions that deﬁne a business problem. The
+data cubes are created by the OLAP engine.
+4.1
+OLAP
+OLAP is a category of software technology that provides the insight and un-
+derstanding of data in multiple dimensions through fast, consistent, interactive
+access to enable analysts or managers to make better decisions. By using roll-
+up, drill-down, slice-dice and pivot operations, OLAP performs multidimensional
+analysis in a wide variety of possible views of information that provide complex
+calculations, trend analysis and sophisticated data modelling with a short exe-
+cution time. So, OLAP is a key way to exploit information in a DW to allow
+end-users to analyze and explore data in multidimensional views.
+The OLAP systems are categorised into three types: namely relational OLAP
+(ROLAP), multidimensional OLAP (MOLAP) and hybrid OLAP (HOLAP):
+1. ROLAP uses relational or extended-relational database management system
+to store and manage DW. It can contain large amounts of data and inherit
+existing functionalities in the relational database.
+2. MOLAP uses array-based multidimensional storage engines for multidimen-
+sional views of data, rather than in a relational database. So, it can perform
+complex calculations with good performance. Besides, it is usually used as
+an OLAP engine for a DW which is built on a multidimensional schema.
+3. HOLAP is a combination of both ROLAP and MOLAP. It uses both rela-
+tional and multidimensional techniques to inherit the higher scalability of
+ROLAP and the faster computation of MOLAP.
+In our agricultural Big Data context, HOLAP is more suitable than ROLAP
+and MOLAP because:
+1. ROLAP has quite slow performance. Each ROLAP report is an SQL query in
+the relational database that requires a signiﬁcant execution time. In addition,
+ROLAP does not meet all the users’ needs, especially complex queries.
+2. MOLAP requires that all calculations should be performed during the data
+cube construction. So, it handles only a limited amount of data and does not
+scale well. In addition, MOLAP is not capable of handling detailed data.
+3. HOLAP inherits relational technique of ROLAP to store large data volumes
+and detailed information. Additionally, HOLAP also inherits multidimen-
+sional techniques of MOLAP to perform complex calculations and has good
+performance.
+4.2
+The Proposed Architecture
+Based on the analyis in Section 3, Hive is chosen for building our DW storage
+and it is combining with MongoDB to implement our Integrated Information
+module. This is for the following reasons:
+1. Hive is based on Hadoop which is the most powerful tool of Big Data. Besides,
+HQL is similar to SQL which is familiar to the majority of users. Especially,
+Hive supports well high storage capacity, business intelligent and data science
+more than MongoDB and Cassandra. These features of Hive are useful to
+make an agricultural DW and apply data mining technologies.
+2. Hive does not have real-time performance so it needs to be combined with
+MongoDB or Cassandra to improve performance of our Integrated Informa-
+tion module.
+3. MongoDB is more suitable than Cassandra to complement Hive because: (1)
+MongoDB supports joint operation, full text search, ad-hoc query and second
+index which are helpful to interact with users. While Cassandra does not
+support these features; (2) MongoDB has the same master slave structure
+with Hive that is easy to combine. While the structure of Cassandra is peer
+- to - peer; (3) Hive and MongoDB are more reliable and consistent. So the
+combination between Hive and MongoDB supports fully the CAP theorem
+while Hive and Cassandra are the same AP systems.
+Fig. 1. Our agricultural data warehouse architecture
+Our DW architecture for agricultural Big Data is illustrated in Figure 1
+which contains three modules, namely Integrated Information, Products and
+Raw Data. The Integrated Information module includes two components being
+MongoDB component and Hive component. Firstly, the MongoDB component
+will receive real-time data, such as user data, logs, sensor data or queries from
+Products module, such as web application, web portal or mobile app. Besides,
+some results which need to be obtained in real-time will be transferred from
+the MongoDB to Products. Second, the Hive component will store the online
+data from and send the processed data to the MongoDB module. Some kinds
+of queries having complex calculations will be sent directly to Hive. After that,
+Hive will send the results directly to the Products module.
+In Raw Data module, almost data in Operational Databases or External
+Data components is loaded into Cassandra component. It means that we use
+Cassandra to represent raw data storage. This improves the performance of ETL
+and helps us deploy our system on cloud or distributed systems better.
+Fig. 2. A part of our data warehouse schema for Precision Agriculture
+4.3
+Our Schema
+The DW uses schema to logically describe the entire datasets. A schema is a col-
+lection of objects, including tables, views, indexes, and synonyms which consist
+of some fact and dimension tables [22]. The DW schema can be designed through
+the model of source data and the requirements of users. There are three kind of
+schemas, namely star, snowﬂake and constellation. With features of agricultural
+data, the agricultural DW schema needs to have more than one fact table and
+be ﬂexible. So, the constellation schema, also known galaxy schema, is selected
+to design our DW schema.
+We developed a constellation schema for our agricultural DW and it is par-
+tially described in Figure 2. It includes 3 fact tables and 19 dimension tables.
+The FieldFact fact table contains data about agricultural operations on ﬁelds.
+The Order and Sale fact tables contain data about farmers’ trading operations.
+The FieldFact, Order and Sale facts have 12, 4 and 4 dimensions, and have 6,
+6 and 5 measures, respectively. While, dimension tables contain details about
+each instance of an object involved in a crop yield. The main attributes of these
+dimension tables are described in the Table 3. The key dimension tables are con-
+nected to their fact table. However, there are some dimension tables connected
+to more than one fact table, such as Crop and Farmer. Besides, the CropState,
+Inspection and Site dimension tables are not connected to any fact table. The
+CropState and Inspection tables are used to support the Crop table. While, the
+Site table supports the Field table.
+Table 3. Descriptions of some dimension tables
+No.
+Dim. tables
+Particular attributes
+1
+Business
+BusinessID, Name,Address, Phone, Mobile, Email
+2
+Crop
+CropID, CropName, VarietyID, VarietyName, EstYield, SeasontSart, Seaso-
+nEnd, BbchScale, ScientiﬁcName, HarvestEquipment, EquipmentWeight
+3
+CropState
+CropStateID, CropID, StageScale, Height, MajorStage, MinStage, MaxStage,
+Diameter, MinHeight, MaxHeight, CropCoveragePercent
+4
+Farmer
+FarmerID, FarmerName, Address, Phone, Mobile, Email
+5
+Fertiliser
+FertiliserID, Name, Unit, Status, Description, GroupName
+6
+Field
+FieldID, FieldName, SiteID, Reference, Block, Area, AreaUnit, WorkingArea,
+WorkingAreaUnit, FieldGPS, Notes
+7
+Inspection
+InspectionID, CropID, Description, ProblemType, Severity, ProblemNotes,
+AreaValue, AreaUnit, Order, Date, Notes, GrowthStage
+8
+Nutrient
+NutrientID, NutrientName, Date, Quantity
+9
+OperationTime OperationTimeID, StartDate, EndDate, Season
+10
+Pest
+PestID, CommonName, ScientiﬁcName, PestType, Description, Density, Min-
+Stage, MaxStage, Coverage, CoverageUnit
+11
+Plan
+PlanID,
+PlanName,
+PlanNumber,
+RegistrationNo,
+ProductName,
+Produc-
+tRate, Date, WaterVolume
+12
+Product
+ProductID, ProductName, GroupName
+13
+Site
+SiteID, FarmerID, SiteName, Reference, Country, AddressName, AddressTown,
+PostalCode, GPS, Created, CreatedBy
+14
+Spray
+SprayID, SprayProductName, ProductRate, AppliedArea, AppliedDate, Wa-
+terVolume, VolumeUnit, ConﬁrmDuration, ConﬁrmWindSPeed, ConﬁrmDirec-
+tion, ConﬁrmTemperature, ConﬁrmHumidity, ActivityType
+15
+Soil
+SoilID, PH, Phosphorus, Potassium, Magnesium, Calcium, CEC, Silt, Clay,
+Sand, TextureLabel, TestDate
+16
+Supplier
+SupplierID, SupplierName, SupplierContactName, Address, ContactPhone,
+ContactMobile, ContactEmail
+17
+Task
+TaskID, TaskDesc, TaskStatus, TaskDate, TaskInterval, CompletedDate, App-
+Code
+18
+Treatment
+TreatmentID, TreatmentName, FormType, LotCode, Rate, ApplCode, LevlNo,
+Type, Description, ApplDesc, TreatmentComment
+19
+WeatherStation WeatherStationID, StationName, MeasureDate, AirTemperature, SoilTemper-
+ature, StationReadingBatch
+5
+Experiments
+Through the proposed architecture in Section 4.2, our DW inherited many ad-
+vantages from Hive, MongoDB and Cassandra presented in Section 3, such as
+high performance, high storage, large scale analytic and security. In the scope
+of this paper, we evaluated our DW schema and data analysis capacity on real
+agricultural datasets through complex queries. In addition, the time performance
+of our agricultural DW storage was also evaluated and compared to MySQL on
+many particular built queries belonging to diﬀerent query groups.
+5.1
+Data Analyzing Demo
+Fig. 3. Data in UK and Ireland [23]
+The input data for the DW was pri-
+marily obtained from an agronomy
+company which supplies data from
+its operational systems, research re-
+sults and ﬁeld trials. Specially, we
+are supplied real agricultural data in
+iFarms, B2B sites, technology cen-
+tres and demonstration farms. Their
+speciﬁc positions in several Euro-
+pean countries are presented in Fig-
+ures 3 and 4 [23]. There is a to-
+tal of 29 datasets. On average, each
+dataset contains 18 tables and is
+about 1.4 GB in size. The source
+datasets are loaded on our CONSUS
+DW Storage based on the schema
+described in Section 4.3 through an
+ETL tool. From the DW storage, we
+can extract and analyze useful in-
+formation through tasks using com-
+plex HQL queries or data mining al-
+gorithms. These tasks could not be
+executed if the separate 29 datasets
+have not been integrated into our DW storage.
+An example for a complex request: ”List crops, fertilisers, corresponding
+fertiliser quantities in spring, 2017 in every ﬁeld and site of 3 farmers (crop
+companies) who used the large amount of Urea in spring, 2016”. In our schema,
+this query can be executed by a HQL/SQL query as shown in Figure 5. To
+execute this request, the query needs to exploit data in the FieldFact fact table
+and the six dimension tables, namely Crop, Field, Site, Farmer, Fertiliser and
+OperationTime. The query consists of two subqueries. It returned 3 farmers
+(crop companies) that used the largest amount of Urea in spring, 2016.
+Fig. 4. Data in Continental Europe [23]
+Fig. 5. A screenshort of executing the query example in our Hive
+5.2
+Performance Analysis
+The performance analysis was implemented using MySQL 5.7.22, JDK 1.8.0 171,
+Hadoop 2.6.5 and Hive 2.3.3 which run on Bash on Ubuntu 16.04.2 on Windows
+10. All experiments were run on a laptop with an Intel Core i7 CPU (2.40
+GHz) and 16 GB memory. We only evaluate reading performance of our DW
+storage because a DW is used for reporting and data analysis. The database of
+our storage is duplicated into MySQL to compare performance. By combining
+popular HQL/SQL commands, namely Where, Group by, Having, Left (right)
+Join, Union and Order by, we create 10 groups for testing. Every group has 5
+queries and uses one, two or more commands (see Table 4). Besides, every query
+also uses operations, such as And, Or, ≥, Like, Max, Sum and Count, to combine
+with the commands.
+All queries were executed three times and we took the average value of the
+these executions. The diﬀerent times in runtime between MySQL and our storage
+of query qi is calculated as Timesqi = RT mysql
+qi
+/RT ours
+qi
+. Where, RT mysql
+qi
+and
+RT ours
+qi
+are respectively average runtimes of query qi on MySQL and our storage.
+Besides, with each group Gi, the diﬀerent times in runtime between MySQL
+and our storage TimesGi = RT mysql
+Gi
+/RT ours
+Gi
+. Where, RTGi = Average(RTqi)
+is average runtime of group Gi on MySQL or our storage.
+Table 4. Command combinations of queries
+Group Queries Where Group by Having Left (right) Joint Union Order by
+1
+1 - 5
+x
+2
+6 - 10
+x
+x
+3
+11 - 15
+x
+x
+4
+16 - 20
+x
+x
+5
+21 - 25
+x
+x
+6
+26 - 30
+x
+x
+x
+7
+31 - 35
+x
+x
+x
+8
+36 - 40
+x
+x
+x
+x
+9
+41 - 45
+x
+x
+x
+x
+x
+10
+45 - 50
+x
+x
+x
+x
+x
+0
+10
+20
+30
+40
+50
+0
+10
+20
+30
+40
+1
+Queries (qi)
+Diﬀerent times (Timesqi)
+Group 1
+Group 2
+Group 3
+Group 4
+Group 5
+Group 6
+Group 7
+Group 8
+Group 9
+Group 10
+Fig. 6. Diﬀerent times between MySQL and our storage in runtime every Query
+Figure 6 and Figure 7 describe diﬀerent times in runtime in every query
+belongs to 10 groups and every group. Unsurprisingly, although running on one
+computer, but with large data volume, our storage is faster than MySQL at
+46/50 queries and all 10 query groups. MySQL is faster than our storage at
+3 queries 12th, 13th and 18th belonging to groups 3rd and 4th. Two databases
+are same at the query 25th belonging to group 5th. Comparing to MySQL, our
+storage is more than at most (6.24 times) at group 1st which uses only Where
+command, and at least (1.22 times) at group 3rd which uses Where and Joint
+commands.
+0
+2
+4
+6
+8
+10
+2
+4
+6
+Mean
+6.24
+2.92
+1.22
+2.86
+2.27
+4.66
+3.36
+4.63
+3.16
+1.56
+3.19
+Groups (Gi)
+Diﬀerent times (TimesGi)
+Fig. 7. Diﬀerent times between MySQL and our storage in runtime of every group
+Figure 8 presents the average runtime of the 10 query groups on MySQL and
+our storage. Mean, the run time of a reading query on MySQL and our storage
+is 687.8 seconds and 216.1 seconds, respectively. It means that our storage is
+faster 3.19 times. In the future, by deploying our storage solution on cloud or
+distributed systems, we believe that the performance will be even much better
+than MySQL.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10 Mean
+0
+500
+1,000
+1,081.5
+599.7
+111.7
+790.4776.6
+1,109.2
+483
+1,057.3
+297.9
+571.1
+687.8
+173.4205.2
+91.2
+276.4342.8
+238
+143.7
+228.3
+94.2
+366.4
+216.1
+Groups
+Average runtimes (seconds)
+MySQL
+Our storage
+Fig. 8. Average Runtimes of MySQL and our storage in every Groups
+6
+Conclusion
+In this paper, we compared and analyzed some existing popular open source DWs
+in the context of agricultural Big Data. We designed and implemented the agri-
+cultural DW by combining Hive, MongoDB and Cassandra DWs to exploit their
+advantages and overcome their limitations. Our DW includes necessary mod-
+ules to deal with large scale and eﬃcient analytics for agricultural Big Data.
+Additionally, the presented schema herein was optimised for the real agricul-
+tural datasets that were made available to us. The schema been designed as a
+constellation so it is ﬂexible to adapt to other agricultural datasets and quality
+criteria of agricultural Big Data. Moreover, using the short demo, we outlined a
+complex HQL query that enabled knowledge extraction from our DW to opti-
+mize of agricultural operations. Finally, through particular reading queries using
+popular HQL/SQL commands, our DW storage outperforms MySQL by far.
+In the future works, we shall pursue the deployment of our agricultural DW
+on a cloud system and implement more functionalities to exploit this DW. The
+future developments will include: (1) Sophisticated data mining techniques to de-
+termine crop data characteristics and combine with expected outputs to extract
+useful knowledge; (2) Predictive models based on machine learning or graph al-
+gorithms [11]; (3) An intelligent interface for data access; (4) Combination with
+the high-performance knowledge map framework [19].
+Acknowledgment
+This research is part of the CONSUS research programme which is funded under
+the SFI Strategic Partnerships Programme (16/SPP/3296) and is co-funded by
+Origin Enterprises Plc.
+References
+1. Adelman, S., Moss, L.: Data warehouse project management, 1st edition. Addison-
+Wesley Professional (2000)
+2. Amazon team: Amazon Redshift database developer guide. Samurai ML (2018)
+3. Chodorow, K.: MongoDB: The deﬁnitive guide, 2nd edition (powerful and scalable
+data storage). O’Reilly Media (2013)
+4. Du, D.: Apache Hive essentials, 2nd edition. Packt Publishing (2018)
+5. Eurobarometer team: Europeans, agriculture and the common agricultural policy.
+Special Eurobarometer 440, The European Commission (2016)
+6. FAO-CSDB team: Global cereal production and inventories to decline but over-
+all supplies remain adequate, release date: December 06, 2018. Cereal Supply and
+Demand Brief, FAO (2018)
+7. FAO-FSIN team: Global report on food crises 2018. Food Security Information
+Network, FAO (2018)
+8. Feng, Y., et al.: Modeling reference evapotranspiration using extreme learning ma-
+chine and generalized regression neural network only with temperature data. Com-
+puters and Electronics in Agriculture, Vol. 136, pp. 71-78 (2017)
+9. Golfarelli, M., Rizzi, S.: Data warehouse design: modern principles and methodolo-
+gies. McGraw-Hill Education (2009)
+10. Gupta, A., et al.: Mesa: a geo-replicated online data warehouse for Google’s ad-
+vertising system. Communications of the ACM, vol. 59, no. 7, pp. 117-125 (2016)
+11. Helmer, S., Ngo, V. M.: A Similarity Measure for Weaving Patterns in Textiles. In
+Proceedings of the 38th ACM SIGIR Conference on Research and Development in
+Information Retrieval, pp. 163-172 (2015)
+12. Hewitt, E., Carpenter, J.: Cassandra: the deﬁnitive guide, 2nd edition (distributed
+data at web scale). O’Reilly Media (2016)
+13. Hows, D., et al.: The deﬁnitive guide to MongoDB, 3rd edition (a complete guide
+to dealing with big data using MongoDB). Apress (2015)
+14. Inmon, W. H.: Building the data warehouse. Wiley (2005)
+15. Kamilaris, A., et al.: Estimating the environmental impact of agriculture by means
+of geospatial and big data analysis. Science to Society, pp. 39-48 (2018)
+16. Kimball, R., Ross, M.: The data warehouse toolkit: the deﬁnitive guide to dimen-
+sional modeling (3rd edition). Wiley (2013)
+17. Lam, C. P., et al.: Hadoop in action, 2nd edition. Manning (2016)
+18. Neeraj, N.: Mastering Apache Cassandra, 2nd edition. Packt Publishing (2015)
+19. Ngo, V. M., Cao, T.H.: Discovering Latent Concepts and Exploiting Ontological
+Features for Semantic Text Search. In Proceedings of the 5th IJCNLP, ACL An-
+thology, pp. 571-579 (2011)
+20. Ngo, V. M., et al.: An eﬃcient data warehouse for crop yield prediction. The 14th
+International Conference Precision Agriculture (ICPA-2018), pp. 3:1-3:12 (2018)
+21. Nilakanta, S., et al.: Dimensional issues in agricultural data warehouse designs.
+Computers and Electronics in Agriculture, Vol. 60, No. 2, pp. 263-278 (2008)
+22. Oracle team: Database data warehousing guide, Oracle12c doc release 1 (2017)
+23. Origin team: Annual report and accounts, Origin Enterprises plc (2018)
+24. Pantazi, X. E.: Wheat yield prediction using machine learning and advanced sens-
+ing techniques. Computers and Electronics in Agriculture, Vol. 121, pp. 57-65 (2016)
+25. Park, S., et al.: Drought assessment and monitoring through blending of multi-
+sensor indices using machine learning approaches for diﬀerent climate regions. Agri-
+cultural and Forest Meteorology, Vol. 216, pp. 157-169 (2016)
+26. Rupnik, R., et al.: AgroDSS: a decision support system for agriculture and farming.
+Computers and Electronics in Agriculture (2018)
+27. Schnase, J., et al.: MERRA analytic services: meeting the big data challenges of
+climate science through cloud-enabled climate analytics-as-a-service. Computers,
+Environment and Urban Systems, Vol. 61, pp. 198-211 (2017)
+28. Schrijver, R., et al.: Precision agriculture and the future of farming in Europe.
+Report of STOA, Science Foresight Unit, European Union (2016)
+29. Schuetz, C. G., et al.: Building an active semantic data warehouse for precision
+dairy farming. Organizational Computing and Electronic Commerce, 28(2) (2018)
+30. Schulze, C., et al.: Data modelling for precision dairy farming within the com-
+petitive ﬁeld of operational and analytical tasks. Computers and Electronics in
+Agriculture, Vol. 59, No. 1-2, pp. 39-55 (2007)
+31. UN team: World population projected to reach 9.8 billion in 2050, and 11.2 billion
+in 2100. Department of Economic and Social Aﬀairs, United Nations (2017)
+32. USDA report: World agricultural supply and demand estimates 08/2018. United
+States Department of Agriculture (2018)

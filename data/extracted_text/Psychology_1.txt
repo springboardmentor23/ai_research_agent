@@ -1,0 +1,433 @@
+Kurt Lewin, psychological constructs and sources of 
+brain cognitive activity.  
+Włodzisław Duch 
+Department of Informatics, Faculty of Physics, Astronomy and Informatics,  
+and Neurocognitive Laboratory, Center for Interdisciplinary Modern Technologies,  
+Nicolaus Copernicus University, Toruń, Poland. 
+ 
+Abstract. Understanding mind-brain-environment relations is one of the key topics in psychology. 
+Kurt Lewin, inspired by theoretical physics, tried to establish topological and vector psychology ana-
+lyzing patterns of interaction between the individual and her/his environment. The time is ripe to 
+reformulate his ambitious goals, searching for ways to interpret objectively measured brain process-
+es in terms of suitable psychological constructs. Connecting cognitive and social psychology con-
+structs to neurophenomics, as it is done now in psychiatry, should ground them in physical reality.  
+Keywords: psychological constructs, dynamical systems, neurodynamics, neuropsychiatric phenom-
+ics, attractor networks, Research Domain Criteria, Kurt Lewin.  
+ 
+1. Searching for bridges 
+Psychology is based on constructs that were derived from common-sense understanding of 
+mental processes and behavior, refined over the years, but without connection to physical pro-
+cesses in the brain. Paul Churchland in 1981 article “Eliminative Materialism and the Proposi-
+tional Attitudes” argued that common-sense understanding of the mind (or folk psychology) is 
+false and that progress in understanding brain functions will lead to elimination of most con-
+cepts that psychology is based on. Patricia Churchland in an influential book “Neurophiloso-
+phy” (1986) has also supported eliminativist position. After all biology, chemistry and physics 
+had to abandon many concepts and theories that in the past seemed reasonable, but were elim-
+inated by deeper understanding of biological and physical processes. Many constructs intro-
+duced by Freudian psychology have been rejected. Other constructs, such as distinction be-
+tween different types of memory were gradually introduced: working memory (~1960), epi-
+sodic and semantic memory (1972), implicit memory (1981). Such constructs may in future 
+still be splitted into more subtypes that correspond to specific brain processes.  
+Defining psychological constructs is harder than physics or biology constructs. Individual 
+variability of brains, irreversible influence of experiments on cognitive systems, makes com-
+parison and stability of results quite difficult. For that reason Smedslund (2016) concluded 
+that psychology cannot be an empirical science. Failure of structuralism and move towards 
+behaviorism created an interest in conceptual foundations of psychology, following the suc-
+cess of physics. Kurt Lewin has published several influential books (1936, 1938, 1951) intro-
+ducing psychological force field analysis, describing psychological processes in topological 
+spaces, focusing on conceptual representations and measurements of psychological forces. 
+Daniel Khaneman in his Nobel Prize speech (2002) said: “As a first-year student, I encoun-
+tered the writings of the social psychologist Kurt Lewin and was deeply influenced by his 
+maps of the life space, in which motivation was represented as a force field acting on the in-
+dividual from the outside, pushing and pulling in various directions. Fifty years later, I still 
+draw on Lewin's analysis of how to induce changes in behavior …”.  
+Lewin has formulated field theory to describe behavior as a result of patterns of interactions 
+between the individual and the environment. In his theory cognitive dynamics is represented 
+as a movement in phenomenological (he has used the word “hodological”) space, a “life 
+space” or a field that includes person's values, needs, goals, motives, moods, hopes, anxieties, 
+and ideals. Forces in this field arise in social situations, driving cognitive movement toward or 
+away from goals of the person. His description of the process of mental change include 3 
+stages: unfreezing or escaping the inertia, transition without clear idea where it leads, and 
+freezing or crystallizing new behaviors. These ideas can be linked to activity of neural net-
+works, simulated in computer or observed in neuroimaging (Duch, 2010;2011).  
+Perhaps the time is ripe to take ideas of Kurt Lewin seriously. I will first make a short review 
+of different trends in psychology that were initiated by Lewin’s work, and then present some 
+developments in neuroscience that should ground psychological constructs in objectively 
+measured brain processes.   
+2. Dynamical ideas in psychology 
+Lewin’s “field theory” ideas, discussed in the next section, led to the development of Gestalt 
+approach, avoidance conflict model, and personality psychology (Trempała, Pepitone, Raven 
+2006). They have contributed to many trends in science that are briefly presented below.  
+George Kelly (1955) has formulated personal construct psychology, as complete theory of 
+cognition, action, learning and intention, using geometry of psychological spaces as alterna-
+tive to logic. This may be considered as a simplification of Lewin’s field theory, making it 
+easier to apply in practice. Subjective reality is expressed in terms of psychological con-
+structs. Kelly (1955) assumed that "A person's construction system is composed of a finite 
+number of dichotomous constructs." These constructs provide psychological dimensions that 
+characterize people and mental events. Understanding people requires identification of con-
+structs they use, defined by results of psychometric tests, mental states, and various other 
+types of elements. This information is stored in a “Repertory Grid” matrix, with rows repre-
+senting personal constructs that are relevant to some specific purpose, and columns that repre-
+sent various elements, such as opinions, preferences, or potential actions. Techniques based 
+on personal construct psychology (PCP) have wide applications in social psychology, psycho-
+therapy, personality assessment and human resources in business context, supporting deci-
+sion-making processes and helping to study personal and interpersonal systems of meaning 
+(Abraham, Shaw, 1984). WebGrid (Gains and Shaw, 1997; http://webgrid.uvic.ca) approach 
+has further developed the conceptual representation system, using graded constructs instead of 
+simple dichotomies, providing interactive software tools to elicit and analyze mental models 
+of individuals and groups within specific domains of experience.  
+Many other grid-based software approaches were created to represent psychological con-
+structs. Perceptions, beliefs, values, personality traits and other constructs may be represented 
+in high-dimensional spaces, with measured or estimated values in particular dimensions. Rog-
+er Shepard’s research on mental representations (Shepard 1987; 1994) was focused on under-
+standing topology of such spaces, searching for interesting regular structures and invariants 
+that represent universal psychological laws. Using non-metric multidimensional scaling ap-
+proach he has shown how physical properties of stimuli, important from evolutionary point of 
+view, are reflected in mental models. Perception of objects, spatial relations, color space, col-
+or constancy, the pitch of sounds, tastes, and abstract numbers rely on neural transformations 
+that support optimal generalization and categorization. Many experiments with human and 
+animals perception proved that the use of inter-stimulus distances D to measure similarity of 
+stimuli leads to exponentially decaying generalization probabilities P(D)=exp(D) of behav-
+ioral reactions. Another universal psychological law says that the discriminative reaction time 
+falls off as the inverse of the inter-stimulus distance (Shepard 1987; 1994) Both laws can be 
+derived from optimal Bayesian principles. Psychological laws related to perception and men-
+tal representation evolved over a long time, reflecting universal physical principles. For ex-
+ample, 24-hour circadian rhythm is a consequence of the law of angular momentum conserva-
+tion that warrants stable spinning of the Earth. Similarity and causal relations between mental 
+representations of physical events are isomorphic to the relations between physical events 
+themselves, although there is obviously no direct resemblance of mental representations to 
+physical events. This second-order similarity is the basis for efficacy of learning by mental 
+simulations of physical events, thought experiments, observed in mental rotation and imagery. 
+Apparent motion is constrained by kinematic geometry in three-dimensional space, and re-
+flects anticipations about object constancy. 
+Geometric/dynamical ideas related to mental models may be found in many fields. Lewin’s 
+ideas inspired decision field theory (Busemeyer & Townsend, 1993) and Discrete Process 
+Model (DPM) theory (Rainio, 2009). In DPM psychic forces are defined as the probability of 
+transition from one cognitive state in valence field to another. Rainio concluded “It seems 
+obvious that Kurt Lewin’s brilliant intuitive insights concealed fundamental ideas which lead 
+to new understanding not only in dynamical psychology but also in a much greater domain of 
+philosophy”.  
+Cognitive science book “Mind as motion” (Port and van Gelder, 1995) focused on dynamical 
+systems approach as a general framework for theories of cognition, discussing developmental 
+processes, language, articulation in speech, decision making, perception, learning, spatial ori-
+entation and many other issues. Computational systems used by symbolic cognitive science 
+models belong to a restricted subclass of dynamical systems. Most psychological processes 
+change in a continuous way and cannot be represented by computational systems. Conceptual 
+representation using discrete symbols, verbal descriptions of nonlinear dynamics, may not be 
+a good approximation of behavior. Early cognitive science relied on symbolic artificial intel-
+ligence in search for unified theories of cognition (Newell, 1994). Reasoning and problem 
+solving were understood as search in discrete problems spaces. Several cognitive architectures 
+(ACT-R, SOAR, CLARION and others) were proposed as computational models explaining 
+many aspects of cognition (see the review in Duch, Oentaryo and Pasquier 2008). This ap-
+proach had some successes, but it was never useful in understanding perception, motor control 
+or imagery. Recent revival of artificial intelligence based on machine learning, deep neural 
+networks and dynamical systems has led to great progress in technical applications. These 
+approaches should be fully encapsulated in new cognitive architectures that will advance con-
+nectionist models to a new level, providing simulations of many behavioral functions. Generic 
+processes of self-organization and learning (Kelso 1997) lead to creation and evolution of 
+complex patterned behavior that can be analyzed in psychological spaces.  
+Dynamical approach has also been used in developmental psychology to describe grasping, 
+crawling and learning to walk (Thelen and Smith,1996; Smith and Thelen 1993). It can ex-
+plain many aspects of language, including some features of semantics and conceptual integra-
+tion (Fauconnier, 1994), stream of thoughts represented by trajectories in psychological spac-
+es (Elman, 1995), and development of natural categories and associations in language in spac-
+es created by latent semantic analysis (Landauer and Dumais, 1997). In “The Continuity of 
+Mind” (Spivey, 2007) a step towards connecting psychology with brain activity is made, by 
+considering trajectories through the neural state space. This approach was applied to motor 
+action, vision, formation of categories, language, memory and problem solving.  
+Many recent discoveries in neuroscience show that interpreting brain neurodynamics in lan-
+guage of dynamical systems leads to a deeper understanding of current psychological con-
+structs, and to creation of the new ones, more specific and closely linked to the physical reali-
+ty of objectively measured brain activity. Symbolic, conceptual description of continuous pro-
+cesses may in most cases be useful as a rough description of behavior. However, more de-
+tailed dynamical models of mental processes will be hard to describe conceptually. Some as-
+pects of nonlinear dynamics may be visualized in psychological spaces. 
+I have formulated definition of mental forces (Duch, 1996; 1997; 2012) similar to the Discrete 
+Process Model of Rainio (2009), pointing out that such forces should be measured by the 
+probability of transitions between brain states in neurodynamics. We can measure brain ac-
+tivity using many techniques, such as EEG, MEG, NIRS, PET, fMRI and other approaches. 
+How this neural activity is spread through the connectome to various regions of the brain, and 
+how joint activity of these regions is related to behavior is not yet clear. Even worse, descrip-
+tion of the phenomenology of mental states through introspections seems impossible, as 
+shown for example by Hurlburt and Schwitzgabel (2007), and Schwitzgabel (2011). We can 
+describe only those mental states that correspond to strong, repeatable brain activations asso-
+ciated with linguistic tokens (Duch, 2012). Neurophenomenology proposed by Varela (1996) 
+explores mutual constraints between brain activity and inner experience. Still most of neuro-
+science and neuroimaging research ignores subjective experience, while psychological theo-
+ries forget about the brain processes behind theoretical constructs they postulate.   
+3. Kurt Lewin’s field theory and attractor neural networks 
+Lewin was especially concerned with “A dynamic theory of personality” (1935), including all 
+factors that may influence behavior. His famous equation B=f(P,E) expresses behavior B as a 
+function of both the person P and the environment E. More precisely (Lewin 1951), behavior 
+of a person depends on the: genetic and other factors that contribute to the brain structure on 
+which personality of this person develops in a given environment; dynamic approach that in-
+volves forces determining actions; psychological perspective of a person subjectively perceiv-
+ing her/his “life space”, relevant internal-external factors; analysis of the situation, reflection, 
+associations, understanding; finally behavior as a function of the total field containing all 
+these elements changing in time, described in topological spaces divided into some regions. 
+This has been illustrated in his book using a diagram that divides the field into regions and 
+arrows representing forces based on valence. Fig. 1 represents positive central force field G 
+(Lewin 1938, Fig. 33) and different regions that have influence on this central region. A per-
+son P placed in region A exerts some force on C, denoted as fA,C. This is still a metaphoric 
+description of intentional activity and goal-directed behavior.  
+Fig. 1. Illustration of Lewin’s force field.  
+According to Lewin psychology should use constructs to represent causal influences and con-
+nections between observations. He has introduced several new constructs, such as valence, 
+action research, sensitivity training, group dynamics, mind as a complex energy field, behav-
+ior as a change in the state of this field, regions, life space, forces and tension, equilibrium 
+states. Complex energy field can be presented in the language of dynamical systems. Trans-
+formation between states of activations in neural space S(N) and between mental states S(M) 
+described in psychological spaces is already to some degree possible. Brain-computer inter-
+faces (BCI) analyze and interpret mental activity, changing it into intentional actions. Mind 
+reading is an exciting and rapidly developing field. Mapping from Brain  Mind, or Objec-
+tive  Subjective, may be represented in symbolic form as:   
+S(B;E)S(M;E’), 
+where environment E is reduced at the mental level to E’, psychological perspective of E, as 
+Lewin has noticed. “Genetic factors” forming the foundations on which personality may de-
+velop are now greatly expanded.  
+National Institute of Mental Health (NIMH) in the 
+USA has initiated an ambitious Research Domain 
+Criteria (RoDC) approach to multi-level neuropsy-
+chiatric phenomics (Insel et al. 2010). Instead of 
+traditional description of mental disease by listing 
+their symptoms deregulation of normal activity of 5 
+large brain systems is considered: negative/positive 
+valence systems, arousal-regulatory system, cogni-
+tive system, and social processes system. These 
+systems are characterized at many levels by genes, 
+molecules, cells, circuits, physiology at the physi-
+cal level, and description of behavior, plus subjec-
+tive self-reports, collected using various research 
+paradigms. While all physical levels influence be-
+havior it is the activity at the neural system level, 
+representing Lewin’s complex energy field, that is 
+directly responsible for action. Neurodynamics 
+explains cognition and behavior, it is measured 
+using neuroimaging techniques, and can also be 
+simulated computationally using neural network 
+models. There is no simple causality here, as envi-
+ronment and behavior may influence genetic level, 
+changing the system through epigenetic regulation 
+of gene expressions. The causal chain includes a loop:  
+Environment => Genes => Proteins => signaling pathways, receptors, ion channels, synapses 
+=> properties of neurons => development of neural networks, connectomes => neurodynam-
+ics  => cognitive phenotypes => behavior, abnormal behavior => syndromes, mental disorders 
+=> interactions with the environment. 
+I will present here analysis of neurodynamical processes based on computational simulations 
+and fMRI neuroimaging experiments, referring to Lewin’s ideas. Artificial neural networks 
+are constructed from computational units representing neurons. They receive signals, do sim-
+ple calculations and send signals to other neurons. The state of the network is characterized by 
+the pattern of activity of neurons that changes in time. Biological neurons have very complex 
+structures. Neural simulators should take into account at least basic biological properties of 
+neurons, such as excitatory and inhibitory types of connections (activating ion channels in 
+synapses of neurons that let positively and negatively charged ions form currents flowing be-
+tween inter and extra-cellular space), and spontaneous depolarization decreasing activity of 
+neurons (leak current channels). Neural simulator called “Emergent” is a suitable tool provid-
+ing biologically inspired model of neurons and their net-
+works (Aisa, Mingus, O'Reilly, 2008). The 3-layer model 
+of reading has separate layers O for orthography, P for 
+phonology, and a large layer S to represent semantics as a 
+distributed activity over 140 neural units representing mi-
+crofeatures defining concepts. Additional hidden layers 
+transform signals flowing in both directions between lay-
+ers O  P, O  S, and P  S. The system has learned to 
+map each of the 3 layers to the other two for a set of 40 
+words by adjusting strength of synaptic connections.  
+Activation of the orthographic layer will lead to specific 
+patterns of activation in the phonological and semantic 
+layers, etc. These activations are not static, they fluctuate 
+around specific pattern that persists for some time, depending on network properties and noise 
+in the system. Since these quasi-stable patterns attract activity from similar patterns, compet-
+ing with each other, they are called attractors of the dynamics. All states that are attracted to 
+the same pattern belong to the basin of attraction for that specific pattern. Basins of attractors 
+divide the space of neural activity into distinct regions. In case of semantic layer such patterns 
+represent concepts, and are linked to symbolic representation in O and P layers. Neural net-
+works that have this type of dynamics are called attractor networks.   
+Transitions between attractor states are possible because neurons active in such states after 
+some time will decrease their activity and desynchronize (due to the leak currents leading to 
+spontaneous depolarization). Also noise in the system and new stimuli may push the system 
+out of the attractor basins. This process has been described in Lewin theory in terms of psy-
+chological forces that act on life energy field changing its state. In the model here neurody-
+namics means changes in 140-dimensional patterns of semantic layer activity. This can be 
+visualized using several techniques: recurrence plots, fuzzy symbolic dynamics or MDS visu-
+alization (Duch and Dobosz, 2011). Presenting selected word as input in O or P layer the sys-
+tem reaches attractor state representing the semantics of this word, and the S layer pattern 
+fluctuates staying in the basin of attraction, and after some time making rapid transition to 
+another attractor state. These transitions usually take place between concepts that have weak 
+overlap, sharing some microfeatures. Transitions at the semantic level result in activation of 
+the phonological layer that produce a stream of words, serving as a model of the stream of 
+thoughts. Dwell time in attractor basin determines the speed of changes in the mental field, or 
+speed of attention shifts.  
+In Fig. 2 each point represents specific activity pattern in 140 dimensions. Recurrence plots 
+(top left) show using color codes distance D(x(ti),x(tj)) between the current state at time ti and 
+the state at time tj. Dark square areas along the diagonal show that the system stays in the at-
+tractor basin, the trajectory x(ti) changes only slightly. After a short time there is a fast change 
+to another attractor. Intermediate states during transitions are too short to activate symbolic 
+representations and have no semantic interpretation. Wandering between different attractor 
+states is clearly seen in the MDS representation (top right). Fluctuations of the patterns in the 
+FSD representation show a few points during transition between basins of attractors and dense 
+cloud of points inside the basin of attraction.  
+This type of analysis shows the speed of attention shifts in semantic layer in reaction to exter-
+nal stimuli or intrinsic dynamics. Certain dysfunctions at the single neuron or neural network 
+level may lead to problems with attentions shifts, they may either be to slow or too fast (hy-
+peractivity), as it is observed in case of autism or ADHD (Duch et al, 2012).  
+  
+ 
+ 
+ 
+Similar visualization of dynamics is possible with brain signals from EEG, MEG or fMRI. In 
+this case some measures of activity of small brain patches that estimate brain cognitive activi-
+ty are evaluated. In case of EEG or MEG it can be areas that have large clustering coefficients 
+of Phase Locking Values (PLV) or other measures. In case of fMRI it can be clusters of 
+voxels with increased or decreased activity. In this way patterns of correlated activity are dis-
+covered, and knowing brain anatomy they can sometimes be interpreted in a meaningful way. 
+One of the most exciting areas of brain research is network science (Bassett and Sporns, 
+2017), analysis of active networks in the brain. Networks have nodes (localized  populations 
+of neurons) that are activated when specific functions are performed. The best hope for under-
+standing the sources of cognitive activity, elucidating details of cognitive processes, is based 
+on network science. This approach is still in the early stages, our ability to extract meaningful 
+information from brain signals is limited, but it already allowed for asking specific questions 
+that could not be formulated at the behavioral level.  
+Basic human brain anatomy is similar, with standard divisions between brain lobes, fissures, 
+gyri, and sulci of the cerebral cortex, and subcortical nuclei, but individual variability is high. 
+Are the functional networks similar in all brains, or are they highly individual? Are the brain 
+regions highly specialized or are they flexible, and similar level of competence can be reached 
+using different sets of network nodes? Can the whole-brain network properties change during 
+active task performance? All these questions have important implications not only for under-
+standing cognitive processes, but also for practical applications, for example in neurorehabili-
+tation. The division between automatic and deliberate psychological processes is now com-
+monly accepted. Global Neuronal Workspace Theory (Deahene et al. 1998) assumes two 
+main computational spaces: a set of specialized and modular perceptual, motor, memory, 
+evaluative, and attentional processors, and a unique global workspace composed of distributed 
+and heavily interconnected nodes connected by long-range axons. Thinking, deliberation, 
+problem solving, or in general intelligent behavior in new situations require flexibility at the 
+global workspace level. If the need arises, for example cognitive load on the whole-brain net-
+work is high, they may recruit additional brain regions, including regions that are usually ac-
+tive in resting state (Finc et al. 2017). Higher network modularity is correlated with higher 
+working memory capacity and better performance. Strong connectivity within modules and 
+sparse connections between modules increases effective cooperation of brain regions, and is 
+associated with higher IQ. Individual connectome and functional networks that can be activat-
+ed in this neural space probably determine all personality traits, preferences, and cognitive 
+abilities. They may be used to identify various mental disorders. For example, estimating the 
+strength of the most important 16 functional connections was sufficient to reach 85% accura-
+cy in distinguishing autistic people form the healthy ones (Yahata et al. 2016). 
+4. Conclusions 
+Psychiatry has been based on constructs that were derived from behavioral syndromes. The 
+attempt to define Research Domain Criteria (RDoC) based on multi-level phenomics shows 
+that traditional approach has exhausted its ability for description of abnormal behavior, be-
+cause “… these categories, based upon presenting signs and symptoms, may not capture fun-
+damental underlying mechanisms of dysfunction” (Insel et al. 2010). Neurocognitive phenom-
+ics based on analysis of major brain networks and dynamical concepts is our best chance  for 
+understanding abnormal but also normal behavior. Following psychiatry, it should be actively 
+pursued in psychology and learning sciences (Duch, 2013). Such approach will confirm the 
+basic insights of Kurt Lewin, linking psychology with neuroscience. Without relating psycho-
+logical constructs to brain processes situation will be similar to parametric theories that ex-
+plain sunsets and sunrises by fitting models to the data. Psychological constructs should “cap-
+ture fundamental underlying mechanisms”, and that requires understanding of neurodynamics.  
+Does it mean that classical psychological concepts should be eliminated, as Paul Churchland 
+(1981) claimed? This is highly doubtful. Approximate description of causal structure of brain 
+or behavioral states may sometimes be more informative at a macroscale, as shown by infor-
+mation theory analysis (Hoel, 2017). Complex psychological concepts certainly need to be 
+better aligned with neurocognitive phenomics. That includes self, personality, consciousness, 
+intelligence, talent. Even in categorization experiments purely psychological explanations 
+may be quite different than those based on nonlinear dynamics of neural networks (Duch, 
+1996). Neurodynamics and neurocognitive phenomics are the key for further development of 
+psychological constructs. Is there a shorter route to deep understanding of human behavior? 
+Acknowledgements: This work has been supported by the National Science Center grant  
+UMO-2016/20/W/NZ4/00354.  
+References 
+ 
+Abraham, R.H. and Shaw, C.D. (1984) Dynamics: The Geometry of Behavior. Santa Cruz, California: 
+Aerial Press. 
+Aisa, B., Mingus, B., and O'Reilly, R. (2008). The emergent neural modeling system. Neural Net-
+works, 21, 1045-1212.  
+Bassett, D. S., and Sporns, O. (2017). Network neuroscience. Nature Neuroscience, 20(3), 353–364. 
+Busemeyer, J. R., and Townsend, J. T. (1993) Decision Field Theory: A dynamic cognition approach 
+to decision making. Psychological Review, 100, 432–459. 
+Churchland, P.M. (1981). Eliminative Materialism and the Propositional Attitudes. The Journal of 
+Philosophy, 78(2), 67–90.  
+Churchland, P. (1986). Neurophilosophy. MIT Press. 
+Dehaene, S., Kerszberg, M., & Changeux, J.-P. (1998). A neuronal model of a global workspace in 
+effortful cognitive tasks. Proc. of the National Academy of Sciences, 95(24), 14529–14534.  
+Dehaene, S., Lau, H., & Kouider, S. (2017). What is consciousness, and could machines have it? 
+Science, 358(6362), 486–492.  
+Dobosz, K., & Duch, W. (2010). Understanding neurodynamical systems via fuzzy symbolic dynam-
+ics. Neural Networks, 23(4), 487–496. 
+Duch, W (1996). Computational physics of the mind. Computer Physics Communication 97: 136-153 
+Duch, W (1997) Platonic model of mind as an approximation to neurodynamics. In: Brain-like compu-
+ting and intelligent information systems, ed. S-i. Amari, N. Kasabov (Springer, Singapore 
+1997), chap. 20, pp. 491-512 
+Duch, W. (2005). Brain-inspired conscious computing architecture. Journal of Mind and Behavior  
+26(1-2): 1-22. 
+Duch, W., Oentaryo, R. J., & Pasquier, M. (2008). Cognitive Architectures: Where do we go from 
+here? In: Frontiers in Artificial Intelligence and Applications, Vol. 171, pp. 122–136. 
+Duch, W. (2011). Neurodynamics and the mind. The 2011 International Joint Conference on Neural 
+Networks (IJCNN), IEEE Press, pp. 3227–3234.  
+Duch, W., & Dobosz, K. (2011). Visualization for understanding of neurodynamical systems. Cogni-
+tive Neurodynamics, 5(2), 145–160. 
+Duch W. (2012).  Mind-Brain Relations, Geometric Perspective and Neurophenomenology. American 
+Philosophical Association Newsletter 12(1): 1-7 
+Duch, W., Nowak, W., Meller, J., Osiński, G., Dobosz, K., Mikołajewski, D., & Wójcik, G. M. 
+(2012). Computational approach to understanding autism spectrum disorders. Computer Sci-
+ence, 13, 47–61. 
+Duch, W. (2012). Mind-Brain Relations, Geometric Perspective and Neurophenomenology, American 
+Philosophical Association Newsletter 12(1), 1-7. 
+Duch, W. (2013). Brains and education: towards neurocognitive phenomics. In Learning while we are 
+connected. Eds. N. Reynolds, M. Webb, M.M. Sysło, V. Dagiene. (Vol. 3, pp. 12–23). Toruń, 
+Poland: Nicolaus Copernicus University Press. 
+Elman, J.  (1995). Language as a dynamical system. In: Port and van Gelder (Eds). Mind as Motion. 
+MIT Press, pp. 195–223.  
+Fauconnier, G. (1994). Mental Spaces: Aspects of Meaning Construction in Natural Language. Cam-
+bridge University Press. 
+Finc, K., Bonna, K., Lewandowska, M., Wolak, T., Nikadon, J., Dreszer, J., Duch, W., Kühn, S. 
+(2017). Transition of the functional brain network related to increasing cognitive demands. 
+Human Brain Mapping, 38(7), 3659–3674  
+Foschi, R., & Lombardo, G. (2006). Lewinian contribution to the study of personality as the alterna-
+tive to the mainstream of personality psychology in the 20th century. In Kurt Lewin: Contribu-
+tions to the contemporary psychology. Eds. Trempala J., Pepitone A., Raven B. (pp. 86–98). 
+Kazimierz Wielki University Press, Bydgoszcz, Poland.  
+Gaines, B. R. and Shaw, M. L. G. (1997). Knowledge acquisition, modeling and inference through the 
+World Wide Web. International Journal of Human-Computer Studies 46, 729-759 
+Hoel, E. P. (2017). When the Map Is Better Than the Territory. Entropy, 19(5), 188. 
+https://doi.org/10.3390/e19050188 
+Hurlburt, R.T., Schwitzgabel, E. (2007). Describing Inner Experience? MIT Press. 
+Insel, T., Cuthbert, B., Garvey, M., et al. (2010). Research Domain Criteria (RDoC): Toward a New 
+Classification Framework for Research on Mental Disorders. American Journal of Psychiatry, 
+167(7), 748–751.  
+Kelly, G. (1955). The psychology of personal constructs. Norton, New York. 
+Kelly, G.A. (1969) A mathematical approach to psychology. Maher, B. Ed. Clinical Psychology and 
+Personality: The Selected Papers of George Kelly. pp.94-113. New York: Wiley. 
+Kelso, J. A. S. (1997). Dynamic Patterns: The Self-organization of Brain and Behavior. MIT Press. 
+Landauer, T., & Dumais, S. (1997). A Solution to Plato’s Problem: The Latent Semantic Analysis 
+Theory of Acquisition, Induction and Representation of Knowledge. Psychological Review, 
+104(2), 211–240. 
+Lewin, K. (1935). A dynamic theory of personality. New York: McGraw-Hill. 
+Lewin, K. (1936). Principles of topological psychology. New York: McGraw-Hill. 
+Lewin, K. (1938). The conceptual representation and measurement of psychological forces. Durham, 
+NC: Duke University Press. 
+Lewin, K. (1951). Field theory in social science. New York: Harper. 
+Newell, A. (1994). Unified Theories of Cognition. Harvard University Press.   
+Port, R. F., & van Gelder, T. (1995). Mind as Motion. Explorations in the Dynamics of Cognition. 
+MIT Press.  
+Rainio, K. Kurt Lewin’s Dynamical Psychology Revisited and Revised. Dynamical Psychology, 2009 
+(on-line) 
+Rummel, R. J. (1975). Understanding Conflict and War Volume 1: The Dynamic Psychological Field. 
+New York: John Wiley & Sons. 
+Shaw, M. L. G., & McKnight, C. (1981). Think Again: Personal Problem-Solving and Decision-
+Making. Englewood Cliffs, N.J: Prentice Hall Direct. 
+Smith, L. B., & Thelen, E. (1993). A Dynamic Systems Approach to Development: Applications. 
+CogNet. 
+Spivey, M.J. (2007). The Continuity of Mind. Oxford University Press.  
+Schwitzgabel, E. (2011). Perplexities of consciousness. MIT Press. 
+Shepard, R. N. (1987). Toward a universal law of generalization for psychological science. Science, 
+237, 1317–1323. 
+Shepard, R. N. (1994). Perceptual-Cognitive Universals as Reflections of the World. Psychonomic 
+Bulletin & Review, 1, 2–28. 
+Smedslund, J. (2016). Why Psychology Cannot be an Empirical Science. Integrative Psychological & 
+Behavioral Science, 50(2), 185–195.  
+Thelen, E., & Smith, L. B. (1996). A Dynamic Systems Approach to the Development of Cognition 
+and Action. MIT Press. 
+Varela, F. J. (1996). Neurophenomenology: a methodological remedy for the hard problem. Journal of 
+Consciousness Studies, 3(4), 330–349. 
+Yahata, N., Morimoto, J., Hashimoto, R., Lisi, et al. (2016). A small number of abnormal brain con-
+nections predicts adult autism spectrum disorder. Nature Communications, 7, 11254. 

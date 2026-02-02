@@ -1,0 +1,848 @@
+ACFD: Asymmetric Cartoon Face Detector
+Bin Zhang12∗, Jian Li1∗, Yabiao Wang1 , Zhipeng Cui1 ,
+Yili Xia2† , Chengjie Wang1 , Jilin Li1 , Feiyue Huang1
+1Youtu Lab, Tencent
+2School of Information Science and Engineering, Southeast University
+{z-bingo, yili xia}@seu.edu.cn
+{swordli, caseywang, zhipengcui, jasoncjwang, jerolinli, garyhuang}.tencent.com
+Abstract
+Cartoon face detection is a more challenging task
+than human face detection due to many difﬁ-
+cult scenarios is involved.
+Aiming at the char-
+acteristics of cartoon faces, such as huge differ-
+ences within the intra-faces, in this paper, we pro-
+pose an asymmetric cartoon face detector, named
+ACFD. Speciﬁcally, it consists of the follow-
+ing modules: a novel backbone VoVNetV3 com-
+prised of several asymmetric one-shot aggrega-
+tion modules (AOSA), asymmetric bi-directional
+feature pyramid network (ABi-FPN), dynamic an-
+chor match strategy (DAM) and the corresponding
+margin binary classiﬁcation loss (MBC). In par-
+ticular, to generate features with diverse receptive
+ﬁelds, multi-scale pyramid features are extracted by
+VoVNetV3, and then fused and enhanced simulta-
+neously by ABi-FPN for handling the faces in some
+extreme poses and have disparate aspect ratios. Be-
+sides, DAM is used to match enough high-quality
+anchors for each face, and MBC is for the strong
+power of discrimination. With the effectiveness of
+these modules, our ACFD achieves the 1st place
+on the detection track of 2020 iCartoon Face Chal-
+lenge under the constraints of model size 200MB,
+inference time 50ms per image, and without any
+pretrained models.
+1
+Introduction
+Face detection is a long-standing and essential task for many
+downstream applications, such as face alignment, face recog-
+nition and face tracking. In order to detect face effectively
+and efﬁciently, many detection pipelines [Zhang et al., 2017;
+Tang et al., 2018; Chi et al., 2019; Li et al., 2019a; Zhang et
+al., 2020b] have been proposed and achieved better and better
+performance on the challenging face detection benchmarks,
+such as WIDER Face [Yang et al., 2016]. In particular, on
+the most challenging dataset WIDER Face, the average pre-
+cision (AP) has been improved from the original 40% to more
+∗Equal contribution. This work was down when Bin Zhang was
+an intern at Tencent Youtu Lab.
+†Contact Author
+than 90%, and there are still many researchers are working on
+solving the remaining difﬁculties.
+With the development of multimedia technology, more and
+more cartoon faces appear in the animations, comics, and
+even appear on the social media platforms as the personal pro-
+ﬁle. Therefore, the excellent detector for cartoon faces is also
+particularly important.
+Although the recent face detectors
+could handle most of the human faces, they cannot detect the
+cartoon faces accurately with many missing and false-positive
+results. That is because many scenarios in cartoons are more
+difﬁcult than the real world, for instance, different faces may
+perform completely different characteristics, many faces are
+very similar to the negative samples (the bodies, background,
+etc.) and a considerable part of faces have the disparate as-
+pect ratio of more than 3 or less than 1/3, which is almost not
+involved in human faces.
+In this way, a large-scale and challenging cartoon person
+dataset is beneﬁcial for designing an effective and robust deep
+learning based-approach. Several works [Gong et al., 2020;
+Jha et al., 2018; Wu et al., 2019] transfer the human faces to
+cartoons directly by utilizing generative adversarial networks
+due to the lack of cartoon face dataset, but there is still a big
+gap. Recently, a manually annotated cartoon face dataset is
+proposed by iQIYI [Li et al., 2019b] that contains 50000 im-
+ages for detection tasks and more than 380000 images for face
+recognition, promoting the development of the community.
+To solve the aforementioned difﬁculties in cartoon faces,
+we propose a novel asymmetric cartoon face detector (ACFD)
+with four improvements to enhance the diversity of features,
+regression, and classiﬁcation ability of networks according
+to the characteristics of cartoon faces. Speciﬁcally, to pro-
+vide features with more diverse receptive ﬁelds, we pro-
+pose a more effective backbone network VoVNetV3 based
+on VoVNet [Lee et al., 2019] and VoVNetV2 [Lee and Park,
+2020] with better performance than ResNet [He et al., 2016]
+and DenseNet [Huang et al., 2017], through which the multi-
+scale features can be extracted and then fused and enhanced
+by the following ABi-FPN. For enhancing the regression and
+classiﬁcation capacity, we utilize DAM to compensate high-
+quality anchors with strong regression ability providing better
+initialization for the regressor, furthermore, MBC is used to
+better distinguish faces from the dense predictions. The main
+contributions of the paper can be summarized as follow.
+• Proposing a novel backbone network VoVNetV3 to ob-
+arXiv:2007.00899v1  [cs.CV]  2 Jul 2020
+Figure 1: Pipeline of our ACFD, which is a anchor-based one-stage detector, where feature maps of backbone network with strides from 4 to
+128 are feed into ABi-FPN and used for predicting.
+tain features with more diverse receptive ﬁelds.
+• Designing an ABi-FPN to fuse multi-scale features and
+enhance the semantic information simultaneously.
+• Presenting a DAM strategy to match high-quality an-
+chors for each faces dynamically.
+• Introducing a MBC module to distinguish faces within
+the dense predictions.
+• Achieving the 1st place on the detection track of 2020
+iCartoon Face Challenge.
+2
+Related Work
+Face Detection.
+Face detectors usually inherit the basic set-
+tings of generic object detection. Review the recent state-of-
+the-art face detectors [Zhang et al., 2017; Tang et al., 2018;
+Chi et al., 2019; Li et al., 2019a; Zhang et al., 2020b], all
+of them are anchor-based one-stage detectors and consist of
+backbone, neck and detection head. In detail, the backbone
+network designed for image classiﬁcation [He et al., 2016;
+Simonyan and Zisserman, 2014] is used to extract multi-scale
+features, and the neck network is utilized to fuse and enhance
+the multi-scale features sequentially. We propose backbone
+network VoVNetV3 and ABi-FPN to extract multi-scale fea-
+tures with strong representation, aggregate, and enhance the
+context respectively.
+Anchor Match.
+Traditionally, an anchor would be assigned
+as positive if its Intersection over Union (IoU) with a ground-
+truth bounding box is larger than a predeﬁned threshold [Ren
+et al., 2015]. To suit face detection, [Zhang et al., 2017] pro-
+poses an improved strategy helping the outer faces to match
+enough anchors. [Chi et al., 2019] and [Zhang et al., 2020b]
+introduce selective two-step regression and classiﬁcation to
+reﬁne and ﬁlter the predeﬁned anchors. [Kong et al., 2019]
+and [Liu et al., 2019] observe that taken regressed bound-
+ing boxes into match phase would bring considerable perfor-
+mance improvements. Inspired by these works, we propose a
+dynamic anchor match strategy to compensate enough high-
+quality anchors for the outer faces.
+Loss Design.
+Smooth-L1 and cross-entropy losses [Ren et
+al., 2015] are widely used in object detection due to the
+simplicity and effectiveness.
+Nowadays, IoU-based losses
+[Rezatoﬁghi et al., 2019; Zheng et al., 2020] are proposed
+to strengthen the connections between regression and classi-
+ﬁcation tasks, focal loss [Lin et al., 2017b] is proposed to al-
+leviate the extreme foreground-background class imbalance.
+Unlike these methods, we transfer the margin loss [Wang et
+al., 2018; Deng et al., 2019] in face recognition to face detec-
+tion for further improving the power of discrimination due to
+many cartoon faces are very similar to the background.
+3
+Methodology
+In this section, we brieﬂy introduce the pipeline of the pro-
+posed ACFD at ﬁrst in Sec. 3.1, then detailly describe the
+proposed VoVNetV3 in Sec. 3.2, asymmetric bi-directional
+feature pyramid network in Sec. 3.3, dynamic anchor match
+in Sec. 3.4, and binary margin classiﬁcation loss in Sec. 3.5,
+respectively.
+3.1
+Pipeline of ACFD
+The pipeline of the proposed ACFD is indicated in Fig. 1. We
+adopt the proposed VoVNetV3-51 as the backbone network
+of ACFD, which consists of 6 stages to generate feature maps
+with strides from 4 to 128. Then, the multi-scale pyramid
+features extracted from the backbone network are feed into
+the proposed ABi-FPN for further aggregating and reﬁning
+the context information. Finally, the dense predictions are
+obtained by the corresponding anchor head networks.
+3.2
+VoVNetV3 Backbone Network
+VoVNet [Lee et al., 2019] is a computation and energy ef-
+ﬁcient backbone network that can efﬁciently present diversi-
+Figure 2: The architecture of AOSA module. F1×1 is convolution
+layer with kernel size 1, A3×3 denotes ACB with kernel size 3, Favg
+is global average pooling, WC is fully-connected layer, ⊕and ⊗
+indicate element-wise addition and multiplication.
+ﬁed feature representations owing to the utilization of one-
+shot aggregation (OSA) modules. For further boosting the
+performance, VoVNetV2 [Lee and Park, 2020] is proposed
+by adding the residual connection to address the limitation of
+VoVNet during optimization [He et al., 2016], and employ-
+ing an efﬁcient squeeze-excitation (eSE) attention module for
+modeling the interdependency between the channel of feature
+maps to enhance its representation. In order to further en-
+rich the diversity of feature maps, a more effective backbone
+network VoVNetV3 is proposed on the basis of VoVNet and
+VoVNetV2, which is comprised of several asymmetric one-
+shot aggregation (AOSA) modules, as presented in Fig. 2.
+Asymmetric
+One-Shot
+Aggregation
+Module.
+Unlike
+DenseNet [Huang et al., 2017], the OSA modules of VoVNet
+and VoVNetV2 generate feature maps in a relatively sparse-
+connected manner, where each feature map is connected to
+the subsequent convolution layer so as to produce the fea-
+ture with a large receptive ﬁeld, and concatenated with the
+ﬁnal output feature map only once, receptively.
+As a re-
+sult, OSA modules could generate features with rich recep-
+tive ﬁelds, however, both of them only process square re-
+ceptive ﬁelds and would affect the detection of faces with
+different aspect ratios.
+Inspired by [Szegedy et al., 2017;
+Ding et al., 2019], the proposed AOSA overcomes the above
+limitation by replacing all 3 × 3 convolutions in OSA with
+asymmetric convolution blocks (ACB) as shown in Fig. 2. In
+this way, two additional convolutions with kernel 1 × 3 and
+3×1 are added in parallel on 3×3 convolution layer to extract
+features with rectangle receptive ﬁelds.
+We utilize VoVNetV3-51 with 6 stages of outputs in this
+paper, its conﬁguration is presented at Table. 1.
+3.3
+ABi-FPN
+At present, most of the face detectors utilize ResNet [He et
+al., 2016] and VGG [Simonyan and Zisserman, 2014] to ex-
+tract the multi-scale features, while both of them can only
+possess square receptive ﬁelds and are harmful to the faces
+with extreme aspect ratios. It is especially important in car-
+toon face detection due to about 10% of faces with ratios of
+larger than 2.0 or smaller than 0.5. As for solving the limita-
+tion of networks, recent state-of-the-arts face detectors [Tang
+Layer
+Output
+Stride
+Repeat
+Channel
+image
+640×640
+−
+−
+−
+conv1
+320×320
+2
+1
+64
+conv2
+320×320
+1
+1
+64
+conv3
+160×160
+2
+1
+128
+stage1
+160×160
+1
+1
+128/256
+max-pool
+80×80
+2
+1
+256
+stage2
+80×80
+1
+1
+160/512
+max-pool
+40×40
+2
+1
+512
+stage3
+40×40
+1
+2
+192/768
+max-pool
+20×20
+2
+1
+768
+stage4
+20×20
+1
+2
+224/1024
+max-pool
+10×10
+2
+1
+1024
+stage5
+10×10
+1
+1
+128/128
+max-pool
+5×5
+2
+1
+128
+stage6
+5×5
+1
+1
+128/128
+Table 1: The conﬁguration of proposed VoVNetV3-51, in which the
+channel in format −/−means the splited and concatenated channel
+in AOSA.
+(a)
+(b)
+Figure 3: Illustration of our DAM, where red boxes mean ground-
+truth faces, blue boxes are anchors, and green boxes are the corre-
+sponding regressed bounding boxes. (a) Assigning anchors with IoU
+greater than the predeﬁned threshold as positive samples, (b) assign-
+ing unmatched anchors in the ﬁrst step with strong regression ability
+as positive.
+et al., 2018; Li et al., 2019a; Zhang et al., 2020b] add an ad-
+ditional module followed by feature fusion modules to reﬁne
+the receptive ﬁelds, which is effective but inefﬁcient. Instead
+of adding the extra modules for processing, we propose an
+efﬁcient and effective module named ABi-FPN to fuse multi-
+scale features, enrich semantic information, and reﬁne the re-
+ceptive ﬁelds of features simultaneously. Speciﬁcally, ACB
+is also employed to replace the convolution layers of BiFPN
+[Tan et al., 2020], in which the receptive ﬁelds of features
+would be more diverse as the aggregation of multi-scale fea-
+tures.
+3.4
+Dynamic Anchor Match (DAM)
+Recently, some works [Kong et al., 2019; Liu et al., 2019]
+observe an interesting phenomenon that some unmatched an-
+chors have strong regression ability, as presented in Fig. 3
+(b), the anchor with strong regression capacity could obtain a
+bounding box with the large IoU score, despite its own IoU is
+very small. Inspired by the observation, we propose a DAM
+strategy to make full use of these anchors with strong regres-
+sion ability, as a result, it matches enough high-quality an-
+chors for each ground-truth face. Firstly, the same as tradi-
+tional match strategy [Liu et al., 2016] shown as Fig. 3 (a),
+the anchors with IoU greater than a threshold are assigned
+as positive. Secondly, the anchors would be compensated as
+positive if IoUs of their related regressed bounding boxes are
+higher than another threshold. The details can be seen in Al-
+gorithm. 1.
+Algorithm 1 Dynamic anchor match strategy.
+Input: A, B, T1, T2, G, R, L
+A a set of predeﬁned anchors, B the related bounding boxes.
+T1, T2 IoU thresholds for ﬁrst and second match steps.
+G ground-truth boxes.
+R, L matched bounding boxes and labels of each anchor.
+Output: R, L
+1: for ai, bi in A, B do
+2:
+# ﬁrst step
+3:
+AnchorIoUi ⇐IoU(ai, G)
+4:
+GtIdx, AnchorMax ⇐argmax(AnchorIoUi)
+5:
+if AnchorMax ≥T1 then
+6:
+R[i] ⇐G[GtIdx], L[i] ⇐1
+7:
+else
+8:
+# second step
+9:
+BboxIoUi ⇐IoU(bi, G)
+10:
+GtIdx, BboxMax ⇐argmax(BboxIoUi)
+11:
+if BboxMax ≥T2 then
+12:
+# 2 means compesanted anchor
+13:
+R[i] ⇐G[GtIdx], L[i] ⇐2
+14:
+else
+15:
+L[i] ⇐0
+16:
+end if
+17:
+end if
+18: end for
+3.5
+Margin Binary Classiﬁcation Loss (MBC)
+As described in the above section, our DAM strategy could
+match enough high-quality anchors with strong regression
+ability for each face. However, these high-quality anchors
+are usually far from the ground-truth face and may dominate
+the loss during propagation. Therefore, we separately com-
+pute and weight the losses of matched anchor in the ﬁrst step
+and compensated high-quality anchors in the second step, the
+regression and classiﬁcation losses are reformatted as follow,
+ℓreg = 1
+N1
+X
+i∈ψ1
+LsmoothL1(xi, x∗
+i )+λreg
+N2
+X
+i∈ψ2
+LsmoothL1(xi, x∗
+i )
+(1)
+ℓcls = 1
+N1
+X
+i/∈ψ2
+LF ocal(pm
+i , p∗
+i )+ λcls
+N2
+X
+i∈ψ2
+LF ocal(pm
+i , p∗
+i )
+(2)
+where N1 and N2 are numbers of matched anchors ψ1 and
+compensated anchors ψ2, λreg and λcls are the corresponding
+weighted coefﬁcients.
+Furthermore, to improve the classiﬁcation ability of our
+network so that it can distinguish faces who are similar to
+the background, we transfer the widely used margin-based
+loss function [Wang et al., 2018; Deng et al., 2019] in face
+recognition to face detection. The margin-based losses share
+the same idea that maximizing the inter-class variance, min-
+imizing the intra-class variance, and enhance the capacity of
+discrimination by adding an extra hard margin. In our margin
+binary classiﬁcation application, suppose pi is the output of
+the network, then the margin-based prediction is formulated
+as follow,
+pm
+i = [po
+i = 1] · (pi−m) + [po
+i = 0] · pi
+(3)
+in which, pm
+i is the corresponding one-hot label, m is a hard
+margin, and pm
+i is used for the computation of classiﬁcation
+loss.
+4
+Experiments
+In this section, we ﬁrstly present the details of our imple-
+mentation, then the effectiveness of our proposed ACFD is
+veriﬁed through a set of experiments, ﬁnally, we introduce
+the engineering tricks that are used for optimizing the time-
+consuming of our ACFD.
+4.1
+Implementation Details
+Dataset.
+During ablation studies, we split 50000 images of
+iCartoon Face [Li et al., 2019b] into 45000 images for train-
+ing and 5000 for reporting the effectiveness. All images are
+used for training for the ﬁnal submitted model.
+Data Augmentation.
+To prevent over-ﬁtting and augment
+the difﬁcult faces during training such as small and blur faces,
+the faces too large to location accurately, and etc. A series of
+data augmentations are employed, summarized as follow: (1)
+color distort for training images, (b) expand the images with
+a random range [1, 4] by mean-padding to augment the small
+faces, (c) crop the images with a random size at a random
+position to augment the big faces, (d) random tile the faces
+to anchor scales, ﬁnally, resize the images to 640×640 for
+feeding into the network.
+Anchor Design.
+We associate only one anchor for each lo-
+cation of the detection layers with scale 4 and ratio 1 : 1. So,
+there are total of 34125 anchors per image covered faces of
+size 16−512 pixels within the training phase.
+Optimization.
+Without ImageNet-pretrained model, we
+use ”kaiming” method [He et al., 2015] to initialize all the
+parameters. The SGD algorithm is applied to train the model
+with momentum 0.9, weight decay 5×10−4, batch size 16×4
+V100 GPUs, and warmup strategy to increase the learning
+rate from 1.0×10−6 to 0.04 at the ﬁrst 1000 iterations. Then,
+for the ﬁnal submit, the learning rate is divided by 10 at
+200, 250, 280 epochs, and ended at 300 epoch; for the ab-
+lation studies, it is divided by 10 at 100, 150, 180 epochs and
+ended at 200 epoch.
+Other Hyper-parameters.
+Empirically, we deﬁne two
+thresholds of dynamic anchor match as T1 = 0.35 and T2 =
+0.7. Correspondingly, the weighted coefﬁcients in regression
+and classiﬁcation losses are λreg =λcls =0.7, and the margin
+used in classiﬁcation loss is 0.2.
+Module
+ResNet50
+SE-ResNet50
+Res2Net50
+ResNeSt50
+EfﬁcientNet-B3
+VoVNetV2-39
+VoVNetV3-51
+mAP (%)
+90.18
+90.23
+89.59
+89.97
+88.63
+90.37
+90.74
+Table 2: mAP (%) of ACFD with different backbone networks.
+Inference.
+Multi-scale test is employed for the ﬁnal sub-
+mitting, we resize the images to three predeﬁned scales that
+480×645, 640×860 and 800×1075 for predicting. During
+inference, the network outputs the top-1000 predictions with
+conﬁdence scores higher than 0.08 for each scale, ﬁnally, we
+apply the non-maximum suppression (NMS) algorithm with
+IoU threshold 0.55 to generate top-100 high conﬁdence de-
+tections as the ﬁnal results.
+4.2
+Model Analysis
+In this subsection, extensive experiments are conducted to
+demonstrate the effectiveness of our proposed modules in
+ACFD. For the fair comparison, we use the same parameter
+settings apart from the speciﬁc changes to the components.
+In order to better understand our ACFD, the experiments are
+carried out on the different baselines, by ablating different
+modules to perform how it affects the ﬁnal performance.
+VoVNetV3-51.
+Firstly, we compare our VoVNetV3-51
+with the state-of-the-art and widely used backbone networks,
+e.g., ResNet50 [He et al., 2016], SE-ResNet50 [Hu et al.,
+2018], Res2Net50 [Gao et al., 2019], ResNeSt50 [Zhang et
+al., 2020a], EfﬁcientNet-B3 [Tan and Le, 2019], VoVNetV2-
+39 [Lee and Park, 2020]. To better suit the framework of
+ACFD, two extra convolution layers with stride 2 followed by
+batch normalization and ReLU activation are added to these
+backbones for generating 6-level features with stride from 4
+to 128. As presented in Table 2, ResNet50 and SE-ResNet50
+perform the comparable performance on cartoon face detec-
+tion with mAP 90.18 and 90.23, and far surpass the recent
+state-of-the-art Res2Net50, ResNeSt50, EfﬁcientNet-B3 of
+89.59, 89.97, 88.63 respectively. Owing to the superiority
+of OSA module, VoVNetV2-39 achieves the better perfor-
+mance. By introducing asymmetric convolution blocks, the
+proposed VoVNetV3 achieves the highest mAP score 90.74
+since it can generate features with more diverse receptive
+ﬁelds, this is beneﬁcial for the cartoon faces with large inter-
+class variances.
+A-BiFPN.
+Next, take ACFD with ResNet50 backbone as
+the baseline, a series of simulations are carried to verify the
+effectiveness of proposed ABi-FPN by comparing with the
+plain FPN [Lin et al., 2017a], BiFPN [Tan et al., 2020] and
+SEPC [Wang et al., 2020]. As presented in Table 3, bene-
+ﬁt from the ability of BiFPN to aggregate multi-scale feature
+maps by top-down and bottom-up paths, it outperforms the
+plain FPN and SEPC by 1.8% and 1.3% points. The pro-
+posed ABi-FPN further enhances this ability by employing
+asymmetric convolution blocks to capture the features with
+more diverse receptive ﬁelds, and achieves the better mAP
+score of 90.36%.
+Dynamic Anchor Match.
+Then, several experiments are
+conducted to evaluate the superiority of the proposed DAM,
+as shown in Table 4. We select the model with ResNet50
+Module
+FPN
+BiFPN
+SEPC
+ABi-FPN
+mAP (%)
+88.30
+90.18
+88.80
+90.36
+Table 3: mAP (%) of different feature pyramid networks on ACFD.
+backbone, the plain FPN and classic match strategy as the
+baseline, it gets mAP of 87.65%. In particular, the worse
+performance is obtained while compensating anchors by us-
+ing regressed bounding boxes with a lower IoU threshold
+T2 = 0.35, this is due to many low-quality anchors are
+matched for regression causing too many false-positive re-
+sults. On the other hand, when compensating anchors with
+a higher IoU threshold but summing the losses by weights
+λreg = λcls = 1.0, the performance is not the best due to
+the loss of compensated anchors may dominate. By choosing
+T1 = 0.35, T2 = 0.7, λreg = λcls = 0.7, the model equipped
+with DAM achieves mAP score of 88.90%, it is about 1.3%
+points higher than the baseline.
+T1
+T2
+λres
+λcls
+mAP (%)
+-
+-
+-
+-
+87.65
+0.35
+0.35
+1.0
+1.0
+87.56
+0.35
+0.7
+1.0
+1.0
+88.60
+0.35
+0.35
+0.5
+0.5
+87.54
+0.35
+0.7
+0.5
+0.5
+88.75
+0.35
+0.7
+0.7
+0.7
+88.90
+Table 4: mAP (%) of ACFD matching anchors by proposed DAM
+with different parameters.
+Margin Binary Classiﬁcation.
+At the next stage, the ef-
+fectiveness of different margins in MBC is veriﬁed by sim-
+ulations shown in Table 5, in which m = 0 means margin
+loss is disabled. Too small margin value makes the model not
+work and too large value makes the models hard to optimized,
+m=0.2 is adopted in our ACFD.
+margin (m)
+0
+0.1
+0.2
+0.3
+0.5
+mAP (%)
+90.48
+90.51
+90.73
+90.67
+90.41
+Table 5: mAP (%) of ACFD with different margin parameters.
+Ablation Study.
+Finally, we take model with ResNet50
+backbone and the plain FPN as the baseline and demonstrate
+the effectiveness of proposed modules by adding each of them
+to the baseline. As listed in the ﬁrst and second rows of Ta-
+ble 6, the baseline achieves mAP of 87.85% and 87.13% with
+and without the multi-scale test. By adding all modules to the
+baseline, mAP scores 90.94% and 90.33% are obtained with
+and without the multi-scale test, which surpasses the base-
+line more than 3.0 points mAP. This ﬁnal model achieves
+92.91% on the leaderboard of competition and wins the ﬁrst
+Figure 4: Illustration of our ACFD to various large variations on iCartoonFace dataset. Green buonding boxes indicate the detector conﬁdence
+is above 0.7.
+place with a large margin. Fig. 4 shows more examples to
+demonstrate the effectiveness of ACFD.
+VoVNetV3
+ABi-FPN
+DAM
+MBC
+ms-test
+mAP (%)
+87.13
+✓
+87.85
+✓
+88.47
+✓
+✓
+89.46
+✓
+✓
+89.39
+✓
+✓
+✓
+90.17
+✓
+✓
+✓
+✓
+90.33
+✓
+✓
+✓
+✓
+✓
+90.94
+Table 6: Effectiveness of our proposed modules. Taken a model with
+ResNet50 backbone as baseline, all models are trained on 45000
+training images and evaluated with mAP (%) on 5000 validating
+images.
+4.3
+Time-Consuming Optimization
+In order to meet the competition requirements that the infer-
+ence time for a single image should not exceed 50 ms, we uti-
+lize some engineering tricks to optimize our ACFD. Firstly,
+due to the convolution and normalization operations in asym-
+metric convolution blocks are linear, so the horizontal and
+vertical branches can be merge to become a classic convolu-
+tion block, as shown in Fig. 5. Furthermore, the convolution
+and normalization operations can be merged into a single con-
+volution operation as follow,
+a =
+γ
+√
+δ2 + ϵ
+, W ′ = W ∗a, B′ = (B −µ) ∗a + β,
+(4)
+where µ, δ, γ, and β are mean, variance and afﬁne parame-
+ters of origin normalization operation, W, B and W ′, B′ are
+parameters of convolution layer before and after merging. Fi-
+nally, we convert the PyTorch model to the TensorRT version
+Figure 5: Illustration of asymmetric convolution blocks (a) original
+structure for training and (b) merged three convolutions into one for
+inference.
+by torch2trt∗tool and evaluate the model with a large batch
+size to further accelerate the inference speed.
+5
+Conclusion
+Aiming at the difﬁculties of cartoon face detection, a novel
+asymmetric cartoon face detector (ACFD) is proposed in this
+paper. In particular, a strong backbone network VoVNetV3 is
+introduced to extract feature maps with more diverse recep-
+tive ﬁelds beneﬁt from the asymmetric convolution blocks;
+then, the multi-scale features are better aggregated and en-
+hanced by the proposed ABi-FPN. In addition, we propose a
+dynamic anchor match strategy to match high-quality anchors
+for each face by making full use of the regressed bounding
+boxes; furthermore, margin binary classiﬁcation loss is used
+to enhance the discrimination of network to better distinguish
+faces from the dense predictions.
+∗https://github.com/z-bingo/torch2trt
+References
+[Chi et al., 2019] Cheng Chi, Shifeng Zhang, and et. al. Se-
+lective reﬁnement network for high performance face de-
+tection. In AAAI, volume 33, pages 8231–8238, 2019.
+[Deng et al., 2019] Jiankang Deng, Jia Guo, and et. al. Arc-
+face: Additive angular margin loss for deep face recogni-
+tion. In CVPR, pages 4690–4699, 2019.
+[Ding et al., 2019] Xiaohan Ding, Yuchen Guo, and et. al.
+ACNet: Strengthening the kernel skeletons for powerful
+cnn via asymmetric convolution blocks. In ICCV, pages
+1911–1920, 2019.
+[Gao et al., 2019] Shanghua Gao, Ming-Ming Cheng, and et.
+al.
+Res2net: A new multi-scale backbone architecture.
+TPAMI, 2019.
+[Gong et al., 2020] Julia Gong, Yannick Hold-Geoffroy, and
+et. al. Autotoon: Automatic geometric warping for face
+cartoon generation. In WACV, pages 360–369, 2020.
+[He et al., 2015] Kaiming He, Xiangyu Zhang, and et. al.
+Delving deep into rectiﬁers: Surpassing human-level per-
+formance on imagenet classiﬁcation.
+In ICCV, pages
+1026–1034, 2015.
+[He et al., 2016] Kaiming He, Xiangyu Zhang, and et. al.
+Deep residual learning for image recognition. In CVPR,
+pages 770–778, 2016.
+[Hu et al., 2018] Jie Hu, Li Shen, and et. al. Squeeze-and-
+excitation networks. In CVPR, pages 7132–7141, 2018.
+[Huang et al., 2017] Gao Huang, Zhuang Liu, and et. al.
+Densely connected convolutional networks.
+In CVPR,
+pages 4700–4708, 2017.
+[Jha et al., 2018] Saurav Jha, Nikhil Agarwal, and et. al.
+Bringing cartoons to life: Towards improved cartoon face
+detection and recognition systems. arXiv, 2018.
+[Kong et al., 2019] Tao Kong, Fuchun Sun, and et. al. Con-
+sistent optimization for single-shot object detection. arXiv,
+2019.
+[Lee and Park, 2020] Youngwan Lee and Jongyoul Park.
+Centermask: Real-time anchor-free instance segmenta-
+tion. In CVPR, pages 13906–13915, 2020.
+[Lee et al., 2019] Youngwan Lee, Joong-won Hwang, and et.
+al. An energy and gpu-computation efﬁcient backbone net-
+work for real-time object detection. In CVPR Workshops,
+pages 0–0, 2019.
+[Li et al., 2019a] Jian Li, Yabiao Wang, and et. al. Dsfd: dual
+shot face detector. In CVPR, pages 5060–5069, 2019.
+[Li et al., 2019b] Shichao Li, Yi Zheng, and et. al. icartoon-
+face: A benchmark of cartoon person recognition. arXiv,
+2019.
+[Lin et al., 2017a] Tsung-Yi Lin, Piotr Doll´ar, and et. al.
+Feature pyramid networks for object detection. In CVPR,
+pages 2117–2125, 2017.
+[Lin et al., 2017b] Tsung-Yi Lin, Priya Goyal, and et. al. Fo-
+cal loss for dense object detection. In ICCV, pages 2980–
+2988, 2017.
+[Liu et al., 2016] Wei Liu, Dragomir Anguelov, and et. al.
+Ssd: Single shot multibox detector. In ECCV, pages 21–
+37. Springer, 2016.
+[Liu et al., 2019] Yang Liu, Xu Tang, and et. al. Hambox:
+Delving into online high-quality anchors mining for de-
+tecting outer faces. arXiv, 2019.
+[Ren et al., 2015] Shaoqing Ren, Kaiming He, and et. al.
+Faster R-CNN: Towards real-time object detection with
+region proposal networks. In Advances in neural infor-
+mation processing systems, pages 91–99, 2015.
+[Rezatoﬁghi et al., 2019] Hamid Rezatoﬁghi, Nathan Tsoi,
+and et. al. Generalized intersection over union: A metric
+and a loss for bounding box regression. In CVPR, pages
+658–666, 2019.
+[Simonyan and Zisserman, 2014] Karen Simonyan and An-
+drew Zisserman.
+Very deep convolutional networks for
+large-scale image recognition. arXiv, 2014.
+[Szegedy et al., 2017] Christian Szegedy, Sergey Ioffe, and
+et. al.
+Inception-v4, inception-resnet and the impact of
+residual connections on learning. In AAAI, 2017.
+[Tan and Le, 2019] Mingxing Tan and Quoc V Le. Efﬁcient-
+Net: Rethinking model scaling for convolutional neural
+networks. arXiv, 2019.
+[Tan et al., 2020] Mingxing Tan, Ruoming Pang, and et. al.
+Efﬁcientdet: Scalable and efﬁcient object detection.
+In
+CVPR, pages 10781–10790, 2020.
+[Tang et al., 2018] Xu Tang, Daniel K Du, and et. al. Pyra-
+midbox: A context-assisted single shot face detector. In
+ECCV, pages 797–813, 2018.
+[Wang et al., 2018] Hao Wang, Yitong Wang, and et. al.
+Cosface: Large margin cosine loss for deep face recog-
+nition. In CVPR, pages 5265–5274, 2018.
+[Wang et al., 2020] Xinjiang Wang, Shilong Zhang, and et.
+al. Scale-equalizing pyramid convolution for object detec-
+tion. In CVPR, 2020.
+[Wu et al., 2019] Ruizheng Wu, Xiaodong Gu, and et. al.
+Landmark assisted cyclegan for cartoon face generation.
+arXiv, 2019.
+[Yang et al., 2016] Shuo Yang, Ping Luo, and et. al. Wider
+face: A face detection benchmark. In Proceedings of the
+IEEE conference on computer vision and pattern recogni-
+tion, pages 5525–5533, 2016.
+[Zhang et al., 2017] Shifeng Zhang, Xiangyu Zhu, and et. al.
+S3FD: Single shot scale-invariant face detector. In ICCV,
+pages 192–201, 2017.
+[Zhang et al., 2020a] Hang Zhang, Chongruo Wu, and et. al.
+ResNeSt: Split-attention networks. arXiv, 2020.
+[Zhang et al., 2020b] Shifeng Zhang, Cheng Chi, and et. al.
+Reﬁneface: Reﬁnement neural network for high perfor-
+mance face detection. TPAMI, 2020.
+[Zheng et al., 2020] Zhaohui Zheng, Ping Wang, and et. al.
+Distance-iou loss: Faster and better learning for bounding
+box regression. In AAAI, pages 12993–13000, 2020.

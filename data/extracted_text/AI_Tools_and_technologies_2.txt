@@ -1,0 +1,988 @@
+Ganguly and Pandey                                 
+Bangladesh Journal of Bioethics 2023; 14 (3):28-33  
+ 
+28 
+ 
+ 
+ 
+Deployment of AI Tools and Technologies on Academic Integrity 
+and Research 
+Shantanu Ganguly1 
+ and Nivedita Pandey 2 
+ 
+ 
+ https://doi.org/10.62865/bjbio.v15i2.122 
+ 
+Abstract: Academic integrity is a set of ethical ideals and values that guide the behaviour of 
+individuals in academic and educational settings. It encompasses honesty, trustworthiness, fairness, 
+and a commitment to upholding the highest standards of ethical conduct in the quest for knowledge, 
+learning, and research. Academic integrity is essential in maintaining the trustworthiness, reputation, 
+and effectiveness of educational institutions and scholarly communities. Whereas, AI, or Artificial 
+Intelligence, is a broad field of computer science that focuses on creating frameworks, software, or 
+machines that can perform tasks that would typically require human intelligence. These tasks include 
+problem-solving, learning from experience, understanding natural language, recognizing patterns, and 
+making choices. AI systems aim to mimic or replicate human cognitive functions, and they can range 
+from simple rule-based systems to highly complex, autodidactic neural networks. AI can significantly 
+impact academic integrity and research in both positive and potentially challenging ways. 
+Keywords: Academic Integrity, Artificial Intelligence, Research Process, Software, Computer 
+Science. 
+Introduction: Academic honesty is a collection 
+of ethical principles and values that steer the 
+conduct of individuals in academic and 
+educational 
+environments1. 
+It 
+includes 
+honesty, reliability, equity, and a commitment 
+to maintaining the highest standards of moral 
+conduct 
+in 
+the 
+pursuit 
+of 
+knowledge, 
+education, and research. Academic honesty is  
+ 
+ 
+ 
+ 
+ 
+vital in preserving the credibility, reputation, 
+and efficiency of educational institutions and 
+scholarly communities2. Academic honesty is 
+not merely a set of guidelines and policies but 
+also a crucial element of the educational 
+journey. It nurtures a culture of trust, fairness, 
+and respect within educational institutions, 
+enabling learners to educate and develop  
+ 
+ 
+ 
+ 
+while upholding the highest ethical principles3. 
+Both learners and educators must promote 
+                
+            Bangladesh Journal of Bioethics  
+Published by: Bangladesh Bioethics Society 
+           https://bjbio.bioethics.org.bd/index.php/BJBio  
+ISSN: p2226-9231 e 2078-1458     
+               BJBio 2023; 15 (1): 28-33 
+Submitted:30.12.2023 
+Accepted: 12.03.2024 
+Published:01.07.2024 
+         Original Article 
+1.PhD.  Director, and Professor (Business Communication), NIMS School of Business, NIMS University, 
+Rajasthan, India. Email: sganguly67@gmail.com, ORCID ID: https://orcid.org/0009-0006-8536-9967    
+2.PhD. Nivedita Pandey, Assistant Professor, NIMS School of Business, NIMS University, Rajasthan, India. 
+Email: nniv1986@gmail.com , ORCID ID: https://orcid.org/0009-0001-9276-6294 
+Corresponding Author: Dr Shantanu Ganguly, Email: drshantanu.aiims@gmail.com  
+ 
+ 
+Content of this journal is licensed under a Creative Commons Attribution- CC BY-NC 4.0 International License. 
+Ganguly and Pandey                                 
+Bangladesh Journal of Bioethics 2023; 14 (3):28-33  
+ 
+29 
+ 
+and maintain academic honesty in academic 
+and research endeavours3. 
+ 
+ 
+Artificial Intelligence, or AI, is a vast domain of 
+computer science dedicated to developing 
+systems, software, or devices capable of 
+executing tasks typically necessitating human 
+intellect. These tasks encompass resolving 
+problems, 
+acquiring 
+knowledge 
+from 
+experiences, comprehending human language, 
+identifying patterns, and forming judgments4. 
+AI systems strive to imitate or reproduce 
+human cognitive abilities and can vary from 
+straightforward rule-based mechanisms to 
+highly intricate, self-teaching neural networks5. 
+AI 
+possesses 
+the 
+capability 
+to 
+induce 
+substantial transformations across diverse 
+facets of society, ranging from enhancing 
+efficacy 
+and 
+judgment 
+in 
+sectors 
+to 
+revolutionizing 
+our 
+engagement 
+with 
+technology. 
+Nevertheless, 
+it 
+also 
+poses 
+dilemmas linked to morality, confidentiality, and 
+the conscientious utilization of sophisticated AI 
+mechanisms 6. Therefore, this review article 
+was done to integrate AI with academic 
+integrity.   
+ 
+Methodology: In the last few years, there 
+have been a boom of AI based tools across 
+the world. Several leading platforms such as 
+Turnitin, E-Aarjav and Dilbit have included AI 
+based contextual searching. Authors have 
+used these platforms extensively for various 
+academic purposes; therefore, these features 
+have been furnished based on their own 
+experiences.  
+ 
+Impact of AI on Academic Integrity: AI can 
+have a significant impact on academic integrity 
+and research in both positive and potentially 
+challenging ways. Table 1 shows how AI can 
+influence in academic integrity.  
+Table 1: Academic integrity in AI: 
+Positive Impacts 
+Plagiarism Detection: 
+AI-powered 
+plagiarism 
+detection tools are widely 
+used 
+in 
+educational 
+institutions. These 
+tools 
+can efficiently scan and 
+compare student papers 
+against a vast database of 
+academic content, making 
+it 
+easier 
+to 
+identify 
+instances 
+of 
+plagiarism 
+and 
+promote 
+academic 
+honesty7. 
+Research Assistance: 
+AI can help researchers by 
+automating tedious tasks, 
+such as data analysis and 
+literature reviews. This can 
+save time and improve the 
+quality of research. AI tools 
+like citation managers can 
+also 
+assist 
+in 
+proper 
+source 
+citation 
+and 
+referencing 8. 
+Language 
+Translation: 
+AI-driven 
+language 
+translation tools can aid 
+researchers in accessing 
+and 
+understanding 
+academic 
+content 
+in 
+languages other than their 
+own, 
+facilitating 
+cross-
+cultural 
+research 
+collaboration 
+and 
+information sharing 9. 
+Data Analysis: 
+AI and machine learning 
+algorithms 
+can 
+help 
+researchers analyse large 
+datasets 
+quickly 
+and 
+accurately, enabling the 
+discovery of patterns and 
+trends 
+that 
+might 
+be 
+challenging 
+to 
+identify 
+manually 10. 
+Automated 
+Fact-
+Checking: 
+AI can assist in fact-
+checking research findings 
+and 
+claims, 
+which 
+is 
+essential for maintaining 
+the credibility of academic 
+work and preventing the 
+spread of misinformation11. 
+Challenges and Potential Risks 
+ 
+AI-Generated 
+Plagiarism: 
+As 
+AI-powered 
+content 
+generation tools become 
+more sophisticated, there's 
+a risk that students and 
+researchers may misuse 
+them 
+to 
+generate 
+plagiarized or unoriginal 
+content12. Institutions must 
+be vigilant in detecting 
+such misuse 12. 
+Bias in AI Algorithms: 
+If AI algorithms used in 
+research are trained on 
+biased or unrepresentative 
+datasets, 
+they 
+can 
+introduce 
+bias 
+into 
+research 
+findings13. 
+Researchers need to be 
+cautious about the data 
+they use and the potential 
+for bias in AI-generated 
+insights. 
+Ethical Concerns: 
+Researchers 
+must 
+consider 
+the 
+ethical 
+Ganguly and Pandey                                 
+Bangladesh Journal of Bioethics 2023; 14 (3):28-33  
+ 
+30 
+ 
+implications of using AI in 
+research, particularly when 
+collecting and analysing 
+data from human subjects. 
+Ensuring privacy, obtaining 
+informed 
+consent, 
+and 
+addressing 
+potential 
+biases 
+are 
+important 
+ethical considerations14. 
+Lack of Transparency: 
+Some 
+AI 
+algorithms, 
+particularly deep learning 
+models, 
+can 
+be 
+challenging to interpret or 
+explain. 
+This 
+lack 
+of 
+transparency 
+can 
+raise 
+concerns about the validity 
+and reliability of research 
+results based on such 
+models 15. 
+Security Concerns: 
+Protecting research data 
+from 
+AI-driven 
+attacks, 
+such 
+as 
+adversarial 
+attacks 
+on 
+machine 
+learning models, is an 
+emerging 
+challenge16. 
+Researchers need to be 
+aware of potential security 
+vulnerabilities. 
+Depersonalization: 
+AI tools that automate 
+certain research tasks may 
+lead to a depersonalization 
+of the research process, 
+potentially 
+reducing 
+the 
+researcher's 
+critical 
+thinking and understanding 
+of the subject matter 17. 
+ 
+AI holds the promise of improving academic 
+honesty by assisting in the identification of 
+plagiarism, aiding in scholarly assistance, and 
+verifying facts. Nevertheless, it presents 
+obstacles such as possible abuse, partiality, 
+morality, and clarity Academicians, instructors, 
+and academic bodies must find an equilibrium 
+by utilizing AI's strengths while upholding the 
+utmost principles of scholarly integrity and 
+moral research practice). Moreover, continual 
+dialogues and standards within the scholarly 
+community 
+can 
+aid 
+in 
+tackling 
+these 
+challenges and guarantee that AI acts as a 
+beneficial instrument in research and learning. 
+AI Applied Tools for Academic Integrity: In 
+the 
+academic 
+realm, 
+a 
+multitude 
+of 
+instruments, techniques, and software exist in 
+the marketplace that can be leveraged to 
+uphold 
+scholarly 
+honesty 
+and 
+augment 
+research methodologies. These instruments 
+aid in averting intellectual theft, bolster 
+research endeavours, and guarantee ethical 
+behaviour. Table 2 shows some examples of 
+the academic tools available in the market.  
+Table 2: Academic Integrity Tools: 
+Plagiarism Detection Tools 
+Turnitin: 
+A 
+widely 
+used 
+plagiarism 
+checker 
+that 
+compares 
+submitted documents against a 
+vast 
+database 
+of 
+academic 
+content 18. 
+Grammarly 
+Plagiarism 
+Checker: 
+Provides plagiarism detection 
+and 
+grammar 
+checking 
+services19. 
+Copy-scape: 
+Specializes 
+in 
+finding 
+web-
+based plagiarism, making it 
+useful 
+for 
+checking 
+online 
+content 20. 
+Citation Management Tools: 
+Zotero: 
+A free, open-source tool that 
+helps collect, organize, cite, and 
+share research materials21. 
+Mendeley: 
+Offers reference management, 
+PDF 
+organization, 
+and 
+collaboration features22. 
+EndNote: 
+A 
+commercial 
+reference 
+management tool with advanced 
+features for organizing and citing 
+sources23. 
+Authentication and Identity Verification: 
+Proctoring 
+Services (e.g., 
+ProctorU, 
+Proctorio): 
+Ensure the identity of online test-
+takers and monitor exams for 
+potential cheating24. 
+ 
+Secure 
+Online 
+Testing 
+Platforms (e.g., 
+ExamSoft): 
+Provide 
+secure 
+online 
+assessment environments25. 
+ 
+Research Tools: 
+Data Analysis and Visualization 
+R and RStudio:  
+ 
+Open-source software for 
+statistical analysis and data 
+visualization26. 
+Python with libraries 
+like NumPy, pandas, 
+and Matplotlib: 
+Widely used for data 
+analysis and visualization27. 
+Tableau: 
+A data visualization tool that 
+simplifies complex data into 
+interactive visualizations 28. 
+Reference and Literature Search: 
+Google Scholar: 
+A free search engine for 
+scholarly articles, theses, 
+books, 
+and 
+conference 
+papers29. 
+PubMed: 
+A database for biomedical 
+and 
+life 
+sciences 
+literature30. 
+Web of Science: 
+Provides 
+access 
+to 
+research literature across 
+various disciplines31. 
+Collaboration and Research Management: 
+Microsoft Teams and 
+Slack:  
+Tools for team collaboration 
+and communication.32. 
+Trello and Asana: 
+Project management tools 
+for 
+organizing 
+research 
+tasks and timelines33. 
+Ganguly and Pandey                                 
+Bangladesh Journal of Bioethics 2023; 14 (3):28-33  
+ 
+31 
+ 
+Research Gate: 
+A platform for researchers 
+to collaborate, share, and 
+discover research.34. 
+AI-Powered Research Tools: 
+IBM 
+Watson 
+Discovery: 
+Offers AI-powered insights 
+from unstructured data35. 
+Iris.ai: 
+Uses AI to help researchers 
+discover 
+and 
+curate 
+relevant scientific papers36. 
+Papers With Code: 
+Provides 
+access 
+to 
+research papers and code 
+related to machine learning 
+and AI37. 
+Data Collection and Survey Tools: 
+Qualtrics: 
+A platform for creating and 
+distributing surveys and 
+collecting data38. 
+SurveyMonkey: 
+An online survey tool with 
+customizable surveys and 
+analytics39. 
+Research Ethics and Compliance: 
+CITI Program: 
+Offers online training and 
+resources 
+for 
+research 
+ethics and compliance40. 
+IRBNet: 
+A web-based system for 
+managing 
+Institutional 
+Review 
+Board 
+(IRB) 
+submissions 
+and 
+approvals41. 
+ 
+ The 
+utilization 
+of 
+AI 
+instruments 
+and 
+technologies in academia and exploration 
+brings 
+both 
+beneficial 
+and 
+potentially 
+revolutionary societal influences on learners 
+and investigators. These are merely a handful 
+of examples of resources and innovations 
+accessible to bolster scholastic integrity and 
+investigative endeavours. The selection of 
+resources will hinge on the particular demands 
+and prerequisites of distinct scholars and 
+educational establishments. It's crucial to 
+employ these resources conscientiously and 
+morally, upholding scholarly integrity principles 
+and ethical investigative conduct.  
+In summary, the utilization of AI tools and 
+technologies in academics and research 
+possesses the potential to generate positive 
+societal impacts by augmenting learning, 
+facilitating 
+collaboration, 
+and 
+optimizing 
+research results. Nevertheless, addressing 
+obstacles related to confidentiality, prejudice, 
+morality, and approachability is crucial to 
+ensure that AI advantages all learners and 
+investigators 
+while 
+minimizing 
+potential 
+adverse 
+effects. 
+Society, 
+educational 
+establishments, and policymakers need to 
+adapt and establish ethical frameworks to 
+exploit the complete potential of AI in 
+education and research. 
+AI is a multifaceted domain that includes 
+machine learning, natural language processing, 
+computer vision, robotics, and beyond. It aims 
+to develop systems capable of executing tasks 
+that usually necessitate human intelligence. 
+This literature analysis delves into diverse 
+themes in AI investigation (Table 3).  
+ 
+Table 3: AI Investigation in Academic Integrity 
+Theme 1: Machine Learning and Deep Learning 
+"Deep Learning"  
+This 
+paper 
+is 
+a 
+comprehensive 
+review 
+of 
+deep 
+learning 
+techniques, 
+which are fundamental to 
+contemporary AI. It discusses 
+neural 
+networks, 
+convolutional 
+neural 
+networks 
+(CNNs), 
+and 
+recurrent 
+neural 
+networks 
+(RNNs)42..  
+Theme 2: Ethics and Bias in AI 
+"Algorithmic Bias  
+Although an older paper, this 
+discusses 
+biases 
+in 
+algorithms, 
+a 
+topic 
+of 
+increasing concern in AI, and 
+the 
+potential 
+social 
+consequences43. 
+"The 
+Ethics 
+of 
+Artificial 
+Intelligence 
+This paper explores ethical 
+considerations 
+in 
+AI, 
+including 
+the 
+risks 
+and 
+challenges of AI systems that 
+outperform humans in most 
+economically 
+valuable 
+work44. 
+Theme 3: Natural Language Processing (NLP): 
+"BERT: Pre-training 
+of 
+Deep 
+Bidirectional 
+Transformers 
+for 
+Language 
+Understanding. 
+(2018) 
+This paper introduces BERT 
+(Bidirectional 
+Encoder 
+Representations 
+from 
+Transformers), 
+a 
+breakthrough in NLP that has 
+since shaped the field45. 
+Theme 4: Reinforcement Learning and AI in 
+Games 
+"Playing Atari with 
+Deep 
+Reinforcement 
+Learning 
+ 
+This paper presents the use 
+of 
+deep 
+reinforcement 
+learning to train agents that 
+play 
+Atari 
+2600 
+games, 
+demonstrating AI's capability 
+in learning from raw sensory 
+input46. 
+Theme 5: AI in Healthcare 
+"Estimating 
+the 
+Attributable Cost of 
+Physician Burnout 
+in the United States 
+ 
+This study uses AI to analyse 
+physician 
+notes 
+and 
+highlights AI's potential in 
+healthcare, 
+including 
+reducing 
+administrative 
+burden 47. 
+Theme 6: AI in Autonomous Vehicles 
+"End 
+to 
+End 
+Learning for Self-
+Driving Cars 
+This paper discusses the 
+application of deep learning 
+in 
+autonomous 
+vehicles, 
+Ganguly and Pandey                                 
+Bangladesh Journal of Bioethics 2023; 14 (3):28-33  
+ 
+32 
+ 
+emphasizing the importance 
+of AI 
+in 
+the 
+automotive 
+industry48. 
+Theme 7: AI and Creativity 
+"A Neural Algorithm 
+of Artistic Style"  
+This paper explores how AI 
+can be used to combine the 
+content of one image with the 
+style of another, contributing 
+to the field of AI-driven art 
+and creativity49. 
+ 
+Conclusion: Artificial intelligence (AI) is a 
+dynamic and rapidly evolving field with 
+applications 
+in 
+diverse 
+domains, 
+from 
+healthcare to gaming and morals. As AI 
+continues to progress, ongoing research is 
+essential to address moral challenges, and 
+prejudices, and harness its potential for 
+positive societal impact. Researchers and 
+practitioners across various disciplines play a 
+crucial role in shaping the future of AI. AI is 
+significantly impacting academic honesty by 
+providing 
+innovative 
+tools 
+for 
+plagiarism 
+detection, identity verification, and student 
+support. However, it also raises ethical 
+concerns, particularly regarding bias and 
+fairness in AI algorithms. As the use of AI in 
+academia continues to evolve, institutions and 
+researchers need to address these challenges 
+while harnessing the potential benefits of AI to 
+uphold academic integrity in educational 
+settings. 
+ 
+. References: 
+1.Roe J, Renandya WA, Jacobs MG. A Review of AI-
+Powered Writing Tools and Their Implications for 
+Academic Integrity in the Language Classroom. Journal 
+Name 2023, 2(1):22-30. DOI: 
+https://doi.org/10.59588/2961-3094.1035  
+2. Mijwil MM, Hiran KK, Doshi R, Unogwu OJ. ChatGPT 
+and the Future of Academic Integrity in the Artificial 
+Intelligence Era: A New Frontier. Al-Salam Journal for 
+Engineering and Technology 2023; 2(2):116-127. DOI: 
+https://doi.org/10.55145/ajest.2023.02.02.015  
+3. Damian O. ChatGPT and the Rise of Generative AI: 
+Threat to Academic Integrity? Journal of Responsible 
+Technology 2023,13:1-4 DOI: 
+https://doi.org/10.1016/j.jrt.2023.100060   
+4. Chatting and Cheating. Ensuring academic integrity in 
+the era of ChatGPT. 2023. DOI: 
+https://doi.org/10.35542/osf.io/mrz8h  
+5. Hege CF, Gasparini A, Grote MG. Artificial Intelligence-
+based tools in the context of Open Science. Septentrio 
+Conference Series 2022. DOI: 
+https://doi.org/10.7557/5.6636  
+6. Yeo M. Academic integrity in the age of Artificial 
+Intelligence (AI) authoring apps. TESOL Journal 2023; 
+14:3: DOI: https://doi.org/10.1002/tesj.716  
+7. Kumar, R., Eaton, S.E., Mindzak, M., Morrison, R. 
+(2023). Academic Integrity and Artificial Intelligence: An 
+Overview. In: Eaton, S.E. (eds) Handbook of Academic 
+Integrity. Springer, Singapore.  DOI: 
+https://doi.org/10.1007/978-981-287-079-7_153-1  
+8. Martel Carranza CP. Impact of Artificial Intelligence in 
+Promoting Academic Integrity in Education: A Systematic 
+Review. Journal of Namibian Studies: History Politics 
+Culture 2023;33: 71-85. DOI: 
+https://doi.org/10.59670/jns.v33i.415  
+9. Dupps WJ. Artificial intelligence and academic 
+publishing. Journal of Cataract and Refractive Surgery 
+2023;49(7):655-656. DOI: 
+https://doi.org/10.1097/j.jcrs.0000000000001223  
+10. Roe J, Perkins M. What are Automated Paraphrasing 
+Tools and how do we address them? A review of a 
+growing threat to academic integrity. International Journal 
+for Educational Integrity 2022; 18(15): 1-10. DOI: 
+https://doi.org/10.1007/s40979-022-00109-w  
+11. DuBose J, Marshall D. AI in academic writing: Tool or 
+invader. Public Services Quarterly 2023. DOI: 
+https://doi.org/10.1080/15228959.2023.2185338  
+12. Martel Carranza CP. Impact of Artificial Intelligence in 
+Promoting Academic Integrity in Education: A Systematic 
+Review. Journal of Namibian Studies: History Politics 
+Culture 2023; 33:71-85.DOI: 
+https://doi.org/10.59670/jns.v33i.415  
+13. Dupps WJ. Artificial intelligence and academic 
+publishing. Journal of Cataract and Refractive Surgery 
+2023;49(7):655-656.DOI: 
+https://doi.org/10.1097/j.jcrs.0000000000001223  
+14. Roe J, Perkins M. What are Automated Paraphrasing 
+Tools and how do we address them? A review of a 
+growing threat to academic integrity. International Journal 
+for Educational Integrity 2022; 18(15):1-10. DOI: 
+https://doi.org/10.1007/s40979-022-00109-w  
+15. Baloğlu G, Çakali KR. Is Artificial Intelligence a New 
+Threat to the Academic Ethics?: Enron Scandal Revisited 
+By ChatGPT. 2023. DOI: 
+https://doi.org/10.57116/isletme.1244633  
+16. Rodchua S. Effective Tools and Strategies to Promote 
+Academic Integrity in e-Learning. International Journal of 
+e-Education, e-Business, e-Management and e-Learning 
+2017; 7(3):168-179. DOI: 
+https://doi.org/10.17706/IJEEEE.2017.7.3.168-179  
+17. Cronan TP, McHaney R, Douglas DE, Mullins JK. 
+Changing the Academic Integrity Climate on Campus 
+Using a Technology-Based Intervention. Ethics & Behavior 
+2017; 27(2), 89–105. DOI: 
+https://doi.org/10.1080/10508422.2016.1161514  
+18. Turnitin [Internet]. Turnitin. Available from: 
+https://www.turnitin.com (Accessed July 3, 2024). 
+19. Grammarly Plagiarism Checker [Internet]. Grammarly. 
+Available from: https://www.grammarly.com/plagiarism-
+checker (Accessed July 3, 2024). 
+20. Copyscape [Internet]. Copyscape. Available from: 
+https://www.copyscape.com (Accessed July 3, 2024). 
+21. Zotero [Internet]. Zotero. Available from: 
+https://www.zotero.org (Accessed July 3, 2024). 
+22. Mendeley [Internet]. Mendeley. Available from: 
+https://www.mendeley.com (Accessed July 3, 2024). 
+23. EndNote [Internet]. EndNote. Available from: 
+https://endnote.com (Accessed July 3, 2024). 
+24. ProctorU [Internet]. ProctorU. Available from: 
+https://www.proctoru.com (Accessed July 3, 2024). 
+25. Proctorio [Internet]. Proctorio. Available from: 
+https://proctorio.com (Accessed July 3, 2024). 
+26. ExamSoft [Internet]. ExamSoft. Available from: 
+https://examsoft.com (Accessed July 3, 2024). 
+27. RStudio [Internet]. RStudio. Available from: 
+https://www.rstudio.com (Accessed July 3, 2024). 
+28. Python [Internet]. Python. Available from: 
+https://www.python.org (Accessed July 3, 2024). 
+29. Tableau [Internet]. Tableau. Available from: 
+https://www.tableau.com (Accessed July 3, 2024). 
+30. Google Scholar [Internet]. Google. Available from: 
+https://scholar.google.com (Accessed July 3, 2024). 
+Ganguly and Pandey                                 
+Bangladesh Journal of Bioethics 2023; 14 (3):28-33  
+ 
+33 
+ 
+31. PubMed [Internet]. PubMed. Available from: 
+https://pubmed.ncbi.nlm.nih.gov (Accessed July 3, 2024). 
+32. Web of Science [Internet]. Web of Science. Available 
+from: https://www.webofscience.com (Accessed July 3, 
+2024). 
+33. Microsoft Teams [Internet]. Microsoft. Available from: 
+https://www.microsoft.com/en-us/microsoft-teams 
+(Accessed July 3, 2024). 
+34. Slack [Internet]. Slack. Available from: 
+https://slack.com (Accessed July 3, 2024). 
+35. Trello [Internet]. Trello. Available from: 
+https://trello.com (Accessed July 3, 2024). 
+36. Asana [Internet]. Asana. Available from: 
+https://asana.com (Accessed July 3, 2024). 
+37. Research Gate [Internet]. Research Gate. Available 
+from: https://www.researchgate.net (Accessed July 3, 
+2024). 
+38. IBM Watson [Internet]. IBM. Available from: 
+https://www.ibm.com/watson (Accessed July 3, 2024). 
+39. Iris.ai [Internet]. Iris. Available from: https://iris.ai 
+(Accessed July 3, 2024). 
+40. Papers With Code [Internet]. Papers With Code. 
+Available from: https://paperswithcode.com (Accessed 
+July 3, 2024). 
+41. Qualtrics [Internet]. Qualtrics. Available from: 
+https://www.qualtrics.com (Accessed July 3, 2024). 
+42 LeCun Y, Bengio Y, Hinton G. Deep learning. Nature. 
+2015;521(7553):436-444. DOI: 
+[https://doi.org/10.1038/nature14539](https://doi.org/10.10
+38/nature14539) . 
+43. O'Neil C. Weapons of Math Destruction: How Big Data 
+Increases Inequality and Threatens Democracy. Crown 
+Publishing Group. 2016. 
+44. Bostrom N, Yudkowsky E. The ethics of artificial 
+intelligence. In: Cambridge Handbook of Artificial 
+Intelligence. Cambridge University Press. 2014. DOI: 
+https://doi.org/10.1017/CBO9781139046855   
+45 Devlin J, Chang MW, Lee K, Toutanova K. BERT: Pre-
+training of deep bidirectional transformers for language 
+understanding. arXiv preprint. 2018. 
+https://arxiv.org/abs/1810.04805 (Accessed July 3, 2024). 
+46. Mnih V, Kavukcuoglu K, Silver D, Rusu AA, Veness J, 
+Bellemare MG, et al. Human-level control through deep 
+reinforcement learning. Nature. 2015;518(7540):529-533. 
+DOI: https://doi.org/10.1038/nature14236   
+47 Han S, Shanafelt TD, Sinsky CA. Estimating the 
+attributable cost of physician burnout in the United States. 
+Ann Intern Med. 2019;170(11):784-790. DOI: 
+https://doi.org/10.7326/M18-1422  
+48 Bojarski M, Testa D, Dworakowski D, Firner B, Flepp B, 
+Goyal P, et al. End to end learning for self-driving cars. 
+arXiv preprint. 2016. https://arxiv.org/abs/1604.07316 
+(Accessed July 3, 2024). 
+49. Gatys LA, Ecker AS, Bethge M. A neural algorithm of 
+artistic style. J Vis. 2016;16(12):326. DOI: 
+https://doi.org/10.1167/16.12.326 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Author Contribution: In the review paper "Deployment of 
+AI Tools and Technologies on Academic Integrity and 
+Research," Shantanu Ganguly played a crucial role in 
+conceptualizing the research focus, developing the 
+methodology for assessing the impact of AI tools on 
+academic practices, and overseeing the project to 
+maintain high academic standards. Nivedita Pandey 
+conducted a thorough analysis of existing literature, 
+synthesized the findings to evaluate the effectiveness of AI 
+technologies in academic integrity, and took the lead in 
+writing the original draft of the manuscript. Both authors 
+collaborated closely to refine the arguments and approved 
+the final manuscript, providing valuable perspectives on 
+the integration of AI in academic settings. 
+Conflict of Interest: The authors declare no conflict of 
+interest 
+Funding: This research did not receive funding from any 
+sector. 
+ 

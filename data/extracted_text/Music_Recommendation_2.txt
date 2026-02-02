@@ -1,0 +1,214 @@
+Multiple Stakeholders in Music Recommender Systems
+Himan Abdollahpouri
+DePaul University
+USA
+habdolla@depaul.edu
+Steve Essinger
+Pandora Media, Inc.
+USA
+sessinger@pandora.com
+ABSTRACT
+Music recommendation services collectively spin billions of songs
+for millions of listeners on a daily basis. Users can typically listen to
+a variety of songs tailored to their personal tastes and preferences.
+Music is not the only type of content encountered in these services,
+however. Advertisements are generally interspersed throughout
+the music stream to generate revenue for the business. Additional
+content may include artist messaging, ticketing, sports, news and
+weather. In this paper, we discuss issues that arise when multiple
+content providers are stakeholders in the recommendation process.
+Tese stakeholders each have their own objectives and must work
+in concert to sustain a healthy music recommendation service.
+1
+INTRODUCTION
+Recommender systems (RS) have been applied successfully in many
+domains to help users ﬁnd interesting items and avoid the problem
+of information overload. Examples of RS include: Amazon, where
+customers can use recommendations from the system so they can
+ﬁnd desirable products easier; Netﬂix, where the system helps users
+ﬁnd interesting movies to watch; Pandora and Spotify, which helps
+users navigate vast catalogs of content to listen to their favorite
+artists.
+For the most part, the research on RS has been focused on situ-
+ations where the system has no preference about which product
+owners the content shown to the user originates from, just as long
+as the user is happy with the current recommendation. While this
+may be acceptable in some applications, there are examples where
+the recommendations from diﬀerent stakeholders (e.g. product
+owners) produce diﬀerent utilities both to the system and users.
+For example, if we consider advertisers as stakeholders who want
+their ads to be shown to the users along with the traditional rec-
+ommended products, then it is obvious that recommending ads
+gives diﬀerent utility to the system than recommending products.
+Te system may make more money from showing a paid ad rather
+than recommending consumable content. However, from the users’
+perspective the situation may be diﬀerent. Users do not really care
+about ads as much as they want to see their personalized recom-
+mendations.
+A music recommendation business is an example of managing
+several diﬀerent stakeholders that are involved in delivering con-
+tent. Each stakeholder may have their own incentive to get their
+content in front of the end user and they may compete or collab-
+orate with each other depending upon the context. In this paper,
+we discuss how a music recommender service may be viewed as a
+multi-stakeholder environment where each stakeholder has their
+Included in the 2017 Workshop on Value-Aware and Multistakeholder Recommenda-
+tion held in conjunction with RecSys 2017.
+own utility function and goal. Tese stakeholders could include
+various artists, advertisers or other content providers.
+2
+STAKEHOLDERS IN MUSIC
+RECOMMENDER SYSTEMS
+Pandora is one of the world’s largest music recommendation compa-
+nies in terms of active users and songs recommended. Te platform
+consists of a variety of diﬀerent stakeholders working together to
+provide users with the best experience, while simultaneously keep-
+ing the business alive by generating revenue. Some stakeholders
+are more user-experience focused so their utility function is closer
+to what the end user actually wants. Other stakeholders have utility
+functions which are more revenue-focused and business-oriented.
+For example, the stakeholder responsible for recommending songs
+(i.e. music recommender) is focused on delivering the best possible
+song at the right time to the right end user. Terefore, its objective
+goal is closely related to what end users want from the system. On
+the other hand, the stakeholder that is responsible for advertising,
+ad service, is mainly interested in delivering the right ad to the right
+user at the right time. Generally, users have less interest for ads
+than songs. Terefore, we can say that the ad service stakeholder’s
+utility is mainly towards more revenue, which is not a primary
+consideration of the music recommender.
+Figure 1 shows the architecture of the recommendation platform
+consisting of diﬀerent stakeholders. While there may be more ﬁne-
+grained stakeholders, we only showed four of them for simplicity.
+For example, the music recommender stakeholder is responsible
+for coming up with the best possible song to play for the user. As
+we mentioned earlier, this stakeholder is mainly concerned about
+the needs and interests of the end user. On the other hand, the ad
+services is responsible to ﬁnd the best time to interrupt the song
+recommendation to show an ad to the user. In fact, this stakeholder
+does this calculation based on many diﬀerent factors such as the
+contract rules the ad service has with the advertisers, companies
+ﬁnancial agenda, etc. Tere are also a couple of other stakeholders
+in the platform such as ticketing and artist messages. Te ticketing
+works similar to the ad services, but instead of ads, there are tick-
+ets for which the system tries to ﬁnd customers. It is important
+to note that the business rules and utility function for the ticket-
+ing stakeholder might be completely diﬀerent from the ad service
+even though they both do the similar task of promoting secondary
+content (i.e. content other than music). Te artist messages are
+recorded audio messages from artists containing information re-
+garding an upcoming concert, album or merchandise. Finally, there
+is the content service that sits on top of the individual stakeholders.
+Tis is responsible for managing the diﬀerent stakeholders and to
+make the ﬁnal decision about which content to show to a particular
+user at a certain time.
+arXiv:1708.00120v1  [cs.CY]  1 Aug 2017
+VAMS’17, August 2017, Como, Italy
+Himan Abdollahpouri and Steve Essinger
+Figure 1: Te architecture of a music recommendation platform consisting of multiple stakeholders.
+Figure 2: A sequence of various content served to the user. Te recommender system should decide what to play for the current
+slot, indicated by the rightmost box.
+In this paper, our focus is mainly on sequential music recommen-
+dation where content is recommended one afer another. Figure 2
+shows a sequence of diﬀerent content played to the user in the
+current session. Te sequence contains a variety of content such
+as songs, ads, artist messages and tickets. Given what has been
+served to the user thus far, the RS should decide the best content
+to play for the next slot in the user’s session. Tis slot is shown by
+the box containing a question mark on the rightmost side of the
+diagram. All stakeholders try to push their content through the
+system so that they could be shown to the user. However, since
+this is a sequential recommendation platform where only a single
+piece of content can be served at a given time, the content service
+manager decides which content from one of the stakeholders can
+occupy this spot.
+Certain types of content are more beneﬁcial to the system than
+others and this is a factor taken into account in the ﬁnal decision.
+For example, as shown in ﬁgure 2, ads, artist messages and tickets
+bring money to the system, while songs cost the system money (i.e.
+there is a royalty per each song played). Te balance between the
+long-term and short-term goals of the system must be considered.
+Greedy decisions such as playing content based purely on maximiz-
+ing revenue, while ignoring the end user needs will hurt the system
+in the long term (i.e. users may not return to the system resulting
+in fewer users and fewer opportunities to make money via ads). On
+the contrary, playing only songs will not result in any revenue and
+the system would not be able to continue service. Terefore, both
+short-term (make users happy) and long-term goals (run a healthy
+business) should be considered when deciding what content to play
+for a user at any given time.
+Diﬀerent artists could also be viewed as stakeholders in terms
+of what they want from the system. Artists may have diﬀering
+goals in puting their songs on a music recommendation platform
+such as Pandora. For example, some artists might be interested in
+targeting a certain age-group in certain locations and certain times.
+Perhaps they have a upcoming concert and they want to give more
+awareness to their targeted audience. In addition, the system might
+want to promote songs from certain artists to give them a boost
+in the number of listeners and help them achieve more popularity.
+However, it is important to take the fairness factors into account in
+Multiple Stakeholders in Music Recommender Systems
+VAMS’17, August 2017, Como, Italy
+promoting artists so that the system does not over-promote some
+artists at the price of ignoring others.
+3
+RELATED WORK
+Te concept of multiple stakeholders has been discussed in some
+prior research. For example, in reciprocal recommendation, a suc-
+cessful recommendation is not the one that is only acceptable by
+the receiver of the recommendation. In fact, the needs and inter-
+ests of the other part of the recommendation (i.e. the person who
+is being recommended) is also important for having a successful
+match [1]. Researchers working on multi-objective optimization
+also investigated the problem of having diﬀerent objectives and
+constraints when generating recommendations. Tese objectives
+are ofen diﬀerent evaluation metrics such as accuracy, popularity
+bias, novelty and diversity [2, 3] or they are some sort of constraint
+imposing certain limitations on the solution [4]. Te most explicit
+deﬁnition of having multiple stakeholders in a recommendation
+seting has been discussed in [5] where authors re-deﬁned the rec-
+ommender systems as multi-stakeholder environments in which
+multiple stakeholders involve in diﬀerent stages of the recommenda-
+tion generation and each beneﬁt from the recommendation delivery
+in various ways. For example, in [6], the authors discuss a scenario
+which seeks ’fairness’ across multiple product suppliers. Moreover,
+in [7] authors identify paterns of stakeholder utility that character-
+ize diﬀerent multi-stakeholder recommendation application, and
+provide a taxonomy of the diﬀerent possible systems. Tere are
+many other domains in which multiple stakeholders are involved
+in the recommendation process. For example, online dating [1],
+educational recommenders [8] and loan recommendation in micro-
+ﬁnance platforms [9] are all instances of recommendations where
+diﬀerent stakeholders are involved in receiving or delivering the
+recommendations.
+REFERENCES
+[1] Luiz Pizzato, Tomek Rej, Tomas Chung, Irena Koprinska, and Judy Kay. 2010.
+RECON: a reciprocal recommender for online dating. In Proceedings of the fourth
+ACM conference on Recommender systems. ACM, 207-214.
+[2] Michael Jugovac, Dietmar Jannach, and Lukas Lerche. 2017. Eﬃcient optimiza-
+tion of multiple recommendation quality factors according to individual user
+tendencies. Expert Systems with Applications 81 (2017), 321-331
+[3] Himan Abdollahpouri, Robin Burke, and Bamshad Mobasher. 2017. Controlling
+Popularity Bias in Learning to Rank Recommendation. In Proceedings of the
+11th ACM conference on Recommender systems. ACM.
+[4] Tamas Jambor and Jun Wang. 2010. Optimizing multiple objectives in collabora-
+tive ﬁltering. In Proceedings of the fourth ACM conference on Recommender
+systems. ACM, 55-62
+[5] Himan Abdollahpouri, Robin Burke, and Mobasher Bamshad. 2017. Recom-
+mender systems as multi-stakeholder environments. In Proceedings of the 25th
+Conference on User Modeling, Adaptation and Personalization (UMAP2017).
+ACM.
+[6] Robin D. Burke, Himan Abdollahpouri, Bamshad Mobasher, and Trinadh Gupta.
+2016. Towards Multi-Stakeholder Utility Evaluation of Recommender Systems. In
+Workshop on Surprise, Opposition, and Obstruction in Adaptive and Personalized
+Systems, UMAP 2016
+[7] Robin Burke and Himan Abdollahpouri. 2017. Paterns of Multistakeholder Rec-
+ommendation. In 1st International Workshop on Value-Aware and Multistake-
+holder Recommendation at RecSys 2017
+[8] Robin Burke and Himan Abdollahpouri. 2016. Educational Recommendation with
+Multiple Stakeholders. In Web Intelligence Workshops (WIW), IEEE/WIC/ACM
+International Conference on. IEEE, 62-63
+[9] Eric L Lee, Jing-Kai Lou, Wei-Ming Chen, Yen-Chi Chen, Shou-De Lin, YenSheng
+Chiang, and Kuan-Ta Chen. 2014. Fairness-aware loan recommendation for
+microﬁnance services. In Proceedings of the 2014 International Conference on
+Social Computing. ACM, 3.

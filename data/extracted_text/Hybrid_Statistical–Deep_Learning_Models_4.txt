@@ -1,0 +1,1183 @@
+Learning a Behavior Model of Hybrid Systems
+Through Combining Model-Based Testing and
+Machine Learning
+(Full Version)⋆
+Bernhard K. Aichernig, Roderick Bloem, Masoud Ebrahimi, Martin Horn,
+Franz Pernkopf, Wolfgang Roth, Astrid Rupp, Martin Tappler, and
+Markus Tranninger
+Graz University of Technology, Graz, Austria
+aichernig@ist.tugraz.at, roderick.bloem@iaik.tugraz.at,
+masoud.ebrahimi@iaik.tugraz.at, martin.horn@tugraz.at, pernkopf@tugraz.at,
+roth@tugraz.at, astrid.rupp@fprimezero.com, martin.tappler@ist.tugraz.at,
+markus.tranninger@tugraz.at
+Abstract. Models play an essential role in the design process of cyber-
+physical systems. They form the basis for simulation and analysis and
+help in identifying design problems as early as possible. However, the
+construction of models that comprise physical and digital behavior is
+challenging. Therefore, there is considerable interest in learning such
+hybrid behavior by means of machine learning which requires suﬃcient
+and representative training data covering the behavior of the physical
+system adequately. In this work, we exploit a combination of automata
+learning and model-based testing to generate suﬃcient training data fully
+automatically.
+Experimental results on a platooning scenario show that recurrent neural
+networks learned with this data achieved signiﬁcantly better results com-
+pared to models learned from randomly generated data. In particular,
+the classiﬁcation error for crash detection is reduced by a factor of ﬁve
+and a similar F1-score is obtained with up to three orders of magnitude
+fewer training samples.
+Keywords: Hybrid Systems · Behavior Modeling · Automata Learn-
+ing · Model-Based Testing · Machine Learning · Autonomous Vehicle ·
+Platooning
+1
+Introduction
+In Cyber Physical Systems (CPSs), embedded computers and networks control
+physical processes. Most often, CPSs interact with their surroundings based on
+⋆This work is an extended preprint of the conference paper “Learning a Behavior
+Model of Hybrid Systems Through Combining Model-Based Testing and Machine
+Learning” accepted for presentation at IFIP-ICTSS 2019, the 31st International Con-
+ference on Testing Software and Systems in Paris, France.
+arXiv:1907.04708v1  [cs.LG]  10 Jul 2019
+2
+B. K. Aichernig et al.
+the context and the (history of) external events through an analog interface.
+We use the term hybrid system to refer to such reactive systems that intermix
+discrete and continuous components [22]. Since hybrid systems are dominating
+safety-critical areas, safety assurances are of utmost importance. However, we
+know that most veriﬁcation problems for hybrid systems are undecidable [13].
+Therefore, models and model-based simulation play an essential role in the
+design process of such systems. They help in identifying design problems as early
+as possible and facilitate integration testing with model-in-the-loop techniques.
+However, the construction of hybrid models that comprise physical and digital
+behavior is challenging. Modeling such systems with reasonable ﬁdelity requires
+expertise in several areas, including control engineering, software engineering
+and sensor networks [8].
+Therefore, we see a growing interest in learning such cyber-physical behavior
+with the help of machine learning. Examples include helicopter dynamics [28],
+the physical layer of communication protocols [25], standard continuous control
+problems [10], and industrial process control [34].
+However, in general, machine learning requires a large and representative set
+of training data. Moreover, for the simulation of safety-critical features, rare side-
+conditions need to be suﬃciently covered. Given the large state-space of hybrid
+systems, it is diﬃcult to gather a good training set that captures all critical
+behavior. Neither nominal samples from operation nor randomly generated data
+will be suﬃcient. Here, advanced test-case generation methods can help to derive
+a well-designed training set with adequate coverage.
+Hybrid
+System
+Finite State
+Model
+Test Cases
+Hybrid
+System
+Behavioral
+Dataset
+Behavior
+Model
+Automata
+Learning
+Test-Case
+Generation
+Testing
+Logging
+Machine
+Learning
+Model-Based Test-Case
+Generation
+Behavior Model
+Generation
+Fig. 1: Learning a behavior model
+of a black-box hybrid system.
+In this paper, we combine automata
+learning and Model-Based Testing (MBT)
+to derive an adequate training set, and
+then use machine learning to learn a be-
+havior model from a black-box hybrid sys-
+tem. We can use the learned behavior
+model for multiple purposes such as mon-
+itoring runtime behavior. Furthermore, it
+could be used as a surrogate of a complex
+and heavy-weight simulation model to eﬃ-
+ciently analyze safety-critical behavior of-
+ﬂine [32]. Figure 1 depicts the overall exe-
+cution ﬂow of our proposed setting. Given
+a black-box hybrid system, we learn au-
+tomata as discrete abstractions of the sys-
+tem. Next, we investigate the learned au-
+tomata for critical behaviors. Once behaviors of interest are discovered, we use
+MBT to drive the hybrid system towards these behaviors and determine its ob-
+servable actions in a continuous domain. This process results in a behavioral
+dataset with high coverage of the hybrid system’s behavior including rare con-
+ditions. Finally, we train a Recurrent Neural Network (RNN) model that gener-
+alizes the behavioral dataset. For evaluation, we compared four diﬀerent testing
+Learning a Behavior Model of Hybrid Systems
+3
+Fig. 2: Platooning as distributed control scenario. Adapted from a ﬁgure in [9].
+approaches, by generating datasets via testing, learning RNN models from the
+data and computing various performance measures for detecting critical behav-
+iors in unforeseen situations. Experimental results show that RNNs learned with
+data generated via MBT achieved signiﬁcantly better performance compared to
+models learned from randomly generated data. In particular, the classiﬁcation
+error is reduced by a factor of ﬁve and a similar F1-score is accomplished with
+up to three orders of magnitude fewer training samples.
+Motivating Example. Throughout the paper we illustrate our approach uti-
+lizing a platooning scenario, implemented in a testbed in the Automated Driv-
+ing Lab at Graz University of Technology (see also https://www.tugraz.at/
+institute/irt/research/automated-driving-lab/). Platooning of vehicles
+is a complex distributed control scenario, see Fig. 2. Local control algorithms of
+each participant are responsible for reliable velocity and distance control. The
+vehicles continuously sense their environments, e.g. the distance to the vehicle
+ahead and may use discrete, i.e. event triggered, communication to communicate
+desired accelerations along the platoon [9]. Besides individual vehicle stability,
+the most crucial goal in controller design is to guarantee so-called string stability
+of the platoon [27]. This stability concept basically demands that errors in posi-
+tion or velocity do not propagate along the vehicle string which otherwise might
+cause accidents or traﬃc jams upstream. Controllers for diﬀerent platooning sce-
+narios and spacing policies are available, e. g., constant time headway spacing
+[27] or constant distance spacing with or without communication [30].
+Available controller designs are legitimated by rigorous mathematical sta-
+bility proofs as an important theoretical foundation. In real applications it is
+often hard to fulﬁll every single modeling assumption of the underlying proofs,
+e. g., perfect sensing or communication. However, these additional uncertainties
+can often be captured in ﬁne-grained simulation models. This motivates MBT
+of vehicle platooning control algorithms by the approach presented in this pa-
+per. Also, the learned behavior model can be used to detect undesired behavior
+during run-time. In [9], a hybrid system formulation of a platooning scenario
+is presented based on control theoretic considerations. In this contribution we
+aim to determine targeted behavior of such models with as few assumptions as
+possible by combining MBT and machine learning. As a ﬁrst step, we consider
+two vehicles of the platoon, the leader and its ﬁrst follower, in this paper, but
+the general approach can be extended to more vehicles.
+This work is an extended preprint of the conference paper “Learning a Be-
+havior Model of Hybrid Systems Through Combining Model-Based Testing and
+4
+B. K. Aichernig et al.
+Machine Learning” accepted for presentation at IFIP-ICTSS 2019, the 31st In-
+ternational Conference on Testing Software and Systems in Paris, France.
+Outline. This paper has the following structure. Section 2 summarizes automata
+learning and MBT. Section 3 explains how to learn an automaton from a black-
+box hybrid system, then use it to target interesting behavior of the hybrid system
+such that we create a behavioral dataset that can be used for machine learning
+purposes. Section 4 discusses the results gained by applying our approach to a
+real-world platooning scenario. Section 5 covers related work. Section 6 concludes
+and discusses future research directions.
+2
+Preliminaries
+Deﬁnition 1 (Mealy Machine). A Mealy machine is a tuple ⟨I, O, Q, q0, δ, λ⟩
+where Q is a nonempty set of states, q0 is the initial state, δ : Q × I →Q is a
+state-transition function and λ : Q × I →O is an output function.
+We write q
+i/o
+−−→q′ if q′ = δ(q, i) and o = λ(q, i). We extend δ as usual to δ∗for
+input sequences πi, i. e., δ∗(q, πi) is the state reached after executing πi in q.
+Deﬁnition 2 (Observation). An observation π over input/output alphabet
+I and O is a pair ⟨πi, πo⟩∈I∗× O∗s.t. |πi| = |πo|. Given a Mealy ma-
+chine M, the set of observations of M from state q denoted by obsM(q) are
+obsM(q) =
+
+⟨πi, πo⟩∈I∗× O∗
+ ∃q′ : q
+πi/πo
+−−−−→∗q′
+
+, where
+πi/πo
+−−−−→∗is the tran-
+sitive and reﬂexive closure of the combined transition-and-output function to
+sequences which implies |πi| = |πo|. From this point forward, obsM = obsM(q0).
+Two Mealy machines M1 and M2 are observation equivalent, denoted M1 ≈
+M2, if obsM1 = obsM2.
+2.1
+Active Automata Learning
+In her semimal paper, Angluin [4] presented L∗, an algorithm for learning a
+deterministic ﬁnite automaton (DFA) accepting an unknown regular language
+L from a minimally adequate teacher (MAT). Many other active learning algo-
+rithms also use the MAT model [15]. An MAT generally needs to be able to an-
+swer two types of queries: membership and equivalence queries. In DFA learning,
+the learner asks membership queries, checking inclusion of words in the language
+L. Once gained enough information, the learner builds a hypothesis automaton
+H and asks an equivalence query, checking whether H accepts exactly L. The
+MAT either responds with yes, meaning that learning was successful. Otherwise
+it responds with a counterexample to equivalence, i. e., a word in the symmet-
+ric diﬀerence between L and the language accepted by H. If provided with a
+counterexample, the learner integrates it into its knowledge and starts a new
+round of learning by issuing membership queries, which is again concluded by
+a new equivalence query. L∗is adapted to learn Mealy machines by Shahbaz
+Learning a Behavior Model of Hybrid Systems
+5
+and Groz [31]. The basic principle remains the same, but output queries replace
+membership queries asking for outputs produced in response to input sequences.
+The goal in this adapted L∗algorithm, is to learn a Mealy machine that is
+observation equivalent to a black-box system under learning (SUL).
+Abstraction. L∗is only aﬀordable for small alphabets; hence, Aarts et al. [1] sug-
+gested to abstract away the concrete domain of the data, by forming equivalence
+classes in the alphabets. This is usually done by a mapper placed in between the
+learner and the SUL; see Fig. 3. Practically, mappers are state-full components
+transducing symbols back and forth between abstract and concrete alphabets
+using constraints deﬁned over diﬀerent ranges of concrete values. Since the in-
+put and output space of control systems is generally large or of unbounded size,
+we also apply abstraction by using a mapper.
+The mapper communicates with the SUL via the concrete alphabet and with
+the learner via the abstract alphabet. In the setting shown in Fig. 3, the learner
+behaves like the L∗algorithm by Shahbaz and Groz [31], but the teacher answers
+to the queries by interacting with the SUL through the mapper.
+Teacher
+MBT
+Mapper
+SUL
+Learner
+Output
+Queries
+Equivalence
+Queries
+Test
+Queries
+Fig. 3: Abstract automata learning
+through a mapper [36].
+Learning and Model-Based Testing. Teach-
+ers are usually implemented via testing to
+learn models of black-box systems, The
+teacher in Fig. 3 wraps the SUL, uses
+a mapper for abstraction and includes a
+Model-Based Testing (MBT) component.
+Output queries typically reset the SUL, ex-
+ecute a sequence of inputs and collect the
+produced outputs, i. e., they perform a sin-
+gle test of the SUL. Equivalence queries are
+often approximated via MBT [2]. For that,
+an MBT component derives test cases (test queries) from the hypothesis model,
+which are executed to ﬁnd discrepancies between the SUL and the learned hy-
+pothesis, i. e., to ﬁnd counterexamples to equivalence.
+Various MBT techniques have been applied in active automata learning, like
+the W-Method [7, 37], or the partial W-Method [12], which are also im-
+plemented in LearnLib [17]. These techniques attempt to prove conformance
+relative to some bound on the SUL states. However, these approaches require a
+large number of tests. Given the limited testing time available in practice, it is
+usually necessary to aim at “ﬁnding counterexamples fast” [16]. Therefore, ran-
+domized testing has recently shown to be successful in the context of automata
+learning, such as a randomized conformance testing technique [33] and fault-
+coverage-based testing [3]. We apply a variation of the latter, which combines
+transition coverage as test selection criterion with randomization.
+While active automata learning relies on MBT to implement equivalence
+queries, it also enables MBT, by learning models that serve as basis for test-
+ing [2,15]. Automata learning can be seen as collecting and incrementally reﬁn-
+ing information about a SUL through testing. This process is often combined
+6
+B. K. Aichernig et al.
+Test-Case
+Generator
+Tester
+Mapper
+Test
+Driver
+ADC
+DAC
+Hybrid
+System
+Test
+Sequences
+Test
+Observations
+Abstract
+Inputs
+Abstract
+Outputs
+Concrete
+Inputs
+Concrete
+Output
+Fig. 4: Components involved in the testing process
+with formal veriﬁcation of requirements, both at runtime and also oﬄine us-
+ing learned models. This combination has been pioneered by Peled et al. [26]
+and called black-box checking. More generally, approaches that use automata
+learning for testing are also referred to as Learning-Based Testing (LBT) [24].
+3
+Methodology
+Our goal is to learn a behavior model capturing the targeted behavior of a hybrid
+SUL. The model’s response to a trajectory of input variables, (e. g., sensor infor-
+mation), shall conform to the SUL’s response with high accuracy and precision.
+As in discrete systems, purely random generation of input trajectories is unlikely
+to exercise the SUL’s state space adequately. Consequently, models learned from
+random traces cannot accurately capture the SUL’s behavior. Therefore, we pro-
+pose to apply automata learning followed by MBT to collect system traces while
+using a machine learning method (i. e., Recurrent Neural Networks) for model
+learning. Figure 1 shows a generalized version of our approach.
+Our trace-generation approach does not require any knowledge, like random
+sampling, but may beneﬁt from domain knowledge and speciﬁed requirements.
+For instance, we do not explore states any further, which already violate safety
+requirements. In the following, we will ﬁrst discuss the testing process. This in-
+cludes interaction with the SUL, abstraction, automata learning and test-case
+generation. Then, we discuss learning a behavior model in the form of a Recur-
+rent Neural Network with training data collected by executing tests.
+Back to Motivating Example. We learn a behavior model for our pla-
+tooning scenario in three steps: (1) automata learning exploring a discretized
+platooning control system to capture the state space structure in learned mod-
+els, (2) MBT exploring the state space of the learned model directed towards
+targeted behavior while collecting non-discrete system traces. In step (3), we
+generalize from those trace by learning a Recurrent Neural Network.
+3.1
+Testing Process
+We apply various test-case generation methods, with the same underlying ab-
+straction and execution framework. Figure 4 depicts the components implement-
+ing the testing process.
+– Test-Case Generator: the test-case generator creates abstract test cases.
+These test-cases are generated oﬄine as sequences of abstract inputs.
+– Tester: the tester takes an input sequence and passes it to the mapper. Feed-
+back from test-case execution is forwarded to the test-case generator.
+Learning a Behavior Model of Hybrid Systems
+7
+– Mapper: the mapper maps each abstract input to a concrete input variable
+valuation and a duration, deﬁning how long the input should be applied.
+Concrete output variable valuations observed during testing are mapped to
+abstract outputs. Each test sequence produces an abstract output sequence
+which is returned to the tester.
+– Test Driver & Hybrid System: The test driver interacts with the hybrid
+system by setting input variables and sampling output variable values.
+3.1.1
+System Interface and Sampling. We assume a system interface com-
+prising two sets of real-valued variables: input variables U and observable output
+variables Y , with U further partitioned into controllable variables UC and uncon-
+trollable, observable input variables UE aﬀected by the environment. We denote
+all observable variables by Obs = Y ∪UE. Additionally, we assume the ability to
+reset the SUL, as all test runs for trace generation need to start from a unique
+initial state. During testing, we change the controllable variables UC and observe
+the evolution of variable valuations at ﬁxed sampling intervals of length ts.
+Back to Motivating Example. We implemented our platooning SUL
+in MathWorks Simulink R⃝. The implementation actually models a platoon of
+remote-controlled trucks used in our testbed at the Automated Driving Lab,
+therefore the acceleration values and distance have been downsized. The SUL
+interface comprises: UC = {acc}, Y = {d, vl, vf}, and UE = {∆}. The leader ac-
+celeration ‘acc’ is the single controllable input with values ranging from −1.5m/s2
+to 1.5m/s2, the distance between leader and ﬁrst follower is ‘d’ and ‘vl’ and ‘vf’
+are the velocities of the leader and the follower, respectively; ﬁnally ‘∆’ denotes
+the angle between the leader and the x-axis in a ﬁxed coordinate systems given
+in radians, i. e., it represents the orientation of the leader that changes while
+driving around curves. We sampled values of these variables at ﬁxed discrete
+time steps, which are ts = 250 milliseconds apart.
+3.1.2
+Abstraction. We discretize variable valuations for testing via the map-
+per. With that, we eﬀectively abstract the hybrid system such that a Mealy
+machine over an abstract alphabet can model it. Each abstract input is mapped
+to a concrete valuation for UC and a duration specifying how long the valuation
+shall be applied, thus UC only takes values from a ﬁnite set. In contrast, values
+of observable variables Obs are not restricted to a ﬁnite set. Therefore, we group
+concrete valuations of Obs and assign an abstract output label to each group.
+The mapper also deﬁnes a set of labels Violations containing abstract outputs
+that signal violations of assumptions or safety requirements. In the abstraction
+to a Mealy machine, these outputs lead to trap states from which the model
+does not transit away. Such a policy prunes the abstract state space.
+A mapper has ﬁve components: (1) an abstract input alphabet I, (2) a cor-
+responding concretization function γ, (3) an abstraction function α mapping
+concrete output values to (4) an abstract output alphabet O, and (5) the set
+Violations. During testing, it performs the following two actions:
+8
+B. K. Aichernig et al.
+– Input Concretization: the mapper maps an abstract symbol i ∈I to a pair
+γ(i) = (ν, d), where ν is a valuation of UC and d ∈N deﬁning time steps, for
+how long UC is set according to ν. This pair is passed to the test driver.
+– Output Abstraction: the mapper receives concrete valuations ν of Obs from
+the test driver and maps them to an abstract output symbol o = α(ν) in O
+that is passed to the tester. If o ∈Violations, then the mapper stores o in its
+state and maps all subsequent concrete outputs to o until it is reset.
+The mapper state needs to be reset before every test-case execution. Repeat-
+ing the same symbol o ∈Violations, if we have seen it once, creates trap states to
+prune the abstract state space. Furthermore, the implementation of the mapper
+contains a cache, returning abstract output sequences without SUL interaction.
+Back to Motivating Example. We tested the SUL with six abstract in-
+puts I: fast-acc, slow-acc, const, constl, brake and hard-brake, concretized by
+γ(fast-acc) = (acc 7→1.5m/s2, 2), γ(slow-acc) = (acc 7→0.7m/s2, 2), γ(const) =
+(acc 7→0, 2), γ(constl) = (acc 7→0, 8), γ(brake) = (acc 7→−0.7m/s2, 2), and
+γ(hard-brake) = (acc 7→−1.5m/s2, 2).Thus, each input takes two time steps,
+except for constl, which represents prolonged driving at constant speed.
+The output abstraction depends on the distance d and the leader velocity vl.
+If vl is negative, we map to the abstract output reverse. Otherwise, we partition
+d into 7 ranges with one abstract output per range, e. g., the range (−∞, 0.43m)
+(length of a remote-controlled truck) is mapped to crash. We assume that pla-
+toons do not drive in reverse. Therefore, we include reverse in Violations, such
+that once we observe reverse, we ignore the subsequent behavior. We also added
+crash to Violations, as we are only interested in the behavior leading to a crash.
+3.1.3
+Test-Case Execution. The concrete test execution is implemented by
+a test driver. It basically generates step-function-shaped inputs signals for input
+variables and samples output variable values. For each concrete input (νj, dj)
+applied at time tj (starting at t1 = 0ms), the test driver sets UC according to νj
+for dj · ts milliseconds and samples the values ν′
+j of observable variables Y ∪UE
+at time tj + dj · ts −ts/2. It then proceeds to time tj+1 = tj + dj · ts to perform
+the next input if there is any. In that way, the test driver creates a sequence of
+sampled output variable values ν′
+j, one for each concrete input. This sequence is
+passed to the mapper for output abstraction.
+3.1.4
+Viewing Hybrid Systems as Mealy Machines. Our test-case exe-
+cution samples exactly one output value for each input, ts/2 milliseconds before
+the next input, which ensures that there is an output for each input, such that
+input and output sequences have the same length. Given an abstract input se-
+quence πi our test-case execution produces an output sequence πo of the same
+length. In slight abuse of notation, we denote this relationship by λh(πi) = πo.
+Hence, we view the hybrid system under test on an abstract level as a Mealy
+machine Hm with obsHm = {⟨πi, λh(πi)⟩|πi ∈I∗}.
+Learning a Behavior Model of Hybrid Systems
+9
+3.1.5
+Learning Automata of Motivating Example. We applied the active
+automata learning algorithm by Kearns and Vazirani (KV) [18], implemented
+by LearnLib [17], in combination with the transition-coverage testing strategy
+described in previous work [3]. We have chosen the KV algorithm, as it requires
+fewer output queries to generate a new hypothesis model than, e. g., L∗[4],
+such that more equivalence queries are performed. As a result, we can guide
+testing during equivalence queries more often. The Transition-Coverage Based
+Testing (TCBT) strategy is discussed below in Section 3.1.6.
+Here, our goal is not to learn an accurate model, but to explore the SUL’s
+state space systematically through automata learning. The learned hypothesis
+models basically keep track of what has already been tested. Automata learning
+operates in rounds, alternating between series of output queries and equivalence
+queries. We stop this process once we performed the maximum number of tests
+Nautl, which includes both output queries and test queries implementing equiva-
+lence queries. Due to the large state space of the analyzed platooning SUL, it was
+infeasable to learn a complete model, hence we stopped learning when reaching
+the bound Nautl, even though further tests could have revealed discrepancies.
+Back to Motivating Example. The learned automata also provided in-
+sights into the behavior of the platooning SUL. A manual analysis revealed that
+collisions are more likely to occur, if trucks drive at constant speed for several
+time steps. Since we aimed at testing and analyzing the SUL with respect to dan-
+gerous situations, we created the additional abstract constl input, which initially
+was not part of the set of abstract inputs.
+During active automata learning we executed approximately Nautl260000
+concrete tests on the platooning SUL in 841 learning rounds, producing 2841
+collisions. In the last round, we generated a hypothesis Mealy machine with
+6011 states that we use for model-based testing.
+3.1.6
+Test-Case Generation. In the following, we describe random test-case
+generation for Mealy machines, which serves as a baseline. Then, we describe
+three diﬀerent approaches to model-based test-case generation. Note that our
+testing goal is to explore the system’s state space and to generate system traces
+with high coverage, with the intention of learning a neural network. Therefore,
+we generate a ﬁxed number of test cases Ntrain and do not impose conditions on
+outputs other than those deﬁned by the set Violations in the mapper.
+3.1.6.1
+Random Testing. Our random testing strategy generates input se-
+quences with a length chosen uniformly at random between 1 and the maximum
+length lmax. Inputs in the sequence are also chosen uniformly at random from I.
+3.1.6.2
+Learning-Based Testing. The LBT strategy performs automata learn-
+ing as described in Section 3.1.5. It produces exactly those tests executed during
+automata learning and therefore sets Nautl to Ntrain. While this strategy system-
+atically explores the abstract state space of the SUL, it also generates very simple
+tests during the early rounds of learning, which are not helpful for learning a
+behavior model in Section 3.2.
+10
+B. K. Aichernig et al.
+Algorithm 1 Output-Directed test-case generator
+Input: M = ⟨I, O, Q, q0, δ, λ⟩, label ∈O, Ntrain
+Output: TestCases : a set of test cases directed to ‘label ∈O’
+1: TestCases ←∅
+2: while |TestCases| < Ntrain do
+3:
+rand-len ←RandomInteger
+4:
+preﬁx ←RandomSequence(I, rand-len)
+5:
+qr ←δ∗(q0, preﬁx)
+6:
+q′
+r ←RandomState(Q)
+7:
+interﬁx ←PathToState(qr, q′
+r)
+▷input sequence to q′
+r
+8:
+if interﬁx ̸= ⊥then
+9:
+suﬃx ←PathToLabel(qr, label)
+▷input sequence to label
+10:
+if suﬃx ̸= ⊥then
+11:
+TestCases ←TestCases ∪{preﬁx · interﬁx · suﬃx}
+3.1.6.3
+Transition-Coverage Based Testing. The Transition-Coverage Based
+Testing (TCBT) strategy uses a learned model of the SUL as basis. Basically, we
+learn a model, ﬁx that model and then generate Ntrain test sequences with the
+transition-coverage testing strategy discussed in [3]. We use it, as it performed
+well in automata learning and it scales to large automata. The intuition behind
+it is that the combination of variability through randomization and coverage-
+guided testing is well-suited in a black-box setting as in automata learning.
+Test-case generation from a Mealy machine M with this strategy is split
+into two phases, a generation phase and a selection phase. The generation phase
+generates a large number of tests by performing random walks through M. In the
+selection phase, n tests are selected to optimize the coverage of the transitions of
+M. Since the n required to cover all transitions may be much lower than Ntrain,
+we performed several rounds, alternating between generation and selection until
+we selected and executed Ntrain test cases.
+3.1.6.4
+Output-Directed Testing. Our Output-Directed Testing strategy also
+combines random walks with coverage-guided testing, but aims at covering a
+given abstract output ‘label’. Therefore, it is based on a learned Mealy machine
+of the SUL. A set consisting of Ntrain tests is generated by Algorithm 1. All tests
+consist of a random ‘preﬁx’ that leads to a random source state qr, an ‘interﬁx’
+leading to a randomly chosen destination state q′
+r and a ‘suﬃx’ from q′
+r to the
+‘label’.
+Back to Motivating Example. In our platooning scenario, we aim at
+covering behavior relevant to collisions, thus we generally set label = crash and
+refer to the corresponding test strategy also as Crash-Directed Testing.
+3.2
+Learning a Behavior Model
+3.2.1
+Recurrent Neural Networks In our scenario, we are given length T
+sequences of vectors X = (x1, . . . , xT ) with xi ∈Rdx representing the inputs to
+the hybrid system, and the task is to predict corresponding length T sequences
+of target vectors T = (t1, . . . , tT ) with ti ∈Rdy representing the outputs of
+the hybrid system. Recurrent neural networks (RNNs) are a popular choice for
+Learning a Behavior Model of Hybrid Systems
+11
+modelling these kinds of problems. In the simplest case, a plain RNN with one
+hidden layer of dh neurons consists of three sets of weight matrices Wx ∈Rdh×dx,
+Wh ∈Rdh×dh, and Wy ∈Rdy×dh and two bias vectors bh ∈Rdh and by ∈Rdy
+which we collectively denote as Θ = (Wx, Wh, Wy, bh, by). The RNN deﬁnes
+a function Y(X) = (y1, . . . , yT ) recursively as
+yi = Wyhi + by,
+(1)
+where hi denotes the hidden state vector at time i computed as
+hi = σ(Wxxi + Whhi−1 + bh),
+(2)
+where we deﬁne h0 = 0 and σ is an arbitrary non-linear function, e.g., σ(·) =
+tanh(·). The RNN architecture is depicted in Fig. 5. Given a set of N training
+input/output sequence pairs D = {(Xn, Tn)}N
+n=1, the task of machine learning is
+to ﬁnd suitable parameters Θ such that the output sequences {Yn}N
+n=1 computed
+by the RNN for input sequences {Xn}N
+n=1 closely match their corresponding
+target sequences {Tn}N
+n=1, and, more importantly, generalize well to sequences
+that are not part of the training set D, i.e., the RNN produces accurate results
+on unseen data.
+To obtain suitable RNN parameters Θ, we typically minimize a loss function
+describing the misﬁt between predictions Y and ground truth targets T. A
+common loss function for real-valued target values T is the mean-squared error
+(MSE) loss deﬁned by
+l(Θ, D) = 1
+N
+N
+X
+n=1
+T
+X
+i=1
+∥yi(xi, Θ) −ti∥2.
+(3)
+Minimizing (3) can be achieved by gradient descent, i.e., by iteratively correcting
+the current parameters Θ into the direction of steepest descent,
+Θ ←Θ −η ∇Θl(Θ, D),
+(4)
+where η is the learning rate that determines how much the parameters Θ are
+changed in each iteration. Since we expect the loss function to decrease in each
+iteration, we obtain an RNN that gradually produces more accurate predictions
+on the training set D. However, computing the gradient for the entire data set is
+computationally prohibitive if N is large. In practice, it turns out that stochastic
+gradients computed more eﬃciently from smaller subsets of the training data,
+called mini-batches, are suﬃcient to decrease the loss function to obtain a well-
+performing RNN. To this end, the entire training data is split randomly into
+mini-batches such that several iterations of (4) are performed with randomly
+selected subsets from D. After processing the entire data, i.e., a training epoch,
+the training set is split diﬀerently into a random set of mini-batches to con-
+tinue with the next epoch. This minimization procedure is known as stochastic
+gradient descent.
+Back to Motivating Example. In our platooning scenario, the inputs
+xi ∈R2 at time step i to the hybrid system comprise the input variables U
+12
+B. K. Aichernig et al.
+h1
+h2
+. . .
+hT
+Wh
+Wh
+Wh
+x1
+x2
+. . .
+xT
+Wx
+Wx
+Wx
+y1
+y2
+. . .
+yT
+Wy
+Wy
+Wy
+Fig. 5: Recurrent neural network. The output yi of the RNN at time step i does
+not only depend on the input xi at time step i, but also on the accumulated
+knowledge in the hidden state vector hi−1 at the previous time step i −1.
+from Section 3.1.1, i.e., the acceleration value acc and the orientation ∆of the
+leader car in radians. We preprocess the orientation ∆to contain the angular
+diﬀerence of orientation in radians ∆i −∆i−1 of consecutive time steps to get
+rid of discontinuities when these values are constrained to a ﬁxed interval of
+length 2π. The outputs yi ∈R3 at time step i of the hybrid system comprise
+the values of observable output variables Y from Section 3.1.1, i. e., the velocity
+of the leader vl and the ﬁrst follower vf, respectively, as well as the distance d
+between the leader and the ﬁrst follower.
+Furthermore, we scale and shift each input and output dimension, respec-
+tively, to have zero-mean and unit variance across all N training samples and T
+time steps. This is necessary as otherwise single input dimensions whose range is
+larger than the range of other dimensions tend to dominate the prediction pro-
+cess. The same is true for the output values since here the loss function (3) could
+be dominated by a few output dimensions whose range is large. For prediction,
+the outputs of the neural networks are merely scaled and shifted inversely to
+their original range.
+RNNs as deﬁned in (1)–(2) are not constrained to sequences of a ﬁxed length.
+However, from a practical perspective, training ﬁxed-length sequences is substan-
+tially more eﬃcient as state-of-the-art machine learning frameworks rely on GPU
+computation that exhibits its full parallelization potential only if data is stored
+in homogeneous data arrays, i.e., large tensors where all data samples are of the
+same size. Hence, during test case generation, we perform sequence padding at
+the end of the sequence by setting acc = 0 resulting in the leader to continue
+driving at approximately constant speed depending on its current orientation ∆
+and observing the output of the hybrid system. In rare cases the generated test
+sequences result in awkward behavior that needed to be truncated at some time
+step, e.g., when the leaders velocity vl became negative. For these sequences,
+we perform a padding at the beginning of the sequence by copying the initial
+state where all cars have zero velocity. We used this padding procedure to obtain
+ﬁxed-length sequences with T = 256.
+Learning a Behavior Model of Hybrid Systems
+13
+In our experiments we use RNNs with one hidden layer of 100 neurons.
+However, since plain RNNs as described in Section 3.2.1 are well-known to lack
+the ability to model long-term dependencies, we use long short-term memory
+(LSTM) cells for the hidden layers [14]. LSTM cells are neurons equipped with
+an internal state and a mechanism that allows to forget, overwrite, or to keep this
+state for several time steps to model long-term dependencies. This functionality
+comes at the cost of additional weight matrices that increase the number of
+parameters Θ. For details, the interested reader is referred to [14].
+To evaluate the quality of the generated training sequences, we train models
+for several values of training set sizes Ntrain. We used ADAM [19] implemented
+in Keras [6] with a learning rate η = 10−3 to perform stochastic gradient de-
+scent for 500 epochs. The number of training sequences per mini-batch is set to
+min(Ntrain/100, 500), i.e., equally many parameter updates per epoch are per-
+formed according to (4) up to Ntrain = 50000 to enhance comparability. Each
+experiment is performed ten times using diﬀerent random initial parameters Θ
+and we report the average performance measures over these ten runs.
+4
+Experimental Evaluations
+Predicting crashes with RNNs. We aim to predict whether a sequence of
+input values results in a crash, i.e., we are dealing with a binary classiﬁcation
+problem. A sequence is predicted as positive, i.e., the sequence contains a crash,
+if at any time step the leader-follower distance d gets below a certain threshold.
+For the evaluation, we generated validation sequences with the Output-
+Directed Testing strategy. This strategy results in sequences that contain crashes
+more frequently than the other testing strategies which is useful to keep the class
+imbalance between crash and non-crash sequences in the validation set minimal.
+We emphasize that these validation sequences do not overlap with the training
+sequences that were used to train the LSTM-RNN with Output-Directed Testing
+sequences. The validation set 1 contains Nval = 86800 sequences out of which
+17092 (19.7%) result in a crash.
+For the reported scores of our binary classiﬁcation task we ﬁrst deﬁne:
+True Positive (TP):
+#{ positive sequences predicted as positive }
+False Positive (FP):
+#{ negative sequences predicted as positive }
+True Negative (TN): #{negative sequences predicted as negative}
+False Negative (FN): #{ positive sequences predicted as negative}
+We report the following four measures: (1) the classiﬁcation error (CE) in %,
+(2) the true positive rate (TPR), (3) the positive predictive value (PPV), and
+1 This set is usually called test set in the context of machine learning, but here we
+adopt the term validation set to avoid confusion with model-based testing.
+14
+B. K. Aichernig et al.
+(4) the F1-score (F1). These scores are deﬁned as
+CE = FP + FN
+Nval
+× 100
+TPR =
+TP
+TP + FN
+PPV =
+TP
+TP + FP
+F1 =
+2TP
+2TP + FP + FN
+The TPR and the PPV suﬀer from the unfavorable property that they result
+in unreasonably high values if the LSTM-RNN simply classiﬁes all sequences
+either as positive or negative. The F1-score is essentially the harmonic mean of
+the TPR and the PPV so that these odd cases are ruled out. Note that while for
+the CE a smaller value indicates a better performance, for the other scores TPR,
+PPV, and F1 a higher score, i. e., closer to 1, indicates a better performance.
+The average results and the standard deviations over ten runs for these scores
+are shown in Fig. 6. The LSTM-RNNs trained with sequences from Random
+Testing and LBT perform poorly on all scores especially if the number of training
+sequences Ntrain is small. Notably, we found that sequences generated by LBT
+during early rounds of automata learning are short and do not contain a lot of
+variability, explaining the poor performance of LBT for low Ntrain.
+We can observe in Fig. 6b that Random Testing and LBT perform poorly
+at detecting crashes when they actually occur. Especially the performance drop
+of LBT at Ntrain = 10000 and of Random Testing at Ntrain = 100000 indicate
+that additional training sequences do not necessarily improve the capability to
+detect crashes as crashes in these sequences still appear to be outliers.
+Training LSTM-RNNs with TCBT and Output-Directed Testing outper-
+forms Random Testing and LBT for all training set sizes Ntrain, where the
+results slightly favor Output-Directed Testing. The advantage of TCBT and
+Output-Directed Testing becomes evident when comparing the training set size
+Ntrain required to achieve the performance that Random Testing achieves us-
+ing the maximum of Ntrain = 200000 sequences. The CE of Random Testing
+at Ntrain = 200000 is 7.23% which LBT outperforms at Ntrain = 100000 with
+6.36%, TCBT outperforms at Ntrain = 1000 with 6.16%, and Output-Directed
+Testing outperforms at Ntrain = 500 with 5.22%. Comparing LBT and Output-
+Directed Testing, Output-Directed Testing outperforms the 2.77% CE of LBT
+at Ntrain = 200000 with only Ntrain = 5000 sequences to achieve a 2.55% CE.
+The F1-score is improved similarly: Random Testing with Ntrain = 200000
+achieves 0.809, while TCBT achieves 0.830 using only Ntrain = 1000 sequences,
+and Output-Directed Testing achieves 0.865 using only Ntrain = 500 sequences.
+Comparing LBT and Output-Directed Testing, LBT achieves 0.929 at Ntrain =
+200000 whereas Output-Directed Testing requires only Ntrain = 5000 to achieve
+a F1-score of 0.936. In total, the sample size eﬃciency of TCBT and Output-
+Directed Testing is two to three orders of magnitudes larger than for Random
+Testing and LBT.
+Evaluation of the Detected Crash Times. In the next experiment, we
+evaluate the accuracy of the crash prediction time. The predicted crash time
+is the earliest time step at which d drops below the threshold, and the crash
+Learning a Behavior Model of Hybrid Systems
+15
+100
+200
+500
+1k
+2k
+5k
+10k
+20k
+50k
+100k 200k
+0%
+10%
+20%
+30%
+Ntrain
+CE
+Random
+Learning-Based
+Transition-Coverage
+Output-Directed
+(a) Classiﬁcation Error (CE)
+100
+200
+500
+1k
+2k
+5k
+10k
+20k
+50k
+100k 200k
+0
+0.2
+0.4
+0.6
+0.8
+1
+Ntrain
+TPR
+Random
+Learning-Based
+Transition-Coverage
+Output-Directed
+(b) True Positive Rate (TPR)
+100
+200
+500
+1k
+2k
+5k
+10k
+20k
+50k
+100k 200k
+0
+0.2
+0.4
+0.6
+0.8
+1
+Ntrain
+PPV
+Random
+Learning-Based
+Transition-Coverage
+Output-Directed
+(c) Positive Predictive Value (PPV)
+100
+200
+500
+1k
+2k
+5k
+10k
+20k
+50k
+100k 200k
+0
+0.2
+0.4
+0.6
+0.8
+1
+Ntrain
+F1
+Random
+Learning-Based
+Transition-Coverage
+Output-Directed
+(d) F1-score (F1)
+Fig. 6: Performance measures for all testing strategies over changing Ntrain.
+detection time error is the absolute diﬀerence between the ground truth crash
+time and the predicted crash time. Please note that the crash detection time
+error is only meaningful for true positive sequences.
+Fig. 7 shows cumulative distribution function (CDF) plots describing how
+the crash detection time error distributes over the true positive sequences. It is
+desired that the CDF exhibits a steep increase at the beginning which implies
+that most of the crashes are detected close to the ground truth crash time. The
+CDF value at crash detection time error 0 indicates the percentage of sequences
+whose crash is detected without error at the correct time step.
+As expected the results get better for larger training sizes Ntrain. Random
+Testing and LBT exhibit large errors and only relatively few sequences are clas-
+siﬁed without error. For Random Testing, less than 30% of the crashes in the
+true positive sequences are classiﬁed correctly using the maximum of Ntrain =
+200000 sequences. On the other side, TCBT requires only Ntrain = 20000 se-
+quences to classify 34.9% correctly, and Output-Directed Testing requires only
+Ntrain = 2000 to classify 41.8% correctly. Combining the results from Fig. 7 with
+the TPR shown in Fig. 6b strengthens the crash prediction quality even more:
+While TCBT and Output-Directed Testing do not only achieve a higher TPR,
+they also predict the crashes more accurately. Furthermore, TCBT and Output-
+Directed Testing classify 90.9% and 97.3% of the sequences with at most one
+time step error using the maximum of Ntrain = 200000 sequences, respectively.
+5
+Related Work
+Verifying Platooning Strategies.
+Meinke [23] used LBT to analyze vehicle pla-
+tooning systems from the perspective of qualitative safety properties, such as
+16
+B. K. Aichernig et al.
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+Crash Detection Time Error
+Cumulative Distribution
+200
+2k
+20k
+200k
+(a) Random
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+Crash Detection Time Error
+Cumulative Distribution
+200
+2k
+20k
+200k
+(b) Learning-Based Testing
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+Crash Detection Time Error
+Cumulative Distribution
+200
+2k
+20k
+200k
+(c) Transition Coverage
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+80%
+90%
+100%
+Crash Detection Time Error
+Cumulative Distribution
+200
+2k
+20k
+200k
+(d) Output-Directed
+Fig. 7: CDF plots for the diﬀerence between true crash time and predicted crash
+time for sequences that are correctly classiﬁed as resulting in a crash. Results
+are shown for all testing strategies and several training dataset sizes Ntrain.
+vehicle collisions. The intentions and motivations behind [23] are: (1) to show
+how well a multi-core implementation of LBT method scales, and (2) how prob-
+lem size and other factors aﬀect scalability. Similar to our approach, the au-
+thor learned the platooning system by incorporating it as a Software-In-the-
+Loop (SIL) in the learning phase. Experiments showed promising scalability re-
+sults. He has successfully generated testcases for an invariant property specifying
+the optimal distance between vehicles in a one–dimension platooning scenario,
+meaning that he used no steering model. We believe that since testing and ver-
+iﬁcation of the platooning control strategy were not the primary intentions of
+the author, and because the experimental results already fulﬁlled the primary
+purposes of the author, no further investigations were made to explain why the
+learned models did not generalize wellIt is explicitly stated in [23, p. 13] that the
+learned models agree with the platoon control strategy at most up to 9.4% of
+traces. This indicates the learned models do not provide a good generalization
+of collision scenarios and thus cannot be used as to predict vehicle collisions.
+Fermi et al. [11] showed how to derive sensitivity of safety conditions in
+vehicle platooning strategies using rule inference methods. They have used the
+Plexe simulator to generate a dataset of a platoon control strategy on which
+they deﬁned a prediction problem by setting a supervised learning method to
+distinguish safe and unsafe platooning conditions. More speciﬁcally, they used
+Decision Tree (DT) as the classiﬁer, and they suggested three approaches to
+minimize the number of false negatives. First, manual inspection of inferred
+Learning a Behavior Model of Hybrid Systems
+17
+rules based on the analysis in [5] using two or three highest ranked features of
+their dataset, which is labor intensive. Second, they used Logic Learning Machine
+(LLM) to infer the set of rules distinguishing types of platooning conditions with
+a safe margin knowing they are training LLM with zero error. This approach
+is too conservative and does not provide a good generalization. Finally, they
+introduced a semi-automatic approach based on the principle of κ–fold cross-
+validation. The authors divided the dataset into κ–folds and trained a model
+with a non–zero margins (e. g., 5%) and inferred a set of rules identifying safe
+platooning conditions and manually inspected false negative conditions reﬁning
+the learned model. They used False Positive Rate (FPR) and False Negative
+Rate (FNR) for validation of the reliability of the prediction.
+Rashid et al. [29] used higher-order logic to model a generalized platoon con-
+troller formally. Their modeling formalism incorporates the physical analysis of
+the platoon using multivariate calculus and Laplace transform. They also speci-
+ﬁed the platoon stability formally and then used HOL Light to verify important
+stability constraints for arbitrary platoon parameters. The veriﬁcation approach
+results in stability theorems; therefore, it provides a more general analysis com-
+pared to both simulation-based approaches (i. e., where veriﬁcation only holds
+for the applied test cases) and automata-theoretic veriﬁcation approaches (i. e.,
+modeling platoon control strategies by a discrete–time model using automata).
+On the other hand, this veriﬁcation approach requires manual modeling of the
+platoon controller; that is, it only ensures the correctness of an abstract model.
+For this reason, the authors investigated methods to translate the stability theo-
+rems resulted from the veriﬁcation approach into runtime monitors to detect the
+violations of any stability constraints and runtime enforcement of correct strate-
+gies. Finally, we believe since the runtime monitors are a byproduct of manually
+crafted models of the platoon controllers there is no prior knowledge about how
+well they perform in practice.
+System Identiﬁcation and State Estimation. Determining models by using input-
+output data is known as system identiﬁcation in the control systems commu-
+nity [20]. Such models can be useful for simulation, controller design or diagnosis
+purposes. Recently, progress towards system identiﬁcation techniques for hybrid
+systems based on the classical methods presented e.g. in the book of Ljung [20]
+has been made, see [38] and the references therein. In [38], single-input single-
+output models are considered. Furthermore, the contribution focuses on so-called
+piece-wise aﬃne ARX models. We believe that the presented hybrid automata
+learning techniques could essentially contribute to this research ﬁeld by relaxing
+some of the modeling assumptions.
+If the model parameters and the switching mechanism is known, the prob-
+lem reduces to a hybrid state estimation problem [21, 35]. Such estimators or
+observers are used in various problems, i.e. closed loop control, parameter es-
+timation or diagnosis. However, the traditional methods often assume accurate
+and exact models. These models are mostly derived based on ﬁrst principles [21],
+which is often not feasible in complex scenarios. This shows the advantage of our
+learning-based approach especially in cases without detailed model knowledge.
+18
+B. K. Aichernig et al.
+6
+Future Work & Conclusion
+We successfully combined abstract automata learning, MBT, and machine learn-
+ing to learn a behavior model from observations of a hybrid system. Given a
+black-box hybrid system, we learn an abstract automaton capturing its dis-
+cretized state-space; then, we use MBT to target a behavior of interest. This
+results in test suites with high coverage of the targeted behavior from which we
+generate a behavioral dataset. LSTM-RNNs are used to learn behavior models
+from the behavioral dataset. Advantages of our approach are demonstrated on
+a real-world case study; i. e., a platooning scenario. Experimental evaluations
+show that LSTM-RNNs learned with model-based data generation achieved sig-
+niﬁcantly better results compared to models learned from randomly generated
+data, e. g., reducing the classiﬁcation error by a factor of ﬁve, or achieving a
+relatively similar F1-score with up to three orders of magnitude fewer training
+samples than random testing. This is accomplished through systematic testing
+(i. e., automata learning, and MBT) of a black-box hybrid system without re-
+quiring a priori knowledge on its dynamics.
+Motivated by the promising results shown in Sect. 4, we plan to carry out fur-
+ther case studies. For future research, we target runtime veriﬁcation and runtime
+enforcement of safety properties for hybrid systems. To this end, we conjecture
+that a predictive behavior model enables eﬀective runtime monitoring, which
+allows us to issue warnings or to intervene in case of likely safety violations.
+Acknowledgment. This work is supported by the TU Graz LEAD project “De-
+pendable Internet of Things in Adverse Environments”. It is also partially sup-
+ported by ECSEL Joint Undertaking under Grant No.: 692455.
+References
+1. Aarts, F., Heidarian, F., Kuppens, H., Olsen, P., Vaandrager, F.W.: Automata
+learning through counterexample guided abstraction reﬁnement. In: FM (2012)
+2. Aichernig, B.K., Mostowski, W., Mousavi, M.R., Tappler, M., Taromirad, M.:
+Model learning and model-based testing. In: Bennaceur, A., H¨ahnle, R., Meinke,
+K. (eds.) Machine Learning for Dynamic Software Analysis: Potentials and Limits
+- International Dagstuhl Seminar 16172, Dagstuhl Castle, Germany, April 24-27,
+2016, Revised Papers. Lecture Notes in Computer Science, vol. 11026, pp. 74–100.
+Springer (2018). , https://doi.org/10.1007/978-3-319-96562-8_3
+3. Aichernig, B.K., Tappler, M.: Eﬃcient active automata learning via mutation test-
+ing. Journal of Automated Reasoning (Oct 2018).
+4. Angluin, D.: Learning regular sets from queries and counterexamples. Inf. Comput.
+(1987)
+5. Cangelosi, D., Muselli, M., Parodi, S., Blengio, F., Becherini, P., Versteeg, R.,
+Conte, M., Varesio, L.: Use of attribute driven incremental discretization and logic
+learning machine to build a prognostic classiﬁer for neuroblastoma patients. BMC
+Bioinformatics 15, S4 (2014)
+6. Chollet, F., et al.: Keras. https://keras.io (2015)
+Learning a Behavior Model of Hybrid Systems
+19
+7. Chow, T.S.: Testing software design modeled by ﬁnite-state machines. IEEE Trans-
+actions on Software Engineering 4(3), 178–187 (May 1978).
+8. Derler, P., Lee, E.A., Sangiovanni-Vincentelli, A.L.: Modeling cyber-physical sys-
+tems. Proceedings of the IEEE 100(1), 13–28 (2012). , https://doi.org/10.1109/
+JPROC.2011.2160929
+9. Dolk, V.S., Ploeg, J., Heemels, W.P.M.H.: Event-triggered control for string-
+stable vehicle platooning. IEEE Transactions on Intelligent Transportation Sys-
+tems 18(12), 3486–3500 (Dec 2017).
+10. Duan, Y., Chen, X., Houthooft, R., Schulman, J., Abbeel, P.: Benchmarking
+deep reinforcement learning for continuous control. In: Balcan, M., Weinberger,
+K.Q. (eds.) ICML 2016. JMLR Workshop and Conference Proceedings, vol. 48,
+pp. 1329–1338. JMLR.org (2016), http://jmlr.org/proceedings/papers/v48/
+duan16.html
+11. Fermi, A., Mongelli, M., Muselli, M., Ferrari, E.: Identiﬁcation of safety regions in
+vehicle platooning via machine learning. In: WFCS (2018)
+12. Fujiwara, S., von Bochmann, G., Khendek, F., Amalou, M., Ghedamsi, A.: Test
+selection based on ﬁnite state models. IEEE Transactions on Software Engineering
+17(6), 591–603 (1991).
+13. Henzinger, T.A.: The theory of hybrid automata. In: LICS (1996)
+14. Hochreiter, S., Schmidhuber, J.: Long short-term memory. Neural Computation
+9(8), 1735–1780 (1997)
+15. Howar, F., Steﬀen, B.: Active automata learning in practice - an annotated bib-
+liography of the years 2011 to 2016. In: Machine Learning for Dynamic Software
+Analysis: Potentials and Limits - International Dagstuhl Seminar 16172, Dagstuhl
+Castle, Germany, April 24-27, 2016, Revised Papers. pp. 123–148 (2018)
+16. Howar, F., Steﬀen, B., Merten, M.: From ZULU to RERS - lessons learned in the
+ZULU challenge. In: ISoLA. pp. 687–704 (2010)
+17. Isberner, M., Howar, F., Steﬀen, B.: The open-source LearnLib - A framework for
+active automata learning. In: CAV. pp. 487–495 (2015)
+18. Kearns, M.J., Vazirani, U.V.: An Introduction to Computational Learning Theory.
+MIT Press, Cambridge, MA, USA (1994)
+19. Kingma, D., Ba, J.: Adam: A method for stochastic optimization. In: International
+Conference on Learning Representations (ICLR) (2015), arXiv: 1412.6980
+20. Ljung, L.: System Identiﬁcation: Theory for the User, PTR Prentice Hall Informa-
+tion and System Sciences Series. Prentice Hall, New Jersey (1999)
+21. Lv, C., Liu, Y., Hu, X., Guo, H., Cao, D., Wang, F.: Simultaneous observation of
+hybrid states for cyber-physical systems: A case study of electric vehicle powertrain.
+IEEE Transactions on Cybernetics 48(8), 2357–2367 (Aug 2018).
+22. Manna, Z., Pnueli, A.: Verifying hybrid systems. In: Hybrid Systems (1992)
+23. Meinke, K.: Learning-based testing of cyber-physical systems-of-systems: A pla-
+tooning study. In: EPEW (2017)
+24. Meinke, K.: Learning-based testing: Recent progress and future prospects. In: Ben-
+naceur, A., H¨ahnle, R., Meinke, K. (eds.) Machine Learning for Dynamic Soft-
+ware Analysis: Potentials and Limits - International Dagstuhl Seminar 16172,
+Dagstuhl Castle, Germany, April 24-27, 2016, Revised Papers. Lecture Notes in
+Computer Science, vol. 11026, pp. 53–73. Springer (2018). , https://doi.org/10.
+1007/978-3-319-96562-8_2
+25. O’Shea, T.J., Hoydis, J.: An introduction to deep learning for the physical layer.
+IEEE Trans. Cogn. Comm. & Networking 3(4), 563–575 (2017). , https://doi.
+org/10.1109/TCCN.2017.2758370
+20
+B. K. Aichernig et al.
+26. Peled, D.A., Vardi, M.Y., Yannakakis, M.: Black box checking. Journal of Au-
+tomata, Languages and Combinatorics 7(2), 225–246 (2002). , https://doi.org/
+10.25596/jalc-2002-225
+27. Ploeg, J., Shukla, D.P., van de Wouw, N., Nijmeijer, H.: Controller synthesis for
+string stability of vehicle platoons. IEEE Transactions on Intelligent Transporta-
+tion Systems 15(2), 854–865 (April 2014).
+28. Punjani, A., Abbeel, P.: Deep learning helicopter dynamics models. In: IEEE Inter-
+national Conference on Robotics and Automation, ICRA 2015, Seattle, WA, USA,
+26-30 May, 2015. pp. 3223–3230. IEEE (2015). , https://doi.org/10.1109/ICRA.
+2015.7139643
+29. Rashid, A., Siddique, U., Hasan, O.: Formal veriﬁcation of platoon control strate-
+gies. In: SEFM (2018)
+30. Rupp, A., Steinberger, M., Horn, M.: Sliding mode based platooning with non-zero
+initial spacing errors. IEEE Control Systems Letters 1(2), 274–279 (Oct 2017).
+31. Shahbaz, M., Groz, R.: Inferring Mealy machines. In: FM (2009)
+32. Simpson, T., Booker, A., Ghosh, D., Giunta, A., Koch, P., Yang, R.J.: Ap-
+proximation methods in multidisciplinary analysis and optimization: a panel dis-
+cussion. Structural and Multidisciplinary Optimization 27(5), 302–313 (2004). ,
+https://doi.org/10.1007/s00158-004-0389-9
+33. Smeenk, W., Moerman, J., Vaandrager, F.W., Jansen, D.N.: Applying automata
+learning to embedded control software. In: ICFEM (2015)
+34. Spielberg, S., Gopaluni, R.B., Loewen, P.D.: Deep reinforcement learning ap-
+proaches for process control. 2017 6th International Symposium on Advanced Con-
+trol of Industrial Processes (AdCONIP) pp. 201–206 (2017)
+35. Tanwani, A., Shim, H., Liberzon, D.: Observability for switched linear systems:
+Characterization and observer design. IEEE Transactions on Automatic Control
+58(4), 891–904 (apr 2013).
+36. Vaandrager, F.W.: Model learning. Commun. ACM (2017)
+37. Vasilevskii, M.P.: Failure diagnosis of automata. Cybernetics 9(4), 653–665 (1973).
+38. Vidal, R., Ma, Y., Sastry, S.S.: Hybrid system identiﬁcation. In: Interdisciplinary
+Applied Mathematics, pp. 431–451. Springer New York (2016).

@@ -42,7 +42,18 @@ from src.text_extraction.validation import validate_section_files
 
 print("\n=== AI Research Agent Started ===\n")
 
-num_topics = int(input("Enter number of research topics: "))
+while True:
+    user_input = input("Enter number of research topics: ").strip()
+
+    if user_input.isdigit():
+        num_topics = int(user_input)
+        if num_topics > 0:
+            break
+        else:
+            print("Please enter a number greater than 0.")
+    else:
+        print("Invalid input. Please enter a valid number.")
+
 topics = [input(f"Enter topic {i + 1}: ").strip() for i in range(num_topics)]
 
 os.makedirs("pdfs", exist_ok=True)
@@ -78,6 +89,8 @@ save_cleaned_dataset(cleaned_dataset)
 
 print("\nWeek 1 completed.")
 
+
+
 #milestone2
 extract_text_from_all_pdfs("pdfs", "data/extracted_text")
 process_all_text_files("data/extracted_text", "data/section_wise_text")
@@ -104,5 +117,36 @@ for paper, status in (validation_report or {}).items():
     print(f"{paper}: {status}")
 
 print_similarity_matrix(similarity_matrix, list(key_findings.keys()))
+
+
+
+
+#milestone3
+from src.milestone_3.pattern_extractor import extract_common_patterns
+from src.milestone_3.draft_generator import generate_draft
+import json
+
+with open("data/datasets/cleaned_dataset.json", "r") as f:
+    cleaned_dataset = json.load(f)
+
+with open("data/datasets/similarity_results.json", "r") as f:
+    similarity_data = json.load(f)
+
+patterns = extract_common_patterns(cleaned_dataset)
+key_findings = similarity_data.get("key_findings", {})
+
+draft = generate_draft(patterns, key_findings)
+
+with open("data/datasets/ai_draft.txt", "w", encoding="utf-8") as f:
+    f.write(draft)
+
+print("AI draft saved to data/datasets/ai_draft.txt")
+
+
+with open("data/datasets/ai_draft_paper.txt", "w", encoding="utf-8") as f:
+    f.write(draft)
+
+print("AI draft generated.")
+
 
 

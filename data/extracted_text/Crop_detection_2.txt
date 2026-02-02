@@ -1,0 +1,1961 @@
+Data-driven Crop Growth Simulation on Time-varying Generated Images
+using Multi-conditional Generative Adversarial Networks
+Preprint, compiled December 7, 2023
+Lukas Drees
+ID 1∗, Dereje T. Demie
+ID 2, Madhuri R. Paul
+ID 3, Johannes Leonhardt
+ID 1, Sabine J. Seidel
+ID 2, Thomas F.
+Döring
+ID 3, and Ribana Roscher
+ID 4,1
+1Remote Sensing Group, Institute of Geodesy and Geoinformation, University of Bonn, Germany
+2Crop Science Group, Institute of Crop Science and Resource Conservation, University of Bonn, Germany
+3Agroecology and Organic Farming Group, Institute of Crop Science and Resource Conservation, University of Bonn, Germany
+4Data Science For Crop Systems, Forschungszentrum Jülich GmbH, Germany
+Abstract
+Background: Image-based crop growth modeling can substantially contribute to precision agriculture by
+revealing spatial crop development over time, which allows an early and location-specific estimation of relevant
+future plant traits, such as leaf area or biomass. A prerequisite for realistic and sharp crop image generation is the
+integration of multiple growth-influencing conditions in a model, such as an image of an initial growth stage, the
+associated growth time, and further information about the field treatment. While image-based models provide
+more flexibility for crop growth modeling than process-based models, there is still a significant research gap in
+the comprehensive integration of various growth-influencing conditions. Further exploration and investigation
+are needed to address this gap.
+Methods: We present a two-stage framework consisting first of an image prediction model and second of a
+growth estimation model, which both are independently trained. The image prediction model is a conditional
+Wasserstein generative adversarial network (CWGAN). In the generator of this model, conditional batch
+normalization (CBN) is used to integrate different conditions along with the input image. This allows the model
+to generate time-varying artificial images dependent on multiple influencing factors of different kinds. These
+images are used by the second part of the framework for plant phenotyping by deriving plant-specific traits and
+comparing them with those of non-artificial (real) reference images. In addition, image quality is evaluated using
+multi-scale structural similarity (MS-SSIM), learned perceptual image patch similarity (LPIPS), and Fréchet
+inception distance (FID). During inference, the framework allows image prediction for any combination of
+conditions used in training; we call this prediction data-driven crop growth simulation.
+Results: Experiments are performed on three datasets of different complexity. These datasets include the
+laboratory plant Arabidopsis thaliana (Arabidopsis) and crops grown under real field conditions, namely
+cauliflower (GrowliFlower) and crop mixtures consisting of faba bean and spring wheat (MixedCrop). In all
+cases, the framework allows realistic, sharp image predictions with a slight loss of quality from short-term to
+long-term predictions. For MixedCrop grown under varying treatments (different cultivars, sowing densities), the
+results show that adding these conditions increases the prediction quality as measured by the estimated biomass.
+Simulations of varying growth-influencing conditions performed with the trained framework provide valuable
+insights into how such factors relate to crop appearances, which is particularly useful in complex, less explored
+crop mixture systems. Further results show that adding process-based simulated biomass as a condition increases
+the accuracy of the derived phenotypic traits from the predicted images. This demonstrates the potential of our
+framework to serve as an interface between an image- and process-based crop growth model.
+Conclusion: The image-based prediction of future plant appearances is adequately feasible by multi-conditional
+CWGAN. The presented framework complements process-based models and overcomes limitations, such as the
+reliance on assumptions and the low exact field-localization specificity, by realistic visualizations of the spatial
+crop development that directly lead to a high explainability of the model prediction.
+Keywords machine learning, image generation, conditional GAN, growth modeling, crop mixtures
+1
+Background
+Growing agricultural crops sustainably , i.e., producing sufficient
+output with high resource use efficiency and minimal negative
+impacts on ecosystems, requires complex optimization of crop
+management [1]. Decisions on the operations during the season
+include the timing and amounts of fertilization, irrigation, pro-
+tection against pests and pathogens, weeding, the application
+1∗correspondence: ldrees@uni-bonn.de
+of growth regulations, and other activities. The optimality of
+most of these operations and their combinations depend on the
+phenology of crops, i.e., the growth stages and size of the plants.
+Complex and multiple interactions typically occur between dif-
+ferent management factors, crop genotypes, and variable en-
+vironmental factors, affecting crop performance differently at
+different growth stages. Because of this complexity, identifying
+optimized crop management is not trivial, and various ways have
+been developed to tackle this problem and to understand crop
+arXiv:2312.03443v1  [cs.CV]  6 Dec 2023
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+2
+Trt A
+t
+Days after sowing
+Biomass
+Decode
+Encode
+Regress
+Trt A
+Trt B
+Simulation
+Input
+Growth
+estimation
+model
+Image
+prediction
+model
+t
+Trt A
+Trt B
+Figure 1: Proposed two-step crop growth simulation framework: In the first step of image prediction, an input image is initially
+encoded with its associated time (t) and treatment (trt). Then, this encoded representation can be decoded into newly generated
+images with varying growth stages for different simulation times and treatments. In the second step of growth estimation, target
+parameters such as projected leaf area or biomass are estimated from the images and analyzed over time. Both models are trained
+independently.
+responses to complex management × environment interactions.
+Two complementary approaches are experimental field trials and
+process-based (mechanistic) crop growth monitoring. While
+field experimentation integrates actual environmental and man-
+agement conditions, it is limited in time and space and can only
+test a low number of such conditions. Crop growth modeling, on
+the other hand, while allowing the simulation of multiple condi-
+tions, including future environments, is always a simplification
+of the situation in the field and may be limited in predicting
+realistic responses of crops, especially under a changing climate
+[2]. Because of the central role of crop phenology in agronomic
+decision-making, it is useful to be able to predict future crop
+growth stages and crop appearance in the season. One pathway
+towards this goal is the automatic generation of crop images
+derived from images taken during earlier stages. This is particu-
+larly difficult but also useful in crop mixtures, where interactions
+occur between two or more crop species grown together on the
+same field.
+As an example, cereal and legume crop mixtures are known to
+improve resource use efficiency [3], enhance nutrient acquisition
+[4], maximize system productivity through complementarity,
+especially on low input land limited by nitrogen deficiency [5],
+and reduce weeds, diseases, and insect pest infestations [6].
+Nevertheless, many farmers do not consider crop mixtures as an
+option, often due to a knowledge gap in species, cultivar, and
+treatment selection, which results in performance uncertainty
+[7]. One approach to overcome this uncertainty and to deal with
+complexity is the use of predictive crop modeling.
+The differences between predictive crop growth models are mani-
+fold. Process-based models are based on biological and physical
+relationships and aim to represent the mechanics of plant growth
+and thus have a high interpretability.They are also suitable for
+long-term predictions and can be generalized to different loca-
+tions, but both require a complex calibration to the respective
+environment. Image-based crop growth models, on the other
+hand, are data-driven, with information on the actual crop envi-
+ronment encoded in the image. By using machine learning to
+process this image data, data-driven models can build complex
+relationships [8] without relying on simplified assumptions, like
+process-based models. This makes the modeling process less
+interpretable, but the result that comprises a predicted image,
+showing a realistic future spatial plant development, and derived
+phenotypic traits can be explained in a better way as it is human-
+understandable. The predicted image is highly versatile, which
+is particularly interesting for crop mixtures, e.g., to count the
+future number of crops at certain field positions or to visualize,
+and thus better understand, how two species behave and com-
+pete with respect to certain influencing factors. Therefore, this
+work aims to extract more insight from image-based models
+to complement missing facets of existing well-established crop
+growth models.
+In recent years, the most widely used method for image genera-
+tion in plant science has been Generative Adversarial Networks
+(GANs) [9], as they have proven to generate high-quality im-
+ages. In particular, its variant conditional GAN (CGAN) has
+found a wide application, e.g., to generate realistic plant images
+[10, 11, 12] for the purpose of data augmentation, or segmen-
+tation [13]. While these works operate in the same temporal
+domain, few works exist that incorporate the factor of time to
+generate and analyze probable future growth stages. Yasrab et
+al. [14] generate segmentation images of future root and shoot
+systems of Arabidopsis (A. thaliana) and Komatsuna (Brassica
+rapa) based on a time series of past images. However, their
+GAN model is limited to observation times with fixed constant
+intervals, which severely limits the space of possible input time
+series and makes long-term predictions difficult. Furthermore,
+due to significant differences in the bit depth, the generation of
+segmentations is much less complex than the generation of arti-
+ficial plant images, which can be considered as artificial sensor
+data. Drees et al. [15] show long-term predictions of realistic
+images of the above-ground plant phenotype, although it has the
+disadvantage that time is not explicitly included as a condition
+so that the image prediction is limited to predefined growth pre-
+diction steps between fixed growth stages. This challenge can
+be addressed by extending the generator with modules respon-
+sible for integrating the time factor, such as a combination of
+positional encoded time points and a transformer encoder, as
+shown in [16]. This allows the flexible integration of multiple
+time points as a condition, as well as the generation of an arbi-
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+3
+trary growth stage in the output. However, the image quality is
+not optimal because the model is limited to a small bottleneck
+dimension due to a parameter-intensive Transformer encoder.
+Further, the evaluation in this work is based only on classical
+metrics, such as structural similarity, but lacks crucial plant-
+specific evaluations that demonstrate actual usability by deriving
+phenotypic traits. In general, all the aforementioned methods
+have the disadvantage that plant growth is greatly simplified by
+considering only other growth stages, so the time factor in the in-
+put, while in fact, it is subject to complex mechanisms. Miranda
+et al. [17] attempt to get closer to this complexity by integrat-
+ing more conditions into the growth modeling, which allows
+them to generate controlled and more explainable output images.
+However, the method is limited to continuous conditions and to
+a predefined growth prediction step from a fixed early growth
+stage to a fixed later growth stage, which is unfavorable in agri-
+cultural practice. In general, integrating multiple conditions is a
+non-trivial task, as conditioned image generation tends to gener-
+ate deterministic and less diverse outputs up to mode collapse
+[18]. There are many different ways of integrating conditions
+from concatenation [19] over auxiliary classifiers [20] and latent
+projection [21] to conditional batch normalization [22, 23]. This
+work uses the latter because it allows the intuitive integration of
+multiple conditions while maintaining the stochasticity of the
+model to create an adequate distribution of generated plants.
+An overview of our growth simulation framework is depicted in
+Fig. 1. It is a two-step procedure in which time-varying images
+are first generated with the image prediction model and then an-
+alyzed with an independently trained growth estimation model.
+An important novelty in the image prediction model, which is a
+Conditional Wasserstein GAN (CWGAN), is the integration of
+multiple conditions of different types, that is, images (2D spatial
+continuous variables), time points (discrete), treatment infor-
+mation (categorical), and daily simulated biomass (continuous).
+Since the biomass is process-based simulated, we demonstrate
+that the image prediction model can serve as an interface that
+makes the output of process-based crop growth models more
+explainable by visualizing the spatial crop development. Con-
+ditioning is realized by conditional batch normalization in both
+parts, the encoder and decoder, of the CWGAN generator. This
+enables simulations during inference, i.e., while fixing initial
+conditions (input image, time, and treatment), for other growth
+stages, conditions can be varied -as required- to generate multi-
+ple realistic predictions, as shown in Fig. 1. Experiments have
+been conducted on different datasets of varying complexity, from
+the laboratory plant Arabidopsis thaliana (Arabidopsis) to real
+field data with cauliflower (GrowliFlower) and crop mixtures
+(MixedCrop). In addition to classical GAN evaluation metrics,
+we evaluate the quality of generated images through the growth
+estimation model, which acts as a plant phenotyping module,
+by comparing (depending on the dataset) either the projected
+leaf area or the biomass estimated from generated and real im-
+ages. For crop mixtures, this allows us to make a comparison
+between our image-based crop growth simulation and a classic
+process-based one, which was used to establish the growth esti-
+mation model. A transferability experiment demonstrates that
+our framework has the potential to be transferred to crop mix-
+tures in another field with different environmental conditions.
+(a) Arabidopsis
+(b) Cauliflower
+(d) Mixed-WG
+(c) Mixed-CKA
+Figure 2: Example evolution over time of one plant resp. from
+each of the datasets (a) Arabidopsis, (b) GrowliFlower, (c)
+Mixed-CKA, and (d) Mixed-WG visualized by georeferenced
+clips from RGB orthophotos. The number above the images in-
+dicates the growth stage for (a),(c), and (d) in days after sowing
+[DAS] and for (b) in days after planting [DAP].
+2
+Materials and Methods
+This section introduces the data basis (Sec. 2.1) and the frame-
+work2, where a 2-step approach is followed. First, an image
+is predicted (Sec. 2.2), and second, the growth is estimated
+using plant phenotyping (Sec. 2.3). While existing state-of-the-
+art models are used for growth estimation, which is fine-tuned
+on our data, the methodological focus of this work is on the
+first part, image prediction. We also provide details about the
+process-based crop growth model (Sec. 2.3.3) used to evaluate
+and analyze image-based predictions of crop mixtures.
+For a clear distinction, we call a model output estimation if it
+has the same time as the input and prediction if there is a time
+shift ∆t = tgen −tin, so positive ∆t means prediction into the
+future and negative ∆t means prediction into the past.
+2.1
+Data
+Experiments are set up on three different datasets: Arabidopsis,
+GrowliFlower, and MixedCrop, all containing RGB-image time
+series/sequences of plants (Fig. 2). They meet the minimum
+requirement of having aligned images, which means that all
+images of a sequence show the exact same region from the same
+perspective and resolution over time. Ideally, lightning condi-
+tions are constant, which is only the case for the Arabidopsis
+dataset. Beyond that, they differ in essential aspects such as over-
+all size, type of plants, heterogeneity of images, and number,
+as well as regularity of acquisition times during the vegetation
+period. Notably, additional conditions on treatment and daily
+simulated biomass are available only for MixedCrop, all listed
+in Tab. 1.
+Arabidopsis. The Arabidopsis dataset [24] includes 80 different
+Arabidopsis (Arabidopsis thaliana) plants recorded on 4 trays of
+20 plants each over a 35 d period using an IDS UI-5480SE cam-
+era (Tamron 8 mm f1.4 lens, 5 MP). The camera was mounted on
+2Source code is publicly available at https://github.com/
+luked12/crop-growth-cgan
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+4
+Arabidopsis
+GrowliFlower
+MixedCrop
+Mixed-CKA
+Mixed-WG
+# images
+54 384
+102 264
+21 371
+18 800
+observation period [d]
+18
+71
+113
+109
+# times1 (Cond.: t)
+850
+12
+11
+10
+# sequences2
+64
+8 522
+2226
+2212
+# train sequences
+40
+6 572
+1555
+1580
+# val sequences
+8
+979
+311
+316
+# test sequences
+16
+971
+311
+316
+∅images/sequence
+850
+12
+9.60
+8.50
+image size [px]
+256
+256
+256
+256
+GSD [mm]
+0.23
+3.10
+5.67
+5.67
+diff. treatments (Cond.: trt)
+×
+×
+✓(76)
+✓(76)
+sim. biomass (Cond.: bm)
+×
+×
+✓
+✓
+GEM: # train images
+512
+1 541
+15 017
+13 154
+GEM: # val images
+148
+326
+3 177
+2 823
+GEM: # test images
+148
+330
+3 177
+2 823
+Table 1: Dataset characteristics. The upper block indicates the image specifications for the image prediction model, where the
+different conditions time (t), treatment (trt), and biomass (bm) are highlighted, and the bottom block displays the number of images
+used to train, validate, and test the resp. growth estimation model (GEM), which is trained independently on individual images
+without sequence information.
+a robotic arm in a controlled laboratory environment, ensuring
+image alignment. All tray images are corrected for barrel distor-
+tions with a provided calibration script [24] and then manually
+cropped at the edges of the pots, resulting in images that have a
+single plant in the center region. We focus on images from 18
+days of early developmental stages of Arabidopsis thaliana from
+day 21 after sowing, which is shortly after plant emergence, to
+day 38 after sowing. Any plants that were already removed from
+the experiment before day 38 or that protruded beyond the edge
+of the pot after day 38 were removed, leaving 64 plants. Please
+note that the number of images per sequence clearly exceeds the
+duration of the observation period in [d] because not only one
+image per day was taken, but up to four per hour.
+GrowliFlower.
+Cauliflower image sequences from the
+GrowliFlower dataset [25] contains a total of 102 264 images
+of cauliflower (Brassica oleracea var. botrytis) in 2021 from
+a field in Bornheim, Rhein-Sieg Kreis, Germany. We use the
+images in a period of 71 days after planting and exclude images
+after harvest. The images are orthophoto crops taken from a
+drone equipped with a Sony Alpha 7R III camera (Zeiss/Batis
+2.0 lens, 47.4 MP). The geo-referencing of the orthophotos al-
+lows aligned plant-centered cropping at the same position at
+each time point. However, compared to Arabidopsis, there is
+not only one plant per image, but more heads are visible at the
+image edges and overlap to later growth stages.
+MixedCrop. The MixedCrop data are from a 2020 and 2021
+PhenoRob crop mixture experiment described in detail by Paul
+et al. [26]. Two different cultivars of faba bean (FB, Vicia
+faba) and twelve different entries of spring wheat (SW, Triticum
+aestivum) were sown in mixtures of a 1:1 ratio, which means
+50 % of seeds of each species from the respective monoculture as
+well as in monocultures. The field experiments were conducted
+at two research sites of the University of Bonn in the Rhein-Sieg-
+Kreis, Germany, namely, Campus Klein-Altendorf (CKA, near
+Rheinbach) and at Wiesengut (WG, near Hennef). Coupled with
+two different seeding densities i.e. low (L) 80% and high (H)
+120% of the recommended sole crop densities (400 seeds m−2 for
+SW and 45 seeds m−2 for FB), this results in (2·12+2+12)·2 = 76
+different treatments, which were replicated four times, or, in case
+of the faba bean monocultures, eight times, resulting in a total of
+320 different plots of size 10 m × 1.5 m at each of the two sites.
+Both experimental sites are located about 30 km apart and have
+significantly different growing conditions because Mixed-CKA
+is managed conventionally and Mixed-WG organically. The
+dynamic process-based model used to generate the simulated
+daily dried biomass values for SW and FB was calibrated and
+tested against the observation data of the experiment carried out
+at CKA 2020, 2021, and WG 2020. However, the images used
+in this work are only from CKA 2020 and WG 2020.
+The image acquisition was conducted 11 times for Mixed-CKA
+and 10 times for Mixed-WG by UAV equipped with an FC6310
+camera (1 ′′ CMOS 8.8 mm, 20 MP). The 320 field plots are
+positional-aligned cropped from the geo-referenced orthophotos
+before being horizontally rotated and plot-centered cropped into
+seven non-overlapping and square image clippings. Due to or-
+thophoto corruptions and destructive field measurements, some
+sections were manually removed, resulting in a final number of
+21 371 images for Mixed-CKA and 18 800 images for Mixed-
+WG. For Mixed-WG, a significant spatial alignment error was
+noticed by visual inspection, which is up to 10 cm, but incon-
+sistent across the images and, therefore, difficult to filter out.
+Since 10 cm corresponds approximately to the spatial extent of
+a faba bean plant at 20 days after sowing (DAS), the offset is
+well visible in the early images. For this reason, Mixed-WG is
+not used for training; instead, it is intended to check the transfer-
+ability, i.e., the model learned on Mixed-CKA and applied on
+Mixed-WG.
+In addition, a variety of other data were collected in this crop
+mixture experiment, including weather, soil, and nutrient
+parameters as well as height and biomass measurements
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+5
+[26, 27] that are used in this work to calibrate and evaluate a
+process-based crop growth model as described in Sec. 2.3.3.
+The datasets vary in their complexity: The challenges of the
+GrowliFlower and MixedCrop datasets are the considerable gaps
+of different lengths between the recording times. In addition,
+there are large spectral differences both within each time series
+and between Mixed-CKA and Mixed-WG, mainly due to differ-
+ent solar radiations, cloud coverings, and soil moistures during
+the overflights. Compared to the other datasets, MixedCrop is
+the most challenging due to its small size combined with a large
+number of overlapping mixed crops, even at early growth stages.
+All images are resized to a uniform size of 256 px × 256 px for
+the experiments, resulting in different ground sample distances
+(GSD) from 0.23 mm to 5.67 mm. For all experiments, the im-
+age sequences are divided into the same spatially separated
+training, validation, and test sets.
+2.2
+Image prediction
+For image prediction, we build a multi-conditional Wasserstein
+GAN with gradient penalty (CWGAN-GP) [28] from several
+state-of-the-art components. The network consists of a generator
+Gθ and a critic Dδ, where Gθ predicts images and Dδ estimates
+a score for generated and real images. A special focus is on
+the integration of multiple conditions of different types in the
+architecture as described in Sec. 2.2.2.
+2.2.1
+Conditional Wasserstein GAN objective
+In the generator, a target image Xgen = Gθ(Xin, y, z) is gen-
+erated from an input image Xin, conditions y that split into
+[yin, ygen], and noise z ∼N(0, 1). Both yin and ygen represent
+multi-conditioning, which can be composed of several of the
+following conditions: categorical (class) variables c, discrete
+variables t, and continuous variables b. In the critic, either the
+reference Dδ(Xref, Xin,y) or the generated image Dδ(Xgen, Xin,y)
+are presented along with input image and conditions. The critic
+estimates a score for both real and generated input, which is
+capable of enforcing the minimization of the Wasserstein dis-
+tance between the two distributions. The objective of adversarial
+training is to optimize the parameters θ and δ by maximizing
+the objective function LGAN(Gθ, Dδ) by Dδ and minimizing it
+by Gθ.
+θ∗, δ∗= arg min
+θ arg max
+δ
+LGAN(Gθ, Dδ)
+(1)
+Eq. (2) represents LGAN(Gθ, Dδ) with the classic CWGAN ob-
+jective in the first line [29], added with the gradient penalty term
+in the second line to enforce the required 1-Lipschitz continuity
+of Dδ [28].
+LGAN(Gθ, Dδ) =E(z,Xin,y)[Dδ(Gθ(Xin, y, z), Xin, y)]
+−E(Xref,Xin,y)[Dδ(Xref, Xin, y)]
++ λGPE(Xin, ˆX)[(∥∇ˆXDδ(Xin, ˆX)∥2 −1)2]
+(2)
+The gradient penalty is computed by blending a generated im-
+age with a reference image, resulting in ˆX = ϵXref + (1 −
+ϵ)Gθ(Xin, y, z), where ϵ is a random value in the range [0, 1],
+and its impact is controlled by λGP. Using LGAN(Gθ, Dδ) mini-
+mizes the Wasserstein-1 distance, sidestepping issues like mode
+collapse and vanishing gradients in classic GAN training.
+2.2.2
+Network architecture with multi-conditioning
+Generator. The generator consists of an encoder P that com-
+presses the input image and conditions related to the input im-
+age into a latent representation ξ = P(Xin, yin) and a decoder Q
+that generates the target image from this latent representation,
+the conditions for the image to be generated and a stochastic
+component Xgen = Q(ξ, ygen, z). While for image encoding a
+ResNet-18 backbone [30] without final fully connected layer
+and global average pooling is used, decoding works architec-
+turally inverse to that. To integrate the conditions, all batch
+normalization layers are replaced by conditional batch normal-
+ization layers (CBN) [31], where the learnable affine parameters
+of classical batch normalization layers [32] are conditioned on
+some auxiliary variable a. In our case, a are embeddings of the
+conditions y using an embedding function Φ. In particular, the
+encoder’s CBN layers are conditioned on the embeddings related
+to the input image ain = Φ(yin), while the decoder’s CBN layers
+are conditioned on the embeddings related to the image to be
+generated agen = Φ(ygen). Specifically, the embedding function
+is condition-type-specific since y can consist of conditions of
+up to 3 different types, namely discrete temporal information t,
+categorical class information c, and continuous variables b. So
+individual embeddings are performed for each type of condition
+in y, which are then concatenated to a.
+yin = [tin, cin, bin]
+ain = [Φt(tin), Φc(cin), Φb(bin)]
+ygen = [tgen, cgen, bgen]
+agen = [Φt(tgen), Φc(cgen), Φb(bgen)]
+(3)
+Here, the temporal embedding Φt consists of positional encod-
+ing of discrete time points followed by a two-layer MLP with
+a sigmoid linear unit (SiLU) function in between. The class
+embedding Φc represents a classic lookup table embedding that
+maps indices of categorical class variables to a continuous vector
+representation. In order to embed a vector of continuous values
+in Φb, a two-layer MLP with SiLU function in between is used.
+In the experiments, the conditions c and b are not always used,
+then embedding and resp. concatenating of unused conditions
+is omitted. Notably, tin/tgen and cin/cgen are scalars represent-
+ing in this work time (t) and treatment (c), respectively, while
+bin/bgen are vectors, and in this work are 2-dimensional due to
+SW and FB biomass. However, after embedding the individual
+components of y, it is ensured that Φt(t), Φc(c), and Φa(b) all
+represent continuous vectors of the same 64-dimensional embed-
+ding size, which avoid prior weighting of different conditions.
+Besides, CBN has already included a linear embedding for all
+conditions, but the additional condition-type-specific embedding
+has stabilized the training process.
+To also incorporate stochasticity into the network, a random
+128-dim noise vector z ∼N(0, 1) ∈Z is generated and via
+noise mapping network f : Z 7→W inspired by StyleGAN [33]
+projected to the latent code w ∈W, that matches the channel
+dimension of the latent representation ξ. The mapping network
+f is a shallow three-layer linear embedding network, which
+gradually projects to 128-dimensional z to the 512-dimensional
+w, which corresponds to the channel size of the ResNet-18 latent
+representation. After repeating w for the spatial dimension
+(global average pooling is omitted), it is finally added to ξ.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+6
+Critic. The critic takes either the generated Xgen or reference
+image Xref along with the input image Xin, and the conditions
+y as input. The images are concatenated channel-wise in the
+input and initially passed through a convolutional layer and
+LeakyReLU activation.
+This is followed by several convo-
+lutional blocks consisting of a convolutional layer, instance
+normalization, and LeakyReLU up to a spatial dimension of
+[16 × 16]. Since batch normalization should be avoided in the
+Wasserstein critic [28], the conditions are not integrated in this
+case with CBN. Instead, each condition is first embedded to
+dimension 256 with a different embedding function Ψ than Φ in
+the generator, but the architecture of the embedding functions
+inside Ψ and Φ are the same. Then, embedded conditions are
+reshaped, and channel-wise concatenated to the intermediate
+critic representation of spatial size [16 × 16]. Note that here, the
+conditions of both the input image and the image to be gener-
+ated are concatenated. From this concatenated representation,
+the final score is generated with further convolutional blocks.
+Previous experiments have shown that the training converges
+significantly better with an intermediate fusion of the conditions
+than with a fusion directly in the critic input.
+2.2.3
+Optimization and hyperparameter
+The data sampling is special since, due to the temporal condition,
+multiple reference images can be used for every input image.
+Thus, in each epoch, we iterate over all training images, which
+are then used as input images. For each input image, a random
+image of the same plant is sampled, representing the reference
+plant. The conditions yin and ygen are drawn according to the
+sampled images. This causes that during the training cin=cgen
+because the treatment class does not change over time. To
+calculate test scores, the sampling procedure is identical, i.e.,
+each test image represents an input image once and gets assigned
+a random growth stage as the reference image to be generated.
+For inference, the conditions can be varied arbitrarily, what we
+call data-driven simulation. So a treatment change cin , cgen is
+possible, b does not have to fit the reference values, and t can
+deviate from the training range.
+Adam optimizer is used with a learning rate of 1e-4 for both Gθ
+and Dδ optimization. Regardless of the number of conditions,
+the models are trained for 5000 epochs, after which the best
+epoch is selected based on the lowest LPIPS on the validation
+data. As image augmentations, horizontal and vertical flipping,
+90◦rotations, slight translations within a random affine transfor-
+mation, and ShadowOut, which is a semi-transparent version of
+CutOut [34], are applied simultaneously to input and reference
+or generated image. Using a single NVIDIA A100-PCIE-40GB
+and a batch size of 64, the training duration is between 13 d and
+35 d, depending on the dataset size.
+2.2.4
+Evaluation of image quality
+To evaluate the quality of the generated images, we use a well-
+established set of GAN evaluation metrics. For the direct com-
+parison between generated and reference images of the same
+time point, we use the Multi-scale Structural Similarity Index
+Measure (MS-SSIM [35], optimal: 1) and the Learned Percep-
+tual Image Patch Similarity (LPIPS [36], optimal: 0). While MS-
+SSIM compares the generated with the reference image directly
+at different resolutions of the image space, LPIPS evaluates the
+similarity of image patch activations in the VGG-embedded la-
+tent space, which has been shown to have a high correlation with
+human perception. In addition, the Fréchet Inception Distance
+(FID [37], optimal: 0) is used to compare not only the quality
+but also the diversity of the generated image distribution with
+the real image distribution of the test dataset. However, for
+long-term predictions far into the future or past, that means a
+large difference exists in the growth stage of the input image
+and the image to be generated, it is not expected that generated
+and reference images match at the pixel level. Although FID
+will degrade less as long as the plants fit into the distribution of
+each growth stage, poor results are to be expected for MS-SSIM
+and LPIPS in such cases. In order to evaluate whether useful
+plant-related traits can still be derived, we use growth estimation
+models, which determine leaf area (Sec. 2.3.1) and biomass
+(Sec. 2.3.2) from the generated images.
+2.3
+Growth estimation
+The part of growth estimation is realized, depending on the
+dataset and plant type, either by instance segmentation to es-
+timate projected leaf area or by image regression to estimate
+biomass. Both can also be considered plant phenotyping based
+on state-of-the-art neural networks.
+2.3.1
+Estimation of projected leaf area
+For Arabidopsis and GrowliFlower, growth is determined us-
+ing the plant trait projected leaf area (PLA). Both datasets are
+well suited for this purpose because different plants do not over-
+lap until advanced growth stages. The PLA is derived as an
+image-wise pixel sum of plant segmentations predicted with a
+Mask R-CNN instance segmentation model [38]. For this, two
+models, with pre-trained ImageNet weights [39], are fine-tuned
+on a few images of the respective plant dataset, for which ref-
+erence segmentation masks are available. By multiplying the
+PLA with the squared dataset-dependent ground sample dis-
+tance (GSD), we report PLA in the unit mm2 for Arabidopsis
+and cm2 for GrowliFlower, or for comparability normalized in
+units of %/image, which is achieved by dividing the PLA by
+the image size. In this work, PLA is not calculated for the
+whole image but only out of the segmentation predictions for
+the center plant, which is especially relevant for GrowliFlower,
+where there are, in most cases, multiple plants per image. To
+compare the PLA of a single generated and reference image
+pair, we use ∆PLA = PLAgen −PLAref. For MixedCrop, PLA
+cannot be extracted with sufficient accuracy at the pixel level
+for the individual crop species due to the fine structure of the
+wheat ears, enormous plant overlap, and a lack of annotated
+images [40]. The accuracy evaluation of the trained instance
+segmentation models can be found in Sec. 3.1.
+2.3.2
+Estimation of biomass
+Instead of PLA, for MixedCrop, dried biomass (BM) in tons
+per hectare [t/ha] is to be derived from the images as a growth
+indicator, divided into the two mixture species spring wheat
+(SW) and faba bean (FB). To estimate both with one model,
+a ResNet-18 [30] is used, modifying the last linear layer to
+two output neurons, which are activated with ReLU, since only
+positive biomass values are possible. The mean squared error
+(MSE) function is used as the loss function. We use weights from
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+7
+a pre-training with ImageNet [39] and fine-tune on MixedCrop
+images and corresponding reference biomass values. These
+reference biomass values are not actual in-field measurements
+but come from a process-based crop growth model for mixtures
+(see Sec. 2.3.3) that provides simulated SW and FB biomasses
+dynamically for each image time point. Notably, we use the
+same simulated biomass values that are used as conditions in the
+image prediction part of the framework. However, this dual use
+is methodologically not critical since the image prediction part
+and the growth estimation part are trained independently of each
+other. Similar to PLA, we use ∆BM = BMgen −BMref to report
+biomass deviations between two images. Overall, estimating
+biomass from bird’s eye view imagery has three main challenges
+and inherent sources of error. First, biomass is a 3D quantity
+derived from 2D images. Second, the process-based crop growth
+model only estimates dried biomass for all growth stages, which
+is used as a reference for training the growth estimation model.
+However, the images show plants with their actual humidity
+(fresh matter), which changes over time. Third, the simulation
+result varies only treatment-wise, but it is likely that plants of the
+same treatment will develop differently in multiple replications
+in the field due to different soil conditions. For the discussion
+about the biomass estimation results and accuracies, see Sec. 3.2.
+In the evaluation for a whole test set with N images, the mean
+absolute error (MAE) and the mean error (ME) are calculated
+as follows between plant traits (PT) of the generated and the
+reference image, whereby either PLA or BM serve as PT.
+MAE =
+PN
+i=1|PTgen
+i
+−PTref
+i |
+N
+(4)
+ME =
+PN
+i=1 PTgen
+i
+−PTref
+i
+N
+(5)
+Here, the quantity measure ME indicates whether the PT is
+overall underestimated (ME negative) or overestimated (ME
+positive). For whole agricultural fields, the mean error (ME) is
+informative, in case it is not as important to accurately determine
+the yield of individual field regions but rather to evaluate whether
+the overall mean predictive error for the entire field is low.
+2.3.3
+Process-based modeling of crop mixtures
+The process-based crop growth simulations were conducted
+in the modeling platform SIMPLACE (Scientific Impact As-
+sessment and Modeling Platform for Advanced Crop Ecosys-
+tem Management) [41]. Different SimComponents (submodels)
+in the SIMPLACE framework were combined, namely LIN-
+TULPhenology, LINTUL5NPKDemand, SlimNitrogen, LIN-
+TUL5Biomass, SlimRoots, and SlimWater, amongst others. An
+overview of key SimComponents3 is described in Seidel et al.
+[42]. Specifically, the biomass per species was calculated by
+SimComponent LINTUL5Biomass, which considers water and
+nitrogen limitation effects on biomass increment. The mixture
+model was developed in the SIMPLACE framework and simu-
+lates the splitting of solar radiation according to the competition
+of the two species as well as the water and nitrogen uptake of
+two crop species that are planted in a mixture. The model was
+calibrated and tested on three environments (CKA 2020, 2021,
+and WG 2020) based on collected data from the crops cultivated
+solely and evaluated based on the data in the mixture treatments.
+3More information about SIMPLACE components: https://www.
+simplace.net/index.php/documentation
+3
+Results and Discussions
+In this section, the results of the growth estimation models are
+described at the beginning, as the accuracies of these models
+are needed for the discussion of the image prediction results.
+In the following, we first show the results of image prediction
+with only temporal variation, which allows a comparison with
+reference data, then simulations with further changed conditions,
+and finally, the transferability to another experimental site.
+3.1
+Accuracy of projected leaf area estimation
+Instance segmentation, which is used to derive PLA (projected
+leaf area), is trained on a small subset of the corresponding
+datasets for which reference segmentation masks are available.
+Exact numbers for all datasets can be found in the bottom part
+of Tab. 1. The reference masks of the test set specified there
+are used to run the evaluation in Tab. 2. It shows the instance
+segmentation accuracies using the measures AP and AR, which
+- due to the direct derivation from these - correlates with the
+accuracy of the PLA. The GrowliFlower accuracies are com-
+parable to the results of Kierdorf et al. [25], i.e., sufficient to
+evaluate cauliflower growth. Arabidopsis has a higher AP and
+AR for bounding boxes and is at a comparable high level to
+GrowliFlower for segmentation, thus also adequate to determine
+PLA.
+3.2
+Accuracy of biomass estimation
+The accuracy of dried biomass estimation for both MixedCrop
+sites is given in Tab. 3. For mixtures the MAE is between
+0.126 t/ha and 0.142 t/ha for SW and between 0.105 t/ha and
+0.125 t/ha for FB. Notably, the ME is less than −0.01 t/ha for
+mixtures at CKA and less than −0.03 t/ha at WG for both
+species. For the monoculture reference fields, the MAE is
+0.179 t/ha for FB in the FB monocultures and 0.188 t/ha for
+SW in the SW monocultures. This is slightly higher than in the
+mixtures, which is expected because in the monocultures, more
+of each species grows in absolute terms than in the mixtures.
+In return, the mixtures generally have a higher total biomass
+[26]. The low estimation of SW on FB monocultures between
+0.001 t/ha and 0.018 t/ha and vice versa FB on SW monocul-
+tures between 0.003 t/ha and 0.017 t/ha can be considered as
+additional evidence that the model is able to distinguish the
+species with high accuracy. It can be assumed that a common
+weed found in both fields, Chenopodium album, which bears
+partial similarity to FB, is often incorrectly identified as FB.
+The mean absolute error (MAE) will be lower if there are fewer
+weeds or if it is included in the growth estimation model.
+In Fig. 3, the overall results for CKA are visualized as two
+scatter plots for SW and FB, where the estimations are plotted
+against the reference from the process-based crop growth model.
+The regression line is close to the optimal line with a minimal
+underestimation for SW (ME = −0.026 t/ha) and a minimal
+overestimation (ME = 0.005 t/ha) for FB. In total, the regres-
+sion results are MAE = 0.14 t/ha and R2 = 0.99 for SW and
+MAE = 0.10 t/ha and R2 = 0.98 for FB. With this, the model
+is considered as accurate enough for an evaluation of generated
+images.
+When assessing the following results, it is important to consider
+that the accuracy of the predicted images heavily relies on the
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+8
+Bounding Box
+Segmentation
+AP
+AP@0.50
+AP@0.75
+AR
+AP
+AP@0.50
+AP@0.75
+AR
+Arabidopsis
+0.92
+0.99
+0.99
+0.95
+0.77
+0.99
+0.98
+0.78
+GrowliFlower
+0.86
+0.96
+0.92
+0.88
+0.78
+0.97
+0.92
+0.82
+Table 2: Mask R-CNN instance segmentation accuracies for the real (non-generated) images of the test set divided into bounding
+box and segmentation. Overall average precision (AP), with thresholds at IoU = 0.50 and IoU = 0.75, and overall average recall
+(AR) are given.
+SW/FB Mix
+SW mono
+FB mono
+Overall
+MAE
+ME
+MAE
+ME
+MAE
+ME
+MAE
+ME
+Mixed-CKA
+SW
+0.142
+-0.006
+0.188
+-0.074
+0.001
+0.001
+0.142
+-0.026
+FB
+0.125
+-0.008
+0.017
+0.017
+0.179
+0.052
+0.097
+0.005
+Mixed-WG
+SW
+0.126
+-0.023
+0.150
+-0.050
+0.018
+0.018
+0.122
+-0.027
+FB
+0.105
+-0.026
+0.003
+0.003
+0.185
+-0.046
+0.082
+-0.019
+Table 3: Biomass estimation accuracies assessed by MAE and ME between the predictions from the real (non-generated) images
+of the test set and reference values from the process-based crop growth model. The scores are separated for mixtures and SW resp.
+FB monocultural fields. All units are given in t/ha.
+accuracy of the growth estimation models. The accuracy of
+these models is evaluated solely based on real reference images.
+Any discrepancy between the growth estimation of these real
+reference images and the predicted images can be attributed
+to two factors. Firstly, it could be due to actual differences in
+plant phenotypes compared to the reference images. This is the
+deviation we aim to identify. Secondly, part of the deviation
+may be caused by potential small corruptions or artifacts in
+the artificial images, even if they pass GAN evaluation metrics.
+These corruptions can lead to incorrect predictions by the growth
+estimation model despite the visible plant phenotypes in the
+artificial images being accurate. This is because the growth
+estimation model was not trained on corrupted images. While
+it is not possible to completely avoid or quantify the second
+source of deviation, we strive to minimize it by augmenting the
+data used to train the growth estimation model, making it more
+robust and less susceptible to corruption.
+3.3
+Time-varying image prediction
+The first image prediction experiment will evaluate how accu-
+rately our framework predicts images of other growth stages
+of the plant, given an input image and a different amount of
+conditions used for training, as indicated in Tab. 4. For each
+prediction, conditions are used that match the input image and
+a randomly picked time-varying reference image of this plant.
+Multiple models are trained on the different datasets and with a
+varying combination of conditions, namely time (t), treatment
+(trt), and simulated biomass (bm).
+In Tab. 4, the predicted image quality is evaluated using the
+metrics MS-SSIM, LPIPS, and FID. Across all predictions, the
+highest accuracies are obtained with the Arabidopsis dataset for
+all three metrics MS-SSIM=0.8, LPIPS=0.25, and FID=6.54,
+while similarly lower overall accuracies are obtained with the
+GrowliFlower and MixedCrop datasets. For these, the MS-SSIM
+is between 0.29 and 0.31, LPIPS is between 0.46 and 0.51, and
+FID is between 16.26 and 24.86. Particularly remarkable is the
+dependence of the accuracy on the prediction distance, where
+MS-SSIM is higher for all datasets, the smaller |∆t|. In the case
+of ∆t = 0, the model acts as an autoencoder, meaning that it
+reproduces the input, also known as identity mapping. In this
+case, the results show an MS-SSIM of 0.94 for Arabidopsis and
+MS-SSIM values between 0.97 and 0.99 for the Mixed-CKA
+models. From short-term (ST) to long-term (LT) predictions,
+the MS-SSIM decreases continuously up to 0.20.
+It is noticeable that Arabidopsis has better values in all metrics
+except T0 than GrowliFlower and Mixed-CKA, which can be
+attributed to the daily recording times and controlled laboratory
+conditions with constant light and no weather effects. The iden-
+tity mapping (T0) is worse than the other datasets because in
+the Arabidopsis dataset, multiple images were taken per day,
+which means it is not a strict identity mapping. However, this
+can be altered by changing the model time unit from days to
+hours. The MS-SSIM decrease from T0 over ST to LT means
+the less far the model predicts into the future or past, the better
+the predicted images match the reference. Particularly, an MS-
+SSIM below 0.3 implies less similarity between predicted and
+reference images. In parallel, the FID for all models, including
+ST and LT predictions, is below 25, which can be considered as
+good image quality. This is expected because, with increasing
+prediction steps, detailed plant appearances, like leaf counts and
+orientations, are increasingly difficult to predict, while general
+structural traits, like plant positions and overall sizes, can be
+predicted more accurately.
+Insight into the usability of predicted images can be drawn
+from the plant-specific evaluation results using projected leaf
+area (PLA) estimation for Arabidopsis and GrowliFlower and
+biomass (BM) estimation for MixedCrop. Tab. 5 shows the
+obtained results for Arabidopsis and GrowliFlower in Tab. 5. It
+can be seen that MAE increases with larger |∆t| in both cases,
+but the overall accuracy of <1 % is high for Arabidopsis and
+with <10 % slightly lower for GrowliFlower.In addition, for Ara-
+bidopsis, a mean error of −0.32 % ≈−11 mm2 indicates a small
+mean underestimation, while GrowliFlower heads are predicted
+larger ME = 1.27 % ≈80 cm2 than the corresponding reference.
+The biomass evaluation for Mixed-CKA in Tab. 6 is divided into
+models trained with different conditions. All scores are given
+separately for SW and FB; moreover, an average over all field
+plots and all mixture plots is reported. The MAE separation
+into different prediction distances shows that for T0 the lowest
+deviations occur with a small increase to ST, but a decrease
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+9
+Figure 3: Scatter results of dried biomass estimation from Mixed-CKA imagery over all growth stages and all treatments (mixtures
+and monocultural fields) split up in spring wheat (SW) and faba bean (FB) for Mixed-CKA.
+Train conds.
+MS-SSIM (↑)
+LPIPS (↓)
+FID (↓)
+t trt bm
+T0
+ST
+LT
+ø
+ø
+ø
+Arabidopsis
+✓
+×
+×
+0.94
+0.81
+0.68
+0.80
+0.25
+6.54
+GrowliFlower
+✓
+×
+×
+0.98
+0.30
+0.20
+0.29
+0.51
+20.17
+Mixed-CKA
+✓
+×
+×
+0.99
+0.23
+0.22
+0.30
+0.46
+20.44
+Mixed-CKA
+✓
+✓
+×
+0.97
+0.25
+0.23
+0.31
+0.47
+16.26
+Mixed-CKA
+✓
+✓
+✓
+0.99
+0.23
+0.22
+0.29
+0.46
+24.86
+Mixed-WG1
+✓
+×
+×
+0.92
+0.13
+0.11
+0.20
+0.50
+40.67
+Table 4: Evaluation with metrics MS-SSIM, LPIPS, and FID. Each row represents a distinct model, each trained with an input
+image along with the specified conditions; for testing, only the input image and t are varied. MS-SSIM is reported for generations
+with different |∆t| filters: T0: identity |∆t| = 0; ST: short-term 1 ≤|∆t| ≤10; LT: long-term |∆t| ≥11.
+(accuracy gain) for LT over ST. The overall MAE ranges from
+0.13 t/ha to 0.38 t/ha and is comparable to Mix MAE, where
+only the crop mixture field plots are integrated. Thereby, overall
+SW MAE is always higher than FB MAE with a magnitude
+of up to 0.1 t/h. Noticeably, overall FB ME is negative while
+SW ME is positive for all models except those trained on all
+conditions, showing a systematic SW over- and a FB underes-
+timation. With an increasing number of conditions, the overall
+MAE decreases significantly by 0.2 t/ha for SW and 0.15 t/ha
+for FB. Comparing the accuracy when biomass estimation is
+performed on predicted mixtures (last two columns of Tab. 6)
+with the accuracy when it is performed on real mixtures (first
+two columns of Tab. 3) two results are shown: First, the MAE
+of the predicted mixtures using the model with all conditions is
+slightly above the MAE of the real mixtures (SW: +0.04 t/ha,
+FB: +0.03 t/ha). The other models trained with fewer conditions
+show higher deviations up to 0.17 t/ha for SW and 0.13 t/ha for
+FB. Second, the ME of the predicted mixtures using the model
+with all conditions is by a magnitude of 5 above the ME of the
+real mixtures.
+We provide two assumptions for the SW and FB differences
+in MAE and ME: We assume that having for SW a generally
+higher MAE magnitude than for FB is caused by the higher
+absolute SW biomass level in the field. Additionally, we assume
+the reason for the systematic overestimation of SW and under-
+estimation of FB (indicated by ME) is due to the unbalanced
+dataset: there are significantly more SW than FB monocultures.
+We argue that the image prediction model copes worse with this
+unbalanced dataset than the growth estimation model. Besides,
+MAE and ME decrease significantly as more conditions are
+added to the model. This can be explained by the model being
+better informed about the crop growth behavior if it receives
+more growth-influencing factors and can thus become more ac-
+curate. There is a loss of accuracy from identity mapping to
+short-term predictions but no significant loss of accuracy from
+short-term to long-term predictions. Thus, long-term predictions
+can be considered valuable for phenotyping applications.
+So, the quantitative evaluation leads to the overall finding: Al-
+though the predicted images do match the reference images less
+at large |∆t|, they represent realistic plants of their respective
+growth stage, as indicated by FID, and are still accurate enough
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+10
+Train conds.
+MAE
+ME
+t trt bm
+T0
+ST
+LT
+ø
+ø
+Arabidopsis
+✓
+×
+×
+0.27
+0.76
+1.44
+0.82
+-0.32
+GrowliFlower
+✓
+×
+×
+6.41
+8.84
+10.18
+9.64
+1.27
+Table 5: Plant-specific evaluation with projected leaf area (PLA) assessed by MAE and ME in the unit %/image. MAE is reported
+for generations with different |∆t| filters: T0: identity |∆t| = 0; ST: short-term 1 ≤|∆t| ≤10; LT: long-term |∆t| ≥11.
+Train
+OA
+OA
+Mix
+Mix
+conds.
+MAE
+ME
+MAE
+ME
+t trt bm
+T0
+ST
+LT
+ø
+ø
+ø
+ø
+Mixed-CKA
+✓
+×
+×
+SW
+0.22
+0.42
+0.39
+0.38
+0.12
+0.31
+0.20
+FB
+0.16
+0.34
+0.30
+0.28
+-0.12
+0.25
+-0.17
+Mixed-CKA
+✓
+✓
+×
+SW
+0.30
+0.22
+0.25
+0.24
+0.09
+0.25
+0.15
+FB
+0.24
+0.16
+0.19
+0.19
+-0.13
+0.24
+-0.15
+Mixed-CKA
+✓
+✓
+✓
+SW
+0.17
+0.21
+0.18
+0.18
+-0.02
+0.18
+0.05
+FB
+0.11
+0.16
+0.14
+0.13
+-0.01
+0.15
+-0.04
+Mixed-WG
+1
+✓
+×
+×
+SW
+0.45
+1.25
+1.14
+1.07
+0.18
+1.06
+0.24
+FB
+0.41
+0.48
+0.67
+0.64
+-0.04
+0.62
+-0.11
+Table 6: Plant-specific evaluation with biomass (BM) assessed by MAE and ME in the unit t/ha given for all (OA) and mixture
+(Mix) fields and divided into spring wheat (SW) and faba bean (FB) biomasses. Overall MAE is reported for generations with
+different |∆t| filters: T0: identity |∆t| = 0; ST: short-term 1 ≤|∆t| ≤10; LT: long-term |∆t| ≥11.
+to derive reasonable plant traits, as indicated by plant-specific
+evaluation.
+Further findings can be drawn from qualitative results showing
+hand-picked time-varying image prediction results in Fig. 4 for
+Arabidopsis, Fig. 5 for GrowliFlower, and Fig. 6 for Mixed-
+CKA, where models are used that are trained on the temporal
+condition only. Each figure consists of 5 rows: The first row
+contains a reference plant over time, where an early growth stage
+with a cyan frame is the input to the model in each case. The
+second row shows generated images by keeping except time
+all other conditions, including noise z, constant. The third row
+shows the variability image, which is the standard deviation over
+10 predictions of the same time point with different z, whereby
+the standard deviation is averaged over all RGB channels and
+overdrawn by a factor of four for clearer visualization. The
+darker the blue, the greater the variability for each pixel within
+the 10 predictions. The fourth and fifth rows show the classical
+and plant-specific evaluation metrics for each gen-ref image pair.
+For all datasets and time points, the predictions are realistic,
+with a few exceptions, such as the last image of GrowliFlower.
+Comparing the variability images, Arabidopsis has the low-
+est pixel-wise standard deviation, followed by MixedCrop and
+GrowliFlower. In all cases, there is high variability at the leaf
+edges, where the actual uncertainty is greatest. The LPIPS and
+MS-SSIM deteriorate with increasing ∆t with a peak each for
+identity mapping. Plant property curves differ for each data set:
+In Arabidopsis, ∆PLA is close to zero until 30 DAS and then
+drifts into the negative range, indicating a leaf area underestima-
+tion for advanced growth stages. In GrowliFlower, the curve is
+close to zero with small fluctuations except for a large negative
+peak at 57 DAP, indicating that the leaf area could not be cor-
+rectly estimated from the predicted image of this day. Similarly,
+for Mixed-CKA, the curves stay around zero until day 99, after
+which SW biomass is significantly overestimated with up to
+2.5 t/ha and FB biomass is significantly underestimated with up
+to −2.5 t/ha.
+There are two important insights that emerge from the visualized
+images. First, a strong consistency of the generated images over
+time is given, which is visible in Arabidopsis and GrowliFlower
+through leaf orientations but also through neighboring plants
+and in Mixed-CKA through certain crop patterns such as small
+gaps (second crop row, right) or weeds (third and fourth crop
+row, center). Second, the dependence of the generated images
+on the input is visible for all datasets, particularly in the position
+of the plants and crop rows and by granules on the ground,
+which can be found on the input image as well as on several
+generated images. While the variability images show realistic
+uncertainties at the leaf edges, they also reveal a limitation in
+the image prediction: While the identity mapping has no or
+extremely low variability, as expected, no continuous increase
+in variability over time is evident, leading to overconfidence at
+large ∆t where variability would be expected to be significantly
+higher. The parallel examination of MS-SSIM and LPIPS with
+the images confirms the findings from the quantitative results:
+Despite the images being less consistent with the reference as
+the prediction distance increases, there is neither a general visual
+quality decrease nor a general decrease in the accuracy of the
+estimated plant traits for time-varying predictions.
+An overview of predictions for days not present in the datasets,
+so temporally out-of-distribution (OOD) can be found in Ap-
+pendix B. While challenging due to large spectral differences
+between images of existing time points, it can be shown that
+realistic images can still be generated at new time points.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+11
+Figure 4: Time-varying image prediction for Arabidopsis with, in the top row, reference images with an early growth stage
+as input (cyan frame), in the second row, all day-wise generated predictions, and, in the third row, standard deviation images
+over 10 predictions with different noise input z and otherwise constant input conditions. The two bottom rows have the quality
+metrics: learned perceptual image patch similarity (LPIPS), multiscale structural similarity (MS-SSIM), and the projected leaf area
+difference (∆PLA)
+3.4
+Data-driven simulation using treatment information
+The data-driven simulations on the MixedCrop dataset are in-
+tended to show the flexibility of the image-prediction model
+in the presence of changing growth-influencing variables. To
+enable an illustrative and informative demonstration and visual-
+ization, we systematically vary the time (t) and treatment (trt)
+information as a condition for the Mixed-CKA dataset. We
+use the results to investigate and evaluate how different treat-
+ments appear in the future when something about the treatment
+changes starting from a certain initial condition (image). We
+would like to emphasize that the performed change in treatments
+is intended for the evaluation of the method and is thus limited
+in its realistic nature, yet aims to show that our framework is
+applicable to realistic scenarios. Our expectation is that the esti-
+mated biomass from the data-driven simulation changes in the
+same direction as that of the process-based plant growth model,
+confirming the reliable image predictions of our system.
+In particular, two simulations are conducted from the input
+time point of 28 DAS to 54 DAS where first, the seed density is
+changed from low (L) to high (H) (Fig. 7), and second, the faba
+bean cultivar is changed from Mallory (A) to Fanfare (B) (Fig. 8).
+Thus, the input image is encoded in the original treatment, but a
+treatment change is made to decode the simulated future plant
+phenotype. The figures compare the data-driven prediction with-
+out treatment change (filled bars) with the prediction including
+treatment change (hashed bars) and the process-based predic-
+tions for the respective target treatment (red dots). Since there
+are multiple replicates for each treatment, the bars represent the
+mean, and the black lines represent the standard deviation. We
+deliberately chose an early stage as the input because the differ-
+ences in biomass between the treatments are not yet too great,
+and differences between the FB varieties are hardly discernible.
+However, we do not use DAS=7, which is bare soil, because
+we do want to observe the spatial development of the crops. In
+addition, we focus on mixtures in the simulations to be able to
+analyze the biomass of spring wheat and faba bean in parallel.
+Focusing on the simulation of L→H in Fig. 7, the data-driven
+estimated biomass of the high-density simulated treatments
+(hashed bars) is higher than that of the low-density simulated
+ones (filled bars) for SW in 20/24 cases and for FB in 16/24
+cases. The process-based biomass gain from L→H, shown by
+the red dots, is for SW significantly higher (0.25 t/ha) than for
+FB (<0.1 t/ha). On average, over all treatments, the biomass
+increases for both SW and FB. It is noticeable that FB biomass
+is slightly overestimated compared to the reference in almost all
+cases and that SW biomass is often overestimated for the L→L
+simulation while underestimated for L→H.
+The analysis of the simulation of faba bean cultivar A→B in
+Fig. 8 is more challenging because only a small loss of biomass
+is expected for FB and an even smaller one for SW (almost
+the same level), as shown by the red dots. Treatment-wise,
+this decrease is not clearly visible for either SW or FB. Only
+in slightly more than half of the treatments is the hashed bar
+smaller than the filled bar for both SW (13/24) and FB (15/24).
+In average over all treatments, the hashed bars are smaller than
+the filled bares, albeit in the range of the standard deviation.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+12
+Figure 5: Time-varying image prediction for GrowliFlower with, in the top row, reference images with an early growth stage
+as input (cyan frame), in the second row, all day-wise generated predictions, and, in the third row, standard deviation images
+over 10 predictions with different noise input z and otherwise constant input conditions. The two bottom rows show the quality
+metrics: learned perceptual image patch similarity (LPIPS), multiscale structural similarity (MS-SSIM), and the projected leaf area
+difference (∆PLA)
+Comparing high and low-density treatments, it can be seen that
+the estimated biomass from the high-density treatments is higher
+for SW in 10/12 cases and for FB in 7/12 cases.
+Both simulation results show that even small changes in the
+growth-influencing factors affect the predicted images. Thereby,
+the reliability of the simulations is supported by the overall
+biomass increase from L→H treatments and decrease from faba
+bean cultivar A→B. If the prediction change (filled to hashed
+bar) for individual treatments does not correspond to the ex-
+pected change (red dots), there are three possible interpretations.
+First, although the treatment condition is taken into account in
+the image prediction model, its influence might not be strong
+enough, so the differences in the generated images are not suffi-
+ciently prominent. Second, the density resp. cultivar appearance
+of the input image might be already too prominent, making it
+difficult to change the growth stage at a later point; e.g., plants
+cannot arise from anywhere. Third, the differences between
+low and high-density treatments resp. faba bean cultivars A
+and B are less clear in reality than the dynamic crop growth
+model suggests. In fact, the FB biomass gain for L→H and the
+FB/SW biomass loss for A→B is below the accuracy level of
+the biomass estimation (compare Tab. 6, which can explain why
+a clear trend in biomass changes is not particularly apparent for
+these cases. Another example where this simulation could be
+applied in practice is the prediction of weed pressure. Apart
+from this experiment, we see the potential to simulate further
+treatment changes or their effects, e.g., weed cover. This varies
+over the growing season and can be estimated quickly in cat-
+egorical measures (low, medium, high), allowing crop growth
+predictions adapted to current field conditions.
+Fig. 9 also qualitatively illustrates the structural differences in
+the crop rows when simulating different treatments. Besides
+the growth prediction step from 28 DAS to 54 DAS, two more
+growth prediction steps and two more treatment variations are
+simulated, including more unlikely scenarios, such as transfor-
+mations of mixtures to monocultures. While such simulations
+rarely make sense from an application point of view, as long as
+a mixture component is not completely suppressed, it is never-
+theless noteworthy to see the model visualizing such a treatment
+change if necessary.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+13
+Figure 6: Time-varying image prediction for Mixed-CKA with, in the top row, reference images with an early growth stage as
+input (cyan frame), in the second row, all day-wise generated predictions, and, in the third row, standard deviation images over 10
+predictions with different noise input z and otherwise constant input conditions. The two bottom rows show the quality metrics:
+learned perceptual image patch similarity (LPIPS), multiscale structural similarity (MS-SSIM), and the biomass differences for
+spring wheat (∆BMSW) and faba bean (∆BMFB)
+3.5
+Data-driven simulation using process-based biomass
+The following biomass simulation is intended to demonstrate the
+capability of including dynamic output variables of a process-
+based crop growth model in our framework. For this, we use
+the trained Mixed-CKA model on time (t), treatment (trt), and
+process-based simulated biomass (bm), whereby the biomass
+systematically varied in order to get predictions for different
+possible SW and FB biomass ratios. The time is randomly var-
+ied, so the simulation is performed over all growth stages by
+choosing a random prediction time point for each input mixture
+image and re-adjusting its biomass ratio. The starting point for
+the simulation is the biomasses calculated dynamically from
+the process-based crop growth model for each time point and
+treatment, BMSW = BMFB = 100 %. While the image prediction
+model was trained with a fixed biomass value attached to each
+reference image, we will demonstrate that almost any combi-
+nation of biomass ratios can be chosen for inference as long as
+they are within the range of the training data.
+Fig. 10 shows MAE and ME respectively for SW and FB and dif-
+ferent simulated biomass ratios, where the original composition
+(100:100) is shown in the middle, to the left, BMFB increases
+and to the right BMSW. This is accordingly also noticeable in the
+ME: If the BM fraction for SW and FB increases, more biomass
+is also estimated in the predicted image so that the ME increases.
+So MESW rises to the right, and the MEFB rises to the left. The
+MAE reaches the minimum point at about the point where ME
+is also minimum at about the ratio 55 % SW to 145 % FB.
+That a higher SW simulated biomass in the input of the frame-
+work also leads to a higher SW prediction in the output, for FB,
+accordingly, shows the reliability of our framework to gener-
+ate predictions that realistically depend on the input conditions.
+This demonstrates the capability of our framework to gener-
+ate images that plausibly explain the output of a process-based
+model. The reason why the minimum MAE/ME is not reached
+at the 100:100 state is mainly due to a slight dataset bias to-
+wards SW and the resulting under-prediction of FB plants in
+the images, as already discussed. Assuming an unbiased im-
+age prediction model, we argue that this type of analysis can
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+14
+Figure 7: Simulating the SW (top) and FB (bottom) change from a low (L) density to a high (H) density treatment for all mixture
+field plots and the growth prediction step 28 DAS to 54 DAS. While filled bars represent the comparative prediction under the
+original treatment, hashed bars represent the simulated treatment change. Black lines symbolize the standard deviation across
+treatment replicates; red dots symbolize the outcome of the process-based crop growth model for the resp. treatments and 54 DAS.
+serve to improve the calibration of the process-based model and
+bring it closer to image-based field observations: If the mini-
+mum MAE deviates from the expected minimum (in this case,
+100:100), the process-based crop growth model could be ad-
+justed in this direction or, in other words, complemented by the
+knowledge gained from the image time series. Note that other
+dynamic growth-influencing variables, like climatic conditions,
+can be used instead of process-based time-varying biomass,
+which could lead to even more feasible simulations.
+3.6
+Transferability to new site
+With a transferability experiment on the MixedCrop experiment,
+we aim to investigate the accuracy drop with which the model
+trained for Mixed-CKA, which takes time (t) as input condition,
+can be applied to the Mixed-WG site. The basic requirements
+are given by the same image size, resolution, crop species, and
+treatments (see Sec. 2.1). However, this attempt to transfer the
+growth behavior of Mixed-CKA to images of Mixed-WG poses
+three main challenges. First, the growth behavior of convention-
+ally managed CKA differs substantially from that of organically
+managed WG, as indicated, for instance, by weed abundance.
+Second, the spectral image properties are completely different
+for each time point, so both sites have their own “style”. Third,
+images were not taken at the same time during the growing
+season at both locations, resulting in images from WG being not
+only spatially but also temporally out-of-disturbance (OOD).
+Tab. 4 and Tab. 6 show the transferability quality measured by
+all evaluation metrics in the bottom line each. It can be seen
+that the results show significantly lower accuracies than the
+ones produced by models trained and tested on Mixed-CKA.
+However, the identity predictions still show a high MS-SSIM of
+0.92.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+15
+The reason for the less accurate results lies in the first two afore-
+mentioned challenges, which lead to the predicted images not
+being well comparable to the reference images on a quantitative
+basis. Since the model only knows the style of CKA, but the
+reference images are in the style of WG, better scores were not
+expected. Putting the focus more on qualitative results, the third
+challenge of temporal OOD leads to corrupted results when the
+input image is significantly different from the style of the tem-
+porally nearest CKA image but is otherwise reliable, which is
+demonstrated in Appendix C. It shows both failed predictions
+and reasonable transfer examples, first for time points for which
+reference images are available, even if they do not match the
+reference, and second for the entire growing period.
+For future experiments, the style could be added as an additional
+condition in the image-prediction model, or more generally
+with domain knowledge in the form of site-dependent context
+variables that influence not only style but also plant growth
+itself [43]. While this requires a larger training dataset spanning
+multiple sites and styles, it will ensure even better transferability
+and could help to merge multiple plant time series affected by
+various factors influencing factors into a more generic data-
+driven crop growth model.
+4
+Conclusion
+In this work, we have shown the capabilities of multi-
+conditional growth simulation using three datasets Arabidopsis,
+GrowliFlower, and MixedCrop. For this purpose, in the first
+step, we combined several conditions of different types (discrete,
+continuous, categorical) in an image prediction model, which is
+a conditional Wasserstein generative adversarial network (CW-
+GAN), to generate multiple realistic high-quality images over
+time based on a single input image. In the second step of growth
+estimation, we showed that along with classical GAN image eval-
+uation metrics, plant-specific traits such as projected leaf area or
+biomass can be derived from the generated images and used for
+evaluation. The results for MixedCrop were compared with a
+dynamic process-based growth model. Here, the combination
+of data-driven crop growth models, which strongly incorporate
+the spatio-temporal above-ground phenotype changes, and a
+process-based crop growth model, which takes the theoretical
+plant growth knowledge into account, leads to a better under-
+standing of the crop mixture dynamics. The experiments show
+that the dried biomass can be estimated more accurately from
+predicted images the more growth influencing factors are con-
+sidered, such as in our case, the field treatment or process-based
+simulated biomasses. In particular, the integration of process-
+based model output into a data-driven crop growth model is
+shown, which is useful to make crop growth predictions more
+accessible or even to re-calibrate process-based models. Adding
+all available conditions into the image prediction model allows
+plant trait estimation on predicted (artificial) images with similar
+accuracy as on real images.
+Although the additional variability images show the largest un-
+certainties at the leaf edges, which is realistic, we see space for
+improvement in the uncertainty integration for long-term growth
+predictions. Since predictions far in the future lead to significant
+over-confidence in the image prediction model, the noise-input
+ratio should be adaptively controlled depending on the growth
+prediction step. In addition, the challenge of large spectral dif-
+ferences within an image sequence and between sites (“dataset
+styles”) should be addressed for better model generalizability.
+Acknowledgements
+We thank Julie Krämer, Christian Dahn, and Nils Müller for
+comprehensive (image) data acquisition and fruitful discussions,
+as well as Philippe Simonis, Malte Möller, and Manikandan
+Somu for data pre-processing and selection in the MixedCrop
+project.
+Funding
+This work was funded by the Deutsche Forschungsgemeinschaft
+(DFG, German Research Foundation) under Germany’s Excel-
+lence Strategy – EXC 2070 – 390732324 and partly funded by
+the Deutsche Forschungsgemeinschaft (DFG, German Research
+Foundation) - SFB 1502/1-2022 - Projektnummer: 450058266“.
+References
+[1] Farooq Shah and Wei Wu. Soil and crop management
+strategies to ensure higher crop productivity within sustain-
+able environments. Sustainability, 11(5):1485, 2019. doi:
+10.3390/su11051485.
+[2] Deepranjan Sarkar, Saswat Kumar Kar, Arghya Chattopad-
+hyay, Amitava Rakshit, Vinod Kumar Tripathi, Pradeep Ku-
+mar Dubey, Purushothaman Chirakkuzhyil Abhilash, et al.
+Low input sustainable agriculture:
+A viable climate-
+smart option for boosting food production in a warming
+world. Ecological Indicators, 115:106412, 2020. doi:
+10.1016/j.ecolind.2020.106412.
+[3] Erik S. Jensen, Mark B. Peoples, and Henrik Hauggaard-
+Nielsen. Faba bean in cropping systems. Field Crops
+Research, 115(3):203–216, 2010. ISSN 0378-4290. doi:
+10.1016/j.fcr.2009.10.008. Faba Beans in Sustainable Agri-
+culture.
+[4] Long Li, Shu-Min Li, Jian-Hao Sun, Li-Li Zhou, Xing-
+Guo Bao, Hong-Gang Zhang, and Fu-Suo Zhang. Di-
+versity enhances agricultural productivity via rhizosphere
+phosphorus facilitation on phosphorus-deficient soils. Pro-
+ceedings of the National Academy of Sciences, 104(27):
+11192–11196, 2007. doi: 10.1073/pnas.0704591104.
+[5] MB Peoples, J Brockwell, DF Herridge, IJ Rochester, BJR
+Alves, S Urquiaga, RM Boddey, FD Dakora, S Bhattarai,
+SL Maskey, et al. The contributions of nitrogen-fixing
+crop legumes to the productivity of agricultural systems.
+Symbiosis, 48:1–17, 2009. doi: 10.1007/BF03179980.
+[6] Laurent Bedoussac,
+Etienne-Pascal Journet,
+Henrik
+Hauggaard-Nielsen, Christophe Naudin, Guenaelle Corre-
+Hellou, Erik Steen Jensen, Loïc Prieur, and Eric Justes.
+Ecological principles underlying the increase of productiv-
+ity achieved by cereal-grain legume intercrops in organic
+farming. a review. Agronomy for sustainable development,
+35:911–935, 2015. doi: 10.1007/s13593-014-0277-7.
+[7] Yang Yu, Tjeerd-Jan Stomph, David Makowski, Lizhen
+Zhang, and Wopke Van Der Werf. A meta-analysis of
+relative crop yields in cereal/legume mixtures suggests
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+16
+options for management. Field Crops Research, 198:269–
+279, 2016. doi: 10.1016/j.fcr.2016.08.001.
+[8] Sotirios A Tsaftaris, Massimo Minervini, and Hanno
+Scharr. Machine learning for plant phenotyping needs
+image processing. Trends in plant science, 21(12):989–
+991, 2016. doi: 10.1016/j.tplants.2016.10.002.
+[9] Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing
+Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville,
+and Yoshua Bengio.
+Generative adversarial nets.
+In
+Proc. of the Advances in Neural Information Process-
+ing Systems (NeurIPS), pages 2672–2680, 2014.
+doi:
+2969033.2969125.
+[10] Haseeb Nazki, Sook Yoon, Alvaro Fuentes, and Dong Sun
+Park. Unsupervised image translation using adversarial
+networks for improved plant disease recognition. Com-
+puters and Electronics in Agriculture, 168:105–117, 2020.
+doi: 10.1016/j.compag.2019.105117.
+[11] Simon L Madsen, Mads Dyrmann, Rasmus N Jørgensen,
+and Henrik Karstoft. Generating artificial images of plant
+seedlings using generative adversarial networks. Biosys-
+tems Engineering, 187:147–159, 2019. doi: 10.1016/j.
+biosystemseng.2019.09.005.
+[12] Yezi Zhu, Marc Aoun, Marcel Krijn, Joaquin Vanschoren,
+and High Tech Campus. Data augmentation using condi-
+tional generative adversarial networks for leaf counting in
+arabidopsis plants. In Proc. of the British Machine Vision
+Conference (BMVC), page 324, 2018.
+[13] Jana Kierdorf, Immanuel Weber, Anna Kicherer, Laura
+Zabawa, Lukas Drees, and Ribana Roscher.
+Behind
+the leaves - estimation of occluded grapevine berries
+with conditional generative adversarial networks. arXiv
+preprint arXiv:2105.10325, 2021. doi: 10.48550/arXiv.
+2105.10325.
+[14] Robail Yasrab, Jincheng Zhang, Polina Smyth, and
+Michael P Pound.
+Predicting plant growth from time-
+series data using deep learning. Remote Sensing, 13(3):
+331, 2021. doi: 10.3390/rs13030331.
+[15] Lukas Drees, Laura Verena Junker-Frohn, Jana Kierdorf,
+and Ribana Roscher. Temporal prediction and evaluation
+of brassica growth in the field using conditional genera-
+tive adversarial networks. Computers and Electronics in
+Agriculture, 190:106415, 2021. ISSN 0168-1699. doi:
+10.1016/j.compag.2021.106415.
+[16] Lukas Drees, Immanuel Weber, Marc Rußwurm, and Rib-
+ana Roscher. Time dependent image generation of plants
+from incomplete sequences with cnn-transformer. In Björn
+Andres, Florian Bernard, Daniel Cremers, Simone Frin-
+trop, Bastian Goldlücke, and Ivo Ihrke, editors, Proc. of
+the DAGM German Conference on Pattern Recognition
+(GCPR), pages 495–510, Cham, 2022. Springer Inter-
+national Publishing.
+ISBN 978-3-031-16788-1.
+doi:
+10.1007/978-3-031-16788-1_30.
+[17] Miro Miranda, Lukas Drees, and Ribana Roscher. Con-
+trolled multi-modal image generation for plant growth
+modeling. In Proc. of the IEEE International Conference
+on Pattern Recognition (ICPR), pages 5118–5124, 2022.
+doi: 10.1109/ICPR56361.2022.9956115.
+[18] Mohamad Shahbazi, Martin Danelljan, Danda Pani Paudel,
+and Luc Van Gool. Collapse by conditioning: Training
+class-conditional GANs with limited data. In Proc. of
+the International Conference on Learning Representations
+(ICLR), 2022. doi: 10.48550/arXiv.2201.06578.
+[19] Mehdi Mirza and Simon Osindero. Conditional generative
+adversarial nets. arXiv preprint arXiv:1411.1784, 2014.
+doi: 10.48550/arXiv.1411.1784.
+[20] Augustus Odena, Christopher Olah, and Jonathon Shlens.
+Conditional image synthesis with auxiliary classifier gans.
+In Proc. of the International Conference on Machine Learn-
+ing (ICML), pages 2642–2651. PMLR, 2017.
+[21] Tero Karras, Miika Aittala, Janne Hellsten, Samuli Laine,
+Jaakko Lehtinen, and Timo Aila. Training generative ad-
+versarial networks with limited data. In H. Larochelle,
+M. Ranzato, R. Hadsell, M.F. Balcan, and H. Lin, editors,
+Proc. of the Advances in Neural Information Processing
+Systems (NeurIPS), volume 33, pages 12104–12114. Cur-
+ran Associates, Inc., 2020.
+[22] Vincent Dumoulin, Jonathon Shlens, and Manjunath Kud-
+lur.
+A learned representation for artistic style.
+arXiv
+preprint arXiv:1610.07629, 2016. doi: 10.48550/arXiv.
+1610.07629.
+[23] Andrew Brock, Jeff Donahue, and Karen Simonyan. Large
+scale gan training for high fidelity natural image synthe-
+sis. In Proc. of the International Conference on Learning
+Representations (ICLR), 2019. doi: 10.48550/arXiv.1809.
+11096.
+[24] Jonathan Bell and Hannah M. Dee.
+Aberystwyth leaf
+evaluation dataset. Zenodo, page 168158, 2016. doi: 10.
+5281/zenodo.168158.
+[25] Jana Kierdorf, Laura Verena Junker-Frohn, Mike De-
+laney, Mariele Donoso Olave, Andreas Burkart, Hannah
+Jaenicke, Onno Muller, Uwe Rascher, and Ribana Roscher.
+Growliflower: An image time-series dataset for growth
+analysis of cauliflower. Journal of Field Robotics, 40(2):
+173–192, 2023. doi: 10.1002/rob.22122.
+[26] Madhuri R Paul, Dereje T Demie, Sabine J Seidel, and
+Thomas F Döring. Effects of spring wheat/faba bean mix-
+tures on early crop development. Plant and Soil, pages
+1–16, 2023. doi: 10.1007/s11104-023-06111-6.
+[27] Dereje T. Demie, Thomas F. Döring, Maria R. Finckh,
+Wopke van der Werf, Jérôme Enjalbert, and Sabine J. Sei-
+del. Mixture × genotype effects in cereal/legume inter-
+cropping. Frontiers in Plant Science, 13, 2022. ISSN
+1664-462X. doi: 10.3389/fpls.2022.846720.
+[28] Ishaan Gulrajani, Faruk Ahmed, Martin Arjovsky, Vincent
+Dumoulin, and Aaron Courville. Improved training of
+wasserstein gans. In I. Guyon, U. Von Luxburg, S. Bengio,
+H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett,
+editors, Proc. of the Advances in Neural Information Pro-
+cessing Systems (NeurIPS), NIPS’17, page 5769–5779,
+Red Hook, NY, USA, 2017. Curran Associates Inc. ISBN
+9781510860964.
+[29] Martin Arjovsky, Soumith Chintala, and Léon Bottou.
+Wasserstein GAN. arXiv preprint arXiv:1701.07875, 2017.
+doi: 10.48550/arXiv.1701.07875.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+17
+[30] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian
+Sun. Deep residual learning for image recognition. In
+Proc. of the IEEE Conference on Computer Vision and
+Pattern Recognition, pages 770–778, 2016.
+[31] Harm De Vries, Florian Strub, Jérémie Mary, Hugo
+Larochelle, Olivier Pietquin, and Aaron C Courville. Mod-
+ulating early visual processing by language. In Proc. of
+the Advances in Neural Information Processing Systems
+(NeurIPS), volume 30, 2017.
+[32] Sergey Ioffe and Christian Szegedy. Batch normalization:
+Accelerating deep network training by reducing internal
+covariate shift. arXiv preprint arXiv:1502.03167, 2015.
+doi: 10.48550/arXiv.1502.03167.
+[33] Tero Karras, Samuli Laine, and Timo Aila. A style-based
+generator architecture for generative adversarial networks.
+In Proc. of the IEEE/CVF Conference on Computer Vision
+and Pattern Recognition (CVPR), pages 4401–4410, 2019.
+doi: 10.1109/CVPR.2019.00453.
+[34] Terrance DeVries and Graham W Taylor. Improved reg-
+ularization of convolutional neural networks with cutout.
+arXiv preprint arXiv:1708.04552, 2017. doi: 10.48550/
+arXiv.1708.04552.
+[35] Zhou Wang, Eero P Simoncelli, and Alan C Bovik. Multi-
+scale structural similarity for image quality assessment. In
+Proc. of the Asilomar Conference on Signals, Systems &
+Computers, volume 2, pages 1398–1402. IEEE, 2003. doi:
+10.1109/ACSSC.2003.1292216.
+[36] Richard Zhang, Phillip Isola, Alexei A Efros, Eli Shecht-
+man, and Oliver Wang. The unreasonable effectiveness of
+deep features as a perceptual metric. In Proc. of the IEEE
+Conference on Computer Vision and Pattern Recognition
+(CVPR), pages 586–595, 2018. doi: 10.1109/CVPR.2018.
+00068.
+[37] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner,
+Bernhard Nessler, and Sepp Hochreiter. GANs trained by
+a two time-scale update rule converge to a local nash equi-
+librium. In Proc. of the Advances in Neural Information
+Processing Systems (NeurIPS), pages 6626–6637, 2017.
+[38] Kaiming He, Georgia Gkioxari, Piotr Dollár, and Ross
+Girshick. Mask R-CNN. In Proc. of the IEEE International
+Conference on Computer Vision (ICCV), pages 2961–2969,
+2017. doi: 10.1109/ICCV.2017.322.
+[39] Alex Krizhevsky, Ilya Sutskever, and Geoffrey E Hinton.
+Imagenet classification with deep convolutional neural net-
+works. In Proc. of the Advances in Neural Information
+Processing Systems (NeurIPS), pages 1097–1105, 2012.
+doi: 10.1145/3065386.
+[40] Qusai Marashdeh, Lukas Drees, and Ribana Roscher. Se-
+mantic uav image segmentation of mixed cropping fields.
+In Proc. of the Dreiländertagung der DGPF, der OVG
+und der SGPF in Dreseden - Publikationen der DGPF,
+volume 30, pages 140–148, 2022.
+[41] Andreas Enders, Murilo Vianna, Thomas Gaiser, Gunther
+Krauss, Heidi Webber, Amit Kumar Srivastava, Sabine Ju-
+lia Seidel, Andreas Tewes, Ehsan Eyshi Rezaei, and Frank
+Ewert. Simplace—a versatile modelling and simulation
+framework for sustainable crops and agroecosystems. in
+silico Plants, 5(1):1–18, 2023. doi: 10.1093/insilicoplants/
+diad006.
+[42] SJ Seidel, T Gaiser, T Kautz, SL Bauke, W Amelung,
+K Barfus, F Ewert, and M Athmann. Estimation of the
+impact of precrops and climate variability on soil depth-
+differentiated spring wheat growth and water, nitrogen and
+phosphorus uptake. Soil and Tillage Research, 195:104427,
+2019. doi: 10.1016/j.still.2019.104427.
+[43] Johannes Leonhardt, Lukas Drees, Jürgen Gall, and Ribana
+Roscher. Leveraging bioclimatic context for supervised
+and self-supervised land cover classification. In Proc. of
+the DAGM German Conference on Pattern Recognition
+(GCPR), 2023.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+18
+Figure 8: Simulating the SW (top) and FB (bottom) change from faba bean cultivar Mallory (A) to cultivar Fanfare (B) for all
+mixture field plots and the growth prediction step 28 DAS to 54 DAS. While filled bars represent the comparative prediction under
+the original treatment, hashed bars represent the simulated treatment change. Black lines symbolize the standard deviation across
+treatment replicates; red dots symbolize the outcome of the process-based crop growth model for the resp. treatments and 54 DAS.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+19
+Input
+Mix_A_2_L
+Reference
+Mix_A_2_L
+Prediction
+Mix_A_2_L
+Simulation
+Mix_B_2_L
+Simulation
+Mix_A_2_H
+Simulation
+FB_A_L
+Simulation
+SW_2_L
+Figure 9: Growth simulation for different prediction steps and treatment changes in Mixed-CKA, first row 28 DAS to 45 DAS,
+second row 42 DAS to 99 DAS, and third row 7 DAS to 82 DAS. The first column shows the input image, the second the
+corresponding reference image of the future growth stage, the third the predicted image at these treatment conditions, and columns
+4 to 7 show simulations of change in faba bean cultivar, density, and to monocultural reference.
+50:150
+60:140
+70:130
+80:120
+90:110
+100:100
+110:90
+120:80
+130:70
+140:60
+150:50
+Biomass-Ratio of SW:FB [%]
+−0.1
+0.0
+0.1
+0.2
+Error [t/ha]
+MAESW
+MAEFB
+MESW (gen-ref)
+MEFB (gen-ref)
+Figure 10: Comparing MAE and ME for image predictions from 28 DAS to 54 DAS with different expected spring wheat (SW) to
+faba bean (FB) biomass ratios.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+20
+FB (Faba bean)
+A
+Mallory
+B
+Fanfare
+SW (spring wheat)
+1
+Lennox
+2
+Anabel
+3
+Saludo
+4
+Jasmund
+5
+Sorbas
+6
+Quintus
+7
+KWS Starlight
+8
+Chamsin
+9
+Sonett
+10
+SU Ahab
+11
+Mix-Group 1
+12
+Mix-Group 2
+Table 7: Notation overview of species faba bean (FB) with
+cultivars A and B and spring wheat (SW) with cultivars 1-10
+and two additional mixed groups used in this work.
+Appendix A
+Overview of MixedCrop cultivars
+An overview of the faba bean cultivars and spring wheat entities
+used in the MixedCrop experiment is given in Tab. 7.
+Appendix B
+Temporal out-of-distribution
+predictions
+By temporal out-of-distribution (OOD), we mean images of
+growth stages that do not exist in the training dataset. We use
+the models from the respective dataset trained only on input
+image and time as conditions and keep the input image and
+the noise constant for the visualizations from the entire growth
+period. So we iterate over time and generate interpolations if the
+newly generated image lies between two training images and ex-
+trapolations if it lies temporally off the training period (early and
+late growth phases). The time increases by one day per image
+from top left to bottom right. The input image has a cyan frame,
+the in-distribution images a blue frame, and the OOD images an
+orange frame. While difficult to evaluate quantitatively because
+no reference images are available, consistency in the time series
+is readily apparent for interpolations. For extrapolations, most
+predictions are also realistic since plants continue to grow in
+the short-term extrapolated future. Notably, interpolation and
+extrapolation work for Mixed-WG, although the growth stage of
+the input image is temporally out-of-distribution. However, there
+are exceptions, e.g., the early growth stages of Arabidopsis are
+too large, and in the third row of Mixed-CKA and Mixed-WG
+canopy appears and vanishes again.
+Appendix C
+Spatial out-of-distribution
+predictions
+If the image prediction model is applied to a site on whose
+plant image time series the model has not been trained, it is
+spatially out-of-distribution. Additionally, it is likely that the
+dataset is temporally OOD if the drone flyovers did not occur
+on the same days of the growing season, and thus, the time of
+the new input image does not exist in the training data. There,
+transferability fails when the spectral differences between the
+test image and the nearby time points in the training dataset are
+too large, such as 29 DAS of Mixed-WG, as Fig. 14 illustrates.
+Some of the predicted images become blurry, and holes appear in
+the crop rows, which also causes the biomass estimation to give
+unreliable, non-usable results. Likewise, Fig. 15 demonstrates
+that the model can produce reasonable results despite spatio-
+temporal OOD, where, compared to Fig. 14, the same field
+patch but a different input image (21 days later) is used. Realistic
+results can also be achieved when not only the input image but
+also the images to be predicted are temporally and spatially
+OOD, as depicted in Fig. 16.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+21
+Figure 11: Daily Arabidopsis predictions from 18 DAS to 41 DAS including temporal OOD images. The input image has a cyan
+frame, the in-distribution images a blue frame, and the OOD images an orange frame.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+22
+Figure 12: Daily GrowliFlower predictions from 0 DAP to 73 DAP including temporal OOD images. The input image has a cyan
+frame, the in-distribution images a blue frame, and the OOD images an orange frame.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+23
+Figure 13: Daily Mixed-CKA predictions from 0 DAS to 121 DAS including temporal OOD images. The input image has a cyan
+frame, the in-distribution images a blue frame, and the OOD images an orange frame.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+24
+Figure 14: Transferability fails with predictions for Mixed-WG caused by input image 29 DAS lying spectrally too far out of the
+training distribution (Mixed-CKA images).
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+25
+Figure 15: Transferability with prediction results for Mixed-WG input image 50 DAS lying spectrally less far away from the
+54 DAS-images of the training distribution (Mixed-CKA). The predicted images are qualitatively appealing, while they do not
+compare well with the reference, because the crops of Mixed-CKA and Mixed-WG have different growth patterns.
+Preprint – Data-driven Crop Growth Simulation on Time-varying Generated Images using Multi-conditional GANs
+26
+Figure 16: Daily Mixed-WG predictions from 0 DAS to 121 DAS including temporal OOD images from an image prediction
+model trained exclusively on Mixed-CKA images.
