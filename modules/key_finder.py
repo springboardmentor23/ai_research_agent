@@ -1,4 +1,6 @@
 import re
+import json
+import os
 
 KEY_PHRASES = [
     "we propose",
@@ -38,5 +40,11 @@ def extract_key_findings(sectioned_text):
                         break
 
         key_findings[paper] = list(set(findings))  # remove duplicates
+
+    os.makedirs("data/analysis", exist_ok=True)
+    with open("data/analysis/key_findings.json", "w", encoding="utf-8") as f:
+        json.dump(key_findings, f, indent=4)
+
+    print("✅ key_findings.json created successfully")
 
     return key_findings
