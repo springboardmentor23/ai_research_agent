@@ -1,8 +1,8 @@
 import os
 import re
 
-TEXT_DIR = "extracted_texts"
-OUTPUT_DIR = "key_findings"
+TEXT_DIR = "data/texts"
+OUTPUT_DIR = "data/dist_texts"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -57,5 +57,4 @@ def extract_key_findings():
 
         print(f"Extracted {len(key_sentences)} key findings from {filename}")
 
-if __name__ == "__main__":
-    extract_key_findings()
+extract_key_findings()

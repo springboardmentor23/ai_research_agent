@@ -1,2 +1,0 @@
-maurya “skin disease prediction” [4] 2021 - this paper proposes an 
-mobile based method by using deep learning to detect skin diseases.

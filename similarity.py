@@ -2,7 +2,7 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-KEY_FINDINGS_DIR = "key_findings"
+KEY_FINDINGS_DIR = "data/dist_texts"
 
 def load_documents():
     documents = []
@@ -42,9 +42,8 @@ def compute_similarity():
     for i in range(len(doc_names)):
         for j in range(i + 1, len(doc_names)):
             print(
-                f"{doc_names[i]}  vs  {doc_names[j]}  ->  "
+                f"{doc_names[i]}  vs  {doc_names[j]}  →  "
                 f"{similarity_matrix[i][j]:.3f}"
             )
 
-if __name__ == "__main__":
-    compute_similarity()
+compute_similarity()

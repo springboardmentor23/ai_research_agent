@@ -1,7 +1,0 @@
-a novel fault diagnosis method for rotating machinery based on a convolutional neural
-network.
-a new convolutional neural network-based data-driven fault diagnosis method.
-a novel image feature for the remaining useful lifetime prediction of bearings based on continuous wavelet
-transform and convolutional neural network.
-deep convolutional transfer learning network: a new method for intelligent fault
-diagnosis of machines with unlabeled data.

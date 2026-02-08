@@ -23,10 +23,11 @@ dist/
 *.swo
 *~
 
-# Data files (optional - uncomment if you don't want to track these)
-# pdfs/
-# extracted_texts/
-# key_findings/
+# Generated data and downloads (keep repo small)
+pdfs/
+extracted_texts/
+key_findings/
+data/
 
 # OS
 .DS_Store
