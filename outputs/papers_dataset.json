@@ -1,43 +1,144 @@
 [
   {
-    "title": "FakeShield: Explainable Image Forgery Detection and Localization via Multi-modal Large Language Models",
-    "authors": [
-      "Zhipei Xu",
-      "Xuanyu Zhang",
-      "Runyi Li",
-      "Zecheng Tang",
-      "Qing Huang",
-      "Jian Zhang"
-    ],
+    "paperId": "7e3b3d82df3c22cb90f10921f28c2a3f6c07e77f",
+    "title": "Rethinking the Up-Sampling Operations in CNN-Based Generative Network for Generalizable Deepfake Detection",
     "year": 2024,
-    "abstract": "The rapid development of generative AI is a double-edged sword, which not only facilitates content creation but also makes image manipulation easier and more difficult to detect. Although current image forgery detection and localization (IFDL) methods are generally effective, they tend to face two challenges: \\textbf{1)} black-box nature with unknown detection principle, \\textbf{2)} limited generalization across diverse tampering methods (e.g., Photoshop, DeepFake, AIGC-Editing). To address these issues, we propose the explainable IFDL task and design FakeShield, a multi-modal framework capable of evaluating image authenticity, generating tampered region masks, and providing a judgment basis based on pixel-level and image-level tampering clues. Additionally, we leverage GPT-4o to enhance existing IFDL datasets, creating the Multi-Modal Tamper Description dataSet (MMTD-Set) for training FakeShield's tampering analysis capabilities. Meanwhile, we incorporate a Domain Tag-guided Explainable Forgery Detection Module (DTE-FDM) and a Multi-modal Forgery Localization Module (MFLM) to address various types of tamper detection interpretation and achieve forgery localization guided by detailed textual descriptions. Extensive experiments demonstrate that FakeShield effectively detects and localizes various tampering techniques, offering an explainable and superior solution compared to previous IFDL methods. The code is available at https://github.com/zhipeixu/FakeShield.",
-    "paper_url": "https://www.semanticscholar.org/paper/efacfe7e734e5c8cedddf5ee02c3afb25f6401f2"
+    "openAccessPdf": {
+      "url": "https://arxiv.org/pdf/2312.10461",
+      "status": "GREEN",
+      "license": null,
+      "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1109/CVPR52733.2024.02657?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/CVPR52733.2024.02657, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+    },
+    "authors": [
+      {
+        "authorId": "17950605",
+        "name": "Chuangchuang Tan"
+      },
+      {
+        "authorId": "2242956246",
+        "name": "Huan Liu"
+      },
+      {
+        "authorId": "2230283989",
+        "name": "Yao Zhao"
+      },
+      {
+        "authorId": "46730712",
+        "name": "Shikui Wei"
+      },
+      {
+        "authorId": "2258415",
+        "name": "Guanghua Gu"
+      },
+      {
+        "authorId": "2275541365",
+        "name": "Ping Liu"
+      },
+      {
+        "authorId": "2238213573",
+        "name": "Yunchao Wei"
+      }
+    ],
+    "abstract": null
   },
   {
-    "title": "Hierarchical Fine-Grained Image Forgery Detection and Localization",
+    "paperId": "300d08e8f5c310c2b194b7eb94398e480994d5cc",
+    "title": "Celeb-DF: A Large-Scale Challenging Dataset for DeepFake Forensics",
+    "year": 2019,
+    "openAccessPdf": {
+      "url": "https://arxiv.org/pdf/1909.12962",
+      "status": "GREEN",
+      "license": null,
+      "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1909.12962, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+    },
     "authors": [
-      "Xiao-qiang Guo",
-      "Xiaohong Liu",
-      "Zhiyuan Ren",
-      "Steven A. Grosz",
-      "I. Masi",
-      "Xiaoming Liu"
+      {
+        "authorId": "2778359",
+        "name": "Yuezun Li"
+      },
+      {
+        "authorId": "2150440804",
+        "name": "Xin Yang"
+      },
+      {
+        "authorId": "145021633",
+        "name": "Pu Sun"
+      },
+      {
+        "authorId": "144097734",
+        "name": "H. Qi"
+      },
+      {
+        "authorId": "1794837",
+        "name": "Siwei Lyu"
+      }
     ],
-    "year": 2023,
-    "abstract": "Differences in forgery attributes of images generated in CNN-synthesized and image-editing domains are large, and such differences make a unified image forgery detection and localization (IFDL) challenging. To this end, we present a hierarchical fine-grained formulation for IFDL representation learning. Specifically, we first represent forgery attributes of a manipulated image with multiple labels at different levels. Then we perform fine-grained classification at these levels using the hierarchical dependency between them. As a result, the algorithm is encouraged to learn both comprehensive features and inherent hierarchical nature of different forgery attributes, thereby improving the IFDL representation. Our proposed IFDL framework contains three components: multi-branch feature extractor, localization and classification modules. Each branch of the feature extractor learns to classify forgery attributes at one level, while localization and classification modules segment the pixel-level forgery region and detect image-level forgery, respectively. Lastly, we construct a hierarchical fine-grained dataset to facilitate our study. We demonstrate the effectiveness of our method on 7 different benchmarks, for both tasks of IFDL and forgery attribute classification. Our source code and dataset can be found: github.com/CHELSEA234/HiFi-IFDL.",
-    "paper_url": "https://www.semanticscholar.org/paper/0bddd6d9ef05d2e7a86965b5a5b37216c330dac6"
+    "abstract": "AI-synthesized face-swapping videos, commonly known as DeepFakes, is an emerging problem threatening the trustworthiness of online information. The need to develop and evaluate DeepFake detection algorithms calls for datasets of DeepFake videos. However, current DeepFake datasets suffer from low visual quality and do not resemble DeepFake videos circulated on the Internet. We present a new large-scale challenging DeepFake video dataset, Celeb-DF, which contains 5,639 high-quality DeepFake videos of celebrities generated using improved synthesis process. We conduct a comprehensive evaluation of DeepFake detection methods and datasets to demonstrate the escalated level of challenges posed by Celeb-DF."
   },
   {
-    "title": "TruFor: Leveraging All-Round Clues for Trustworthy Image Forgery Detection and Localization",
+    "paperId": "43ddc66715a4463374e92f0556e11bb2613ad215",
+    "title": "Deepfake-Eval-2024: A Multi-Modal In-the-Wild Benchmark of Deepfakes Circulated in 2024",
+    "year": 2025,
+    "openAccessPdf": {
+      "url": "",
+      "status": null,
+      "license": null,
+      "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2503.02857, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+    },
     "authors": [
-      "Fabrizio Guillaro",
-      "D. Cozzolino",
-      "Avneesh Sud",
-      "Nick Dufour",
-      "L. Verdoliva"
+      {
+        "authorId": "2399159543",
+        "name": "Nuria Alina Chandra"
+      },
+      {
+        "authorId": "2348469799",
+        "name": "Ryan Murtfeldt"
+      },
+      {
+        "authorId": "2310341546",
+        "name": "Lin Qiu"
+      },
+      {
+        "authorId": "2348470477",
+        "name": "Arnab Karmakar"
+      },
+      {
+        "authorId": "2310478768",
+        "name": "Hannah Lee"
+      },
+      {
+        "authorId": "2348467780",
+        "name": "Emmanuel Tanumihardja"
+      },
+      {
+        "authorId": "2310334598",
+        "name": "Kevin Farhat"
+      },
+      {
+        "authorId": "2348469578",
+        "name": "Ben Caffee"
+      },
+      {
+        "authorId": "2348469706",
+        "name": "Sejin Paik"
+      },
+      {
+        "authorId": "2304525014",
+        "name": "Changyeon Lee"
+      },
+      {
+        "authorId": "2348522364",
+        "name": "Jongwook Choi"
+      },
+      {
+        "authorId": "2304436787",
+        "name": "Aerin Kim"
+      },
+      {
+        "authorId": "2282542651",
+        "name": "O. Etzioni"
+      }
     ],
-    "year": 2022,
-    "abstract": "In this paper we present TruFor, a forensic framework that can be applied to a large variety of image manipulation methods, from classic cheapfakes to more recent manipulations based on deep learning. We rely on the extraction of both high-level and low-level traces through a transformer-based fusion architecture that combines the RGB image and a learned noise-sensitive fingerprint. The latter learns to embed the artifacts related to the camera internal and external processing by training only on real data in a self-supervised manner. Forgeries are detected as deviations from the expected regular pattern that characterizes each pristine image. Looking for anomalies makes the approach able to robustly detect a variety of local manipulations, ensuring generalization. In addition to a pixel-level localization map and a whole-image integrity score, our approach outputs a reliability map that highlights areas where localization predictions may be error-prone. This is particularly important in forensic applications in order to reduce false alarms and allow for a large scale analysis. Extensive experiments on several datasets show that our method is able to reliably detect and localize both cheapfakes and deepfakes manipulations outperforming state-of-the-art works. Code is publicly available at https://grip-unina.github.io/TruFor/",
-    "paper_url": "https://www.semanticscholar.org/paper/e6bbd4b0e2b7fa49c75bdb40329e88ff11b5fb23"
+    "abstract": "In the age of increasingly realistic generative AI, robust deepfake detection is essential for mitigating fraud and disinformation. While many deepfake detectors report high accuracy on academic datasets, we show that these academic benchmarks are out of date and not representative of real-world deepfakes. We introduce Deepfake-Eval-2024, a new deepfake detection benchmark consisting of in-the-wild deepfakes collected from social media and deepfake detection platform users in 2024. Deepfake-Eval-2024 consists of 45 hours of videos, 56.5 hours of audio, and 1,975 images, encompassing the latest manipulation technologies. The benchmark contains diverse media content from 88 different websites in 52 different languages. We find that the performance of open-source state-of-the-art deepfake detection models drops precipitously when evaluated on Deepfake-Eval-2024, with AUC decreasing by 50% for video, 48% for audio, and 45% for image models compared to previous benchmarks. We also evaluate commercial deepfake detection models and models finetuned on Deepfake-Eval-2024, and find that they have superior performance to off-the-shelf open-source models, but do not yet reach the accuracy of deepfake forensic analysts. The dataset is available at https://github.com/nuriachandra/Deepfake-Eval-2024."
   }
 ]

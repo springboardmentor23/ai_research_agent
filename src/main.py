@@ -1,76 +1,158 @@
-import json
+# src/main.py
+
 import os
+import json
+import requests
 
-from paper_fetcher import fetch_papers
-from pdf_downloader import download_pdf
-from pdf_text_extractor import extract_text_from_pdf
-from section_parser import extract_sections
-from key_finder import extract_keywords
-from comparator import compare_keywords
-from validator import validate_sections
+from src.paper_fetcher import fetch_papers
+from src.section_generator import (
+    generate_abstract,
+    generate_methods,
+    generate_results
+)
+from src.synthesis import synthesize_findings
+from src.reference_formatter import format_references_apa
 
 
-DATASET_PATH = "outputs/papers_dataset.json"
-PDF_FOLDER = "outputs/downloaded_pdfs"
+# -----------------------------
+# CONSTANTS
+# -----------------------------
+OUTPUT_DIR = "outputs"
+PDF_DIR = os.path.join(OUTPUT_DIR, "downloaded_pdfs")
 
 
-def milestone_1():
-    topic = input("Enter research topic: ")
+# -----------------------------
+# PDF DOWNLOAD HELPER
+# -----------------------------
+def download_pdf(pdf_url, save_path):
+    """
+    Download PDF from open-access URL.
+    """
+    try:
+        response = requests.get(pdf_url, timeout=30)
+        response.raise_for_status()
 
+        with open(save_path, "wb") as f:
+            f.write(response.content)
+
+        return True
+    except Exception as e:
+        print(f"PDF download failed: {e}")
+        return False
+
+
+# -----------------------------
+# MAIN PIPELINE
+# -----------------------------
+def main():
+    print("\nStarting Milestone 3: Automated Research Writing Pipeline\n")
+
+    # Ensure directories exist
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os.makedirs(PDF_DIR, exist_ok=True)
+
+    # -----------------------------
+    # STEP 1: USER INPUT
+    # -----------------------------
+    topic = input("Enter research topic: ").strip()
+
+    if not topic:
+        print("Topic cannot be empty. Exiting.")
+        return
+
+    # -----------------------------
+    # STEP 2: FETCH PAPERS (Milestone 1)
+    # -----------------------------
     print("\nFetching papers...")
-    papers = fetch_papers(topic)
+    papers = fetch_papers(topic, limit=3)
 
     if not papers:
-        print("No papers found. Exiting.")
-        return []
+        print("No papers found. Exiting pipeline.")
+        return
 
-    dataset = []
-    for paper in papers:
-        dataset.append({
-            "title": paper.get("title"),
-            "abstract": paper.get("abstract"),
-            "paper_url": paper.get("url")
-        })
+    # Save metadata
+    dataset_path = os.path.join(OUTPUT_DIR, "papers_dataset.json")
+    with open(dataset_path, "w", encoding="utf-8") as f:
+        json.dump(papers, f, indent=2)
 
-    with open(DATASET_PATH, "w", encoding="utf-8") as f:
-        json.dump(dataset, f, indent=2)
+    print(f"Saved {len(papers)} papers to papers_dataset.json\n")
 
-    print(f"Saved {len(dataset)} papers to papers_dataset.json")
-    return dataset
-
-
-def milestone_2(papers):
-    all_keywords = []
+    # -----------------------------
+    # STEP 3: DOWNLOAD PDFs + COLLECT TEXT (Milestone 2)
+    # -----------------------------
+    collected_text = ""
 
     for idx, paper in enumerate(papers, start=1):
-        print(f"\nProcessing paper {idx}...")
-        pdf_path = f"{PDF_FOLDER}/paper_{idx}.pdf"
+        print(f"Processing paper {idx}...")
 
-        success = download_pdf(paper["paper_url"], pdf_path)
-        if not success:
-            print("PDF download failed. Skipping paper.")
-            continue
+        # Always use abstract as fallback text
+        abstract = paper.get("abstract")
+        if abstract:
+            collected_text += abstract + "\n"
 
-        text = extract_text_from_pdf(pdf_path)
-        sections = extract_sections(text)
-        keywords = extract_keywords(text)
-        validation = validate_sections(sections)
+        open_access = paper.get("openAccessPdf")
 
-        all_keywords.append(keywords)
+        if open_access and open_access.get("url"):
+            pdf_url = open_access["url"]
+            pdf_path = os.path.join(PDF_DIR, f"paper_{idx}.pdf")
 
-    if all_keywords:
-        common = compare_keywords(all_keywords)
-    else:
-        common = []
+            print("Downloading PDF...")
+            success = download_pdf(pdf_url, pdf_path)
 
-    print("\nMilestone 2 completed successfully.")
+            if success:
+                print("PDF downloaded successfully.\n")
+            else:
+                print("PDF download failed. Using abstract only.\n")
+        else:
+            print("No open-access PDF available. Using abstract only.\n")
+
+    # -----------------------------
+    # STEP 4: GENERATE SECTIONS (Milestone 3)
+    # -----------------------------
+    print("Generating Abstract...")
+    abstract_text = generate_abstract(collected_text)
+
+    print("Generating Methods...")
+    methods_text = generate_methods(collected_text)
+
+    print("Generating Results...")
+    results_text = generate_results(collected_text)
+
+    # -----------------------------
+    # STEP 5: SYNTHESIS & REFERENCES
+    # -----------------------------
+    print("Synthesizing findings...")
+    synthesis_text = synthesize_findings(papers)
+
+    print("Formatting references (APA)...")
+    references_text = format_references_apa(papers)
+
+    # -----------------------------
+    # STEP 6: SAVE FINAL DRAFT
+    # -----------------------------
+    final_draft = (
+        "ABSTRACT\n"
+        + abstract_text + "\n\n"
+        + "METHODS\n"
+        + methods_text + "\n\n"
+        + "RESULTS\n"
+        + results_text + "\n\n"
+        + "SYNTHESIS OF FINDINGS\n"
+        + synthesis_text + "\n\n"
+        + "REFERENCES\n"
+        + references_text
+    )
+
+    output_file = os.path.join(OUTPUT_DIR, "milestone3_draft.txt")
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(final_draft)
+
+    print("\nMilestone 3 completed successfully.")
+    print(f"Final draft saved to: {output_file}\n")
 
 
-def main():
-    papers = milestone_1()
-    if papers:
-        milestone_2(papers)
-
-
+# -----------------------------
+# ENTRY POINT
+# -----------------------------
 if __name__ == "__main__":
     main()
