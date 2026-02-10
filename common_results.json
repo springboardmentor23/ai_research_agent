@@ -1,0 +1,50 @@
+{
+    "common_datasets": [
+        "He\u2013H\u00fe molecular system (bond dissociation curve)",
+        "human-written prompts for red teaming",
+        "model-generated prompts for red teaming",
+        "human-written prompts for helpfulness",
+        "human feedback data for preference model comparisons (helpfulness and harmlessness)",
+        "constitutionally-generated harmlessness comparisons",
+        "dataset from [Ganguli et al., 2022] for identifying harmful behavior",
+        "conversations from [Askell et al., 2021] with model responses for ranking",
+        "additional challenging comparisons focusing on subtle tests of harmlessness",
+        "public Dryad repository (https://doi.org/10.5061/dryad.k6t1rj8)"
+    ],
+    "common_methods": [
+        "Randomized benchmarking",
+        "Quantum Phase Estimation (QPE)",
+        "Quantum Expectation Estimation (QEE)",
+        "Quantum Variational Eigensolver (QVE)",
+        "Unitary Coupled Cluster ansatz",
+        "Classical optimization (Nelder-Mead algorithm)",
+        "State preparation based on ansatz and classical optimization",
+        "Integrated quantum photonics technology",
+        "Spontaneous parametric downconversion single-photon source",
+        "Variational method for eigenstate preparation"
+    ],
+    "common_algorithms": [
+        "Quantum Phase Estimation (QPE)",
+        "Quantum Expectation Estimation (QEE)",
+        "Quantum Variational Eigensolver (QVE)",
+        "Nelder-Mead (NM) algorithm",
+        "Fine-tuning a pretrained language model on revised responses (SL phase)",
+        "Training a preference model from AI preferences (RL phase)",
+        "RL training using the preference model as the reward signal (RL phase)",
+        "Sampling critiques and revisions from a model",
+        "Generating pairs of responses for AI evaluation",
+        "Training a preference model on comparison data"
+    ],
+    "common_key_findings": [
+        "An alternative approach to Quantum Phase Estimation (QPE) significantly reduces the requirements for coherent evolution by replacing long coherent evolution with many short coherent evolutions.",
+        "The Quantum Expectation Estimation (QEE) algorithm can efficiently compute the expectation value of a Hamiltonian.",
+        "The Quantum Variational Eigensolver (QVE) algorithm, combined with QEE, provides a variational method to prepare eigenstates, requiring short coherent evolution.",
+        "The proposed approach drastically reduces coherence time requirements, enhancing the potential of current and near-future quantum resources.",
+        "Experimental demonstration of calculating the ground-state molecular energy for He\u2013H\u00fe using a photonic quantum processor and a conventional computer.",
+        "The method offers an exponential speedup over exact diagonalization for calculating Hamiltonian expectation values.",
+        "The QVE algorithm successfully computed the bond dissociation curve for the He\u2013H\u00fe molecule, determining the equilibrium bond length and ground-state electronic energy with high accuracy.",
+        "The developed approach requires fewer quantum resources compared to QPE, particularly in terms of quantum gates (e.g., one CNOT gate versus at least 12 for a comparable Hamiltonian).",
+        "The method allows for the preparation of ansatz states defined by a polynomial set of parameters, offering flexibility in choosing device-specific or chemically motivated ansatz.",
+        "The experimental implementation used integrated quantum photonics with a recon\ufb01gurable waveguide chip capable of preparing and measuring arbitrary two-bit pure states."
+    ]
+}

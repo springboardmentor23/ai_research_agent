@@ -1,0 +1,59 @@
+{
+    "datasets": [
+        "human-written prompts for red teaming",
+        "model-generated prompts for red teaming",
+        "human-written prompts for helpfulness",
+        "human feedback data for preference model comparisons (helpfulness and harmlessness)",
+        "constitutionally-generated harmlessness comparisons",
+        "dataset from [Ganguli et al., 2022] for identifying harmful behavior",
+        "conversations from [Askell et al., 2021] with model responses for ranking",
+        "additional challenging comparisons focusing on subtle tests of harmlessness"
+    ],
+    "methods": [
+        "Constitutional AI (CAI)",
+        "Supervised Learning (SL) phase for CAI",
+        "Reinforcement Learning (RL) phase for CAI",
+        "Reinforcement Learning from AI Feedback (RLAIF)",
+        "Scaling Supervision",
+        "Chain-of-Thought (CoT) reasoning",
+        "Reinforcement Learning from Human Feedback (RLHF)",
+        "Critique and Revision pipeline",
+        "Preference Model (PM) training",
+        "AI comparison evaluations",
+        "Self-supervised preference labels for RL",
+        "Few-shot prompting",
+        "Context distillation (mentioned as less beneficial)"
+    ],
+    "algorithms": [
+        "Fine-tuning a pretrained language model on revised responses (SL phase)",
+        "Training a preference model from AI preferences (RL phase)",
+        "RL training using the preference model as the reward signal (RL phase)",
+        "Sampling critiques and revisions from a model",
+        "Generating pairs of responses for AI evaluation",
+        "Training a preference model on comparison data",
+        "Fine-tuning via RL against a preference model",
+        "Chain-of-Thought prompting for feedback models",
+        "Ensembling over constitutional principles"
+    ],
+    "key_findings": [
+        "Constitutional AI (CAI) can train a harmless AI assistant without human labels for harmfulness, relying instead on a list of principles.",
+        "The CAI process involves both supervised learning (critique, revision, fine-tuning) and reinforcement learning (RLAIF).",
+        "RLAIF significantly improves model performance and reliability in terms of harmlessness.",
+        "Chain-of-thought reasoning improves human-judged performance and transparency of AI decision-making, and enhances AI's ability to identify harms.",
+        "AI-generated critiques and revisions can progressively reduce harmfulness.",
+        "Generating critiques leads to better harmlessness compared to simply generating revisions directly.",
+        "Self-supervised preference labels for RL further improve model behavior, equalling or exceeding performance using human feedback for harmlessness.",
+        "Language models are becoming increasingly capable of identifying and assessing harmful behavior, approaching crowdworker performance.",
+        "CAI models are able to engage with harmful queries by explaining their objections, avoiding evasiveness.",
+        "There is a tension between helpfulness and harmlessness, but CAI aims to mitigate this by training non-evasive but still helpful assistants.",
+        "The number of principles in the constitution does not significantly affect harmlessness scores but can improve response diversity, which is valuable for RL exploration.",
+        "Increasing the number of revisions generally leads to progressively higher harmlessness scores.",
+        "Critiqued revisions generally achieve slightly higher harmlessness scores than direct revisions, especially for smaller models.",
+        "RL-CAI models are significantly more harmless than RLHF and SL-CAI models.",
+        "RL-CAI models are virtually never evasive and often provide nuanced, harmless responses to red team prompts.",
+        "The feedback model's log-probabilities used for CAI labels are reasonably well-calibrated.",
+        "Overtraining RL-CAI models can lead to overly harsh responses or boilerplate language.",
+        "Ensembling over constitutional principles during label generation leads to more robust preference model scores.",
+        "Using soft preference labels is generally better than hard labels for RL-CAI without CoT, while clamping probabilities is useful for RL-CAI with CoT."
+    ]
+}

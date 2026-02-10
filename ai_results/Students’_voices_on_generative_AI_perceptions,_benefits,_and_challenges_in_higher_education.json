@@ -1,0 +1,33 @@
+{
+    "datasets": [
+        "A survey of 399 undergraduate and postgraduate students from various disciplines in Hong Kong."
+    ],
+    "methods": [
+        "Survey design",
+        "Online questionnaire (closed-ended and open-ended questions)",
+        "Pilot studies",
+        "Convenience sampling",
+        "Descriptive analysis",
+        "Thematic analysis",
+        "Manual coding by two coders",
+        "Codebook creation",
+        "Quantitative data analysis",
+        "Qualitative data analysis"
+    ],
+    "algorithms": [
+        "Variational Autoencoder (VAE)",
+        "Generative Adversarial Networks (GANs)",
+        "Autoregressive large language model (e.g., ChatGPT)"
+    ],
+    "key_findings": [
+        "Students generally have a positive attitude towards Generative AI (GenAI) in teaching and learning.",
+        "Students recognize the potential benefits of GenAI for personalized learning support, writing and brainstorming assistance, and research and analysis.",
+        "Students express concerns about GenAI's accuracy, privacy, ethical issues, and its impact on personal development, career prospects, and societal values.",
+        "Students' knowledge of GenAI technologies and their frequency of use are positively correlated.",
+        "Willingness to use GenAI is positively correlated with knowledge of GenAI and frequency of use.",
+        "Students perceive GenAI as valuable for personalized learning support, writing/brainstorming, research/analysis, visual/audio multimedia creation, and administrative tasks.",
+        "Key concerns include accuracy, transparency, privacy, ethical issues (especially plagiarism), impact on holistic competencies (critical thinking, creativity), career prospects (job replacement), human values, and uncertain policies.",
+        "Students' perceptions significantly influence their learning approaches and outcomes, as per John Biggs\u2019 3P model.",
+        "There is a need for well-informed guidelines and strategies for the responsible and effective implementation of GenAI tools in higher education."
+    ]
+}

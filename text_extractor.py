@@ -1,5 +1,4 @@
 import os
-import json
 import PyPDF2
 from pathlib import Path
 
@@ -11,22 +10,38 @@ def ensure_folder(folder):
 def extract_text_from_pdf(pdf_path):
     full_text = ""
 
-    with open(pdf_path, "rb") as f:
-        reader = PyPDF2.PdfReader(f)
+    try:
+        with open(pdf_path, "rb") as f:
+            try:
+                reader = PyPDF2.PdfReader(f)
+            except Exception as e:
+                print(f"❌ Corrupted PDF (reader error): {os.path.basename(pdf_path)}")
+                return None
 
-        for i, page in enumerate(reader.pages):
-            page_text = page.extract_text()
+            for page in reader.pages:
+                try:
+                    page_text = page.extract_text()
+                    if page_text:
+                        full_text += page_text + "\n"
+                except:
+                    continue
 
-            if page_text:
-                full_text += f"--- Page {i+1} ---\n"
-                full_text += page_text + "\n\n"
+    except Exception as e:
+        print(f"❌ File open error: {os.path.basename(pdf_path)}")
+        return None
 
     return full_text
 
 
-def extract_all_pdfs_text(pdf_folder="pdfs", output_folder="extracted_texts"):
+def extract_all_pdfs_text(
+    pdf_folder="pdfs",
+    output_folder="extracted_texts"
+):
 
     ensure_folder(output_folder)
+
+    extracted = 0
+    skipped = 0
 
     for pdf_file in os.listdir(pdf_folder):
 
@@ -39,6 +54,12 @@ def extract_all_pdfs_text(pdf_folder="pdfs", output_folder="extracted_texts"):
 
         full_text = extract_text_from_pdf(pdf_path)
 
+        # Skip bad PDFs
+        if not full_text or len(full_text.strip()) < 100:
+            print(f"⚠️ Skipped broken/empty PDF: {pdf_file}")
+            skipped += 1
+            continue
+
         output_path = os.path.join(
             output_folder,
             pdf_file.replace(".pdf", ".txt")
@@ -47,4 +68,9 @@ def extract_all_pdfs_text(pdf_folder="pdfs", output_folder="extracted_texts"):
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(full_text)
 
-    print("✅ All PDFs extracted into TXT files")
+        extracted += 1
+
+    print("\n==============================")
+    print(f"✅ Extracted PDFs: {extracted}")
+    print(f"⚠️ Skipped PDFs: {skipped}")
+    print("==============================")

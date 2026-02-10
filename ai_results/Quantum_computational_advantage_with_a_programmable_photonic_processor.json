@@ -1,0 +1,40 @@
+{
+    "datasets": [],
+    "methods": [
+        "Gaussian boson sampling (GBS)",
+        "Time-multiplexing",
+        "Photon-number-resolving architecture",
+        "Exact methods for simulation",
+        "Cross-entropy benchmark",
+        "Bayesian method for verification",
+        "Measurement-based quantum computing",
+        "Tomographic measurements"
+    ],
+    "algorithms": [
+        "Best-known algorithms for classical simulation of GBS",
+        "Classical heuristics for spoofing",
+        "Greedy algorithm for spoofing",
+        "Squashed state spoofing",
+        "Thermal state spoofing",
+        "Coherent state spoofing",
+        "Distinguishable squeezed light spoofing",
+        "Hafnian calculation for simulation"
+    ],
+    "key_findings": [
+        "Demonstrated quantum computational advantage using Borealis, a programmable photonic processor.",
+        "Borealis outperforms the best classical computers and algorithms for Gaussian boson sampling.",
+        "On average, it would take over 9,000 years for classical computers to produce a single sample, while Borealis takes 36 \u03bcs.",
+        "The runtime advantage is over 50 million times greater than that reported from earlier photonic machines.",
+        "The experiment involved a large GBS experiment with 216 squeezed modes and up to 219 detected photons.",
+        "Borealis exhibits dynamic programmability over all implemented quantum gates.",
+        "The processor is resistant to classical spoofing attacks due to its high photon numbers and photon-number resolution.",
+        "Time-domain multiplexing is a hardware-efficient path for building fault-tolerant quantum computers and near-term subuniversal machines.",
+        "The photonic processor's capabilities validate key technological features of photonics as a platform for practical quantum computers.",
+        "The system successfully synthesizes a 216-mode state with a three-dimensional entanglement topology.",
+        "Experimental validation shows fidelities in excess of 99% and total variation distances below or equal to 6.5% in the low photon-number regime.",
+        "In the intermediate regime, experimental samples perform significantly better than classical adversaries (squashed, thermal, coherent, distinguishable squeezed states, and greedy sampler) in the cross-entropy benchmark.",
+        "Bayesian log averages are strictly above zero for all remaining adversaries, indicating samples are closer to the ground truth.",
+        "The regime explored in the experiment is seven orders of magnitude harder to simulate classically than previous experiments.",
+        "The developed system is more resistant to classical spoofing attacks than all previous photonic demonstrations."
+    ]
+}

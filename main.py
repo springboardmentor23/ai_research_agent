@@ -13,7 +13,10 @@ from key_phrases import process_key_phrases
 from tfidf_vectorizer import build_tfidf_vectors
 from similarity import compute_similarity
 from cross_compare import cross_compare_papers
-
+from ai_analysis import process_all_texts_with_ai
+from common_analysis import main as common_analysis_main
+from paper_generator import generate_paper
+from paper_generator import generate_paper   # <<< ADDED >>>
 
 # ===============================
 # Terminal Section Formatter
@@ -44,7 +47,8 @@ def clean_old_data():
         "pdfs",
         "extracted_texts",
         "extracted_texts_json",
-        "key_phrases"
+        "key_phrases",
+        "ai_results"
     ]
 
     for folder in folders:
@@ -124,6 +128,7 @@ for paper in papers:
 if downloaded == 0:
     print("\n❌ No PDFs downloaded. Process stopped.")
     sys.exit()
+
 from text_extractor import extract_all_pdfs_text
 extract_all_pdfs_text()
 
@@ -194,8 +199,28 @@ section("🔍 CROSS PAPER COMPARISON")
 cross_compare_papers(similarity_matrix, paper_names)
 
 
+# =====================================================
+# AI PIPELINE
+# =====================================================
+
+section("🤖 AI EXTRACTION")
+
+process_all_texts_with_ai()
+print("AI extraction completed ✔")
+
+section("📊 COMMON ANALYSIS")
+
+common_analysis_main()
+print("Common datasets/methods/algorithms found ✔")
+
+section("📝 PAPER GENERATION")
+
+generate_paper()
+print("Final paper generated ✔")
+
 # ===============================
-# End
+# DONE
 # ===============================
 
-print("\n===== PROCESS COMPLETED SUCCESSFULLY =====\n")
+print("\n🎉 FULL SYSTEM PIPELINE COMPLETED SUCCESSFULLY")
+print("📄 Output File: final_review.txt")

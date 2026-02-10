@@ -1,0 +1,39 @@
+{
+    "datasets": [
+        "He\u2013H\u00fe molecular system (bond dissociation curve)"
+    ],
+    "methods": [
+        "Quantum Phase Estimation (QPE)",
+        "Quantum Expectation Estimation (QEE)",
+        "Quantum Variational Eigensolver (QVE)",
+        "Unitary Coupled Cluster ansatz",
+        "Classical optimization (Nelder-Mead algorithm)",
+        "State preparation based on ansatz and classical optimization",
+        "Integrated quantum photonics technology",
+        "Spontaneous parametric downconversion single-photon source",
+        "Variational method for eigenstate preparation",
+        "Rayleigh-Ritz quotient minimization",
+        "Jordan-Wigner transformation"
+    ],
+    "algorithms": [
+        "Quantum Phase Estimation (QPE)",
+        "Quantum Expectation Estimation (QEE)",
+        "Quantum Variational Eigensolver (QVE)",
+        "Nelder-Mead (NM) algorithm"
+    ],
+    "key_findings": [
+        "An alternative approach to Quantum Phase Estimation (QPE) significantly reduces the requirements for coherent evolution by replacing long coherent evolution with many short coherent evolutions.",
+        "The Quantum Expectation Estimation (QEE) algorithm can efficiently compute the expectation value of a Hamiltonian.",
+        "The Quantum Variational Eigensolver (QVE) algorithm, combined with QEE, provides a variational method to prepare eigenstates, requiring short coherent evolution.",
+        "The proposed approach drastically reduces coherence time requirements, enhancing the potential of current and near-future quantum resources.",
+        "Experimental demonstration of calculating the ground-state molecular energy for He\u2013H\u00fe using a photonic quantum processor and a conventional computer.",
+        "The method offers an exponential speedup over exact diagonalization for calculating Hamiltonian expectation values.",
+        "The QVE algorithm successfully computed the bond dissociation curve for the He\u2013H\u00fe molecule, determining the equilibrium bond length and ground-state electronic energy with high accuracy.",
+        "The developed approach requires fewer quantum resources compared to QPE, particularly in terms of quantum gates (e.g., one CNOT gate versus at least 12 for a comparable Hamiltonian).",
+        "The method allows for the preparation of ansatz states defined by a polynomial set of parameters, offering flexibility in choosing device-specific or chemically motivated ansatz.",
+        "The experimental implementation used integrated quantum photonics with a recon\ufb01gurable waveguide chip capable of preparing and measuring arbitrary two-bit pure states.",
+        "The Nelder-Mead optimization algorithm proved robust to experimental noise and was able to converge to the ground state, unlike gradient descent.",
+        "Systematic errors were identified and analyzed, including those arising from the single-photon source, imperfections in the photonic circuit, and unbalanced coupling efficiency.",
+        "The prepared quantum state can be used for efficient reconstruction of properties if needed later."
+    ]
+}
