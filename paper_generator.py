@@ -9,6 +9,7 @@ import google.generativeai as genai
 # ============================
 
 INPUT_FILE = "common_results.json"
+EXTRACTED_FOLDER = "extracted_texts"
 OUTPUT_FILE = "final_review.txt"
 WRAP_WIDTH = 80
 
@@ -37,8 +38,31 @@ def load_common_results():
 # TEXT WRAP
 # ============================
 
-def wrap_text(text):
+def wrap(text):
     return textwrap.fill(text.strip(), width=WRAP_WIDTH)
+
+# ============================
+# SIMPLE APA REFERENCES FROM FILE NAMES
+# ============================
+
+def format_references():
+
+    if not os.path.exists(EXTRACTED_FOLDER):
+        return "No references available."
+
+    references = []
+    files = os.listdir(EXTRACTED_FOLDER)
+
+    for file in files:
+        if file.endswith(".txt"):
+            title = file.replace(".txt", "").replace("_", " ")
+            reference = f"{title}. (n.d.). Retrieved research paper."
+            references.append(reference)
+
+    if not references:
+        return "No references available."
+
+    return "\n".join(references)
 
 # ============================
 # LOCAL GENERATION
@@ -46,50 +70,60 @@ def wrap_text(text):
 
 def generate_local_paper(data):
 
-    datasets = data.get("common_datasets", [])
-    methods = data.get("common_methods", [])
-    algorithms = data.get("common_algorithms", [])
-    findings = data.get("common_key_findings", [])
+    datasets = ", ".join(data.get("common_datasets", []))
+    methods = ", ".join(data.get("common_methods", []))
+    algorithms = ", ".join(data.get("common_algorithms", []))
+    findings = ". ".join(data.get("common_key_findings", []))
 
-    user_prompt = input("\nEnter additional instruction (press Enter to skip): ")
+    title = "AI-Based Review of Selected Research Papers"
 
     abstract = f"""
-This paper presents a comprehensive review of recent research works.
-Common datasets include {', '.join(datasets)}.
-Methods such as {', '.join(methods)} and algorithms like {', '.join(algorithms)}
-are widely used. The findings indicate that {', '.join(findings)}.
+This paper presents a structured review of selected research studies.
+Common datasets include {datasets}. Frequently used methods include
+{methods} and algorithms such as {algorithms}. The overall findings
+indicate that {findings}.
 """
 
-    introduction = f"""
-Recent advancements have increased interest in this domain.
-{user_prompt}
-This paper summarizes major trends and techniques.
+    words = abstract.split()
+    if len(words) > 100:
+        abstract = " ".join(words[:100])
+
+    paper = f"""
+{title}
+
+ABSTRACT
+{wrap(abstract)}
+
+1. Introduction
+{wrap("This study reviews selected research papers and summarizes major technological trends and methodological approaches.")}
+
+2. Methods
+
+2.1 Datasets
+{wrap(f"The primary datasets identified across studies include {datasets}.")}
+
+2.2 Algorithms
+{wrap(f"The most commonly used algorithms include {algorithms}.")}
+
+2.3 Analytical Approach
+{wrap(f"The research methods primarily involve {methods}, enabling structured comparative analysis.")}
+
+3. Results
+
+3.1 Key Findings
+{wrap(findings)}
+
+3.2 Cross-Paper Comparison
+{wrap("Comparative analysis reveals common methodological trends and recurring experimental strategies across the selected papers.")}
+
+4. Conclusion
+{wrap("The reviewed studies demonstrate consistent research trends and methodological alignment. Future work should focus on deeper domain-specific validation and optimization.")}
+
+5. References
+{format_references()}
 """
 
-    methods_section = f"""
-Most studies employ methods such as {', '.join(methods)}.
-Popular algorithms include {', '.join(algorithms)}.
-Datasets commonly used include {', '.join(datasets)}.
-"""
-
-    results_section = f"""
-Key findings across papers:
-{'. '.join(findings)}.
-"""
-
-    conclusion = """
-This review highlights major research trends and future directions.
-"""
-
-    paper = (
-        "ABSTRACT\n" + wrap_text(abstract) +
-        "\n\nINTRODUCTION\n" + wrap_text(introduction) +
-        "\n\nMETHODS\n" + wrap_text(methods_section) +
-        "\n\nRESULTS\n" + wrap_text(results_section) +
-        "\n\nCONCLUSION\n" + wrap_text(conclusion)
-    )
-
-    return paper
+    return paper.strip()
 
 # ============================
 # AI GENERATION
@@ -98,7 +132,6 @@ This review highlights major research trends and future directions.
 def generate_ai_paper(data):
 
     if model is None:
-        print("❌ Gemini API key not found")
         return None
 
     user_prompt = input("\nEnter additional instruction (press Enter to skip): ")
@@ -106,25 +139,45 @@ def generate_ai_paper(data):
     prompt = f"""
 You are an academic research writer.
 
-Using the following information:
+Strictly generate a structured research paper.
+Return ONLY the paper content.
+Do NOT include commentary or explanations.
+
+FORMAT:
+
+TITLE
+
+ABSTRACT (maximum 100 words)
+
+1. Introduction
+
+2. Methods
+   2.1 Datasets
+   2.2 Algorithms
+   2.3 Analytical Approach
+
+3. Results
+   3.1 Key Findings
+   3.2 Cross-Paper Comparison
+
+4. Conclusion
+
+5. References
+
+Use the following extracted information:
 
 Datasets: {data.get("common_datasets")}
 Methods: {data.get("common_methods")}
 Algorithms: {data.get("common_algorithms")}
 Key Findings: {data.get("common_key_findings")}
 
-User instruction:
-{user_prompt}
-
-Generate a research paper with sections:
-Abstract, Introduction, Methods, Results, Conclusion.
+Additional instruction: {user_prompt}
 """
 
     try:
         response = model.generate_content(prompt)
         return response.text
-    except Exception as e:
-        print("❌ AI generation failed:", e)
+    except:
         return None
 
 # ============================
@@ -143,15 +196,15 @@ def generate_paper():
     if choice == "2":
         paper = generate_ai_paper(data)
         if paper is None:
-            print("Falling back to local generation...")
+            print("⚠ API failed. Falling back to Local mode.")
             paper = generate_local_paper(data)
     else:
         paper = generate_local_paper(data)
-
+    wrapped_output = "\n".join([wrap(line) for line in paper.split("\n")])
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(wrap_text(paper))
+        f.write(paper)
 
-    print("✅ final_review.txt generated")
+    print("✅ final_review.txt generated with structured format")
 
 # ============================
 # RUN
