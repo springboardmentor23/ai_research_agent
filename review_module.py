@@ -49,11 +49,13 @@ def load_paper():
 # REVIEW FUNCTION
 # ============================
 
-def review_paper():
+def review_paper(revision_prompt=""):
 
     paper = load_paper()
 
     prompt = f"""
+    Revision instruction: {revision_prompt}
+
 You are an academic research reviewer.
 
 Review the following research paper draft.
@@ -109,11 +111,12 @@ Paper:
         wrapped_revised = "\n".join([wrap(line) for line in revised_part.split("\n")])
         with open(REVISED_FILE, "w", encoding="utf-8") as f:
             f.write(wrapped_revised)
+    
 
     print("✅ review_report.txt generated")
     if revised_part.strip():
         print("✅ revised_paper.txt generated")
-
+    return review_part, revised_part
 # ============================
 # RUN
 # ============================

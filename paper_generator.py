@@ -129,19 +129,16 @@ ABSTRACT
 # AI GENERATION
 # ============================
 
-def generate_ai_paper(data):
+def generate_ai_paper(data, custom_prompt=""):
 
     if model is None:
         return None
-
-    user_prompt = input("\nEnter additional instruction (press Enter to skip): ")
 
     prompt = f"""
 You are an academic research writer.
 
 Strictly generate a structured research paper.
 Return ONLY the paper content.
-Do NOT include commentary or explanations.
 
 FORMAT:
 
@@ -171,7 +168,7 @@ Methods: {data.get("common_methods")}
 Algorithms: {data.get("common_algorithms")}
 Key Findings: {data.get("common_key_findings")}
 
-Additional instruction: {user_prompt}
+Additional instruction: {custom_prompt}
 """
 
     try:
@@ -181,34 +178,23 @@ Additional instruction: {user_prompt}
         return None
 
 # ============================
-# MAIN ENTRY
+# MAIN GENERATION FUNCTION (UI USE)
 # ============================
 
-def generate_paper():
+def generate_paper(mode="local", custom_prompt=""):
 
     data = load_common_results()
 
-    print("\nChoose paper generation mode:")
-    print("1 → Local Template")
-    print("2 → AI (Gemini)")
-    choice = input("Enter choice: ")
-
-    if choice == "2":
-        paper = generate_ai_paper(data)
+    if mode.lower() == "api":
+        paper = generate_ai_paper(data, custom_prompt)
         if paper is None:
-            print("⚠ API failed. Falling back to Local mode.")
             paper = generate_local_paper(data)
     else:
         paper = generate_local_paper(data)
+
     wrapped_output = "\n".join([wrap(line) for line in paper.split("\n")])
+
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(paper)
+        f.write(wrapped_output)
 
-    print("✅ final_review.txt generated with structured format")
-
-# ============================
-# RUN
-# ============================
-
-if __name__ == "__main__":
-    generate_paper()
+    return wrapped_output
