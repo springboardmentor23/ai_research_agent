@@ -315,7 +315,14 @@ with gr.Blocks(css=custom_css) as app:
         with gr.Tab("Pipeline & Generation"):
 
             topic = gr.Textbox(label="Research Topic")
-            num_papers = gr.Number(label="Number of Papers", value=3)
+            num_papers = gr.Number(
+                minimum=1,
+                maximum=10,
+                step=1,
+                value=3,
+                label="Number of Paperss"
+            )           
+
 
             start_btn = gr.Button("Start Pipeline")
 
