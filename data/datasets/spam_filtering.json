@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Investigating Evasive Techniques in SMS Spam Filtering: A Comparative Analysis of Machine Learning Models",
+    "authors": [
+      "Muhammad Salman",
+      "Muhammad Ikram",
+      "M. K\u00e2afar"
+    ],
+    "year": 2024,
+    "abstract": "The persistence of SMS spam remains a significant challenge, highlighting the need for research aimed at developing systems capable of effectively handling the evasive strategies used by spammers. Such research efforts are important for safeguarding the general public from the detrimental impact of SMS spam. In this study, we aim to highlight the challenges encountered in the current landscape of SMS spam detection and filtering. To address these challenges, we present a new SMS dataset comprising more than 68K SMS messages with 61% legitimate (ham) SMS and 39% spam messages. Notably, this dataset, we release for further research, represents the largest publicly available SMS spam dataset to date. To characterize the dataset, we perform a longitudinal analysis of spam evolution. We then extract semantic and syntactic features to evaluate and compare the performance of well-known machine learning based SMS spam detection methods, ranging from shallow machine learning approaches to advanced deep neural networks. We investigate the robustness of existing SMS spam detection models and popular anti-spam services against spammers\u2019 evasion techniques. Our findings reveal that the majority of shallow machine learning based techniques and anti-spam services exhibit inadequate performance when it comes to accurately classifying SMS spam messages. We observe that all of the machine learning approaches and anti-spam services are susceptible to various evasive strategies employed by spammers. To address the identified limitations, our study advocates for researchers to delve into these areas to advance the field of SMS spam detection and anti-spam services.",
+    "paper_url": "https://www.semanticscholar.org/paper/f40bbbeec4489b4e415d5d11f52b09ee06c65646",
+    "paper_id": "f40bbbeec4489b4e415d5d11f52b09ee06c65646"
+  },
+  {
+    "title": "Next-Generation Spam Filtering: Comparative Fine-Tuning of LLMs, NLPs, and CNN Models for Email Spam Classification",
+    "authors": [
+      "Konstantinos I. Roumeliotis",
+      "Nikolaos D. Tselikas",
+      "Dimitrios K. Nasiopoulos"
+    ],
+    "year": 2024,
+    "abstract": "Spam emails and phishing attacks continue to pose significant challenges to email users worldwide, necessitating advanced techniques for their efficient detection and classification. In this paper, we address the persistent challenges of spam emails and phishing attacks by introducing a cutting-edge approach to email filtering. Our methodology revolves around harnessing the capabilities of advanced language models, particularly the state-of-the-art GPT-4 Large Language Model (LLM), along with BERT and RoBERTa Natural Language Processing (NLP) models. Through meticulous fine-tuning tailored for spam classification tasks, we aim to surpass the limitations of traditional spam detection systems, such as Convolutional Neural Networks (CNNs). Through an extensive literature review, experimentation, and evaluation, we demonstrate the effectiveness of our approach in accurately identifying spam and phishing emails while minimizing false positives. Our methodology showcases the potential of fine-tuning LLMs for specialized tasks like spam classification, offering enhanced protection against evolving spam and phishing attacks. This research contributes to the advancement of spam filtering techniques and lays the groundwork for robust email security systems in the face of increasingly sophisticated threats.",
+    "paper_url": "https://www.semanticscholar.org/paper/f993756bc603370d0e0714b30baf002d94dc7479",
+    "paper_id": "f993756bc603370d0e0714b30baf002d94dc7479"
+  },
+  {
+    "title": "Robust Email Spam Filtering Using a Hybrid of Grey Wolf Optimiser and Naive Bayes Classifier",
+    "authors": [
+      "J. Zraqou",
+      "Adnan H. Al-Helali",
+      "Waleed Maqableh",
+      "H. Fakhouri",
+      "W. Alkhadour"
+    ],
+    "year": 2023,
+    "abstract": "Abstract Effective spam filtering plays a crucial role in enhancing user experience by sparing them from unwanted messages. This imperative underscores the importance of safeguarding email systems, prompting scholars across diverse fields to delve deeper into this subject. The primary objective of this research is to mitigate the disruptive effects of spam on email usage by introducing improved security measures compared to existing methods. This goal can be accomplished through the development of a novel spam filtering technique designed to prevent spam from infiltrating users\u2019 inboxes. Consequently, a hybrid filtering approach that combines an information gain philter and a Wrapper Grey Wolf Optimizer feature selection algorithm with a Naive Bayes Classifier, is proposed, denoted as GWO-NBC. This research is rigorously tested using the WEKA software and the SPAMBASE dataset. Thorough performance evaluations demonstrated that the proposed approach surpasses existing solutions in terms of both security and accuracy.",
+    "paper_url": "https://www.semanticscholar.org/paper/0b3eefb39ec6f914b256378fe52418730d9da91f",
+    "paper_id": "0b3eefb39ec6f914b256378fe52418730d9da91f"
+  }
+]

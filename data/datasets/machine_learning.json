@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Physics-informed machine learning",
+    "authors": [
+      "G. Karniadakis",
+      "I. Kevrekidis",
+      "Lu Lu",
+      "P. Perdikaris",
+      "Sifan Wang",
+      "Liu Yang"
+    ],
+    "year": 2021,
+    "abstract": null,
+    "paper_url": "https://www.semanticscholar.org/paper/53c9f3c34d8481adaf24df3b25581ccf1bc53f5c",
+    "paper_id": "53c9f3c34d8481adaf24df3b25581ccf1bc53f5c"
+  },
+  {
+    "title": "Machine Learning: Algorithms, Real-World Applications and Research Directions",
+    "authors": [
+      "Iqbal H. Sarker"
+    ],
+    "year": 2021,
+    "abstract": "In the current age of the Fourth Industrial Revolution (4IR or Industry 4.0), the digital world has a wealth of data, such as Internet of Things (IoT) data, cybersecurity data, mobile data, business data, social media data, health data, etc. To intelligently analyze these data and develop the corresponding smart and automated applications, the knowledge of artificial intelligence (AI), particularly, machine learning (ML) is the key. Various types of machine learning algorithms such as supervised, unsupervised, semi-supervised, and reinforcement learning exist in the area. Besides, the deep learning, which is part of a broader family of machine learning methods, can intelligently analyze the data on a large scale. In this paper, we present a comprehensive view on these machine learning algorithms that can be applied to enhance the intelligence and the capabilities of an application. Thus, this study\u2019s key contribution is explaining the principles of different machine learning techniques and their applicability in various real-world application domains, such as cybersecurity systems, smart cities, healthcare, e-commerce, agriculture, and many more. We also highlight the challenges and potential research directions based on our study. Overall, this paper aims to serve as a reference point for both academia and industry professionals as well as for decision-makers in various real-world situations and application areas, particularly from the technical point of view.",
+    "paper_url": "https://www.semanticscholar.org/paper/7872f34e2a164c5cf3c34a7a7433dc3342b6c7ea",
+    "paper_id": "7872f34e2a164c5cf3c34a7a7433dc3342b6c7ea"
+  },
+  {
+    "title": "A Survey on Bias and Fairness in Machine Learning",
+    "authors": [
+      "Ninareh Mehrabi",
+      "Fred Morstatter",
+      "N. Saxena",
+      "Kristina Lerman",
+      "A. Galstyan"
+    ],
+    "year": 2019,
+    "abstract": "With the widespread use of artificial intelligence (AI) systems and applications in our everyday lives, accounting for fairness has gained significant importance in designing and engineering of such systems. AI systems can be used in many sensitive environments to make important and life-changing decisions; thus, it is crucial to ensure that these decisions do not reflect discriminatory behavior toward certain groups or populations. More recently some work has been developed in traditional machine learning and deep learning that address such challenges in different subdomains. With the commercialization of these systems, researchers are becoming more aware of the biases that these applications can contain and are attempting to address them. In this survey, we investigated different real-world applications that have shown biases in various ways, and we listed different sources of biases that can affect AI applications. We then created a taxonomy for fairness definitions that machine learning researchers have defined to avoid the existing bias in AI systems. In addition to that, we examined different domains and subdomains in AI showing what researchers have observed with regard to unfair outcomes in the state-of-the-art methods and ways they have tried to address them. There are still many future directions and solutions that can be taken to mitigate the problem of bias in AI systems. We are hoping that this survey will motivate researchers to tackle these issues in the near future by observing existing work in their respective fields.",
+    "paper_url": "https://www.semanticscholar.org/paper/0090023afc66cd2741568599057f4e82b566137c",
+    "paper_id": "0090023afc66cd2741568599057f4e82b566137c"
+  }
+]

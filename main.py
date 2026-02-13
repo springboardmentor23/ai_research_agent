@@ -5,6 +5,7 @@ Orchestrates: Fetching → Downloading → Extraction → Key Finding Distillati
 
 import os
 import sys
+import json
 from src.fetching import fetch_papers
 from src.download import download_pdf
 from src.extractor import extract_text_from_pdf
@@ -44,6 +45,31 @@ def run_pipeline(topic, paper_limit=4):
     if not papers:
         print("❌ No papers found or API error occurred.")
         return
+
+    # Save dataset for this topic
+    DATASET_DIR = os.path.join("data", "datasets")
+    os.makedirs(DATASET_DIR, exist_ok=True)
+
+    safe_topic = topic.lower().replace(" ", "_")
+    dataset_path = os.path.join(DATASET_DIR, f"{safe_topic}.json")
+
+    dataset = []
+    for p in papers:
+        dataset.append({
+            "title": p.get("title"),
+            "authors": [a.get("name") for a in p.get("authors", [])] if p.get("authors") else [],
+            "year": p.get("year"),
+            "abstract": p.get("abstract"),
+            "paper_url": p.get("url"),
+            "paper_id": p.get("paperId"),
+        })
+
+    try:
+        with open(dataset_path, "w", encoding="utf-8") as f:
+            json.dump(dataset, f, indent=2)
+        print(f"✓ Dataset saved at: {dataset_path}")
+    except Exception as e:
+        print(f"Failed to save dataset: {e}")
     
     print(f"✓ Found {len(papers)} papers with open-access PDFs\n")
 
