@@ -9,7 +9,7 @@ def fetch_papers(topic, limit=4, retries=3, wait_seconds=5):
     """
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
     headers={
-        "x-api-key" : "FE94XXpv7k8NwksdE4lHE6JxVkIVN6xiKz5JRc36"
+        "x-api-key" : "bVn5D8MT5sSfcjcAnKbZ7k2drrMw3sa8si1GyKpe"
     }
 
     params = {
