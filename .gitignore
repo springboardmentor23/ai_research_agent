@@ -1,2 +1,22 @@
+# Ignore virtual environments
+.venv/
 env/
+
+# Ignore cache
 __pycache__/
+*.pyc
+
+# Ignore generated outputs
+common_findings.json
+section_data.json
+paper_similarity.json
+key_sentences.json
+complete_research_paper.txt
+research_paper_draft.txt
+
+# Ignore PDFs
+pdfs/
+extracted_text/
+
+
+test.py
