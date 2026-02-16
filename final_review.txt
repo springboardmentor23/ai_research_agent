@@ -1,0 +1,49 @@
+
+===== ABSTRACT =====
+results in the local 2×2 pixels sharing the same value. Subsequent to the up-sampling operation, the scaled features are further processed through convolutional layers to generate images. During this process, a relationship is established among lo- cal pixels through the combination of the up-sampling op- eration and the translation invariance of CNN layers. This, in turn, manifests as discernible relationships among local pixels in the generated images. Building upon these insights, we propose Conclusion This work focuses on developing a generalizable arti- facts representation for both GANs and diffusions detec- tion. We reconsider the architectures of CNN-based genera- tors, aiming
+
+===== METHODS COMPARISON =====
+Rethinking the Up-Sampling Operations in CNN-Based Generative Network for Generalizable Deepfake Detection uses the following methodology:
+methods. The code is available at
+https://github.com/chuangchuangtan/NPR-
+DeepfakeDetection.
+1. Introduction
+With the rapid evolution of image synthetic technologies,
+such as GAN[13, 24, 25], Diffusion[19, 48], AI-generated
+*Corresponding author
+Fake 
+Real
+(a) Images
+Neighboring Pixel Relationship(N
+
+Celeb-DF: A Large-Scale Challenging Dataset for DeepFake Forensics uses the following methodology:
+methods and datasets to demonstrate the escalated level of
+challenges posed by Celeb-DF.
+1. Introduction
+A recent twist to the disconcerting problem of online dis-
+information is falsiﬁed videos created by AI technologies,
+in particular, deep neural networks (DNNs). Although fab-
+rication and manipu
+
+===== RESULTS SYNTHESIS =====
+Key results from Rethinking the Up-Sampling Operations in CNN-Based Generative Network for Generalizable Deepfake Detection:
+results
+in the local 2×2 pixels sharing the same value. Subsequent
+to the up-sampling operation, the scaled features are further
+processed through convolutional layers to generate images.
+During this process, a relationship is established among lo-
+cal pixels through the combination of the up-sampli
+
+Key results from Celeb-DF: A Large-Scale Challenging Dataset for DeepFake Forensics:
+results show that Celeb-DF is challenging to most
+of the existing detection methods, even though many Deep-
+Fake detection methods are shown to achieve high, some-
+times near perfect, accuracy on previous datasets.
+2. Backgrounds
+2.1. DeepFake Video Generation
+Although in recent years there have bee
+
+===== REFERENCES (APA) =====
+Chuangchuang Tan, Huan Liu, Yao Zhao, Shikui Wei, Guanghua Gu, Ping Liu, Yunchao Wei (2024). Rethinking the Up-Sampling Operations in CNN-Based Generative Network for Generalizable Deepfake Detection. Retrieved from https://www.semanticscholar.org/paper/7e3b3d82df3c22cb90f10921f28c2a3f6c07e77f
+Yuezun Li, Xin Yang, Pu Sun, H. Qi, Siwei Lyu (2019). Celeb-DF: A Large-Scale Challenging Dataset for DeepFake Forensics. Retrieved from https://www.semanticscholar.org/paper/300d08e8f5c310c2b194b7eb94398e480994d5cc
+Nuria Alina Chandra, Ryan Murtfeldt, Lin Qiu, Arnab Karmakar, Hannah Lee, Emmanuel Tanumihardja, Kevin Farhat, Ben Caffee, Sejin Paik, Changyeon Lee, Jongwook Choi, Aerin Kim, Oren Etzioni (2025). Deepfake-Eval-2024: A Multi-Modal In-the-Wild Benchmark of Deepfakes Circulated in 2024. Retrieved from https://www.semanticscholar.org/paper/43ddc66715a4463374e92f0556e11bb2613ad215
