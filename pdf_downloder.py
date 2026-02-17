@@ -2,7 +2,7 @@ import os
 import time
 import requests
 
-PDF_DIR = "pdfs"
+PDF_DIR = "data/pdfs"
 os.makedirs(PDF_DIR, exist_ok=True)
 
 # Browser-like headers so PMC and other hosts don't block with 403

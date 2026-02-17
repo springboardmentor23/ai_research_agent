@@ -29,7 +29,12 @@ KEY_PHRASES = [
     "results demonstrate"
 ]
 
+
 def extract_key_findings():
+    """
+    Extract key findings sentences from all text files in TEXT_DIR and
+    write them to OUTPUT_DIR. Safe to call from other modules.
+    """
     for filename in os.listdir(TEXT_DIR):
         if not filename.endswith(".txt"):
             continue
@@ -41,9 +46,8 @@ def extract_key_findings():
         )
 
         with open(input_path, "r", encoding="utf-8") as f:
-            text = f.read().lower()   
+            text = f.read().lower()
 
-        
         sentences = re.split(r'(?<=[.!?])\s+', text)
 
         key_sentences = []
@@ -57,4 +61,6 @@ def extract_key_findings():
 
         print(f"Extracted {len(key_sentences)} key findings from {filename}")
 
-extract_key_findings()
+
+if __name__ == "__main__":
+    extract_key_findings()

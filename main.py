@@ -38,4 +38,5 @@ def run_pipeline(topic):
         extract_text_from_pdf(pdf_path, paper_id)
 
 if __name__ == "__main__":
-    run_pipeline("Data Science")
+    run_pipeline("Machine learning with health care")
+    

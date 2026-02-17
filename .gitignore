@@ -32,3 +32,12 @@ data/
 # OS
 .DS_Store
 Thumbs.db
+
+# Secrets and API keys (DO NOT COMMIT)
+app_secrets.py
+secrets.py
+*.key
+.env
+
+# Gradio cache
+.gradio/
