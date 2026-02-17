@@ -39,14 +39,14 @@ def start_pipeline(topic, num_papers):
     log = ""
 
     if not topic:
-        return "❌ Enter topic.", ""
+        return "❌ Enter topic.", "", []
 
     log += clean_old_data()
 
     papers = fetch_papers(topic, limit=int(num_papers))
 
     if not papers:
-        return "❌ No papers fetched.", ""
+        return "❌ No papers fetched.", "", []
 
     log += f"✔ {len(papers)} papers fetched\n"
 
@@ -78,7 +78,8 @@ def start_pipeline(topic, num_papers):
         similarity_output = cross_compare_papers(similarity_matrix, paper_names)
         log += "✔ Similarity computed\n"
 
-    return log, similarity_output
+    updated_files = get_extracted_files()
+    return log, similarity_output, updated_files
 
 
 # ==================================================
@@ -141,18 +142,25 @@ def download_generated_pdf():
 
 def get_extracted_files():
     if os.path.exists("extracted_texts"):
-        return os.listdir("extracted_texts")
+        files = os.listdir("extracted_texts")
+        return sorted(files)
     return []
 
 def view_extracted_file(filename):
+    if not filename:
+        return "Please select a file."
     path = os.path.join("extracted_texts", filename)
     if os.path.exists(path):
         with open(path, "r", encoding="utf-8") as f:
             return f.read()
-    return ""
+    return "File not found."
 
 def download_extracted_pdf(filename):
+    if not filename:
+        return None
     txt_path = os.path.join("extracted_texts", filename)
+    if not os.path.exists(txt_path):
+        return None
     pdf_path = f"{filename}.pdf"
     convert_txt_to_pdf(txt_path, pdf_path)
     return pdf_path
@@ -324,7 +332,7 @@ with gr.Blocks(css=custom_css) as app:
             )           
 
 
-            start_btn = gr.Button("Start Pipeline")
+            start_btn = gr.Button("Start")
 
             with gr.Row():
                 status_log = gr.Textbox(label="Status Log", lines=12)
@@ -434,4 +442,4 @@ with gr.Blocks(css=custom_css) as app:
                 outputs=revised_download
             )
 
-app.launch()
+app.launch(share="TrueS")
