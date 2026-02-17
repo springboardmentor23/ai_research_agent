@@ -5,12 +5,16 @@ def generate_section(
     combined_text,
     key_findings,
     common_methods,
-    common_datasets
+    common_datasets,
+    draft_topic=""
 ):
     prompt = f"""
     You are an academic research assistant.
 
     Use the following information to write the {section_name}:
+
+    Topic:
+    {draft_topic or "General research synthesis"}
 
     Key Findings:
     {key_findings}
