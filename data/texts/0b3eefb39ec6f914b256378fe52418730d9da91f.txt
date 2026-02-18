@@ -735,7 +735,6 @@ University of Moncton E1A 3E9, 2018.
 www.umoncton.ca/greti/papers/ Adaptive Filtering of Spam.pdf 
 4. M i r j a l i l i, S., S. M. M i r j a l i l i, A. L e w i s. Grey Wolf Optimizer. – Advances in Engineering 
 Software, Vol. 69, 2014, pp. 46-61. 
- 
 0
 50
 100

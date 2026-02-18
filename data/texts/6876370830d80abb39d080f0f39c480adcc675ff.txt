@@ -1,0 +1,1628 @@
+Vol.:(0123456789)
+https://doi.org/10.1007/s43555-024-00019-7
+Emerging Methods for the Evaluation of Sensory Quality of Food: 
+Technology at Service
+Sandra S. Q. Rodrigues1,2 · Luís G. Dias1,2 · Alfredo Teixeira1,2
+Accepted: 8 January 2024 
+© The Author(s) 2024
+Abstract
+Purpose of Review  Sensory evaluation holds vital significance in the food sector. Typically, humans conduct sensory analysis. 
+Humans, being the ultimate consumers, assess food traits effectively. However, human judgment is influenced by various 
+factors. Hence, countering subjectivity is crucial for objective evaluation while retaining hedonic insights.
+Recent Findings  Food’s sensory assessment primarily employs humans. Various techniques differentiate, depict, or rank 
+food. Modern sensory tools, aiming to enhance objectivity and reliability, are emerging to supplement or supplant human 
+assessment. This advance can bolster quality, consistency, and safety by mimicking human senses such as smell, taste, and 
+vision, mitigating risks tied to human assessors.
+Summary  This paper provides a review about sensory analysis of food using technological methodologies. A review of 
+different technological tools to analyze sensory characteristics of food, as well as a discussion of how those technological 
+tools can relate to humans’ perception of food is presented.
+Keywords  Sensory evaluation · Spectroscopy · Biometric measurements · Artificial senses
+Introduction
+Sensory analysis is a scientific method used to evaluate and 
+understand the human perception of food, drink, and other 
+consumer products. The sensory evaluation of foods presup-
+poses the analysis of their intrinsic and extrinsic character-
+istics. While the intrinsic characteristics are related to how 
+the physicochemical characteristics of food are perceived 
+by the sense organs, such as its appearance, aroma, texture, 
+and flavor, using the senses of sight, smell, taste, touch, and 
+sometimes sound, the extrinsic characteristics have a more 
+subjective character, relating to the way consumers react to 
+the former. We speak of sensory science in the first case and 
+consumer science in the second. Traditional sensory evalu-
+ation methods (discriminative, descriptive, and hedonic [1]) 
+rely on human senses to assess the quality and characteris-
+tics of a product. While these traditional methods have been 
+effective, they can be time-consuming, expensive, and sub-
+jective due to their reliance on human evaluators. Moreover, 
+they may not fully capture the complete range of sensory 
+experiences associated with complex products like multi-
+component foods or beverages.
+Recognizing the considerable time and economic invest-
+ments required for training assessment panels in descriptive 
+analysis, numerous innovative methodologies for sensory 
+characterization emerged in the early 2000s [2]. These meth-
+odologies prove to be less time-intensive and more adaptable 
+and can involve partially trained assessors and even consum-
+ers. They generate sensory maps that closely resemble the 
+outcomes of traditional descriptive analysis conducted with 
+highly skilled panels. These novel techniques, mentioned 
+and used by various authors, employ diverse approaches, 
+such as methods centered on the assessment of specific 
+attributes (such as intensity scales [3], check-all-that-apply 
+questions or CATA [4–8], flash profiling [9], and paired 
+comparisons [10, 11]), methods focused on evaluating 
+overall differences (sorting [12], projective mapping or Nap-
+ping® [5, 13–15]), methods involving the comparison with 
+product references (polarized sensory positioning [5, 16]), 
+ *	 Sandra S. Q. Rodrigues 
+	
+srodrigues@ipb.pt
+1	
+Centro de Investigação de Montanha (CIMO), Instituto 
+Politécnico de Bragança, Campus de Santa Apolónia, 
+5300‑253 Braganza, Portugal
+2	
+Laboratório Para a Sustentabilidade E Tecnologia Em 
+Regiões de Montanha, Instituto Politécnico de Bragança, 
+Campus de Santa Apolónia, 5300‑253 Braganza, Portugal
+Current Food Science and Technology Reports (2024) 2:77–90 
+/ Published online: 29 January 2024
+Current Food Science and Technology Reports (2024) 2:77–90
+	
+and methods based on an open, comprehensive evaluation of 
+individual products (Open-ended questions [17]). Addition-
+ally, hedonic methods such as just about right (JAR), ideal 
+profile method (IPM), relative preference mapping (RPM), 
+and temporal dominance of sensations (TDS), among others, 
+were reported [18]. Nonetheless, the above methodologies 
+still exhibit certain limitations.
+In response to the need for more objective and com-
+prehensive assessments of sensory attributes of food, and 
+perceive how consumers react to them, emerging methods 
+have gained attention. Novel techniques such as the use 
+of biometric measurements (including facial expressions, 
+heart rate, skin conductance, body temperature, and eye-
+tracking) [19, 20•, 21, 22], virtual environments (virtual and 
+augmented reality) [23, 24], and artificial senses (e-nose and 
+e-tongue [25•, 26]) are being explored as tools to under-
+stand the complex nature of human responses in sensory 
+tests [27, 28••, 29]. Other methods include chromatogra-
+phy [30] and spectroscopy [29, 31], which employ sen-
+sors to detect and quantify specific compounds associated 
+with flavor, aroma, and texture. Digital imaging (E-eye) is 
+another emerging method that uses cameras and algorithms 
+to analyze the visual characteristics of products [25•, 32]. 
+Additionally, consumer-based methods such as social media 
+analysis and online surveys have become valuable tools [33]. 
+These emerging methods offer advantages such as increased 
+objectivity, faster data collection, and the ability to capture 
+a broader range of sensory experiences. However, they also 
+have limitations, such as high costs and the need for special-
+ized equipment or expertise.
+Both traditional and emerging sensory evaluation meth-
+ods have their strengths and weaknesses. The choice of 
+method depends on the specific needs and goals of the food 
+industry. By combining different methods, the industry can 
+obtain a more comprehensive understanding of the sensory 
+attributes of their products and make informed decisions 
+regarding product development, marketing, and quality 
+control. Precise sensory evaluation methods are crucial 
+in the food industry for ensuring consistency, safety, effi-
+ciency, and compliance with regulatory standards. Failure 
+to implement appropriate sensory analysis can lead to nega-
+tive consequences such as customer dissatisfaction, com-
+promised public health, production inefficiencies, and legal 
+repercussions(Fig. 1).
+The purpose of this paper is to provide a comprehensive 
+review of emerging methods in sensory analysis that can 
+enhance our understanding of sensory attributes in the food 
+industry. The review focuses on various techniques, includ-
+ing spectroscopy, artificial senses, and biometric measure-
+ments. These methods offer innovative approaches to obtain 
+more objective and comprehensive assessments of sensory 
+attributes. Despite some limitations, ongoing advancements 
+and research continue to address these challenges, making 
+emerging methods valuable tools in enhancing product 
+development, consumer understanding, and quality control.
+Spectroscopy
+In this section, the significance of diverse spectroscopy 
+methodologies in food analysis is elucidated, affirming their 
+pivotal role in upholding stringent quality and safety control 
+measures, ultimately contributing to consumer satisfaction 
+and safety. The emergence of spectroscopic techniques pre-
+sents objective, swift, and non-destructive tools for assessing 
+food quality [34]. Within the most common spectroscopic 
+techniques used in food science, visible and near-infrared 
+spectroscopy, Fourier-transform infrared spectroscopy, and 
+Raman spectroscopy in combination with chemometric 
+methods have been used in assessing the characteristics of 
+several products such as dairy and honey products [35–37], 
+meat and seafood [38–41], cereals [42–45], vegetable oils 
+[46–48], and coffee [49, 50]. In recent years, hyperspectral 
+imaging has emerged as a valuable tool in food science, ena-
+bling the determination of composition parameters such as 
+moisture and protein content. A rapid, nondestructive, and 
+noncontact analytical method is useful to assess the quality 
+and safety of meat and meat products, vegetables and fruits, 
+cereals, aquatic products, and others [51].
+Moreover, it has been successfully utilized to study the 
+optical properties of various food products including oils, 
+juices, milk, yogurts, and eggs [52]. Similarly, nuclear mag-
+netic resonance (NMR) has found significant applications in 
+food science, food analysis, and food quality control [53]. 
+NMR has proven particularly effective in the analysis of milk 
+and milk products [54–56], enabling characterization based 
+on geographic origin and feeding diet [57]. It has also been 
+employed in studying the effects of freezing on pasta filata 
+and non-pasta filata cheeses [58], as well as in the analysis 
+of meat [59, 60], edible oils [61], cereals and beer [62, 63], 
+and fruits and vegetables [64]. These advanced techniques 
+(hyperspectral imaging and NMR) have demonstrated their 
+efficacy in providing valuable insights into the composition, 
+physical characteristics, and quality of various food prod-
+ucts. Their successful applications in diverse areas of food 
+science contribute to improved food analysis, quality control, 
+and understanding of food properties.
+The assessment of most physicochemical parameters in 
+food is typically linked to sensory properties. When it comes 
+to determining the ultimate quality of a product based on 
+consumer preference, sensory analysis by trained sensory 
+panels serves as the key. However, it is important to note 
+that maintaining sensory-trained panels can be challeng-
+ing, costly, and time-consuming. Considering these chal-
+lenges, the utilization of spectroscopic techniques as non-
+destructive, fast, and precise methods has been explored as 
+78
+Current Food Science and Technology Reports (2024) 2:77–90
+an alternative to traditional sensory panels. While there have 
+been numerous studies published in this area, only a few 
+directly relate spectroscopic and chemometric techniques 
+to sensory traits. Table 1 shows a selection of studies that 
+related the spectroscopy techniques and chemometrics tech-
+niques with sensory attributes in various food products.
+Indirectly related but largely influencing the food sensory 
+quality is the fat content, particularly the intramuscular fat or 
+marbling, which is one of the most important characteristics 
+of meat quality. It is often associated with the meat’s color, 
+another determining factor for consumers when purchasing 
+meat. Hyperspectral imaging has been successfully applied 
+to characterize intramuscular fat distribution in beef and 
+classify beef marbling with great accuracy [80, 81], and in 
+pork [82]. It has also been applied in lambs [83] with prom-
+ising results.
+For predicting the intramuscular fat, NIR spectroscopy 
+has also been used [84] showing the potential of Vis–NIR to 
+predict moisture and IMF using homogenized pork muscles 
+[85] and for example to predict chemical composition in 
+goats [31], and in beef [86]. In sheep and goats, an extensive 
+revision on the use of non-destructive imaging and spec-
+troscopy techniques for the assessment of meat quality was 
+made [87].
+The detection of fat content, an important factor related to 
+fish quality, in salmon or grass carp is also achievable using 
+hyperspectral imaging [88–90]. Additionally, a multispectral 
+model has been developed to detect changes in docosahex-
+aenoic acid (DHA) and eicosapentaenoic acid (EPA) levels 
+in fish fillets [91]. These two n-3 polyunsaturated fatty acids 
+have been proven to offer beneficial health effects, particu-
+larly for cardiovascular and inflammatory conditions. Also, 
+in fruits, hyperspectral technology is used to detect charac-
+teristics related to sensory quality as in apples for predicting 
+bruise susceptibility [92]. The recent advances and appli-
+cations of hyperspectral Imaging in detecting, classifying, 
+and visualizing quality and safety attributes of fruits and 
+vegetables were summarized in a revision by Lu et al. [93].
+Objec ve and precise measurements with 
+advanced sensors for color, texture, aroma, ﬂavor.   
+analysis and proﬁlling integrated with classical 
+sensory evalua on ..
+.. aided by eﬃcient and consistent automated 
+processes and in-depth data analysis will 
+potenciate the understanding of consumers 
+requirements and  help fulﬁll their demands
+Spectroscopy
+Ar ﬁcial senses
+Biometric 
+mesurements
+Odor
+Texture
+Apperance
+Flavour
+Automa on and data 
+analysis
+Sensory analysis of food is of capital importance 
+but when made by humans can be subjec ve
+Fig. 1   The integration of technology enhances objectivity and efficiency in food sensory evaluation
+79
+Current Food Science and Technology Reports (2024) 2:77–90
+	
+With the advancement of computer image processing 
+technology, various procedures such as ultrasounds and 
+computed tomography have been employed to obtain mus-
+cle images for assessing intramuscular fat through computer 
+image analysis. The computer vision–based marbling assess-
+ment has been performed in beef [94–96], pork [97, 98], and 
+lamb [99] and also in cheese quality evaluation [100] or even 
+in fruit classification [101]. Additionally, computer vision 
+has been employed for the assessment of color grading in 
+beef fat [102] and the color of salmon fillets [103].
+Spectroscopy techniques have emerged as powerful 
+tools for assessing food quality attributes in a rapid, non-
+destructive, and objective manner. While their applications 
+in food science and sensory analysis have already shown 
+great promise, the future holds even greater potential for 
+these techniques to revolutionize the assessment of sensory 
+food quality. Continued advancements in technology, data 
+analysis, and integration with other disciplines will propel 
+these techniques to new heights. By leveraging these tools, 
+the food industry can optimize product development, ensure 
+consistent quality, and meet the ever-evolving demands and 
+preferences of consumers. Spectroscopy techniques are 
+poised to revolutionize sensory food quality assessment and 
+drive innovation in the field of food science.
+Artificial Senses
+Electronic Noses and Tongues
+The electronic tongue (E-tongue) and electronic nose 
+(E-nose) are recent tools that can redefine the traditional 
+methods of evaluating food attributes, bringing a data-driven 
+and objective dimension to the intricate world of taste and 
+aroma analysis. Both align with the imperative for precise 
+and swift quality assessment of food products, driven by the 
+paramount importance of safety considerations within the 
+food supply chain.
+The electronic tongue, known as the E-tongue, serves as 
+a versatile instrument for decoding taste profiles and can be 
+constructed using diverse measurement principles, includ-
+ing optical, electrochemical (potentiometric, impedimetric, 
+Table 1   Food sensory evaluation studies using different spectroscopy methods
+NIR near-infrared spectroscopy, PTR-Tof–MS analysis via proton transfer reaction-time of flight-mass spectrometry, CVS computer vision sys-
+tem, FLUO Fourier-transform infrared fluorescence, NMR nuclear magnetic resonance, WOF warmed-over flavor, NIRR NIR in reflection mode, 
+NIRT NIR in transmission mode
+Food product
+Spectroscopy technique
+Sensory evaluation
+Reference
+Coffee (expresso)
+NIR associated
+NIR can be successfully applied for sensory quality estimation
+[65]
+Coffee (expresso)
+Nosespace (NS) with (PTR-Tof–MS) A better understanding of coffee flavor perception
+[66]
+Cheddar cheese
+NIR
+Predict sensory attributes (crumbly, rubbery chewy, mouthcoating, 
+and mass forming)
+[67]
+Cheese
+NIR
+Sensory attributes and instrumental texture measurements were 
+modeled with sufficient accuracy
+[68]
+Milk and ripened cheese NIR and PTR-Tof–MS
+High rate of discrimination according to the farming system using 
+sensory profiles. Interesting as a research tool. Not at an industry 
+level
+[69]
+Tea
+Micro NIR and CVS
+Portable and low-cost tool to evaluate the black tea fermentation 
+quality
+[70]
+Black tea
+NIR and CVS
+A useful strategy to classify black tea
+[71]
+Pineapple
+FLUO
+For odor, the FLUO sensor achieved the highest overall perfor-
+mance
+[72]
+Peas
+NIR
+Potential for predicting the sensory quality (texture and flavor)
+[73]
+Walnut kernels
+NOR
+Excellent potential for monitoring the quality (rancid, nutty, sweet 
+bitter)
+[74]
+Pork
+NIR, Raman, fluorescence, NMR
+Fluorescence spectroscopy and TBARS were able to follow the 
+WOF during storage
+[75]
+Beef
+NIR (NIRR and NIRT)
+The better prediction of sensory attributes was obtained in the 
+NIRR mode
+[76]
+Beef
+Raman
+Raman spectroscopy technology can predict texture, tenderness, 
+and overall acceptability
+[77]
+Lamb
+NIR
+Intramuscular fat and water are accurately predicted by NIR, 
+related to sensory characteristics
+[78]
+Beef
+Raman
+High potential to predict the sensory quality traits of young dairy 
+bull beef
+[79]
+80
+Current Food Science and Technology Reports (2024) 2:77–90
+voltammetric, or amperometric), mass-based, and spec-
+troscopic detection techniques [104]. The potentiometric 
+E-tongue with polymeric lipid sensors stands out as the 
+most extensively employed option. [105]. Resembling an 
+artificial palate, it is a multisensory apparatus designed to 
+mimic the human gustatory system. Comprising an array of 
+chemical sensors that respond to various taste compounds, 
+the electronic tongue generates unique response patterns, 
+or sensor “fingerprints,” for each food sample that is ana-
+lyzed. These fingerprints are subjected to advanced statisti-
+cal analyses and machine learning algorithms to decode taste 
+attributes such as sweetness, bitterness, saltiness, sourness, 
+and umami. The E-tongue bridges the gap between tech-
+nology and human evaluation. Its ability to swiftly discern 
+complex taste profiles showcases its potential in various food 
+sectors, such as in the meat area. Some different examples of 
+potentiometric electronic tongue applications in meat, poul-
+try, and fish are pork/chicken adulteration in minced mutton 
+[106]; salt taste intensity effect of saltiness-enhancing pep-
+tides in meat products [107]; flavor profiles of sheep breeds 
+[108]; crayfish flesh flavor evaluation due to different dietary 
+protein sources [109]; flavor compounds in dry-cured pork 
+with different salt content [110]; and physical–chemical and 
+microbiological changes in fresh pork meat under cold stor-
+age [111].
+Parallelly, the E-nose mimics the human olfactory prow-
+ess by identifying and distinguishing diverse odors and 
+aromas. This device is also an emerging approach capable 
+of detecting and differentiating between various aromas 
+through an array of electronic sensors (usually, semicon-
+ductor gas sensors). The data harnessed from these sensors 
+also undergoes sophisticated algorithms to craft distinct 
+aroma patterns, revealing the nuanced scent signatures of 
+diverse food samples. The E-nose is also a non-destructive 
+and low-cost system that can be applied to evaluate food 
+quality, safety, and adulterations since it is capable of char-
+acterizing food quality factors [112].
+Numerous instances exemplify its application in the realm 
+of highly perishable muscle-based foods, including meat, 
+poultry, and fish. These instances demonstrate its potential 
+as a promising tool for evaluating quality attributes such as 
+freshness, spoilage detection, and the identification of adul-
+teration in meat products. For instance, the presence of pork 
+in meat and meat sausages [113], the adulteration of beef 
+meat involving varying proportions of pork meat [114, 115], 
+and the blending of minced mutton with duck [116] were 
+subjected to analysis using an E-nose. The outcomes of these 
+analyses revealed acceptable accuracy, markedly shortened 
+detection time, and good detection efficiency. Similar results 
+were obtained in studies centered on beef spoilage [117], 
+pork spoilage [118], and fish meal spoilage [119], as well as 
+the freshness of chicken [120], freshness of pork [121], and 
+shelf-life evaluation of meat and fish products [122, 123].
+Aroma Tests
+Aroma tests involve evaluating how consumers perceive 
+food aromas by exposing them to various scents and rating 
+their preferences and intensities. These tests utilize special-
+ized sensory evaluation methods like olfactometry or gas 
+chromatography–olfactometry, allowing precise presentation 
+and analysis of aromas. Human evaluation remains essential 
+despite using technology. While sensory approaches provide 
+valuable data on the overall nature and intensity of aroma 
+mixtures, they may not fully capture the intricate interactions 
+during odor perception. To address this, researchers use 
+models based on complex mixture compositions to under-
+stand odor nature and intensity [124]. Similarly, headspace 
+solid-phase microextraction coupled with gas chromatogra-
+phy–mass spectrometry was employed [125, 126] to study 
+the aroma components of dark tea varieties. Odor activity 
+value calculation and aroma profile tests were conducted to 
+understand the aroma characteristics of “aged fragrance” 
+and “fungi flower aroma.” Moreover, Hawko et al. [124] 
+utilized an experimental mixture design with sensory analy-
+sis to develop numerical models converting chemical data 
+into sensory data. They used Langage des Nez® (LdN), an 
+objective odor-nature description method, to characterize the 
+odor nature for each mixture and modeled the variation in 
+odor nature based on mixture composition. It is worth not-
+ing that aroma tests can also be associated with electronic 
+noses (E-nose).
+Electronic Eye
+An electronic eye (E-eye) is a computer vision technology 
+that converts optical images using an image sensor, elimi-
+nating subjective human vision [127]. It finds applications 
+in food quality evaluation [128], providing fast, accurate, 
+and non-destructive assessment of product shape, size, 
+color, and texture [129]. This versatile technology integrates 
+mechanics, optics, electromagnetic detection, colorimetry, 
+spectrophotometry (discussed in detail previously), digital 
+video, and image processing, making it valuable for moni-
+toring visual quality changes during production [130, 131]. 
+Appearance and color are vital factors in consumers’ quality 
+experience, and the E-eye ensures reliable and consistent 
+monitoring [132]. It offers objectivity, reproducible meas-
+urements, and data storage for product traceability and does 
+not affect product consistency or texture. The E-eye allows 
+in-depth analysis and can correlate with sensory panel 
+assessments [133]. Its applications extend to agricultural and 
+food industry processes, monitoring product aging, detect-
+ing foreign substances, verifying color changes during food 
+processing, and assisting the brewing industry in automation 
+for optimizing product quality [134–137].
+81
+Current Food Science and Technology Reports (2024) 2:77–90
+	
+Conventional image analysis is highly valuable for stud-
+ying meat products’ appearance characteristics due to its 
+cost-effectiveness, consistency, speed, and accuracy in auto-
+mated applications [138–140]. Extensive research has been 
+conducted on the use of the E-eye for quality evaluation in 
+various fresh meat and meat product applications. Its ver-
+satility includes assessing color [141, 142] and monitoring 
+color changes [143, 144], grading marbling level [145–147], 
+quality prediction [148] and control [32], defect detection 
+[149–151], and sorting operations [152–154]. Color is a 
+critical attribute in meat and meat products, closely linked to 
+freshness, and color discrepancies may lead to the rejection 
+of meat cuts [155]. Studies have shown favorable correla-
+tions between E-eye and colorimeters, with good results for 
+lightness and reasonable regression coefficients for redness 
+and yellowness in chicken meat [156]. Globally, E-eye tech-
+nology holds the potential to bring advantages to the recent 
+trends in automation and online control in food production 
+[157].
+Biometric Measurements
+The use of neuro-physiological data in models of consumer 
+choice is gaining popularity. Eye tracking, facial expres-
+sions, and electroencephalography (EEG) are some exam-
+ples [19, 29]. Food experiences are shaped not only by the 
+inherent qualities of the food such as its appearance, taste, 
+texture, and flavor but also by external factors like visual 
+branding and the consumers’ past encounters with the food. 
+Advancements in automated facial expression analysis and 
+heart rate detection, utilizing remote photoplethysmography 
+(RPPG) [20•] based on changes in skin color, have made it 
+possible to monitor food experiences through video images 
+of the face. This type of methodology/technology can be 
+applied remotely using video images, opening opportunities 
+for large-scale testing in consumer science, and allowing 
+researchers to conduct studies with a broader reach [20•, 
+158].
+Facial Expressions
+Numerous researchers globally have extensively documented 
+the recent sensory method of measuring facial expressions 
+[20•, 21, 22, 159]. When exposed to stimuli, humans uncon-
+sciously display emotions, often through involuntary facial 
+movements, which researchers use to understand emotional 
+states. While psychologists have employed this approach for 
+a considerable time, its popularity among sensory scientists 
+has grown due to the integration of automated mechanisms 
+for quick response processing [160]. Software solutions like 
+FaceReader™, developed by Noldus Information Technol-
+ogy in Wageningen, The Netherlands, or Affectiva Affdex®, 
+created by Affectiva Inc. in Waltham, MA, USA, utilize 
+built-in algorithms to detect and measure various facial 
+movements. These algorithms then translate the captured 
+signals into emotional responses [161]. Facial expressions 
+have proven to be valuable in assessing consumers’ emo-
+tional reactions to a variety of products, including choco-
+late [158, 162], beers [163, 164], sports drinks [22], meat 
+products [165], yogurt [166], and soy sauce [20•]. Table 2 
+provides a summary of the results obtained in studies where 
+facial expressions were utilized to evaluate food products, 
+showing great potential for the use of this technology.
+Furthermore, the findings from a study exploring whether 
+facial expressions during food consumption could pro-
+vide additional insights into temporally dynamic, implicit 
+responses to foods beyond self-reported conscious measures 
+[167] suggest that facial electromyography (EMG) has the 
+potential to aid in understanding consumer responses to food 
+in future research. However, while it showed a connection to 
+the hedonic liking of commercially available chocolate sam-
+ples, the sensory variations in these samples made it chal-
+lenging to use facial EMG to distinguish samples based on 
+mean liking, which is better achieved through self-reporting 
+methods.
+Exploration of how sensorial perceptions change with 
+age and whether biometric analysis can help uncover uncon-
+scious consumer responses was made [168], focusing the 
+investigation on the effects of consumer age on facial expres-
+sion responses (FER) while consuming beef patties with 
+varying firmness and taste. Two age groups were consid-
+ered—younger (22 to 52) and older (60 to 76). Video images 
+were recorded during the consumption, and the FERs were 
+analyzed using the FaceReader™ software. Younger partici-
+pants exhibited higher intensity for happy, sad, and scared 
+expressions but lower intensity for neutral and disgusted 
+expressions compared to older participants. Additionally, 
+interactions between age and texture/sauce showed minimal 
+FER variation in older individuals, while younger partici-
+pants showed significant FER variation. Notably, younger 
+participants displayed the lowest intensity of happy FER and 
+the highest intensity of angry FER when consuming the hard 
+patty. The addition of sauce led to a higher intensity of happy 
+and contempt expressions in younger consumers but not in 
+older consumers. Results demonstrated a successful differ-
+entiation between the unconscious responses of younger and 
+older consumers by analysis of FER using FaceReader™. By 
+utilizing automatic facial coding (face reader) and skin con-
+ductance response (SCR) measurements along with context 
+information during the observation, olfaction, manipulation, 
+and consumption of liquid foods by children [169], the study 
+observed that the methodology employed successfully dis-
+tinguished the three samples throughout these stages. The 
+most effective discrimination between samples occurred dur-
+ing the manipulation task.
+82
+Current Food Science and Technology Reports (2024) 2:77–90
+Other Autonomic Nervous System Responses
+Apart from analyzing facial expressions, several other bio-
+metric techniques can be employed to evaluate the emo-
+tional responses of participants or panels toward different 
+stimuli. These techniques, implicit measurements of food 
+experience [170], include measuring heart rate [20•], body 
+temperature [159], and skin conductance [171]. Further-
+more, a recent review focused on the application of specific 
+neuroscientific methods in consumer sensory analysis, par-
+ticularly highlighting the use of EEG and eye movements 
+[172]. Techniques mainly used for collecting brain signals 
+(EEG, electroencephalography; fMRI, functional magnetic 
+resonance; and MEG, magnetoencephalography), active 
+muscle fibers electric signals (EMG, electromyography), 
+and heart-beat rates (ECG, electrocardiogram) [173] are 
+referred as new non-invasive sensory approaches in food 
+sensory analysis and market survey. The application of 
+this novel technology has shown to be appealing in the 
+context of sensory and consumer sciences, complementing 
+information from explicit measures of the sensory proper-
+ties themselves obtained by objective evaluation of a taste 
+panel. As referred by Viejo et al. [164], the combination 
+of sensory and biometric responses in consumer accept-
+ance tests proved to be a dependable tool for beer tast-
+ing, enabling the extraction of valuable information from 
+consumers’ physiology, behavior, and cognitive responses.
+Electrophysiology, specifically using EEG, measures 
+brain electrical activity in response to sensory stimuli, 
+providing insights into neural patterns linked to different 
+sensory experiences, such as sweetness or bitterness. This 
+information helps in understanding how consumers perceive 
+food and how sensory perception affects preferences and 
+behavior. EEG enables predictive models for sensory per-
+ception, optimizing food formulation and packaging to cater 
+to diverse consumer groups. Several studies have utilized 
+electrophysiology for this purpose [174–178].
+When applying biometric techniques to food-related stud-
+ies, the results can differ based on the type of product being 
+evaluated and the cultural background of the participants 
+or panel involved. Table 3 resumes the results from stud-
+ies made with the application of biometric measures when 
+consuming food.
+Virtual Reality and Immersive Techniques
+The environment in which consumers taste their foods or 
+beverages can significantly affect their sensory responses 
+[24]. Traditional sensory tests use isolated booths to elimi-
+nate external interference, but some argue that this lacks 
+real-life context [181]. To address this, researchers conduct 
+consumer tests in real-world settings like restaurants and 
+kitchens [182], though this can be time-consuming and 
+costly. Immersive virtual reality offers a promising solution, 
+Table 2   Results from studies applying facial expressions when consuming food/beverages
+Product
+Result
+Reference
+Commercial 
+breakfast 
+drinks
+ANS responses (including heart rate, temperature, and skin conductance) and facial expressions were different 
+depending on the type of food sample evaluated
+[159]
+Chocolate
+Video advertisements evoked a higher emotional response compared to perfumes, and perfumes elicited more 
+emotions than chocolates. Discrimination between video advertisements and perfumes was achieved through a 
+facial expression measurement protocol, revealing a temporal emotional response for these products. However, no 
+discrimination was found between different chocolates, and they did not elicit a temporal emotional response
+[158]
+Sports drinks
+The participants’ implicit emotional responses, as reflected in their facial expressions, indicated a higher level of 
+engagement with energy drink B when compared to energy drink A. The study revealed that the overall liking and 
+the explicit (CATA) and implicit (facial expressions) emotional measurements demonstrated weak to moderate 
+correlations
+[22]
+Soy sauce
+The main factors influencing liking and arousal were the specific tastes, while branding and familiarity had minimal 
+impact on these aspects. On the other hand, facial expressions were primarily influenced by branding and familiar-
+ity, with specific tastes playing a secondary role
+[20•]
+Beer
+The facial expressions “Lip suck” and “Lip press” have the potential to serve as effective indicators for predicting 
+beer choices after tasting. While the current study did not confirm reproducibility, it was observed that “Lip suck” 
+before swallowing was associated with a reduced number of beer choices. On the other hand, “Lip press” after 
+swallowing demonstrated a positive correlation with beer choices and was established as a consistently replicable 
+finding
+[163]
+Yogurt
+Using the facial expression recognition (FER) approach, the study successfully differentiated the acceptability of 
+various yogurt samples, particularly identifying the disliked ones. However, it should be noted that this method 
+only explained a small portion of the variability in the consumer data. Moreover, the FER results also revealed 
+cultural differences, with each culture displaying a distinct set of emotions in response to the tasted yogurts
+[166]
+83
+Current Food Science and Technology Reports (2024) 2:77–90
+	
+allowing the simulation of various contexts in controlled 
+laboratory facilities. This approach has been valuable in 
+studying the sensory impact of different environments, such 
+as tasting wines and chocolates [183, 184]. Augmented real-
+ity is another option, integrating virtual elements into the 
+real world to assess consumer perceptions and emotional 
+responses, as demonstrated in tasting yogurt products [185].
+In a preliminary study [186], the impact of immersive 
+consumption contexts on food-evoked emotions was inves-
+tigated using facial expressions and subjective ratings. The 
+findings revealed the following three key points: (1) rec-
+reating physical and social consumption contexts in the 
+laboratory influenced general and food-evoked emotions, 
+as evident from both self-reported emotions and facial 
+expressions; (2) both the type of food and the context 
+independently influenced food-evoked self-reported emo-
+tions and facial expressions; (3) while there were simi-
+larities between self-reported, food-evoked emotions and 
+facial expressions, some differences were also observed, 
+Table 3   Biometric studies on sensory evaluation of food
+Product
+Technology
+Results
+Reference
+Soy sauce
+Heart rate
+Both RPPG (remote photoplethysmography) and PPG (photoplethysmog-
+raphy heart rate) heart rates demonstrated effects associated with brand-
+ing and familiarity. Nevertheless, it became evident that the RPPG heart 
+rate measurement necessitates additional refinement, given its tendency 
+to underestimate heart rate when compared to PPG. Additionally, RPPG 
+heart rate exhibited reduced sensitivity to variations over time and dur-
+ing different activities, like viewing brand information and tasting
+[20•]
+Sucrose (sweet) and 
+quinine (bitter) solu-
+tions
+Heart rate and skin conductance Heart rate decreased when tasted samples contradicted expectations and 
+increased when the samples confirmed expectations. The sweet sample 
+elicited larger heart rate increases compared to the bitter sample. The 
+second experience led to heart deceleration
+Skin conductance was influenced by novelty and valence, not by disconfir-
+mation of expectations. Increased with the bitter sample and decreased 
+with the sweet sample. Skin conductance was consistently higher during 
+the first experience compared to the second
+Findings suggest cardiac responses are more sensitive to novelty and 
+disconfirmation of expectations, while skin conductance responses 
+primarily reflect novelty and valence
+[171]
+Wine
+ECG and skin conductance
+After a brief and intensive sensory training focused on wine tasting, the 
+participants’ autonomic nervous system (ANS) activity shifted toward a 
+less sympathetic response once they became familiar with the odorous 
+compounds
+[179]
+Beer
+Heart rate, temperature from 
+the eye region, and EEG
+A negative correlation was observed between body temperature and liking 
+of foam height and stability, indicating consumers tend to prefer beers 
+with greater foam when their body temperature is lower. Theta signals 
+showed a positive correlation with bitterness, suggesting consumers tend 
+to prefer beers with lower bitterness when their theta signals are higher. 
+Overall, consumers’ beer preferences are influenced by both conscious 
+and unconscious sensory responses, with a preference for beers with 
+greater foam and lower bitterness
+[164]
+Beers
+EEG
+Participants evaluated beer sensory properties as relatively similar. How-
+ever, during the gustatory phase, experts and general tasters displayed 
+differences in brain activation related to memory processes, while gen-
+eral tasters and consumers showed differences in brain activation linked 
+to hedonic processing
+There was an apparent stronger relationship between self-reported quality 
+judgments and EEG activity, particularly in recognition and working 
+memory components, in experts than in other groups. General tasters 
+and consumers also exhibited connections, primarily involving hedonic 
+processing and recognition memory components. Relationships differed 
+significantly, especially between experts and consumers, with variations 
+in the involvement of working memory components
+Results suggest that beer experts have a more efficient pattern of gustatory 
+processing and demonstrate a better alignment between explicit (judg-
+ments) and implicit (EEG) measures of the sensory and hedonic quality 
+of beers
+[180]
+84
+Current Food Science and Technology Reports (2024) 2:77–90
+highlighting the additional value of measuring facial 
+expressions in understanding emotional responses to food.
+Conclusion
+Never underestimating sensory evaluation performed by 
+humans, in a world propelled by innovation, these technol-
+ogies beckon a paradigm shift in sensory analysis, fusing 
+cutting-edge prowess with culinary finesse. As they continue 
+to evolve, the new techniques promise a new frontier where 
+objectivity and data-driven insights heighten our apprecia-
+tion of food attributes.
+Acknowledgements  The authors are grateful to the Laboratory of Car-
+cass and Meat Quality, Agriculture School of Polytechnic Institute of 
+Bragança “Cantinho do Alfredo’Alfredo”.
+Author Contributions  S.S.Q.R. conceptualized the paper. All authors 
+wrote and reviewed the manuscript text.
+Funding  Open access funding provided by FCT|FCCN (b-on). The 
+authors are grateful to the Foundation for Science and Technology 
+(FCT, Portugal) for the financial support by national funds FCT/
+MCTES to CIMO (UIDB/00690/2020).
+Declarations 
+Ethics Approval and Consent to Participate  This article does not 
+contain any studies with human or animal subjects performed by the 
+authors.
+Consent to Publish  All authors approved and agreed to submit the 
+manuscript to this journal.
+Competing Interests  The authors declare no competing interests.
+Open Access  This article is licensed under a Creative Commons Attri-
+bution 4.0 International License, which permits use, sharing, adapta-
+tion, distribution and reproduction in any medium or format, as long 
+as you give appropriate credit to the original author(s) and the source, 
+provide a link to the Creative Commons licence, and indicate if changes 
+were made. The images or other third party material in this article are 
+included in the article’s Creative Commons licence, unless indicated 
+otherwise in a credit line to the material. If material is not included in 
+the article’s Creative Commons licence and your intended use is not 
+permitted by statutory regulation or exceeds the permitted use, you will 
+need to obtain permission directly from the copyright holder. To view a 
+copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+References
+Papers of particular interest, published recently, have 
+been highlighted as:  
+•  Of importance  
+••  Of major importance
+	 1.	
+Meilgaard M, Civille GV, Carr BT. Sensory evaluation tech-
+niques. 4th ed. Boca Raton, Florida: CRC Press Inc.; 2007.
+	 2.	
+Varela P, Ares G. Sensory profiling, the blurred line between 
+sensory and consumer science. A review of novel methods for 
+product characterization. Food Res Int. 2012;48(2):893–908. 
+https://​doi.​org/​10.​1016/j.​foodr​es.​2012.​06.​037.
+	 3.	
+Ares G, Bruzzone F, Giménez A. Is a consumer panel able to 
+reliably evaluate the texture of dairy desserts using unstructured 
+intensity scales? Evaluation of global and individual perfor-
+mance. J Sens Stud. 2011;26:363–70.
+	 4.	
+Meyners M, Castura JC, Carr BT. Existing and new 
+approaches for the analysis of CATA data. Food Qual Prefer. 
+2013;30(2):309–19. https://​doi.​org/​10.​1016/j.​foodq​ual.​2013.​06.​
+010.
+	 5.	
+Antúnez L, Vidal L, de Saldamando L, Giménez A, Ares G. 
+Comparison of consumer-based methodologies for sensory 
+characterization: case study with four sample sets of powdered 
+drinks. Food Qual Prefer. 2017;56(Part A):149–63. https://​doi.​
+org/​10.​1016/j.​foodq​ual.​2016.​09.​013.
+	 6.	
+Jaeger SR, Chheang SL, Jin D, Roigard CM, Ares G. Check-
+all-that-apply (CATA) questions: sensory term citation fre-
+quency reflects rated term intensity and applicability. Food 
+Qual Prefer. 2020;86:103986. https://​doi.​org/​10.​1016/j.​foodq​
+ual.​2020.​103986.
+	 7.	
+Carneiro RCV, Wang C, Yu J, O’Keefe SF, Duncan SE, 
+Gallagher CD, Burlingame GA, Dietrich AM. Check-if-
+apply approach for consumers and utilities to communicate 
+about drinking water aesthetics quality. Sci Total Environ. 
+2021;753:141776.
+	 8.	
+Wang S, Ng KH, Yee KH, Tang Y, Meng R, He W. Comparison 
+of Pivot profile CATA, and Pivot-CATA for the sensory profil-
+ing of instant black coffee. Food Qual Prefer. 2023;108:104858. 
+https://​doi.​org/​10.​1016/j.​foodq​ual.​2023.​104858.
+	 9.	
+Liu J, Bredie WLP, Sherman E, Harbertson JF, Heymann H. 
+Comparison of rapid descriptive sensory methodologies: free-
+choice profiling, flash profile, and modified flash profile. Food 
+Res Int. 2018;106:892–900.
+	10.	
+Bi J, Kuesten C, Lee HS, O’Mahony M. Paired versions of vari-
+ous sensory discrimination forced-choice methods and the same-
+different area theorem. Food Qual Prefer. 2018;63:97–106.
+	11.	
+Bi J, Kuesten C. The four-interval, two-alternative forced-choice 
+(4I2AFC): a powerful sensory discrimination method to detect 
+small, directional changes particularly suitable for visual or 
+manual evaluations. Food Qual Prefer. 2019;73:202–9.
+	12.	
+Hamilton LM, Lahne J. Assessment of instructions on panelist 
+cognitive framework and free sorting task results: a case study 
+of cold brew coffee. Food Qual Prefer. 2020;83:103889.
+	13.	
+Hayward L, Jantzi H, Smith A, McSweeney MB. How do con-
+sumers describe cool climate wines using projective mapping 
+and ultra-flash profile? Food Qual Prefer. 2020;86:104026.
+	14.	
+Wilson C, Brand J, Toit W, Buica A. Matrix effects influencing 
+the perception of 3-mercaptohexan-1-Ol (3MH) and 3-mercap-
+tohexyl acetate (3MHA) in different chenin blanc wines by pro-
+jective mapping (PM) with ultra flash profiling (UFP) intensity 
+ratings. Food Res Int. 2019;121:633–40.
+	15.	
+Barton A, Hayward L, Richardson CD, McSweeney MB. Use 
+of different panellists (experienced, trained, consumers and 
+experts) and the projective mapping task to evaluate white wine. 
+Food Qual Prefer. 2020;83:103900.
+	16.	
+Heo J, Kim SS, Kim M-R, Kwak HS. Comparison of sensory 
+profiling by descriptive analysis, free-choice profiling, and polar-
+ized sensory positioning on bottled water. Foods. 2023;12:1579. 
+https://​doi.​org/​10.​3390/​foods​12081​579.
+	17.	
+Spinelli S, Dinnella C, Masi C, Paolo G, Prescott J. Investigating 
+preferred coffee consumption contexts using open-ended ques-
+tions. Food Qual Prefer. 2017;61:63–73.
+	18	
+Marques C, Correia E, Dinis L-T, Vilela A. An overview of 
+sensory characterization techniques: from classical descriptive 
+85
+Current Food Science and Technology Reports (2024) 2:77–90
+	
+analysis to the emergence of novel profiling methods. Foods. 
+2022;11:255. https://​doi.​org/​10.​3390/​foods​11030​255.
+	19	
+Huseynov S, Kassas B, Segovia MS, Palma MA. Incorporat-
+ing biometric data in models of consumer choice. Appl Econ. 
+2019;51:1514–31.
+	20.•	 de Wijk RA, Ushiama S, Ummels M, Zimmerman P, Kaneko 
+D, Vingerhoeds MH. Reading food experiences from the face: 
+effects of familiarity and branding of soy sauce on facial expres-
+sions and video-based RPPG heart rate. Foods. 2021;10:1345. A 
+reference about the application of biometric measurements 
+on the sensory evaluation of food.
+	21.	
+Li D, Jia J, Wang X. Unpleasant food odors modulate the pro-
+cessing of facial expressions: an event-related potential study. 
+Front Neurosci. 2020;14:686–97.
+	22.	
+Mehta A, Sharma C, Kanala M, Thakur M, Harrison R, Torrico 
+DD. Self-reported emotions and facial expressions on consumer 
+acceptability: a study using energy drinks. Foods. 2021;10:330.
+	23	
+Delarue J, Brasset A, Jarrot F, Abiven F. Taking control of 
+product testing context thanks to a multi-sensory immersive 
+room. A case study on alcohol-free beer. Food Qual Prefer. 
+2019;75:78–86.
+	24.	
+Hannum M, Forzley S, Popper R, Simons CT. Does environ-
+ment matter? Assessments of wine in traditional booths com-
+pared to an immersive and actual wine bar. Food Qual Prefer. 
+2019;76:100–8.
+	25.•	 Munekata PES, Finardi S, de Souza CK, Meinert C, Pateiro M, 
+Hoffmann TG, Domínguez R, Bertoli SL, Kumar M, Lorenzo 
+JM. Applications of electronic nose, electronic eye and elec-
+tronic tongue in quality, safety and shelf life of meat and meat 
+products: a review. Sensors. 2023;23:672. https://​doi.​org/​10.​
+3390/​s2302​0672. A detailed review on the use of electronic 
+devices mimicking human senses in the evaluation of food 
+sensory quality.
+	26.	
+Zhu B, Gao H, Yang F, Li Y, Yang Q, Liao Y, Guo H, Xu K, 
+Tang Z, Gao N, Zhang Y, He J. Comparative characteriza-
+tion of volatile compounds of Ningxiang pig, Duroc and their 
+crosses (Duroc × Ningxiang) by using SPME-GC-MS. Foods. 
+2023;12:1059. https://​doi.​org/​10.​3390/​foods​12051​059.
+	27.	
+Fuentes S, Tongson E, Viejo CG. Novel digital technologies 
+implemented in sensory science and consumer perception. Curr 
+Opin Food Sci. 2021;41:99–106. https://​doi.​org/​10.​1016/j.​cofs.​
+2021.​03.​014.
+	28.••	Torrico DD, Mehta A, Borssato AB. New methods to assess 
+sensory responses: a brief review of innovative techniques 
+in sensory evaluation. Current opinion in food science 
+2023;49:100978. This is a brief review about the main objec-
+tive methods to evaluate food sensory quality. It is an impor-
+tant base paper when investigating this subject.
+	29.	
+Aznan A, Viejo CG, Pang A, Fuentes S. Review of technology 
+advances to assess rice quality traits and consumer perception. 
+Food Res Int. 2023;172:113105. https://​doi.​org/​10.​1016/j.​foodr​
+es.​2023.​113105.
+	30.	
+Farneti B, Alarcón AA, Cristescu SM, Costa G, Harren FJM, 
+Holthuysen NTE, Woltering EJ. Aroma volatile release kinetics 
+of tomato genotypes measured by PTR-MS following artificial 
+chewing. Food Res Int. 2013;54(2):1579–88. https://​doi.​org/​10.​
+1016/j.​foodr​es.​2013.​09.​015.
+	31.	
+Silva S, Guedes C, Rodrigues S, Teixeira A. Non-destructive 
+imaging and spectroscopic techniques for assessment of car-
+cass and meat quality in sheep and goats: a review. Foods. 
+2020;9(8):1074.
+	32.	
+Barbieri S, Soglia F, Palagano R, Tesini F, Bendini A, Petracci 
+M, Cavani C, Toschi TG. Sensory and rapid instrumental meth-
+ods as a combined tool for quality control of cooked ham. Heli-
+yon. 2017;3:e00202.
+	33	
+Hutchings SC, Dixit Y, Al-Sarayreh M, Torrico DD, Realini CE, 
+Jaeger SR, Reis MM. A critical review of social media research 
+in sensory-consumer science. Food Res Int. 2023;165:112494. 
+https://​doi.​org/​10.​1016/j.​foodr​es.​2023.​112494.
+	34.	
+- Mishra M. CHAPTER 1: Spectroscopic techniques for the 
+analysis of food quality, chemistry, and function. In Advanced 
+spectroscopic techniques for food quality, ed. A. K. Shukla, The 
+Royal Society of Chemistry, 2022, pp 1–22. https://​doi.​org/​10.​
+1039/​97818​39165​849-​00001.
+	35.	
+Herbert S, Riou NM, Devaux MF, Riaublanc A, Bouchet B, 
+Gallant DJ, Dufour É. Monitoring the identity and the struc-
+ture of soft cheeses by fluorescence spectroscopy. Le Lait. 
+2000;80(6):621–34.
+	36.	
+Christensen J, Becker EM, Frederiksen CS. Fluorescence spec-
+troscopy and PARAFAC in the analysis of yogurt. Chemom 
+Intell Lab Syst. 2005;75(2):201–8.
+	37.	
+Nikolova K, Eftimov T, Aladjadjiyan A. Fluorescence spec-
+troscopy as method for quality control of honey. Adv Res. 
+2014;2:95–108.
+	38.	
+Egelandsdal B, Wold JP, Sponnich A, Neegård S, Hildrum 
+KI. On attempts to measure the tenderness of longissimus 
+dorsi muscles using fluorescence emission spectra. Meat Sci. 
+2002;60(2):187–202.
+	39.	
+Wu B, Dahlberg K, Gao X, Smith J, Bailin J. A rapid method 
+based on fluorescence spectroscopy for meat spoilage detection. 
+Int J High Speed Electron Syst. 2018;27(03n04):1840025.
+	40.	
+Dufour É, Frencia JP, Kane E. Development of a rapid method 
+based on front-face fluorescence spectroscopy for the monitoring 
+of fish freshness. Food Res Int. 2003;36(5):415–23.
+	41.	
+Hassoun A, Sahar A, Lakhal L, Aït-Kaddour A. Fluorescence 
+spectroscopy as a rapid and non-destructive method for monitor-
+ing quality and authenticity of fish and meat products: impact of 
+different preservation conditions. LWT. 2019;103:279–92.
+	42.	
+Rice LG, Ross PF. Methods for detection and quantitation of 
+fumonisins in corn, cereal products and animal excreta. J Food 
+Protect. 1994;57(6):536–40.
+	43.	
+Zeković I, Lenhardt L, Dramićanin T, Dramićanin MD. Clas-
+sification of intact cereal flours by front-face synchronous fluo-
+rescence spectroscopy. Food Anal Method. 2012;5:1205–13.
+	44.	
+Ahmad MH, Nache M, Waffenschmidt S, Hitzmann B. Charac-
+terization of farinographic kneading process for different types 
+of wheat flours using fluorescence spectroscopy and chemomet-
+rics. Food Control. 2016;66:44–52.
+	45.	
+Jääskeläinen AS, Holopainen-Mantila U, Tamminen T, Vuo-
+rinen T. Endosperm and aleurone cell structure in barley and 
+wheat as studied by optical and Raman microscopy. J Cereal Sci. 
+2013;57(3):543–50.
+	46.	
+Guzmán E, Baeten V, Pierna JAF, García-Mesa JA. Evaluation of 
+the overall quality of olive oil using fluorescence spectroscopy. 
+Food Chem. 2015;173:927–34.
+	47.	
+Kyriakidis NB, Skarkalis P. Fluorescence spectra meas-
+urement of olive oil and other vegetable oils. J AOAC Int. 
+2000;83(6):1435–9.
+	48.	
+Tsopelas F, Konstantopoulos D, Kakoulidou AT. Voltammetric 
+fingerprinting of oils and its combination with chemometrics for 
+the detection of extra virgin olive oil adulteration. Anal Chim 
+Acta. 2018;1015:8–19.
+	49.	
+Manuel MNB, da Silva AC, Lopes GS, Ribeiro LPD. One-
+class classification of special agroforestry Brazilian coffee 
+using NIR spectrometry and chemometric tools. Food Chem. 
+2022;366:130480.
+	50.	
+Fioresi DB, Pereira LL, da Silva Oliveira EC, Moreira TR, 
+Ramos AC. Mid infrared spectroscopy for comparative anal-
+ysis of fermented arabica and robusta coffee. Food Control. 
+2021;121:107625.
+86
+Current Food Science and Technology Reports (2024) 2:77–90
+	51.	
+Ma J, Sun DW, Pu H, Cheng JH, Wei Q. Advanced techniques 
+for hyperspectral imaging in the food industry: principles and 
+recent applications. Annu Rev Food Sci T. 2019;10:197–220.
+	52.	
+Baiano A. Applications of hyperspectral imaging for quality 
+assessment of liquid based and semi-liquid food products: a 
+review. J Food Eng. 2017;214:10–5.
+	53.	
+Esteban-Díez I, González-Sáiz JM, Pizarro C. Prediction of 
+sensory properties of espresso from roasted coffee samples by 
+near-infrared spectroscopy. Anal Chim Acta. 2004;525:171–82.
+	54.	
+Duce SL, Amin MHG, Horsfield MA, Tyszka M, Hall LD. 
+Nuclear magnetic resonance imaging of dairy products in two 
+and three dimensions. Int Dairy J. 1995;5(4):311–9.
+	55	
+Lucas T, Wagener M, Barey P, Mariette F. NMR assessment of 
+mix and ice cream. Effect of formulation on liquid water and 
+ice. Int Dairy J. 2005;15(10):1064–73.
+	56.	
+De Angelis CS, Curini R, Delfini M, Brosio E, D’ascenzo F, 
+Bocca B. Amino acid profile in the ripening of Grana Padano 
+cheese: a NMR study. Food Chem. 2000;71(4):495–502.
+	57.	
+Renou JP, Bielicki G, Deponge C, Gachon P, Micol D, Ritz P. 
+Characterization of animal products according to geographic 
+origin and feeding diet using nuclear magnetic resonance 
+and isotope ratio mass spectrometry. Part II: beef meat. Food 
+chem. 2004;86(2):251–6.
+	58.	
+Kuo MI, Anderson ME, Gunasekaran S. Determining effects 
+of freezing on pasta filata and non-pasta filata mozzarella 
+cheeses by nuclear magnetic resonance imaging. J Dairy Sci. 
+2003;86(8):2525–36.
+	59.	
+Bertram HC, Jakobsen HJ, Andersen HJ, Karlsson AH, 
+Engelsen SB. Post-mortem changes in porcine M. longissi-
+mus studied by solid-state 13C cross-polarization magic-angle 
+spinning nuclear magnetic resonance spectroscopy. J Agr Food 
+Chem. 2003;51(7):2064–9.
+	60.	
+Bertram HC. NMR spectroscopy and NMR metabolomics in 
+relation to meat quality. In New aspects of meat quality (pp. 
+355–371). Woodhead Publishing. 2017.
+	61.	
+Hidalgo FJ, Zamora R. Edible oil analysis by high-reso-
+lution nuclear magnetic resonance spectroscopy: recent 
+advances and future perspectives. Trends Food Sci Tech. 
+2003;14(12):499–506.
+	62.	
+Kaletunc G, Breslauer KJ. (Eds.). Characterization of cereals 
+and flours: properties, analysis and applications. CRC press. 
+2003.
+	63.	
+Petersen BO, Nilsson M, Bøjstrup M, Hindsgaul O, Meier S. 1H 
+NMR spectroscopy for profiling complex carbohydrate mixtures 
+in non-fractionated beer. Food chem. 2014;150:65–72.
+	64.	
+Lakshmi S, Pandey AK, Ravi N, Chauhan OP, Gopalan N, 
+Sharma RK. Non-destructive quality monitoring of fresh fruits 
+and vegetables. Def Life Sci J. 2017;2(2):103–10.
+	65.	
+Charles M, Romano A, Yener S, Barnabà M, Navarini L, Märk 
+TD, ... Gasperi F. Understanding flavour perception of espresso 
+coffee by the combination of a dynamic sensory method and 
+in-vivo nosespace analysis. Food Res Int. 2015;69:9–20.
+	66.	
+Downey G, Sheehan E, Delahunty C, O’Callaghan D, Guinee 
+T, Howard V. Prediction of maturity and sensory attributes of 
+cheddar cheese using near-infrared spectroscopy. Int Dairy J. 
+2005;15(6–9):701–9.
+	67.	
+- Blazquez C, Downey G, O’Callaghan D, Howard V, Delahunty 
+C, Sheehan E, ... O’Donnell CP. Modelling of sensory and instru-
+mental texture parameters in processed cheese by near infrared 
+reflectance spectroscopy. J Dairy Res. 2006;73(1):58–69.
+	68.	
+Bergamaschi M, Cipolat-Gotet C, Cecchinato A, Schiavon S, 
+Bittante G. Chemometric authentication of farming systems of 
+origin of food (milk and ripened cheese) using infrared spectra, 
+fatty acid profiles, flavor fingerprints, and sensory descriptions. 
+Food chem. 2020;305:125480.
+	69.	
+- Jin G, Wang YJ, Li M, Li T, Huang WJ, Li L, ... Ning J. 
+Rapid and real-time detection of black tea fermentation qual-
+ity by using an inexpensive data fusion system. Food Chem. 
+2021;358:129815.
+	70.	
+Song Y, Wang X, Xie H, Li L, Ning J, Zhang Z. Quality 
+evaluation of Keemun black tea by fusing data obtained from 
+near-infrared reflectance spectroscopy and computer vision 
+sensors. Spectrochim Acta Part A Mol Biomol Spectrosc. 
+2021;252:119522.
+	71.	
+- Manthou E, Lago SL, Dagres E, Lianou A, Tsakanikas P, Pana-
+gou EZ, ... Nychas GJE. Application of spectroscopic and multi-
+spectral imaging technologies on the assessment of ready-to-eat 
+pineapple quality: a performance evaluation study of machine 
+learning models generated from two commercial data analytics 
+tools. Comput Electron Agr. 2020;175:105529.
+	72.	
+Martens M, Martens H. Near-infrared reflectance determination 
+of sensory quality of peas. Appl Spectrosc. 1986;40(3):303–10.
+	73.	
+Jensen PN, Sørensen G, Engelsen SB, Bertelsen G. Evaluation 
+of quality changes in walnut kernels (Juglans regia L.) by Vis/
+NIR spectroscopy. J Agr Food Chem. 2001;49(12):5790–6.
+	74.	
+Brøndum J, Byrne DV, Bak LS, Bertelsen G, Engelsen 
+SB. Warmed-over flavour in porcine meat—a combined 
+spectroscopic, sensory and chemometric study. Meat sci. 
+2000;54(1):83–95.
+	75.	
+Hildrum KI, Nilsen BN, Mielnik M, Naes T. Prediction of sen-
+sory characteristics of beef by near-infrared spectroscopy. Meat 
+sci. 1994;38(1):67–80.
+	76.	
+Beattie RJ, Bell SJ, Farmer LJ, Moss BW, Patterson D. Prelimi-
+nary investigation of the application of Raman spectroscopy to 
+the prediction of the sensory quality of beef silverside. Meat Sci. 
+2004;66(4):903–13.
+	77.	
+Andrés S, Murray I, Navajas EA, Fisher AV, Lambe NR, 
+Bünger L. Prediction of sensory characteristics of lamb meat 
+samples by near infrared reflectance spectroscopy. Meat sci. 
+2007;76(3):509–16.
+	78.	
+Zhao M, Nian Y, Allen P, Downey G, Kerry JP, O’Donnell CP. 
+Application of Raman spectroscopy and chemometric techniques 
+to assess sensory characteristics of young dairy bull beef. Food 
+Res Int. 2018;107:27–40.
+	79.	
+Sun L, Chen B, Gao R, Yuan L, Li W. Review on Raman spec-
+troscopy application in food analysis. J Chinese Institute Food 
+Sci Technol. 2012;12(12):113–8.
+	80.	
+Lohumi S, Lee S, Lee H, Kim MS, Lee W-H, Cho B-K. Applica-
+tion of hyperspectral imaging for characterization of intramuscu-
+lar fat distribution in beef. Infrared Phys Technol. 2016;74:1–10.
+	81.	
+Cheng W, Cheng JH, Sun DW, Pu H. Marbling analysis for 
+evaluating meat quality: methods and techniques. Compr Rev 
+Food Sci Food Saf. 2015;14(5):523–35.
+	82.	
+Zuo J, Peng Y, Li Y, Zou W, Chen Y, Huo D, Chao K. Non-
+destructive detection of nutritional parameters of pork 
+based on NIR hyperspectral imaging technique. Meat Sci. 
+2023;202:109204.
+	83.	
+Barlocco N, Vadell A, Ballesteros F, Galietta G, Cozzolino D. 
+Predicting intramuscular fat, moisture and Warner-Bratzler shear 
+force in pork muscle using near infrared reflectance spectros-
+copy. Anim Sci. 2006;82(1):111–6.
+	84.	
+Teixeira A, Oliveira A, Paulos K, Leite A, Marcia A, Amorim 
+A, ... Rodrigues S. An approach to predict chemical compo-
+sition of goat longissimus thoracis et lumborum muscle by 
+Near Infrared Reflectance spectroscopy. Small Ruminant Res. 
+2015;126:40–43.
+	85.	
+Su H, Sha K, Zhang L, Zhang Q, Xu Y, Zhang R, ... Sun B. 
+Development of near infrared reflectance spectroscopy to predict 
+chemical composition with a wide range of variability in beef. 
+Meat Sci. 2014;98(2):110–114.
+87
+Current Food Science and Technology Reports (2024) 2:77–90
+	
+	86.	
+Velásquez L, Cruz-Tirado J, Siche R, Quevedo R. An application 
+based on the decision tree to classify the marbling of beef by 
+hyperspectral imaging. Meat Sci. 2017;133:43–50.
+	87.	
+Craigie C, Johnson P, Shorten P, Charteris A, Maclennan G, 
+et al. Application of hyperspectral imaging to predict the pH, 
+intramuscular fatty acid content and composition of lamb 
+M. longissimus lumborum at 24 h post mortem. Meat Sci. 
+2017;132:19–28.
+	88.	
+Zhu F, Zhang H, Shao Y, He Y, Ngadi M. Mapping of fat 
+and moisture distribution in Atlantic salmon using near-
+infrared hyperspectral imaging. Food Bioprocess Technol. 
+2014;7:1208–14.
+	89.	
+Tao F, Mba O, Liu L, Ngadi M. Rapid and non-destructive 
+assessment of polyunsaturated fatty acids contents in salmon 
+using near-infrared hyperspectral imaging. In Hyperspectral 
+imaging sensors: innovative applications and sensor standards, 
+ed. DP Bannon. Bellingham, WA: SPIE. 2017.
+	90.	
+Cheng J-H, Sun D-W, Zeng X-A, Pu H-B. Non-destructive and 
+rapid determination of TVB-N content for freshness evaluation 
+of grass carp (Ctenopharyngodon idella) by hyperspectral imag-
+ing. Innov Food Sci Emerg Technol. 2014;21:179–87.
+	91.	
+Cheng J-H, Sun D-W, Liu G, Chen YN. Developing a multispec-
+tral model for detection of docosahexaenoic acid (DHA) and 
+eicosapentaenoic acid (EPA) changes in fish fillet using phys-
+arum network and genetic algorithm (PN-GA) method. Food 
+Chem. 2019;270:181–8.
+	92.	
+Zhu Q, Guan J, Huang M, Lu R, Mendoza F. Predicting bruise 
+susceptibility of ‘Golden Delicious’ apples using hyperspectral 
+scattering technique. Postharvest Biol Technol. 2016;114:86–94.
+	93	
+Lu Y, Huang Y, Lu R. Innovative hyperspectral imaging-based 
+techniques for quality evaluation of fruits and vegetables: a 
+review. Appl Sci. 2017;7(2):189.
+	94.	
+Yang XJ, Albrecht E, Ender K, Zhao RQ, Wegner J. Computer 
+image analysis of intramuscular adipocytes and marbling in the 
+longissimus muscle of cattle. J Anim Sci. 2006;84(12):3251–8.
+	95.	
+Du CJ, Sun DW, Jackman P, Allen P. Development of a hybrid 
+image processing algorithm for automatic evaluation of intra-
+muscular fat content in beef M. longissimus dorsi. Meat Sci. 
+2008;80(4):1231–7.
+	96.	
+Jackman P, Sun DW, Allen P. Automatic segmentation of beef 
+longissimus dorsi muscle and marbling by an adaptable algo-
+rithm. Meat Sci. 2009;83(2):187–94.
+	97.	
+Faucitano L, Huff P, Teuscher F, Gariepy C, Wegner J. Appli-
+cation of computer image analysis to measure pork marbling 
+characteristics. Meat Sci. 2005;69(3):537–43.
+	98.	
+Teixeira A, Silva SR, Hasse M, Almeida JMH, Dias L. Intra-
+muscular fat prediction using color and image analysis of Bísaro 
+pork breed. Foods. 2021;10:143.
+	99.	
+Batista AC, Santos V, Afonso J, Guedes C, Azevedo J, Teixeira 
+A, Silva S. Evaluation of an image analysis approach to predict-
+ing primal cuts and lean in light lamb carcasses. Animals-Basel. 
+2021;11:1368.
+	100.	 Lukinac J, Jukić M, Mastanjević K, Lučan M. Application of 
+computer vision and image analysis method in cheese-quality 
+evaluation: a review. Ukrainian Food J. 2018;7(2):192–214.
+	101.	 - Vélez-Rivera N, Blasco J, Chanona-Pérez J, Calderón-
+Domínguez G, de Jesús Perea-Flores M, Arzate-Vázquez I, ... 
+Farrera-Rebollo R. Computer vision system applied to classi-
+fication of “Manila” mangoes during ripening process. Food 
+Bioprocess Tech 2014;7:1183–1194.
+	102.	 Chen K, Sun X, Qin C, Tang X. Color grading of beef fat by 
+using computer vision and support vector machine. Comput 
+Electron Agr. 2010;70(1):27–32.
+	103.	 Quevedo RA, Aguilera JM, Pedreschi F. Color of salmon fillets 
+by computer vision and sensory panel. Food Bioprocess Tech. 
+2010;3:637–43.
+	104.	 Vahdatiyekta P, Zniber M, Bobacka J, Huynh TP. A review on 
+conjugated polymer-based electronic tongues. Anal Chim Acta. 
+2022;1221:340114.
+	105.	 Tahara Y, Toko K. Electronic tongues–a review. IEEE Sens J. 
+2013;13(8):3001–11.
+	106.	 Tian X, Wang J, Shen R, Ma Z, Li M. Discrimination of pork/
+chicken adulteration in minced mutton by electronic taste sys-
+tem. Int J Food Sci Technol. 2019;54(3):670–8.
+	107.	 Chen R, Liu XC, Xiang J, Sun W, Tomasevic I. Prospects 
+and challenges for the application of salty and saltiness-
+enhancing peptides in low-sodium meat products. Meat Sci 
+2023;204:109261.
+	108.	 Xiang C, Li S, Zhang D, Huang C, Zhao Y, Zheng X, ... Chen 
+L. Characterization and discrimination of the flavor profiles 
+of Chinese indigenous sheep breeds via electronic sensory, 
+smart instruments and chemometrics. J Food Compos Anal 
+2023;122:105458.
+	109.	 Xu X, Sun C, Liu B, Zhou Q, Xu P, Liu M, ... Jiang Q. Flesh 
+flavor of red swamp crayfish (Procambarus clarkii Girard, 1852) 
+processing by GS-IMS and electronic tongue is changed by die-
+tary animal and plant protein. Food Chem. 2022;373:131453.
+	110.	 Tian X, Li ZJ, Chao YZ, Wu ZQ, Zhou MX, Xiao ST, ... Zhe J. 
+Evaluation by electronic tongue and headspace-GC-IMS analy-
+ses of the flavor compounds in dry-cured pork with different salt 
+content. Food Res Int. 2020;137;109456.
+	111.	 Gil L, Barat JM, Baigts D, Martínez-Máñez R, Soto J, Garcia-
+Breijo E, ... Llobet E. Monitoring of physical–chemical and 
+microbiological changes in fresh pork meat under cold storage 
+by means of a potentiometric electronic tongue. Food Chem. 
+2011;126(3):1261–1268.
+	112.	 Wilson AD, Baietto M. Applications and advances in electronic-
+nose technologies. Sensors. 2009;9(7):5099–148.
+	113.	 Nurjuliana M, Che Man YB, Mat Hashim D, Mohamed AKS. 
+Rapid identification of pork for halal authentication using the 
+electronic nose and gas chromatography mass spectrometer with 
+headspace analyzer. Meat Sci. 2011;88:638–44.
+	114.	 Huang C, Gu Y. A machine learning method for the quantitative 
+detection of adulterated meat using a MOS-based E-nose. Foods. 
+2022;11:602.
+	115.	 Sarno R, Triyana K, Sabilla SI, Wijaya DR, Sunaryono D, Fat-
+ichah C. Detecting pork adulteration in beef for halal authentica-
+tion using an optimized electronic nose system. IEEE Access. 
+2020;8:221700–11.
+	116.	 Wang Q, Li L, Ding W, Zhang D, Wang J, Reed K, Zhang 
+B. Adulterant identification in mutton by electronic nose 
+and gas chromatography-mass spectrometer. Food Control. 
+2019;98:431–8.
+	117.	 Wijaya DR, Sarno R, Zulaika E. DWTLSTM for electronic nose 
+signal processing in beef quality monitoring. Sens Actuators, B 
+Chem. 2021;326:128931.
+	118	
+Huang L, Zhao JW, Chen QS, Zhang YH. Nondestructive meas-
+urement of total volatile basic nitrogen (TVB-N) in pork meat 
+by integrating near infrared spectroscopy, computer vision and 
+electronic nose techniques. Food Chem. 2014;145:228e236.
+	119.	 Li P, Ren Z, Shao K, Tan H, Niu Z. Research on distinguishing 
+fish meal quality using different characteristic parameters based 
+on electronic nose technology. Sensors. 2019;19(9):2146.
+	120.	 Mirzaee-Ghaleh E, Taheri-Garavand A, Ayari F, Lozano J. Iden-
+tification of fresh-chilled and frozen-thawed chicken meat and 
+estimation of their shelf life using an E-nose machine coupled 
+fuzzy KNN. Food Anal Methods. 2020;13:678–89.
+	121.	 Shi Y, Li Z, Shi J, Zhang F, Zhou X, Li Y, ... Zou X. Tita-
+nium dioxide-polyaniline/silk fibroin microfiber sensor for 
+pork freshness evaluation. Sens Actuators B: Chemical. 
+2018;260:465–474.
+88
+Current Food Science and Technology Reports (2024) 2:77–90
+	122.	 Grassi S, Benedetti S, Opizzio M, di Nardo E, Buratti S. Meat 
+and fish freshness assessment by a portable and simplified elec-
+tronic nose system (mastersense). Sensors. 2019;19(14):3225.
+	123.	 Grassi S, Benedetti S, Magnani L, Pianezzola A, Buratti S. Sea-
+food freshness: e-nose data for classification purposes. Food 
+Control. 2022;138:108994.
+	124	
+Hawko C, Hucher N, Crunaire S, Leger C, Locoge N, Verriele M, 
+Savary G. How the experimental design associated with objec-
+tivized sensory analysis can be used to predict odor quality of 
+gaseous mixtures? Chemom Intell Lab Syst. 2023;235:104780. 
+https://​doi.​org/​10.​1016/j.​chemo​lab.​2023.​104780.
+	125.	 Nie C-M, Zhong X-X, He L, Gao Y, Zhang X, Wang C-M, 
+Du X. Comparison of different aroma-active compounds 
+of Sichuan dark brick tea (Camellia sinensis) and Sichuan 
+Fuzhuan brick tea using gas chromatography–mass spectrom-
+etry (GC–MS) and aroma descriptive profile tests. Eur Food 
+Res Technol. 2019;245:1963–79. https://​doi.​org/​10.​1007/​
+s00217-​019-​03304-1.
+	126.	 Wang C-M, Du X, Nie C-N, Zhang X, Tan X-Q, Li Q. Evaluation 
+of sensory and safety quality characteristics of “high mountain 
+tea.” Food Sci Nutr. 2022;10:3338–54. https://​doi.​org/​10.​1002/​
+fsn3.​2923.
+	127.	 - Xu C. Electronic eye for food sensory evaluation. Evaluation 
+technologies for food quality. Elsevier Inc. 2019;37–59p. https://​
+doi.​org/​10.​1016/​B978-0-​12-​814217-​2.​00004-​475.
+	128.	 Cui YX, Liu RX, Lin ZZ, Chen PJ, Wang LL, Wang YL, Chen 
+SQ. Quality evaluation based on color grading: quality discrimi-
+nation of the Chinese medicine Corni Fructus by an E-eye. Sci 
+Rep. 2019;9:17006.
+	129	
+Ordoñez-Araque R, Rodríguez-Villacres J, Urresto-Villegas J. 
+Electronic nose, tongue and eye: their usefulness for the food 
+industry. Vitae. 2022;27(3):e1. https://​doi.​org/​10.​17533/​udea.​
+vitae.​v27n3​a01.
+	130	
+Orlandi G, Calvini R, Foca G. Data fusion of electronic eye and 
+electronic tongue signals to monitor grape ripening. Talanta. 
+2019;30(10):181–9. https://​doi.​org/​10.​1016/j.​talan​ta.​2018.​11.​
+04681.
+	131	
+Ismael D, Ploeger A. Development of a sensory method to detect 
+food-elicited emotions using emotion-color association and eye-
+tracking. Foods. 2019;8(6):217. https://​doi.​org/​10.​3390/​foods​
+80602​1782.
+	132	
+Motoki K, Saito T, Nouchi R. Tastiness but not healthfulness 
+captures automatic visual attention. Preliminary evidence from 
+an eye-tracking study. Food Qual Prefer. 2018;64(17):148–53. 
+https://​doi.​org/​10.​1016/j.​foodq​ual.​2017.​09.​01483.
+	133.	 Yasui Y, Tanaka J, Kakudo M, Tanaka M. Relationship between 
+preference and gaze in modified food using eye tracker. J Pros-
+thodont Res. 2019;63(2):210–5. https://​doi.​org/​10.​1016/j.​jpor.​
+2018.​11.​01184.
+	134	
+Luvisi A. Electronic identification technology for agriculture, 
+plant, and food. A review. Agron Sustain Dev. 2016;36(1):1–14. 
+https://​doi.​org/​10.​1007/​s13593-​016-​0352-3.
+	135	
+Foroni F, Pergola G, Rumiati RI. Food color is in the eye of the 
+beholder: the role of human trichromatic vision in food evalu-
+ation. Sci Rep. 2016;6(October):6–11. https://​doi.​org/​10.​1038/​
+srep3​7034.
+	136	
+Sreeraj M, Joy J, Kuriakose A. CLadron∗: AI assisted device 
+for identifying artificially ripened climacteric fruits. Procedia 
+Comput Sci. 2019;2020(171):635–43. https://​doi.​org/​10.​1016/j.​
+procs.​2020.​04.​069.
+	137.	 Yang Y, Zhao C, Tian G. Characterization of physical properties 
+and electronic sensory analyses of citrus oil-based nanoemul-
+sions. Food Res Int. 2018;109(9):149–58. https://​doi.​org/​10.​
+1016/j.​foodr​es.​2018.​04.​025.
+	138.	 Sanchez AJ, Albarracin W, Grau R, Ricolfe C, Barat JM. Con-
+trol of ham salting by using image segmentation. Food Control. 
+2008;19(2):135–42. https://​doi.​org/​10.​1016/j.​foodc​ont.​2007.​02.​
+012.
+	139.	 Fongaro l, Alamprese C, Casiraghi E. Ripening of salami: assess-
+ment of colour and aspect evolution using image analysis and 
+multivariate image analysis. Meat Sci. 2015;101:73-77https://​
+doi.​org/​10.​1016/j.​meats​ci.​2014.​11.​005.
+	140.	 Brosnan T, Sun D-W. Improving quality inspection of food prod-
+ucts by computer vision––a review. J Food Eng. 2004;61(1):3–
+16. https://​doi.​org/​10.​1016/​S0260-​8774(03)​00183-3.
+	141.	 Sun X, Young J, Liu JH, Bachmeier L, Somers RM, Chen KJ, 
+Newman D. Prediction of pork color attributes using computer 
+vision system. Meat Sci. 2016;113:62–4.
+	142.	 Sun X, Young J, Liu JH, Chen Q, Newman D. Predicting pork 
+color scores using computer vision and support vector machine 
+technology. Meat Muscle Biol. 2018;2:296–302.
+	143.	 Wang B, Yang H, Lu F, Yu F, Wang X, Zou Y, Liu D, Zhang 
+J, Xia W. Establish intelligent detection system to evaluate the 
+sugar smoking of chicken thighs. Poult Sci. 2021;100:101447.
+	144.	 Muñoz I, Gou P, Fulladosa E. Computer image analysis for 
+intramuscular fat segmentation in dry-cured ham slices using 
+convolutional neural networks. Food Control. 2019;106:106693.
+	145.	 Barbon APAC, Barbon S, Campos GFC, Seixas JL, Peres LM, 
+Mastelini SM, Andreo N, Ulrici A, Bridi AM. Development of 
+a flexible computer vision system for marbling classification. 
+Comput Electron Agric. 2017;142:536–44.
+	146.	 Liu JH, Sun X, Young JM, Bachmeier LA, Newman DJ. Predict-
+ing pork loin intramuscular fat using computer vision system. 
+Meat Sci. 2018;143:18–23.
+	147.	 Sun X, Young J, Liu JH, Newman D. Prediction of pork loin 
+quality using online computer vision system and artificial intel-
+ligence model. Meat Sci. 2018;140:72–7.
+	148.	 Petracci M, Soglia F, Madruga M, Carvalho L, Ida E, Estévez 
+M. Wooden-breast, white striping, and spaghetti meat: causes, 
+consequences and consumer perception of emerging broiler meat 
+abnormalities. Compr Rev Food Sci Food Saf. 2019;18:565–83.
+	149.	 Chmiel M, Słowiński M, Dasiewicz K, Florowski T. Use of 
+computer vision system (CVS) for detection of PSE pork meat 
+obtained from m. semimembranosus. LWT-Food Sci Technol. 
+2016;65:532–6.
+	150.	 Chmiel M, Słowiński M. The use of computer vision system to 
+detect pork defects. LWT-Food Sci Technol. 2016;73:473–80.
+	151.	 Geronimo BC, Mastelini SM, Carvalho RH, Barbon SJr, 
+Barbin DF, Shimokomaki M, Ida EI. Computer vision system 
+and near-infrared spectroscopy for identification and classifi-
+cation of chicken with wooden breast, and physicochemical 
+and technological characterization. Infrared Phys Technol. 
+2019;96:303–310.
+	152.	 Zapotoczny P, Szczypiński PM, Daszkiewicz T. Evaluation of 
+the quality of cold meats by computer-assisted image analysis. 
+LWT-Food Sci Technol. 2016;67:37–49.
+	153.	 Teimouri N, Omid M, Mollazade K, Mousazadeh H, Alimardani 
+R, Karstoft H. On-line separation and sorting of chicken portions 
+using a robust vision-based intelligent modelling approach. Bio-
+syst Eng. 2018;167:8–20.
+	154.	 Zhang D, Feng X, Xu C, Xia D, Liu S, Gao S, Zheng F, Liu 
+Y. Rapid discrimination of Chinese dry-cured hams based 
+on Tri-step infrared spectroscopy and computer vision tech-
+nology. Spectrochim Acta-Part A Mol Biomol Spectrosc. 
+2020;228:117842.
+	155.	 Tomasevic I, Djekic I, Font-i-Furnols M, Terjung N, Lorenzo 
+JM. Recent advances in meat color research. Curr Opin Food 
+Sci. 2021;41:81–7.
+	156.	 Barbin DF, Mastelini SM, Barbon S, Campos GFC, Bar-
+bon APAC, Shimokomaki M. Digital image analyses as an 
+alternative tool for chicken quality assessment. Biosyst Eng. 
+2016;144:85–93.
+89
+Current Food Science and Technology Reports (2024) 2:77–90
+	
+	157.	 - Hassoun A, Aït-Kaddour A, Abu-Mahfouz AM, Rathod NB, 
+Bader F, Barba FJ, Biancolillo A, Cropotova J, Galanakis CM, 
+Jambrak AR. et al. The fourth industrial revolution in the food 
+industry—part I: industry 4.0 technologies. Crit Rev Food Sci 
+Nutr. 2022;Feb 3:1–17. https://​doi.​org/​10.​1080/​10408​398.​2022.​
+20347​35.
+	158.	 Mahieu B, Visalli M, Schlich P, Thomas A. Eating chocolate, 
+smelling perfume or watching video advertisement: does it make 
+any difference on emotional states measured at home using facial 
+expressions? Food Qual Prefer. 2019;77:102–8.
+	159.	 de Wijk RA, He W, Mensink MGJ, Verhoeven RHG, de 
+Graaf C. ANS responses and facial expressions differentiate 
+between the taste of commercial breakfast drinks. PLoS ONE. 
+2014;9(4):e93823. https://​doi.​org/​10.​1371/​journ​al.​pone.​00938​
+23.
+	160.	 Crist C, Duncan S, Arnade E, Leitch K, O’Keefe S, Gallagher D. 
+Automated facial expression analysis for emotional responsivity 
+using an aqueous bitter model. Food Qual Prefer. 2018;68:349–
+59. https://​doi.​org/​10.​1016/j.​foodq​ual.​2018.​04.​004.
+	161.	 Kulke L, Feyerabend D, Schacht A. A comparison of the Affec-
+tiva iMotions facial expression analysis software with EMG 
+for identifying facial expressions of emotion. Front Psychol. 
+2020;11:329–37.
+	162.	 Torrico DD, Fuentes S, Viejo CG, Ashman H, Gunaratne NM, 
+Gunaratne TM, Dunshea FR. Images and chocolate stimuli affect 
+physiological and affective responses of consumers: a cross-cul-
+tural study. Food Qual Prefer. 2018;65:60–71.
+	163.	 - Wakihira T, Morimoto M, Higuchi S, Nagatomi Y. Can facial 
+expressions predict beer choices after tasting? A proof of con-
+cept study on implicit measurements for a better understanding 
+of choice behavior among beer consumers. Food Qual Prefer. 
+2022;104580.
+	164.	 Viejo CG, Fuentes S, Howell K, Torrico DD, Dunshea FR. Inte-
+gration of non-invasive biometrics with sensory analysis tech-
+niques to assess acceptability of beer by consumers. Physiol 
+Behav. 2019;200:139–47.
+	165.	 Torrico DD, Hutchings SC, Ha M, Bittner EP, Fuentes S, Warner 
+RD, Dunshea FR. Novel techniques to understand consumer 
+responses towards food products: a review with a focus on meat. 
+Meat Sci. 2018;144:30–42.
+	166.	 Gupta M, Torrico DD, Hepworth G, Gras SL, Ong L, Cottrell 
+JJ, Dunshea FR. Differences in hedonic responses, facial expres-
+sions and self-reported emotions of consumers using commercial 
+yogurts: a cross-cultural study. Foods. 2021;10:1237.
+	167.	 Wagner J, Wilkin JD, Szymkowiak A, Grigor J. Sensory and 
+affective response to chocolate differing in cocoa content: a TDS 
+and facial electromyography approach. Physiology & behavior 
+2023: in press. https://​doi.​org/​10.​1016/j.​physb​eh.​2023.​114308.
+	168.	 Mena B, Torrico DD, Hutchings S, Ha M, Ashman H, Warner 
+RD. Understanding consumer liking of beef patties with different 
+firmness among younger and older adults using FaceReader™ 
+and biometrics. Meat Sci. 2023;199:109124. https://​doi.​org/​10.​
+1016/j.​meats​ci.​2023.​109124.
+	169.	 da Quinta N, Baranda A, Ríos Y, Llorente R, Naranjo AB, de 
+Marañon IM. Methodology design to apply automatic facial cod-
+ing and SCR measure with context information during the obser-
+vation, olfaction, manipulation, and consumption of liquid foods. 
+Sci Talks. 2023;5:100155. https://​doi.​org/​10.​1016/j.​sctalk.​2023.​
+100155.
+	170.	 de Wijk RA, Noldus LP. Using implicit rather than explicit meas-
+ures of emotions. Food Qual Prefer. 2021;92:104125.
+	171.	 Verastegui-Tena L, van Trijp H, Piqueras-Fiszman B. Heart 
+rate and skin conductance responses to taste, taste novelty, 
+and the (dis) confirmation of expectations. Food Qual Prefer. 
+2018;65:1–9.
+	172.	 Adhikari K (2023) Application of selected neuroscientific meth-
+ods in consumer sensory analysis: a review. Journal of Food 
+Science 2023:88:A53– A64. In: Volume 88, issue S1, special 
+issue: advances in sensory science: from perceptions to con-
+sumer acceptance, Pages: A1-A226. https://​doi.​org/​10.​1111/​
+1750-​3841.​16526.
+	173.	 Anbarasan R, Mahendran R. Non-invasive sensory techniques: a 
+new approach to food sensory analysis and market survey. Read 
+more at: https://​www.​foodi​nfote​ch.​com/​nist-a-​new-​appro​ach-​to-​
+food-​senso​ry-​analy​sis/. Consulted July, 19; 2023.
+	174.	 Woodman GF. A brief introduction to the use of event-related 
+potentials (ERPs) in studies of perception and attention. Atten 
+Percept Psychophys. 2010;72(8). https://​doi.​org/​10.​3758/​APP.​
+72.8.​2031.
+	175.	 Kemp SE, Nyambayo I, Rogers L, Sanderson T, Villa-
+rino CB. Trends in food sensory science. Food Sci Technol. 
+2021;35(4):46–50. https://​doi.​org/​10.​1002/​fsat.​3504_​13.x.
+	176.	 Zsoldos I, Sinding C, Chambaron S. Using event-related poten-
+tials to study food-related cognition: an overview of methods and 
+perspectives for future research. Brain Cogn. 2022;159:105864. 
+https://​doi.​org/​10.​1016/j.​bandc.​2022.​105864.
+	177.	 Morton GJ, Meek TH, Schwartz MW. Neurobiology of food 
+intake in health and disease. Nat Rev Neurosci. 2014;15(6):367–
+78. https://​doi.​org/​10.​1038/​nrn37​45.
+	178.	 Masterson TD, Kirwan CB, Davidson LE, Larson MJ, Keller KL, 
+Fearnbach SN, Evans A, LeCheminant JD. Brain reactivity to 
+visual food stimuli after moderate-intensity exercise in children. 
+Brain Imaging Behav. 2018;12(4):1032–41. https://​doi.​org/​10.​
+1007/​s11682-​017-​9766-z.
+	179.	 Billeci L, Sanmartin C, Tonacci A, Taglieri I, Bachi L, Ferroni 
+G, Braceschi GP, Odello L, Venturi F. Wearable sensors to eval-
+uate autonomic response to olfactory stimulation: the influence 
+of short, intensive sensory training. Biosensors. 2023;13:478. 
+https://​doi.​org/​10.​3390/​bios1​30404​78.
+	180.	 Hinojosa-Aguayo I, Garcia-Burgos D, Catena A, González 
+F. Implicit and explicit measures of the sensory and hedonic 
+analysis of beer: the role of tasting expertise. Food Res Int. 
+2022;152:110873. https://​doi.​org/​10.​1016/j.​foodr​es.​2021.​
+110873.
+	181.	 Stelick A, Penano AG, Riak AC, Dando R. Dynamic context 
+sensory testing–a proof of concept study bringing virtual reality 
+to the sensory booth. J Food Sci. 2018;83:2047–51.
+	182.	 Montero ML, Garrido D, Gallardo RK, Tang J, Ross CF. Con-
+sumer acceptance of a ready-to-eat meal during storage as evalu-
+ated with a home-use test. Foods. 2021;10:1623.
+	183.	 Torrico DD, Han Y, Sharma C, Fuentes S, Gonzalez Viejo C, 
+Dunshea FR. Effects of context and virtual reality environments 
+on the wine tasting experience, acceptability, and emotional 
+responses of consumers. Foods. 2020;9:191–207.
+	184.	 Kong Y, Sharma C, Kanala M, Thakur M, Li L, Xu D, Harrison 
+R, Torrico DD. Virtual reality and immersive environments on 
+sensory perception of chocolate products: a preliminary study. 
+Foods. 2020;9:515.
+	185.	 Dong Y, Sharma C, Mehta A, Torrico DD. Application of aug-
+mented reality in the sensory evaluation of yogurts. Fermenta-
+tion. 2021;7:147.
+	186.	 De Wijk A, Kaneko D, Dijksterhuis GB, van Bergen G, Vinger-
+hoeds MH, Visalli M, Zandstra EH. A preliminary investigation 
+on the effect of immersive consumption contexts on food-evoked 
+emotions using facial expressions and subjective ratings. d e. 
+Food Qual Prefer. 2022;99:104572. https://​doi.​org/​10.​1016/j.​
+foodq​ual.​2022.​104572.
+90

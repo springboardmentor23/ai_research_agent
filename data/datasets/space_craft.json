@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Space Craft-like Octanuclear Co(II)-Silsesquioxane Nanocages: Synthesis, Structure, Magnetic Properties, Solution Behavior, and Catalytic Activity for Hydroboration of Ketones.",
+    "authors": [
+      "Ya-nan Liu",
+      "Hai-Feng Su",
+      "Yunwu Li",
+      "Qing-Yun Liu",
+      "Z. Jagli\u010di\u0107",
+      "Wenguang Wang",
+      "C. Tung",
+      "Di Sun"
+    ],
+    "year": 2019,
+    "abstract": "Two novel space craft-like octanuclear Co(II)-silsesquioxane nanocages, {Co8[(MeSiO2)4]2(dmpz)8} (SD/Co8a) and {Co8[(PhSiO2)4]2(dmpz)8} (SD/Co8b) (SD = SunDi; Hdmpz = 3,5-dimethylpyrazole), have been constructed from two similar multidentate silsesquioxane ligands assisted with a pyrazole ligand. The Co8 skeleton consists of eight tetrahedral Co(II) ions arranged in a ring and is further capped by two (MeSiO2)4 ligands up and down. The auxiliary dmpz- ligands seal the ring finally. Electrospray ionization mass spectrometry revealed SD/Co8a and SD/Co8b are highly stable in CH2Cl2. Magnetic analysis implies that SD/Co8a announces antiferromagnetic interactions between Co(II) ions. Moreover, both of them display good homogeneous catalytic activity for hydroboration of ketones in the presence of pinacolborane under mild conditions.",
+    "paper_url": "https://www.semanticscholar.org/paper/eb66400b06922d7779bf7e39b0efcc1da88de130",
+    "paper_id": "eb66400b06922d7779bf7e39b0efcc1da88de130"
+  },
+  {
+    "title": "Optimisation problems and resolution methods in satellite scheduling and space-craft operation: a survey",
+    "authors": [
+      "F. Xhafa",
+      "Andrew W. H. Ip"
+    ],
+    "year": 2019,
+    "abstract": "ABSTRACT The fast development in the production of small, low-cost satellites is propelling an important increase in satellite mission planning and operations projects. Central to satellite mission planning is the resolution of scheduling problem for an optimised allocation of user requests for efficient communication between operations teams at the ground and spacecraft systems. The aim of this paper is to survey the state of the art in the satellite scheduling problem, analyse its mathematical formulations, examine its multi-objective nature and resolution through meta-heuristics methods. Finally, we consider some optimisation problems arising in spacecraft design, operation and satellite deployment systems.",
+    "paper_url": "https://www.semanticscholar.org/paper/76c6f297c008b4129c6b1105551f5e6cf865399c",
+    "paper_id": "76c6f297c008b4129c6b1105551f5e6cf865399c"
+  }
+]

@@ -1,0 +1,1142 @@
+Vol.:(0123456789)
+ Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+Discover Sustainability
+Review
+A comprehensive review to evaluate the synergy of intelligent food 
+packaging with modern food technology and artificial intelligence 
+field
+Thilina Abekoon1 · B. L. S. K. Buthpitiya2 · Hirushan Sajindra1 · E. R. J. Samarakoon3 · J. A. D. C. A. Jayakody4 · 
+Komali Kantamaneni5 · Upaka Rathnayake6
+Received: 26 December 2023 / Accepted: 16 July 2024
+© The Author(s) 2024 
+ 
+OPEN
+Abstract
+This study reviews recent advancements in food science and technology, analyzing their impact on the development of 
+intelligent food packaging within the complex food supply chain. Modern food technology has brought about intelligent 
+food packaging, which includes sensors, indicators, data carriers, and artificial intelligence. This innovative packaging 
+helps monitor food quality and safety. These innovations collectively aim to establish an unbroken chain of food safety, 
+freshness, and traceability, from production to consumption. This research explores the components and technologies 
+of intelligent food packaging, focusing on key indicators like time–temperature indicators, gas indicators, freshness 
+indicators, and pathogen indicators to ensure optimal product quality. It further incorporates various types of sensors, 
+including gas sensors, chemical sensors, biosensors, printed electronics, and electronic noses. It integrates data carriers 
+such as barcodes and radio-frequency identification to enhance the complexity and functionality of this system. The 
+review emphasizes the growing influence of artificial intelligence. It looks at new advances in artificial intelligence that 
+are driving the development of intelligent packaging, making it better at preserving food freshness and quality. This 
+review explores how modern food technologies, especially artificial intelligence integration, are revolutionizing intel-
+ligent packaging for food safety, quality, reduced waste, and enhanced traceability.
+Keywords  Intelligent packaging · Data careers · Indicators · Sensors · Artificial intelligence
+1  Introduction
+Food packaging plays a critical role after processing, safeguarding the product from contamination and damage. Its 
+significance lies in safeguarding food quality and ensuring food safety during the entire shelf life of the product. This 
+ensures that consumers receive a valuable product that meets their preferences [1–3]. The key roles of packaging encom-
+pass protection, preservation, containment, convenience, communication, reduction of food waste, traceability, market-
+ing, information, and tamper indication [4, 5]. When developing and designing packaging, it is critical to examine the 
+ *  Upaka Rathnayake, Upaka.Rathnayake@atu.ie | 1Water Resources Management and Soft Computing Research Laboratory, 
+Athurugiriya, Millennium City 10150, Sri Lanka. 2Department of Chemistry, Faculty of Science, University of Kelaniya, Kelaniya 11600, 
+Sri Lanka. 3Department of Food Science and Technology, Faculty of Agriculture, University of Peradeniya, Kandy 20400, Sri Lanka. 4Faculty 
+of Computing, Sri Lanka Institute of Information Technology (SLIIT), New Kandy Road, Malabe 10115, Sri Lanka. 5School of Engineering, 
+University of Central Lancashire, Preston PR1 2HE, UK. 6Department of Civil Engineering and Construction, Faculty of Engineering 
+and Design, Atlantic Technological University, Sligo F91 YW50, Ireland.
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+features of the product, the properties of the package material, and how the product and packaging interact [4, 6]. The 
+transition from conventional packaging to innovative packaging has evolved in conjunction with the advancement of 
+product quality, heightened human expectations, technological progress, the globalized market, regulatory demands, 
+increased consumer awareness, and heightened concerns regarding food safety [2, 7, 8]. This resulted in a new arena for 
+packaging, active packaging (AP) and IP [7, 8]. Traditional packaging primarily served a passive role as an inert barrier 
+[9]. AP works actively to extend shelf life and ensure product quality and safety by facilitating interactions between the 
+product, package, and environment [10].
+While AP technology encompasses various packaging functionalities, its primary focus is on increase product shelf-
+life [11]. The emergence of IP and Smart Packaging (SP) has introduced advanced packaging technologies [12]. A clear 
+distinction between SP, IP, and AP has not been fully described, potentially limiting their respective utility [7, 13]. IP 
+emphasizes enhanced communication, whereas AP prioritizes improved protection [14]. Traditional packaging, IP, and 
+AP often work synergistically to achieve comprehensive packaging solutions [15]. IP facilitates information flow through 
+data layers, processing, and an information highway, enabling monitoring of internal and external packaging environ-
+ments. It effectively communicates food product conditions, facilitating timely decision-making and actions based on 
+real-time data access. Business data and models are integrated to enable functionalities such as managing inventory, 
+checking out products, and tracing products [7]. In the context of IP, comprehensive information is offered not only about 
+the product itself but also about its history [16]. Compared to existing traceability systems with limited variabilities, IP 
+proves to be more effective [2]. Packaged products undergo changes such as biological, physical, chemical that can result 
+in spoilage, making it difficult for consumers to detect and assess. Consequently, consumers often question the suit-
+ability of a product for consumption when there are minor deviations from the norm [5]. Typically, tests are conducted at 
+the industrial level during production and before dispatch, while post-dispatch testing until consumption is infrequent 
+for packaged products. IP has the potential to address this gap. Notably, IP does not directly interact with the product 
+itself [17]. Quality features, environmental conditions, the components of quality indicators, and their function as data 
+carriers collectively constitute a basis for categorizing IP systems [5]. In IP systems, there are three major technologies in 
+use namely indicators, data carriers, and sensors [2, 18]. In addition to the integration of physico-chemical equipment, 
+there’s a noticeable trend towards incorporating artificial intelligence (AI) into intelligent packaging systems. This study 
+is designed to provide an exhaustive examination of the diverse applications, technologies, advantages, and limita-
+tions of intelligent packaging (IP) within the area of food technology. Its primary objective is to enhance food safety 
+and quality across the entirety of the supply chain, spanning from the initial stages of production to the ultimate point 
+of consumption. The current comprehensive review seeks to explain the potential avenues for future advancements 
+in the integration of AI with intelligent packaging in the field of food technology. This combination of AI and IP holds 
+great potential in further improving food quality and freshness monitoring, ensuring that consumers receive safer and 
+higher-quality food products.
+2  Comprehensive literature assessment
+2.1  Intelligent food packaging
+As per the legal definition explained by the European Union, IP encompasses an element facilitating the surveillance 
+on the condition of packaged food items or the ambient conditions covering the food throughout its transportation 
+and storage phases [19]. IP has the capability to communicate by acquiring, storing, processing, and sharing informa-
+tion across the entire supply chain [7]. Integrating the concept into packaging materials might raise concerns about 
+food products prices [16]. Nonetheless, IP yields notable benefits, including improved safety, enhanced product quality, 
+reduced waste, and facilitation of inventory management [7]. IP systems offer timely responses [20, 21], while indicators, 
+sensors, and data carriers are utilized to achieve intelligent functionality [16]. IP demonstrates rapid growth, progress-
+ing at a double-digit rate. Simultaneously, items such as time–temperature indicators and intelligent labels/tags are 
+becoming increasingly prevalent in the market [22]. IP functions as a quality gauge, delivering augmented convenience 
+and elevated security against theft. The primary technologies of IP include Indicators, Data Carriers, and Sensors, which 
+can be described as follows.
+Indicators aim to enhance convenience and offer accurate quality information [2]. Sensors are specific devices used 
+to detect, locate, or measure chemical or physical properties such as energy or matter [2]. Data carriers enable efficient 
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+information flow within the supply chain [2]. These IP’s ensure automation, traceability, counterfeit protection, and 
+theft prevention by storing and transmitting essential information. Data carriers store and facilitate the transfer of 
+data, whereas indicators and sensors are responsible for monitoring and displaying external information [5]. IP has the 
+potential to enhance the efficacy of ‘Hazard Analysis and Critical Control Points’ and ‘Quality Analysis and Critical Control 
+Points’ systems [19, 23], which are devised to accomplish the several objectives. Such as quickly recognize hazardous 
+food items, identify potential health risks and formulating strategies and protocols to prevent, mitigate, or eliminate 
+these issues. Additionally, they aim to identify key processes that significantly impact quality attributes and facilitate 
+efficient improvement of the final food product’s quality.
+2.2  Indicators
+Indicators are able to identify the existence or lack of particular constituents, measuring their concentrations, or assess-
+ing the extent of reactivity between different constituents [12]. These indicators exhibit characteristic and observable 
+changes, which can be visualized directly [2, 5, 24]. Indicators are positioned either internally or externally the package, 
+depending on their specific type [2], and lack any receptor or transducer, unlike sensors [21]. Indicators represent a widely 
+utilized IP device [15] and can be categorized into three types: external, attached outside the package; internal, placed 
+within the package; and based on their efficiency in information flow and effective communication with consumer [25, 
+26].
+2.2.1  Time temperature indicators
+The shelf life and safety of a product are notably influenced by temperature, as the combination of time and tempera-
+ture directly impacts the physical kinetics and chemical deterioration [2, 7, 17]. Deviations in temperature can lead to 
+product spoilage, affecting its shelf life by promoting undesirable growth and survival of specific microorganisms [1, 27]. 
+Temperature variations can also lead to alterations in the constituents present within the product. Two distinct kinds of 
+temperature indicators exist: simple temperature indicators and time temperature indicators (TTIs) [28]. Temperature 
+indicators are employed to fulfil the function of indicating if products have been subjected to heating above or cooling 
+below a specified reference temperature. Their primary role is to signal to consumers the potential survival of pathogenic 
+microorganisms and the occurrence of protein denaturation due to procedures like freezing or defrosting [29]. TTIs are 
+utilized to ensure the maintenance of the required temperature within specified time periods at various control points 
+throughout the entire food supply chain [5, 17]. TTIs serve to record the thermal history of the product [1, 6, 30], facili-
+tating the detection of temperature abuse or any instances where the product is kept beyond the specified threshold 
+duration [17]. TTIs are external IPs giving storage information [25]. There are three types of TTIs based on their function: 
+critical temperature indicators, critical temperature/time integrators/partial history indicators and time temperature 
+integrators or indicators/full history indicators [7, 31].
+Critical temperature indicators determine whether the product has been exposed to temperatures exceeding or fall-
+ing below the permissible threshold [31], thereby detecting any fluctuations from the prescribed temperature range. 
+Critical temperature/time integrators/partial history indicators identify whether a product has undergone temperature 
+abuse, leading to changes in product quality [5, 8, 32]. Time Temperature Integrators or Indicators/full history indicator 
+record the complete temperature profile throughout the food supply chain, enabling the detection of any instances of 
+temperature abuse [2, 5, 33].
+TTIs can be categorized based on their working principle as chemical, physical, enzymatic and biological systems 
+[1, 15, 24]. Chemical TTI indicates a specific colour by reacting chemically [1]. They are polymerization-based TTI, pho-
+tochromic-based TTI, and oxidation reaction-based TTI [34]. TTI based on polymerization operates on the basis of a 
+solid-state polymerization process involving a monomer and an acetylene group. In the case of the photochromic-based 
+TTI, it employs a photochromic chemical that is activated by a particular wavelength of light, resulting in a distinctive 
+colouration change as a result of thermally induced fading in a reverse reaction process [1]. The oxidation reaction-based 
+TTI, on the other hand, changes its colour by a redox reaction or a light-induced redox reaction in which the chemical 
+reacts with oxygen in the air [1, 17]. Physical TTI can be categorized based on their working principles, utilizing different 
+physical property discolouration mechanisms, including diffusion-based TTI, nanoparticle-based TTI, electronic TTI, etc. 
+[34, 35]. The enzymatic TTI operates on the basis of a hydrolysis reaction involving an enzyme and its substrate, resulting 
+in a colour change [36]. This colour change can be calibrated by considering various parameters, such as the enzyme 
+type and concentration, the presence of activators or inhibitors, the pH level, and the presence of a buffer [1, 37]. As 
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+Biological TTI, Yeast and lactic acid bacteria based TTIs are commonly employed, while Streptococcus based TTIs are also 
+available for use. TTIs based on photonic lattice changes and TTIs relying on thermo-chromic polymer/dye blends are 
+other available options [1].
+TTIs play a crucial role in signalling potential microbial survival or denaturation of proteins caused by temperature 
+fluctuations [2, 8]. Their usefulness is based on irreversible time and temperature-dependent changes in the product, 
+which may include chemical, mechanical, electrochemical, enzymatic, or microbiological activities [5, 7, 38, 39]. These 
+TTIs provide measurable values through visible responses, such as colour development, colour movement, or mechanical 
+deformation [40]. They are user-friendly and readily applicable, given their direct impact on food quality and temperature 
+[1]. In the market, the majority of commercially available TTIs are in the form of label-type indicators or tags [17, 41], 
+typically attached to the packaging to monitor time–temperature variations from production to consumption [1, 7]. The 
+commercial adoption of TTIs has witnessed a notable increase in recent years [21]. TTIs represent the most prevalent IP 
+system in use today [22], particularly for foods stored under chilled or frozen conditions [25, 42]. The lactic acid-based 
+TTI employs lactic acid vapor diffusion to detect the time–temperature history of fruits and vegetables, thereby indi-
+cating their quality [43]. The Vitsab TTI, developed by Vitsab AB in Malmö, Sweden, utilizes lipase as an enzymatic TTI 
+­CheckPoint® to ensure quality assurance at ambient temperatures [39, 41]. The colour of the TTI changes from green to 
+orange/red due to a pH shift caused by the release of fatty acids from lipase activity, indicating it is no longer suitable 
+for consumption (Fig. 1) [39, 44]. The application of alpha-amylase and β-glucosidase estimates the temperature–time 
+history throughout the sterilisation procedure. A laccase-based TTI prototype demonstrates potential in predicting food 
+quality losses attributed to enzymatic modifications, hydrolysis, and lipid oxidation [41, 45]. Commercially available TTIs 
+encompass a range of types, including diffusion-based, chemical-based, photochemical reaction-based, microbiologi-
+cal, polymer-based, enzymatic-based, and barcode-based label TTIs [16, 24, 46]. Table 1 displays several examples of 
+commercially available TTIs.
+TTIs play a crucial role in ensuring food quality and safety, which directly influences consumer satisfaction and percep-
+tions [1]. These indicators are designed with a consumer-friendly approach [22], characterized by simplicity, relatively 
+lower cost, and high efficiency [26, 42]. Nevertheless, it is essential to consider potential risks associated with certain 
+TTIs. Even though TTIs are generally tightly attached, organic or inorganic compounds present in some TTIs may migrate 
+into the food, posing potential toxicity concerns. For instance, Acetylene polymerization-based TTI may contain dia-
+cetylene compounds with cytotoxic activity, Redox reaction-based TTI may include anthraquinones, a potentially toxic 
+substance, and Nano-based TTI may incorporate toxic inorganic Ag and Au nanoparticles [1]. Thus, careful evaluation of 
+TTIs’ composition and safety aspects is essential to mitigate any potential health risks. TTIs primarily monitor the outer 
+surface temperature of the food package rather than directly measuring the actual temperature of the food itself. As a 
+result, the colour change in TTIs may not always accurately reflect the complete temperature profile of the product, pos-
+ing limitations in accurately forecasting product shelf-life [1]. The implementation of TTIs get considerable costs, which 
+can make manufacturers reluctant to adopt this technology in their packaging [1]. The lack of sufficient knowledge and 
+awareness about food safety management related to TTIs serves as a barrier to their widespread adoption [31]. Suc-
+cessful TTIs should possess certain characteristics, including being low cost, easily comparable, simple, reliable, capable 
+of tolerating ambient temperatures, and having a flexible temperature range. TTIs should present no safety hazards or 
+Fig. 1   Colour change in active 
+and expired ­CheckPoint® TTI 
+[44]
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+Table 1   Commercially available TTIs and their functions and working conditions
+N/A denotes not applicable
+Commercially available TTIs
+Function
+Category
+Storage
+Activation
+Examples
+Commercial diffusion-based TTI
+Applied for monitoring the microbial qual-
+ity of perishable food [41, 47]
+Physical
+Low temperature
+Mixture
+3 M Monitor Mark® (3 M Company, USA) [25, 
+48], TT Sensor™ (Avery Dennison Corpora-
+tion, USA) [25, 49]
+Commercial enzymatic TTI
+It operates within diverse food systems by 
+detecting pH changes through substrate 
+and enzyme adjustments and changes in 
+colour [50]
+Enzymatic Low temperature
+Mixture
+CheckPoint® (Vitsab AB, Sweden) [25, 49], 
+Vitsab indicator (Vitsab Sweden AB, Swe-
+den) [51], TimeStrip® (TimeStrip UK Ltd., 
+Cambridge, UK) [52]
+Commercial polymerization-based TTI Indicate the food product’s shelf life by 
+changing the colour of the polymer [1]
+Chemical
+Low temperature
+Room temperature
+Lifelines Freshness Monitor® (lifelines 
+Technology Inc., USA) [17], Fresh-Check 
+(TEMPTIME Corporation, NJ, USA) [17, 24, 
+49], HEATmarker® (TEMPTIME Corporation, 
+NJ, USA) [1]
+Photochemical-based TTI
+Shows heat exposure using colour-chang-
+ing ink [53]
+Chemical
+Room temperature Light
+OnVu™ (Ciba Specialty Chemicals Inc., Swit-
+zerland) [49, 54]
+Barcode-based label TTI
+Barcodes printed with temperature-sensi-
+tive ink for cold chain monitoring [55]
+Physical
+Low temperature
+Temperature change FreshCode™ (Varcode Ltd.) and ­Tempix® 
+(Tempix AB) labels [55]
+Microbiological TTI
+Microorganisms at specific temperatures 
+produce acid, causing a colour change via 
+pH indicators [1, 49]
+Biological
+Low temperature
+Mixture
+TopCryo™ [55], TRACEO® and eO® (CRYOLOG) 
+[49, 56]
+Nanoparticle-based TTI
+Nanoparticles change surface when heated, 
+shifting wave numbers into the visible 
+range in food packaging [1]
+Physical
+Low temperature
+Mixture
+N/A
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+toxicity concerns, effectively convey the necessary information, and have a considerable pre- and post-activation shelf 
+life [24]. TTIs must enhance functionality, improve barrier properties, and reduce costs. Evaluating toxicology is essential 
+to prevent hazardous compound migration, ensuring consumer safety. Improving time and temperature accuracy and 
+accounting for other shelf-life factors are necessary. As part of IP, TTIs help meet quality and safety expectations beyond 
+traditional packaging.
+Recent consumer study in France, Greece, Germany, and Finland revealed both favourable and negative opinions of 
+TTIs for packaged meat or poultry and fish [57]. TTIs are perceived as improving cold-chain management prior to and 
+following purchase, functioning as an additional factor for food selection, and generating excitement due to their origi-
+nality [58]. Some people have negative views on TTIs. Concerns include increased food waste due to misinterpretations, 
+and potential manipulation by retailers who might remove the indicators. Additionally, skepticism exists regarding the 
+technology’s reliability, confusion about the TTI messages, and potential conflicts with other freshness indicators [57, 58].
+2.2.2  Gas indicators
+Gas indicators directly contact, and monitor gases produced during food deterioration, ensuring food quality and safety 
+[59, 60]. The air inside food packaging isn’t constant. It’s influenced by the food itself by breathing and moisture release 
+of fresh produce, microbial spoilage and the packaging material permeability along with surrounding conditions like 
+temperature and leaks. These modifications have a direct impact on the quality, safety, integrity, and shelf-life of pack-
+aged food items [38]. Gas indicators determine food quality based on inside atmosphere. The sensor monitors packaging 
+environment and triggers responses, displaying the real indicator’s status. Placed within the package, they respond to 
+gas changes [38, 59, 61]. Some may lose colour due to moisture. Indicators show irreversible colour shifts in response 
+to gas composition. They monitor oxygen, carbon dioxide ­(CO2), ethanol, hydrogen sulfide, and water vapor levels, 
+which often strongly correlate with spoilage development [38, 59]. Many devices utilize redox dyes, reducing agents, 
+and alkaline components. Encapsulation or coating techniques enable UV-activated colourimetric indicators to signal 
+reduced dye leaching [2, 59, 62]. A visual ­CO2 indicator device is created, incorporating polymeric films with chemical 
+dyes like bromocresol purple or methyl red, and polypropylene resin with calcium hydroxide as a ­CO2 absorbent. This 
+estimates the fermentation degree in kimchi, a traditional fermented vegetable-based food in Korea, without damaging 
+the packaging during storage and distribution (Fig. 2) [38, 63–65]. These indicators offer information on the ­CO2 levels in 
+packages during transportation and storage, along with early detection of food spoilage. Regardless of the temperature, 
+the system works on the basis of pH-dependent colour change [65].
+Variations in ­CO2 and oxygen content can lead to microbial decomposition and quality degradation. Hence, in some 
+applications, a ­CO2 indicator can also act as a leakage indicator. Colourimetric ­CO2 indicators that use natural extracts 
+such as lysine, polylysine, and anthocyanin, like oxygen indicators, have been created to detect pH changes. In experi-
+ments involving poultry meat, researchers examined both aqueous-type and label-type indicators with various ­CO2 
+concentrations, detecting apparent colour shifts from azure to deep purple [60, 66].
+2.2.3  Freshness indicators
+Microbial contamination in foods leads to reduced shelf life and increased foodborne disease risks. Consequently, the 
+food industry, merchants, and food safety regulatory authorities are keenly interested in developing accurate, cost-
+effective, quick, trustworthy, and nondestructive ways to check real-time food product freshness. Freshness indicators 
+play a crucial role in monitoring the quality of food products during storage and transportation [5, 67]. The loss of fresh-
+ness in food products can occur due to unfavorable conditions or surpassing the designated shelf life. Freshness indica-
+tors assess the product’s microbiological quality by reacting to metabolites produced during microbe growth and the 
+associated spoiling or reduction in freshness. They can also indicate instances of temperature misapplication or package 
+leaks [5, 68]. A freshness indicator is a packaging technique specifically developed to provide direct information about 
+the quality of the product, not just alerting consumers about temperature abuse or package leaks. Freshness indications 
+must be put within the package for contact with the chemicals. The detection of this information can be achieved using 
+various methods, depending on the type of indicator [69] (Table 2). To monitor the quality of packaged food, freshness 
+indicators use microbial growth metabolites to identify changes occurring inside the food product, such as ­CO2, total 
+volatile basic nitrogen (such as ammonia, dimethylamine, and trimethylamine), and ­H2S [70, 71].
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+These indicators function by utilizing interactions with growth metabolites like CO2, oxygen, ethanol, lactic acid, 
+glucose, and other volatile organic molecules. The aim is to detect chemical changes or microbial growth within the 
+packaging. These indicators require direct contact with the food. Metabolites such as carbon dioxide, volatile nitrogen 
+compounds, ethanol, biogenic amines, ATP degradation products, glucose, sulfuric compounds and organic acids are 
+indicative of product quality. A sensor label developed by FQSI (Food Quality Sensor International Inc., Lexington, 
+MA, USA) that can recognize biogenic amines is an example of a freshness indication [72, 75]. ­SensorQ™ is customarily 
+tailored for beef and poultry applications, with a primary emphasis on enhancing the detection of microbial growth 
+and monitoring gases within the container, notably focusing on sulfide gas [76]. This sensor sticker changes colour 
+from orange to brown upon detecting a significant level of bacterial growth (Fig. 3) [24].
+Biogenic amine sensors are based on the working theory of amine oxidases or transglutaminase [72, 77]. Lactic 
+acid sensors function based on ­NAD+ dependent lactate dehydrogenase, hydrogen peroxidase, lactate oxidase and 
+flavocytochrome ­b2 activities [78]. Glucose sensors utilize immobilized glucose oxidases on the electrode surface, 
+catalyzing the oxidation of glucose [79]. The intelligent sensor label, named RipeSenses (Jenkins Group, Auckland, 
+New Zealand), serves as a calorimetric indicator for determining the optimal maturity level of fruits, particularly pears. 
+The functionality is based on the identification of natural aromatic molecules released by ripening fruit. The sensor’s 
+initial red colour represents crispness, transitioning to orange to denote firmness, and ultimately turning yellow to 
+indicate full ripeness and peak juiciness of fruits, particularly in pears. When the sensor achieves the intended ripe-
+ness colour, refrigerating the fruit substantially decelerates the ripening process [63, 72]. This technology has found 
+application in various other fruits, including kiwifruit, melon, avocado, mango, and stone fruit [63].
+Before achieving widespread commercial use, several limitations related to freshness indicators relying on broad 
+spectrum colour shifts require attention. The lack of specificity can lead to colour changes indicating contamination 
+even in items without noticeable sensory or quality deterioration. The existence of specific target metabolites doesn’t 
+always equate to poor quality. A more accurate correlation is needed between product type, target metabolites, and 
+Fig. 2   Indicators to detect 
+fermentation degree of kimchi
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+Table 2   Fundamental concepts of indicators utilizing metabolites
+Metabolites
+Food products
+Indication
+Sensors
+References
+Glucose/Lactic acid
+Meat, Fermented food
+Colourimeter used to determine pH
+Redox reaction-based electrochemical sensor
+[69]
+Carbon dioxide
+Meat, Fermented food
+pH sensitive dye reaction
+Electrochemical sensor based on redox reaction
+[69]
+Oxygen
+Vegetable, Meat
+Fluorescence optical sensors, colourimeters with pH-
+indicator dyes
+Electrochemical sensor by Zirconia, laser
+[72, 73]
+Biogenic amines 
+(tyramine, cadaverine, 
+putrescine, histamine)
+Fish, Meat (Poultry, Beef, Pork) Dyes that change colour in response to pH
+Electrochemical biosensor by enzyme redox reaction 
+or spectrophotometric assay based on enzymatic 
+determination
+[69, 72]
+Ethanol
+Seafood, Fresh produce
+Dyes that change colour in response to pH
+Enzyme-based test strips
+[72]
+ATP degradation products Meat, Seafood
+Redox reaction-based colour change
+Enzymatic determination test strips and electrochemi-
+cal biosensors
+[72, 73]
+Sulfuric compounds
+Poultry meat, Seafood
+The interaction with hydrogen sulphide changes the 
+colour of the thin silver coating to an opaque pale 
+brown
+Radio frequency readable, package integrated sensors, 
+Nano-scale layer of silver
+[72]
+Volatile nitrogen com-
+pounds (ammonia, 
+dimethylamine, trimeth-
+ylamine)
+Seafood
+pH sensitive dyes as a visible change in colour
+Headspace-gas chromatography, Semiconductor gas 
+sensors, Ammonia ion-selective electrodes
+[72, 74]
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+organoleptic quality and safety. Unless a reliable indication of genuine spoilage is guaranteed, producers might 
+hesitate to adopt indicators due to the potential for false-negative results [80].
+2.2.4  Pathogen indicators
+In addition to the aforementioned systems designed to respond to food product spoilage. There have been developments 
+in indicators aimed at directly detecting contamination of meat and meat products by pathogenic microorganisms. These 
+indicators, compact analytical devices, are capable of detecting, recording, and transmitting information about biochemi-
+cal reactions caused by pathogens [7]. These devices include bioreceptors for analyte detection and transducers for signal 
+conversion. Bioreceptors are organic or biological materials like enzymes, antigens, microbes, hormones, or nucleic acids, 
+while transducers can be electrochemical, optical, or calorimetric. These sensors in food packages also change colour 
+to indicate potential issues [17, 38, 52, 81]. In the food chain, it is essential to monitor and identify specific pathogenic 
+microorganisms that can lead to various diseases and pose a risk to human health. These indicators offer insights into 
+the microbiological situation, particularly on perishable foods like meat, fish, and poultry. They furnish information about 
+food product quality by detecting biochemical alterations and the proliferation of contaminating microorganisms [82].
+Lawrence Berkeley National Laboratory created a specialized indicator material to detect Escherichia coli 0157 entero-
+toxin. This material, integrated into packaging, contains cross-polymerized polydiacetylene molecules, appearing deep 
+blue. Specific toxin-binding molecules are confined in this matrix. Upon toxin interaction, the film shifts colour from 
+blue to red [8]. When the microorganism is present, the barcode becomes uninterpretable. Lawrence Berkeley National 
+Laboratory has devised distinct indicator materials to detect Escherichia coli 0157 enterotoxin. These pathogen indicators 
+induce colour changes in food packaging to signal consumers and retailers against consuming the food. An exemplar of 
+a commercially available pathogen indicator is the Food Sentinel ­System™ (SIRA Technologies, California, USA), reveal-
+ing pathogen presence in meat packaging. Salmonella sp., Escherichia coli 0157:H7, Campylobacter sp. and Listeria sp. 
+adhere to the membrane, integrated with the barcode. The emergence of a contaminating pathogen initiates the devel-
+opment of a distinct dark band in the barcode, resulting in the barcode becoming unreadable during scanning [26, 29, 
+52, 83]. Toxin ­Guard™, created by Toxin Alert in Ontario, Canada, represents another pathogen indicator. It encompasses 
+biochemical sensors that incorporate antibodies within a polyethylene-based plastic packaging. This system is adept at 
+detecting pathogens including Salmonella sp., Campylobacter sp., Escherichia coli, and Listeria sp. [49]. Volatile amines 
+can be determined based on polyaniline films, cellulose, and bacterial cellulose membranes, which are supplemented 
+with methyl red or curcumin [84]. Zinc oxide nanoparticles were developed in meat packaging to delay the growth of 
+microflora and retard lipid and protein oxidation [85]. Gelatin-sodium alginate films containing beetroot peel extract work 
+as antioxidants and are used in food packaging for meat preservation [86]. Freestanding films of antimicrobial conduc-
+tive nanocomposites, comprising poly sulfobetaine methacrylate and bacterial nanocellulose, were developed. These 
+films exhibit characteristics desirable for intelligent food packaging, including ultraviolet barrier properties, moisture 
+absorption capabilities, and antimicrobial activity effective against foodborne pathogens [87].
+2.3  Sensors
+A sensor can be defined as a device employed for the detection, localization, or quantification of energy or matter. This 
+device generates a signal in response to the detection or measurement of a specific chemical or physical property [5, 
+88]. Utilizing a sensor presents an alternative to the typical analytical techniques, which can often be expensive, time-
+consuming, and result in destructive processes [19]. In intelligent food packaging, different types of sensors are used. 
+Typically, monitoring of packaged food focuses on factors such as temperature, gas production, humidity levels, and 
+the growth of microorganisms [62, 89]. Sensors typically comprise two fundamental elements: a receptor for detecting 
+Fig. 3   Working principle of 
+c [24]
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+and identifying diverse physical or chemical parameters and a transducer to convert these readings into a measurable 
+form of energy [5, 54, 88]. Sensors employed in intelligent food packaging can be primarily classified into categories 
+such as gas sensors, chemical sensors, biosensors, printed electronics, and electronic noses [17, 19]. There exist certain 
+challenges for the practical implementation of sensors for commercial purposes. Ideally, these indicators should be 
+compact, flexible, cost-effective, durable, and highly sensitive. Additionally, they must comply with strict regulations 
+and be compatible with food safety standards [19].
+2.3.1  Gas sensors
+Gas sensors can detect and quantify gases, such as ethylene, carbon dioxide, sulfur dioxide, ethanol, ammonia and hydro-
+gen sulfide, released during product spoilage [5, 90, 91]. Metal oxide semiconductor field-effect transistors, amperometric 
+oxygen sensors, piezoelectric crystal sensors, potentiometric carbon dioxide sensors, and organic conducting polymers 
+are some of the established systems for gas detection [2]. Recent advancements have led to the development of sensors 
+addressing certain limitations, including fouling of sensor membranes, cross-sensitivity to hydrogen sulfide and carbon 
+dioxide, and the depletion of analytes like oxygen and ­CO2 [2, 24].
+CO2 sensors are typically classified into two categories: optical and electrochemical, based on the type of transducer 
+[89, 92]. ­CO2 sensors can be categorized as Non-Dispersive Infrared (NDIR) Sensors, Photoacoustic Sensors, Wet Con-
+ductometric Sensors, Severinghaus-type Sensors, Ion-Selective Field-Effect Transistor Type Sensors, Dye-Based Sensors, 
+Optical Fiber Sensors, Adsorption by Metal Oxide-Based Sensors, Graphene-Based Sensors, Potentiometric Sensors, and 
+Ionic Liquids-Based Sensors in various types [92]. Conventional and commercial approaches for detecting gaseous and 
+dissolved ­CO2 involve NDIR sensors and Severinghaus-type sensors, respectively. NDIR instruments, despite their high 
+precision, are expensive, bulky, and susceptible to contamination by water vapor and other substances. Additionally, they 
+require destroying the packaging for gas analysis, hindering their everyday use. Therefore, there’s a need for compact 
+and affordable alternatives [89]. Optical carbon dioxide gas sensors have immense potential for use as food packaging 
+indicators. Dry optical sensors with pH-sensitive dye indicators are especially interesting for monitoring ­CO2 levels and 
+functioning as spoiling indicators in food packaging [24, 54, 93]. In food packaging, water-based ­CO2 indicator inks are 
+common, but challenges like humidity interference, lifespan, safety, cost, and proton generation must be addressed 
+to realize the full potential of pH-based sensors [94]. While they exhibit relatively lower sensitivity to ­CO2 compared to 
+solvent-based sensors, they provide extended shelf life and faster response times. Nonetheless, more research is essential 
+for the development of sensors tailored for food applications. Photonic crystal sensors hold promise due to their cost-
+effectiveness, long lifespan, and suitability for a range of analytes [89, 94].
+2.3.2  Chemical sensors
+The chemical sensor, known as the receptor, consists of a chemically selective coating. It can identify specific chemicals 
+or gases based on their presence, activity, composition, and concentration through surface adsorption. The transducer 
+then converts the observed presence of these specific chemicals into signals. Transducers can be classified as either 
+active or passive, depending on their requirement for external power during measurement [19]. Carbon nanomateri-
+als, including nanoparticles, graphene, graphite, nanofibers, and nanotubes, find application in chemical sensors due 
+to the outstanding electrical and mechanical attributes, in addition to their substantial specific surface area [19, 95]. 
+Nanotechnology-based chemical sensors offer diverse applications in the food industry. They can identify pathogens, 
+chemical contaminants, spoilage, and product tampering, ensuring food safety, quality control, and packaging security 
+[17, 96]. Wearable chemical sensors have gained attention in academia, primarily for identifying hazardous chemical 
+threats like pesticides, narcotics, and explosives [97]. Given the critical issue of pesticide misuse within the food industry, 
+an immediate demand exists for sensors to oversee food safety. As a response, fingertip electrochemical sensors have 
+been introduced to the field of pesticide sensing. These wearable chemical sensors are integrated into robotic gloves for 
+assessing attributes such as sweetness influenced by glucose, sourness affected by ascorbic acid, and spiciness influenced 
+by capsaicin on different fingers [98, 99].
+2.3.3  Biosensors
+A biosensor is an analytical device utilized for quantifying specific target molecules within a sample. Generally, a biosensor 
+encompasses a bio-recognition element, which can be an aptamer, antibody, or enzyme, known for its specific binding to 
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+the target molecule [100, 101]. In biosensors, biological components are coupled with physicochemical detectors, offer-
+ing significant advantages for detecting and analyzing food contaminants. This synergy results in heightened sensitivity 
+and specificity due to precise target recognition [102]. Inside a biosensor, the transducer converts a physicochemical or 
+biological signal into a measurable form. These signals manifest in diverse ways, encompassing optical manifestations 
+like colourimetry, fluorescence, chemiluminescence, and surface plasmon resonance. They manifest as electrical signals, 
+including voltammetry, impedance, and capacitance [100, 102, 103]. Biosensors are widely utilized for the recogni-
+tion, recording, and quantification of diverse substances, encompassing allergens, sugars, amino acids, alcohols, lipids, 
+pathogens, and other analytes [2, 7, 19]. They play a crucial role in identifying target metabolites formed as a result of 
+the complex biochemical reactions that occur during food degradation [104, 105]. There are various types of biosen-
+sors based on different operating principles. These include electrochemical biosensors [106], optical biosensors [107], 
+immobilized-based biosensors [108], piezoelectric biosensors [109], microbial biosensors [110], and nanomaterials-based 
+biosensors [111]. Nanomaterial-based biosensors present key advantages, including enhanced selectivity and sensitivity, 
+specific target recognition, shorter analysis times, and improved signal readout. These biosensors exhibit the capacity 
+to detect an extensive array of substances, spanning pathogens, toxins, heavy metals, pesticides, veterinary drugs, and 
+illicit additives [102, 112]. The fundamental differentiation between a biosensor and a chemical sensor is rooted in the 
+composition of the recognition layer. In biosensors, this layer consists of organic or biological materials, whereas in chemi-
+cal sensors, the receptor takes the form of a chemical compound. Biosensors exhibit greater specificity in monitoring 
+food freshness compared to freshness indicators [15, 113]. Examples of developed biosensors include the Food Sentinel 
+System by SIRA Technologies (USA), Toxin ­Guard™, and Flex Alert biosensors [2].
+2.3.4  Printed electronics
+Printed electronics technology is an interdisciplinary field that combines printing and electronics, enabling the creation 
+of electronic circuits on flexible substrates using electrically functional inks [17, 114, 115]. Printed electronics use different 
+printing techniques like inkjet printing, screen printing, nanoimprinting, and soft lithography. These methods manu-
+facture electronic circuits on flexible substrates such as polyimide, polyether ether ketone, polyethylene terephthalate, 
+transparent conductive polyester, steel, or paper [19, 114, 116]. In printed electronics, traditional inks are swapped for 
+functional inks that can conduct, block current, and change colour [15, 117]. Unlike standard inks made up of pigments, 
+solvents, resins, and polymers, functional inks incorporate specialized elements, such as metal particles [15, 118]. These 
+include conductive, chromogenic, photochromic, and thermochromic inks, and they play a vital role in intelligent food 
+packaging systems, particularly in printed electronics [15]. Printed electronic sensors are lightweight, flexible, portable, 
+potentially foldable, thin, and can be tailored to operate uniquely on various substrates [19, 119].
+2.3.5  Electronic noses
+Electronic noses replicate the mammalian olfactory system to consistently and reproducibly identify and categorize 
+aromatic compositions in odorous substances, generating unique responses for each flavor or odor [17, 120]. The sensors 
+integrated into electronic noses exhibit reactivity towards both odorous and odorless volatile compounds [121, 122]. It is 
+designed to perceive and differentiate complex odor compounds through an array of sensors that are broadly sensitive 
+and non-specific. These sensors are treated with a range of odor-sensitive biological or chemical agents, enabling them 
+to detect a variety of odors [123]. The utilization of pattern recognition techniques is crucial for qualitative odor analysis 
+or the discernment of multiple compounds in a given mixture. Multicomponent analysis methods are employed for 
+the quantitative assessment of one or more compounds within the mixture [121]. In commercialized electronic noses, 
+the main technologies used include metal oxide semiconductors, metal oxide semiconductor field-effect transistors, 
+conducting organic polymers, and piezoelectric crystals [120]. Electronic nose systems have demonstrated success in 
+assessing the quality of various food items, including fresh yellowfin tuna and vacuum-packed beef [8, 124, 125]. These 
+systems are applicable for evaluating the quality of fruits and vegetables by analyzing their emitted odors. For example, 
+[126] employed an electronic nose to investigate the volatile compounds produced during different ripeness stages of 
+tomatoes. Similarly, [127] employed electronic nose technology to evaluate the quality of modified atmosphere-packed 
+broiler chicken cuts. Recent advancements in technology have introduced nano material-based electronic noses, which 
+have the potential to detect molecules at near-single molecule levels, resulting in faster response kinetics. The high 
+integration density offered by these materials can lead to the development of smaller-sized devices with superior per-
+formance when compared to existing sensor technologies [128, 129].
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+2.4  Data carriers
+Data carriers, also recognized as automatic identification devices, constitute a foundational category within SP. Typically 
+compact and cost-effective labels or tags, they are affixed to a product’s primary, secondary, or tertiary packaging, with 
+the aim of augmenting quality and safety through streamlined communication along the supply chain. These carriers 
+store and transmit data, enabling functions such as automation, traceability, theft prevention, counterfeit protection, and 
+a multitude of other capabilities. Barcodes and Radio Frequency Identification Tags (RFID), categorized as a convenience-
+enhancing intelligent system, plays a key role as a data carrier within the food industry [2, 5, 130]. These technologies are 
+employed individually or synergistically, contingent upon the context [131, 132]. In tandem with technological progress, 
+additional IP mechanisms, such as biosensors are seamlessly integrated with RFID technology, offering a substantial 
+enhancement in the quality and safety of food products.
+2.4.1  Barcodes
+Due to their cost-effectiveness and ease of use, barcodes have become widely popular, especially in large-scale retailing, 
+following the introduction of Universal Product Code (UPC) barcodes in the 1970s [7]. Barcodes revolutionized retail by 
+eliminating manual tasks in inventory management, stock documentation, and checkout. Their integration with event 
+stream processing software allows for smart warehouse management [2, 133]. UPC is comprised of a series of parallel 
+bars and spaces meticulously arranged to encode 12-digit data, which is deciphered by an optical barcode reader [2, 7, 
+130, 134]. The progression of barcodes encompasses three principal phases. The initial phase comprises one-dimensional 
+(1-D) barcodes, constituting the first generation, where storage capacity is confined to the manufacturer’s identifica-
+tion and item numbers. The fundamental mechanism of 1-D barcodes mirrors the traversal of a laser beam horizontally 
+across vertical code bars. The duration of beam exposure to the symbol’s black bars and light regions is recorded during 
+its passage [2]. Subsequently, a lookup table is utilized to decode distinct characters, spanning different periods [7]. To 
+address the issue of limited storage capacity inherent in 1-D barcodes, a subsequent development known as Reduced 
+Space Symbology (RSS) was introduced [2, 135]. RSS brings forth numerous advancements in product identification and 
+traceability within the grocery industry. Notably, the RSS 14 Stacked Omni directional barcode encodes the complete 
+14-digit Global Trade Item Number, allowing its application as a narrow symbol on products with restricted space, such as 
+fruits [7, 136]. To significantly augment the storage capacity to accommodate up to 74 alphanumeric characters, the RSS 
+expand barcode was devised. This expansion facilitates the encoding of additional information, including batch numbers 
+and packaging-related data [2, 7]. The third-generation two-dimensional (2-D) barcodes, combining dots and spaces in 
+a matrix, were developed. In this type of barcode, data can be encoded using various modes, including numeric, alpha-
+numeric, binary, kanji, or logographic Chinese characters [2, 137]. An exemplar showcasing the enhanced data density 
+achievable within confined space using 2-D barcodes is the Portable Data File 417, which can accommodate up to 1.1 
+kilo bytes of data within the dimensions of a UPC barcode. This underscores how 2-D barcodes permit the encoding of 
+significantly greater information [2, 7].
+Reading 2-D symbology necessitates a transition to 2-D simultaneous reading scanners. Technological progress has 
+rendered scanners more potent and economically viable, accompanied by innovations like wireless handheld barcode 
+scanners, now commonplace in numerous retail establishments [7]. Ensuring the quality of barcode printing on food 
+packages is of paramount importance, and extensive research has been conducted to determine the optimal printing 
+conditions. The ideal process parameters for maximizing barcode quality involve a feed rate of 200 m/min, an operational 
+temperature of 220 °C, a contact pressure of 45 kPa, and a kinetic velocity of 90 ­mm2/sec [138]. Likewise, in today’s busi-
+ness environment, spanning across industries including the food sector, barcode technology plays a vital role in track-
+ing both the internal and external product flows. This widespread adoption is attributed to its ability to accelerate data 
+transmission and enhance information accuracy.
+2.4.2  Radio frequency identification tags
+RFID tags represent a form of wireless communication classified within the area of informative and responsive packaging. 
+They operate based on the fundamental principle of product/object identification through radio frequency utilization. 
+Typically, an RFID system comprises three core components: a transponder, a reader, and associated software [7, 139, 
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+140]. The underlying operational mechanism involves the transmission of signals via radio waves to activate the tag. Once 
+activated, the tag responds by emitting a wave back to the antenna, which is then converted into data. This captured 
+data is then channeled to the software for analysis and decision-making processes [7]. The tag integrates a circuit with 
+an Electronic Product Code, functioning as a unique tracking identifier. The reader receives the broadcast signal and 
+forms a network link between the tag and system software. The entire setup is managed by middleware, which can take 
+the form of a local network or a web server [2]. The working mechanism of the RFID system can be shown as in Fig. 4.
+RFID can be categorized based on frequency and internal power source, with frequency classes including low-fre-
+quency, high-frequency, ultrahigh-frequency, and microwave frequency [141, 142]. Subsequently, various types of RFID 
+tags have been developed, including Active RFID tags, Passive RFID tags, Semipassive RFID tags, and Ultra High-Frequency 
+RFID tags [142]. Passive tags operate using ultra-high frequency and contain a microchip, with a reading range of up 
+to 15 feet [7, 142, 143]. In contrast, active tags are more costly as they incorporate a battery to power the microchip’s 
+circuitry and enable signal transmission to the reader. Consequently, the reading range for active tags can extend up 
+to 100 feet [2, 7, 144]. Active tags support tag-to-tag communication, and another type, the semi-active tag, includes a 
+battery for memory backup and data support [145]. RFID tag read range is affected by variables such as tag type, reader 
+characteristics, frequency, and potential interference. These can be adjusted for specific needs. RFID tags provide real-time 
+information, used commercially in supply chain management, inventory control, traceability, and asset tracking across 
+industries, streamlining operations and enhancing product quality and safety [146, 147]. They are also used beyond the 
+food industry by various entities, including Walmart and Metro Group, which have mandated RFID tag usage on ship-
+ping crates and pallets [148]. Some protocol standards, including ISO 18000, play an important part in the regulation of 
+RFID systems. ISO 18000, for instance, specifies the working frequency ranges and other essential parameters for RFID 
+systems, ensuring consistency and compatibility in their operation [149].
+Initially, RFID tags in the food industry were limited due to high production costs, but as hardware costs decreased, 
+their use expanded. RFID technology now serves various food industry functions, including traceability, product identifi-
+cation, shelf life prediction, cold chain management, livestock oversight, and feeding regulation [2, 7, 150]. RFID tags are 
+sometimes combined with responsive materials in labels to provide real-time data on food package contents, offering 
+insights into food quality. When attached to polymers, RFID tags can interact with food analytes like biogenic amines, 
+producing a detectable signal due to changes in the tag’s electromagnetic potential [151]. RFID tags find applicability in 
+the monitoring of perishable commodities requiring stringent shipping conditions. Models can be calibrated to evaluate 
+the preservation status of apples based on variations in ethylene, ethanol, and acetaldehyde levels [145]. The freshness 
+assessment of fish employs RFID tags integrated with sensors for measuring temperature, humidity, and the presence 
+of volatile amine chemicals [150, 152]. The RFID system has evolved into a tracking tool that aids in the authentication 
+and validation of Halal certificates and logos [153]. In the area of food, chip-less RFID sensors have emerged as advanced 
+technology for identification and sensing. Various types of tags, including time-domain tags, frequency tags, hybrid tags, 
+and image-based tags, are integrated with different sensor types. These sensors offer insights into freshness, temperature, 
+microbial quality, and packaging integrity, enabling functions like inventory control, product tracking, quality monitor-
+ing, and early warning provision [146, 154].
+Fig. 4   Working mechanism of RFID system (designed by authors)
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+In today’s world, RFID technology serves as a viable alternative to traditional barcodes in diverse industries, offering 
+unique advantages despite sharing similar functionalities. Unlike barcodes that require a direct line of sight for scan-
+ning, RFID tags can identify objects without this limitation. RFID tags also allow data updates, whereas barcode data is 
+read-only [155, 156]. The reading time of RFID is quicker compared to barcodes [157, 158]. Ultra high-frequency active 
+tags possess a reading range of approximately 100 m with a storage capacity of 1 MB per [2, 26]. However, the need for a 
+power source and higher cost remains significant drawbacks of RFID systems in comparison to barcodes. The evolution 
+of labels, progressing from basic stickers to barcodes and onward to RFID technology, is evident. The increasing utiliza-
+tion of RFID systems aligns with the adoption of the Internet of Things [159]. It would be particularly advantageous if 
+the technology enables wireless transmission of sensor data, encompassing parameters like temperature, movement, 
+and position [160, 161]. This can be achieved through the integration of smart sensors and GPS technology, facilitating 
+the establishment of smartphone-based traceability systems [162–164].
+2.5  Evolution of artificial intelligence for food packaging and classification
+Since the start of the twenty-first century, IP has rapidly increased, ranking among the world’s essential economic endeav-
+ors [165]. As economic and technological progress accelerates, advancements in packaging become more crucial to com-
+modity circulation. Such designs not only enhance aesthetic appeal and commodity value but also influence consumer 
+choices and reflect corporate cultural leanings [166]. By integrating AI, this area can achieve greater market sustainability, 
+anticipate upcoming design trends, and optimize product efficiency [167].
+In the food processing industry, the organization and packaging of products pose complex challenges, consuming 
+substantial time and effort within manufacturing facilities [168]. Some research shows constructing a fuzzy cognitive map 
+to determine the shelf life of food storage to prevent food losses [169]. Employing AI-based systems to manage these 
+complex tasks minimizes the likelihood of errors and significantly enhances industrial production rates. The complexity 
+arises from variations in the shapes, colours, and sizes of fruits and vegetables, necessitating an extensive dataset for 
+comprehensive AI system training to ensure optimal task performance [170, 171]. Diverse research groups have intro-
+duced distinct systems for this purpose, including TOMRA, which excels in sorting with 90% accuracy and expediting 
+production [172]. Presently, automated systems are predominant for product sorting and packaging, supplying industries 
+with benefits such as higher production speed, superior quality yields, and reduced labor costs.
+Intelligent decision-making systems that utilize AI encompass a range of tools and methodologies. These include 
+high-resolution cameras, laser technology, X-ray scanning, and IR spectroscopy. These tools work collectively to provide 
+a comprehensive evaluation of food products, particularly fruits and vegetables, when subjected to analysis. Traditional 
+systems predominantly categorize products based on visual attributes. Utilizing TOMRA, notable enhancements of 5–10% 
+in potato sorting have been observed [173, 174]. A similar outcome was achieved by a Japanese company employing 
+a TensorFlow ML-based system, leading to significant benefits within their production unit. These systems have dem-
+onstrated exceptional efficacy in diverse food processing industries, with precise performance. The success in potato 
+sorting paves the way for the expansion of AI-based systems into various segments of the food processing industry [168].
+2.5.1  Application of artificial intelligence technology in assessing food freshness
+The quality of food is closely connected to how fresh it is, and IP plays a key role in keeping it fresh for longer and reducing 
+economic losses from spoiling. To address these concerns and keep up with the increasing need for real-time monitor-
+ing of food quality changes, it is imperative to advance the development of effective IP systems. Such IP endeavors not 
+only to enhance the aesthetic appeal of food products and their market value but also to minimize health risks associ-
+ated with subpar food quality and safety [74]. Nevertheless, the implementation of IP technology for monitoring food 
+freshness is still in its initial stage. Current sensor technology faces limitations in terms of quantity and detection speed, 
+in addition to being costly and sensitive to environmental factors, constraining its utility in SP [168]. To enhance the 
+intelligence and detection capabilities of smart packaging materials, innovative sensors with improved performance 
+are under development [175]. New methods are emerging that combine intelligent packaging materials with AI tech-
+nology. Researchers are investing more in combining methods for detecting food freshness with AI algorithms [176]. AI 
+technology, based on computer science and focused on data, utilizes expert systems that incorporate mathematical and 
+physical knowledge. These systems encompass various processes including perception, comprehension, logical reason-
+ing, learning, and adaptation [177]. As AI continually advances with the growth of electronic information technology, 
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+it finds applications in data analysis, classification, pattern recognition, and other facets essential to the evaluation of 
+food quality and freshness [177].
+A modern deep learning approach has been devised to assess olfactory quality across a range of food products, includ-
+ing meat, fish, coffee, alcoholic beverages, mushrooms, cheese, cereals, sugar, and packaging materials. This method 
+focuses on two key indicators: microbial populations on the food’s surface and total volatile basic nitrogen. These mark-
+ers undergo thorough examination using a complex multilayer convolutional neural network (CNN) architecture. CNNs 
+process data through convolutional, pooling, and fully connected layers, employing diverse mathematical techniques 
+to integrate information between input and output layers [179]. The study presented a novel meat freshness monitoring 
+system that merges a cross-reactive colorimetric barcode technique with an advanced deep convolutional neural network 
+(DCNN), recognized for its speed, precision, and non-invasive characteristics. This system benefits both consumers and 
+the wider food distribution network by providing reliable freshness assessment [180]. Khaled et al. introduced a digital 
+classification method utilizing DCNNs to categorize bell peppers into five distinct classes, streamlining the sorting process 
+to align with export standards [181]. Certain studies have explored the integration of the random forest algorithm with 
+artificially generated outliers within genuine samples, offering a novel approach to identifying anomalies associated 
+with food freshness [178, 182].
+3  Conclusions
+The extensive review regarding modern food technology and its impact on intelligent food packaging emphasizes 
+the crucial role of food packaging in maintaining the quality of products throughout the complex food supply chain. 
+Modern food technology has led to the emergence of intelligent food packaging. This packaging integrates sensors, 
+indicators, data carriers, and AI techniques to maintain a continuous chain of food safety, freshness, and traceability 
+from production to consumption. The review provides an in-depth exploration of the multifaceted components that 
+constitute intelligent food packaging, including time–temperature indicators, gas indicators, freshness and pathogen 
+indicators, as well as a variety of sensors and data carriers. These components work together to ensure the quality and 
+integrity of the packaged products. The growing influence of AI in IP is highlighted, paving the way for more innovative 
+and efficient food packaging solutions.
+In addition to the current advancements, future directions in this field offer exciting prospects. The integration of AI 
+into intelligent food packaging is composed to become even more sophisticated, enabling real-time monitoring and 
+decision-making. This opens up an exciting area of possibilities where packaging can adapt and respond to changing 
+environmental conditions and consumer preferences. One of the most compelling future directions is the potential for 
+highly customized packaging solutions that can cater to the unique requirements of specific products. This level of preci-
+sion promises to significantly reduce food waste and enhance sustainability efforts, aligning with the global movement 
+toward eco-friendly practices and resource conservation. This review serves as a guiding compass through the dynamic 
+world of modern food technology and its deep impact on intelligent food packaging. By examining the integration of 
+AI, it highlights the path toward improved food safety, quality, consumer satisfaction, waste reduction, and enhanced 
+traceability in the food industry. Indeed, intelligent food packaging represents a forward-looking and inventive strategy to 
+address the evolving demands and complexities of the current food supply chain. It is an exciting future that promises to 
+reshape how we perceive, interact with, and benefit from the very packaging that safeguards the sustenance we rely on.
+Author contributions  T.A., B.L.S.K.B., and H.S.—wrote the main manuscript text E.R.J.S., J.A.D.C.A.J., K.K., and U.R.—reviewed.
+Funding  This research received no external funding.
+Data availability  No datasets were generated or analysed during the current study.
+Declarations 
+Competing interests  The authors declare no competing interests.
+Open Access   This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adapta-
+tion, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, 
+provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article 
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in 
+the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will 
+need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/.
+References
+	 1.	 Wang S, Liu X, Yang M, Zhang Y, Xiang K, Tang R. Review of time temperature indicators as quality monitors in food packaging. Packag 
+Technol Sci. 2015;28(10):839–67. https://​doi.​org/​10.​1002/​pts.​2148.
+	 2.	 Ghaani M, Cozzolino CA, Castelli G, Farris S. An overview of the intelligent packaging technologies in the food sector. Trends Food Sci 
+Technol. 2016;51:1–11. https://​doi.​org/​10.​1016/j.​tifs.​2016.​02.​008.
+	 3.	 Kalpana S, Priyadarshini SR, Maria Leena M, Moses JA, Anandharamakrishnan C. Intelligent packaging: trends and applications in food 
+systems. Trends Food Sci Technol. 2019;93:145–57. https://​doi.​org/​10.​1016/j.​tifs.​2019.​09.​008.
+	 4.	 Marsh K, Bugusu B. Food packaging?roles, materials, and environmental issues. J Food Sci. 2007. https://​doi.​org/​10.​1111/j.​1750-​3841.​
+2007.​00301.x.
+	 5.	 Müller P, Schmid M. Intelligent packaging in the food sector: a brief overview. Foods. 2019;8(1):16. https://​doi.​org/​10.​3390/​foods​80100​
+16.
+	 6.	 Wang M, Li Y, Srinivasan P, Hu Z, Wang R, Saragih A, et al. Interactions between biological products and product packaging and potential 
+approaches to overcome them. AAPS PharmSciTech. 2018;19(8):3681–6. https://​doi.​org/​10.​1208/​s12249-​018-​1184-z.
+	 7.	 Yam KL, Takhistov PT, Miltz J. Intelligent packaging: concepts and applications. J Food Sci. 2005. https://​doi.​org/​10.​1111/j.​1365-​2621.​
+2005.​tb090​52.x.
+	 8.	 Dobrucka R, Cierpiszewski R. Active and intelligent packaging food—research and development—a review. Polish J Food Nutr Sci. 
+2014;64(1):7–15. https://​doi.​org/​10.​2478/​v10222-​012-​0091-3.
+	 9.	 Brody AL, Bugusu B, Han JH, Sand CK, McHugh TH. Scientific status summary. J Food Sci. 2008. https://​doi.​org/​10.​1111/j.​1750-​3841.​2008.​
+00933.x.
+	 10.	 Janjarasskul T, Suppakul P. Active and intelligent packaging: the indication of quality and safety. Crit Rev Food Sci Nutr. 2017;58(5):808–31. 
+https://​doi.​org/​10.​1080/​10408​398.​2016.​12252​78.
+	 11.	 Khaneghah AM, Hashemi SM, Limbo S. Antimicrobial agents and packaging systems in antimicrobial active food packaging: an overview 
+of approaches and interactions. Food Bioprod Process. 2018;111:1–19. https://​doi.​org/​10.​1016/j.​fbp.​2018.​05.​001.
+	 12.	 Firouz MS, Mohi-Alden K, Omid M. A critical review on intelligent and active packaging in the food industry: research and development. 
+Food Res Int. 2021;141:110113. https://​doi.​org/​10.​1016/j.​foodr​es.​2021.​110113.
+	 13.	 Mohebi E, Marquez L. Intelligent packaging in meat industry: an overview of existing solutions. J Food Sci Technol. 2014;52(7):3947–64. 
+https://​doi.​org/​10.​1007/​s13197-​014-​1588-z.
+	 14.	 Schaefer D, Cheung WM. Smart packaging: opportunities and challenges. Procedia CIRP. 2018;72:1022–7. https://​doi.​org/​10.​1016/j.​
+procir.​2018.​03.​240.
+	 15.	 Gregor-Svetec D. Intelligent packaging. Nanomater Food Pack. 2018. https://​doi.​org/​10.​1016/​b978-0-​323-​51271-8.​00008-5.
+	 16.	 Realini CE, Marcos B. Active and intelligent packaging systems for a modern society. Meat Sci. 2014;98(3):404–19. https://​doi.​org/​10.​
+1016/j.​meats​ci.​2014.​06.​031.
+	 17.	 Biji KB, Ravishankar CN, Mohan CO, Srinivasa Gopal TK. Smart packaging systems for food applications: a review. J Food Sci Technol. 
+2015;52(10):6125–35. https://​doi.​org/​10.​1007/​s13197-​015-​1766-7.
+	 18.	 Ehsani N, Rostamabadi H, Dadashi S, Ghanbarzadeh B, Kharazmi MS, Jafari SM. Electrospun nanofibers fabricated by natural biopolymers 
+for intelligent food packaging. Crit Rev Food Sci Nutr. 2022. https://​doi.​org/​10.​1080/​10408​398.​2022.​21479​00.
+	 19.	 Vanderroost M, Ragaert P, Devlieghere F, De Meulenaer B. Intelligent food packaging: the next generation. Trends Food Sci Technol. 
+2014;39(1):47–62. https://​doi.​org/​10.​1016/j.​tifs.​2014.​06.​009.
+	 20.	 Yam KL. Intelligent packaging to enhance food safety and quality. Emerg Food Pack Technol. 2012. https://​doi.​org/​10.​1533/​97808​57095​
+664.2.​137.
+	 21.	 Sohail M, Sun D-W, Zhu Z. Recent developments in intelligent packaging for enhancing food quality and safety. Crit Rev Food Sci Nutr. 
+2018;58(15):2650–62. https://​doi.​org/​10.​1080/​10408​398.​2018.​14497​31.
+	 22.	 Poyatos-Racionero E, Ros-Lis JV, Vivancos J-L, Martínez-Máñez R. Recent advances on intelligent packaging as tools to reduce food waste. 
+J Clean Prod. 2018;172:3398–409. https://​doi.​org/​10.​1016/j.​jclep​ro.​2017.​11.​075.
+	 23.	 Heising JK, Dekker M, Bartels PV, Tiny Van Boekel MA. Monitoring the quality of perishable foods: opportunities for intelligent packaging. 
+Crit Rev Food Sci Nutr. 2013;54(5):645–54. https://​doi.​org/​10.​1080/​10408​398.​2011.​600477.
+	 24.	 O’Grady MN, Kerry JP. Smart packaging technologies and their application in conventional meat packaging systems. Meat Biotechnol. 
+2008. https://​doi.​org/​10.​1007/​978-0-​387-​79382-5_​19.
+	 25.	 Pavelková A. Time temperature indicators as devices intelligent packaging. Acta Universitatis Agriculturae et Silviculturae Mendelianae 
+Brunensis. 2013;61(1):245–51. https://​doi.​org/​10.​11118/​actau​n2013​61010​245.
+	 26.	 Ahmed I, Lin H, Zou L, Li Z, Brody AL, Qazi IM, et al. An overview of smart packaging technologies for monitoring safety and quality of 
+meat and meat products. Packag Technol Sci. 2018;31(7):449–71. https://​doi.​org/​10.​1002/​pts.​2380.
+	 27.	 Labuza TP, Fu B. Growth kinetics for shelf-life prediction: theory and practice. J Ind Microbiol. 1993;12(3–5):309–23. https://​doi.​org/​10.​
+1007/​bf015​84208.
+	 28.	 Ahvenainen R, Hurme E. Active and smart packaging for meeting consumer demands for quality and safety. Food Addit Contam. 
+1997;14(6–7):753–63. https://​doi.​org/​10.​1080/​02652​03970​93745​86.
+	 29.	 Han JH, Ho CHL, Rodrigues ET. Intelligent packaging. Innov Food Pack. 2005. https://​doi.​org/​10.​1016/​b978-​01231​1632-1/​50041-3.
+	 30.	 Chen Y, Song Y, Zhang Z, Chen Y, Deng Q, Wang S. Thiol-functionalized covalent organic frameworks as thermal history indictor for 
+temperature and time history monitoring. Adv Func Mater. 2021;31(41):2104885. https://​doi.​org/​10.​1002/​adfm.​20210​4885.
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+	 31.	 Koutsoumanis KP, Gougouli M. Use of time temperature integrators in food safety management. Trends Food Sci Technol. 2015;43(2):236–
+44. https://​doi.​org/​10.​1016/j.​tifs.​2015.​02.​008.
+	 32.	 Barska A, Wyrwa J. Innovations in the food packaging market—intelligent packaging—a review. Czech J Food Sci. 2017;35(1):1–6. https://​
+doi.​org/​10.​17221/​268/​2016-​cjfs.
+	 33.	 Maschietti M. Time-temperature indicators for perishable products. Recent Pat Eng. 2010;4(2):129–44. https://​doi.​org/​10.​2174/​18722​
+12107​91233​425.
+	 34.	 Girardeau A, Biscola V, Keravec S, Corrieu G, Fonseca F. Application of lactic acid bacteria in time-temperature integrators. Lactic Acid 
+Bact: A Funct Approach. 2020. https://​doi.​org/​10.​1201/​97804​29422​591.
+	 35.	 Zeng J, Roberts S, Xia Y. Nanocrystal-based time–temperature indicators. Chem—Eur J. 2010;16(42):12559–63. https://​doi.​org/​10.​1002/​
+chem.​20100​2665.
+	 36.	 Gao T, Tian Y, Zhu Z, Sun D-W. Modelling, responses and applications of time-temperature indicators (ttis) in monitoring fresh food 
+quality. Trends Food Sci Technol. 2020;99:311–22. https://​doi.​org/​10.​1016/j.​tifs.​2020.​02.​019.
+	 37.	 Siddiqui J, Taheri M, Alam AU, Deen MJ. Nanomaterials in smart packaging applications: a review. Small. 2021;18(1):2101171. https://​
+doi.​org/​10.​1002/​smll.​20210​1171.
+	 38.	 Fang Z, Zhao Y, Warner RD, Johnson SK. Active and intelligent packaging in meat industry. Trends Food Sci Technol. 2017;61:60–71. 
+https://​doi.​org/​10.​1016/j.​tifs.​2017.​01.​002.
+	 39.	 Pandian AT, Chaturvedi S, Chakraborty S. Applications of enzymatic time–temperature indicator (TTI) devices in quality monitor-
+ing and shelf-life estimation of food products during storage. J Food Meas Charact. 2020;15(2):1523–40. https://​doi.​org/​10.​1007/​
+s11694-​020-​00730-8.
+	 40.	 Ahvenainen R. Novel food packaging techniques. 1st ed. Cambridge: Woodhead; 2003.
+	 41.	 Kim K, Kim E, Lee SJ. New enzymatic time–temperature integrator (TTI) that uses laccase. J Food Eng. 2012;113(1):118–23. https://​doi.​
+org/​10.​1016/j.​jfood​eng.​2012.​05.​009.
+	 42.	 Pereira VA, de Arruda IN, Stefani R. Active chitosan/PVA films with anthocyanins from brassica oleraceae (red cabbage) as time–tempera-
+ture indicators for application in intelligent food packaging. Food Hydrocoll. 2015;43:180–8. https://​doi.​org/​10.​1016/j.​foodh​yd.​2014.​05.​
+014.
+	 43.	 Wanihsuksombat C, Hongtrakul V, Suppakul P. Development and characterization of a prototype of a lactic acid–based time–temperature 
+indicator for monitoring food product quality. J Food Eng. 2010;100(3):427–34. https://​doi.​org/​10.​1016/j.​jfood​eng.​2010.​04.​027.
+	 44.	 Rönnow P [Internet]. 2016 [cited 2023 Oct 20]. Available from: http://​ccm.​ytally.​com/​filea​dmin/​user_​upload/​Works​hop/6.​Works​hop/​
+Publi​catio​ns/R%​C3%​B6nnow.​pdf
+	 45.	 Sharma GK, Semwal DA, Yadav KD. Advances in processing technology. 1st ed. Abingdon, Oxon: CRC Press; 2022.
+	 46.	 Endoza TF, Welt BA, Otwell S, Teixeira AA, Kristonsson H, Balaban MO. Kinetic parameter estimation of time-temperature integrators 
+intended for use with packaged fresh seafood. J Food Sci. 2006. https://​doi.​org/​10.​1111/j.​1365-​2621.​2004.​tb133​77.x.
+	 47.	 Khairunnisa A, Suyatma NE, Adawiyah DR. Development of smart TTI label based on kinetics diffusion of vegetable oils blends for cold 
+supply chain monitoring. IOP Conf Ser: Earth Environ Sci. 2019;335(1):012015. https://​doi.​org/​10.​1088/​1755-​1315/​335/1/​012015.
+	 48.	 Suppakul P, Kim DY, Yang JH, Lee SB, Lee SJ. Practical design of a diffusion-type time-temperature indicator with intrinsic low temperature 
+dependency. J Food Eng. 2018;223:22–31. https://​doi.​org/​10.​1016/j.​jfood​eng.​2017.​11.​026.
+	 49.	 Taoukis PS. Application of time–temperature integrators for monitoring and management of perishable product quality in the cold 
+chain. In: Kerry J, Butler P, editors. Smart packaging technologies for fast moving consumer goods. 1st ed. West Sussex: John Wiley & 
+Sons, Ltd.; 2008. p. 49–75.
+	 50.	 Jaiswal RK, Mendiratta SK, Talukder S, Soni A, Saini BL. Enzymatic time temperature indicators: a review enzymatic time temperature 
+indicators: a review. Pharma Innov J. 2018;7(10):643–7.
+	 51.	 Opara UL, Mditshwa A. A review on the role of packaging in securing food system: adding value to food products and reducing losses 
+and waste. Afr J Agric Res. 2013;8(22):2621–30. https://​doi.​org/​10.​5897/​AJAR2​013.​6931.
+	 52.	 Adeyemi JO, Fawole OA. Metal-based nanoparticles in food packaging and coating technologies: a review. Biomolecules. 2023;13(7):1092. 
+https://​doi.​org/​10.​3390/​biom1​30710​92.
+	 53.	 Beshai H, Sarabha G, Rathi P, Alam A, Deen M. Freshness monitoring of packaged vegetables. Appl Sci. 2020;10(21):7937. https://​doi.​
+org/​10.​3390/​app10​217937.
+	 54.	 Hogan SA, Kerry JP. Smart packaging of meat and poultry products. In: Kerry J, Butler P, editors. Smart packaging technologies for fast 
+moving consumer goods. 1st ed. West Sussex: John Wiley & Sons, Ltd.; 2008. p. 33–54.
+	 55.	 Roya AQ, Elham M. Intelligent food packaging: concepts and innovations. Int J ChemTech Res. 2016;9(6):669–76.
+	 56.	 Ellouze M, Pichaud M, Bonaiti C, Coroller L, Couvert O, Thuault D, et al. Modelling ph evolution and lactic acid production in the growth 
+medium of a lactic acid bacterium: application to set a biological tti. Int J Food Microbiol. 2008;128(1):101–7. https://​doi.​org/​10.​1016/j.​
+ijfoo​dmicro.​2008.​06.​035.
+	 57.	 Pennanen K, Focas C, Kumpusalo-Sanna V, Keskitalo-Vuokko K, Matullat I, Ellouze M, et al. European consumers’ perceptions of time-
+temperature indicators in food packaging. Packag Technol Sci. 2014;28(4):303–23. https://​doi.​org/​10.​1002/​pts.​2105.
+	 58.	 Verghese K, Lewis H, Lockrey S, Williams H. Packaging’s role in minimizing food loss and waste across the supply chain. Packag Technol 
+Sci. 2015;28(7):603–20. https://​doi.​org/​10.​1002/​pts.​2127.
+	 59.	 Mohammadian E, Alizadeh-Sani M, Jafari SM. Smart monitoring of gas/temperature changes within food packaging based on natural 
+colourants. Comp Rev Food Sci Food Safe. 2020;19(6):2885–931. https://​doi.​org/​10.​1111/​1541-​4337.​12635.
+	 60.	 Ma Y, Yang W, Xia Y, Xue W, Wu H, Li Z, et al. Properties and applications of intelligent packaging indicators for food spoilage. Membranes. 
+2022;12(5):477. https://​doi.​org/​10.​3390/​membr​anes1​20504​77.
+	 61.	 Loan B, Odagiu A, Balint C, Malinas C, Stefan DO, Oroian D. The traits of smart packaging. ProEnvironment. 2020;13:152–9.
+	 62.	 Yousefi H, Su H-M, Imani SM, Alkhaldi K, Filipe CDM, Didar TF. Intelligent food packaging: a review of smart sensing technologies for 
+monitoring food quality. ACS Sens. 2019;4(4):808–21. https://​doi.​org/​10.​1021/​acsse​nsors.​9b004​40.
+	 63.	 Lee SJ, Rahman ATMM. Intelligent packaging for food products. Innov Food Pack. 2014. https://​doi.​org/​10.​1016/​b978-0-​12-​394601-​0.​
+00008-4.
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+	 64.	 Jeong S, Yoo S. Kimchi packaging technology: an overview. Korean J Pack Sci Technol. 2016;22(3):41–7. https://​doi.​org/​10.​20909/​
+kopast.​2016.​22.3.​41.
+	 65.	 Han J, Ruiz-Garcia L, Qian J, Yang X. Food packaging: a comprehensive review and future trends. Comp Rev Food Sci Food Safe. 
+2018;17(4):860–77. https://​doi.​org/​10.​1111/​1541-​4337.​12343.
+	 66.	 Saliu F, Della PR. Carbon dioxide colourimetric indicators for food packaging application: applicability of anthocyanin and poly-lysine 
+mixtures. Sens Actuators, B Chem. 2018;258:1117–24. https://​doi.​org/​10.​1016/j.​snb.​2017.​12.​007.
+	 67.	 Zhang Z, Sun Y, Sang S, Jia L, Ou C. Emerging approach for fish freshness evaluation: principle, application and challenges. Foods. 
+2022;11(13):1897. https://​doi.​org/​10.​3390/​foods​11131​897.
+	 68.	 Kumar J, Akhila K, Gaikwad KK. Recent Developments in Intelligent Packaging Systems for Food Processing Industry: A Review. 
+Journal of Food Processing & Technology. 2021;12(895).
+	 69.	 Park YW, Kim SM, Lee JY, Jang W. Application of biosensors in smart packaging. Mol Cell Toxicol. 2015;11(3):277–85. https://​doi.​org/​
+10.​1007/​s13273-​015-​0027-1.
+	 70.	 Smolander M. The use of freshness indicators in packaging. Novel Food Pack Techn. 2003. https://​doi.​org/​10.​1533/​97818​55737​020.1.​
+127.
+	 71.	 Lee K, Baek S, Kim D, Seo J. A freshness indicator for monitoring chicken-breast spoilage using a tyvek® sheet and RGB colour analysis. 
+Food Packag Shelf Life. 2019;19:40–6. https://​doi.​org/​10.​1016/j.​fpsl.​2018.​11.​016.
+	 72.	 Smolander M. Freshness indicators for food packaging. In: Butler P, Kerry J, editors. Smart packaging technologies for fast moving 
+consumer goods. Hoboken: John Wiley & Sons, Ltd.; 2008. p. 112–5.
+	 73.	 Hong H, Regenstein JM, Luo Y. The importance of ATP-related compounds for the freshness and flavor of post-mortem fish and 
+shellfish muscle: a review. Crit Rev Food Sci Nutr. 2015. https://​doi.​org/​10.​1080/​10408​398.​2014.​10014​89.
+	 74.	 Liu D, Zhang C, Pu Y, Chen S, Liu L, Cui Z, et al. Recent advances in ph-responsive freshness indicators using natural food colourants 
+to monitor food freshness. Foods. 2022;11(13):1884. https://​doi.​org/​10.​3390/​foods​11131​884.
+	 75.	 Nopwinyuwong A, Trevanich S, Suppakul P. Development of a novel colourimetric indicator label for monitoring freshness of inter-
+mediate-moisture dessert spoilage. Talanta. 2010;81(3):1126–32. https://​doi.​org/​10.​1016/j.​talan​ta.​2010.​02.​008.
+	 76.	 Reshmy R, Philip E, Madhavan A, Sindhu R, Pugazhendhi A, Binod P, et al. Advanced biomaterials for sustainable applications in the 
+food industry: updates and challenges. Environ Pollut. 2021;283:117071. https://​doi.​org/​10.​1016/j.​envpol.​2021.​117071.
+	 77.	 Lange J, Wittmann C. Enzyme sensor array for the determination of biogenic amines in food samples. Anal Bioanal Chem. 
+2002;372(2):276–83. https://​doi.​org/​10.​1007/​s00216-​001-​1130-9.
+	 78.	 Ibupoto ZH, Shah SM, Khun K, Willander M. Electrochemical L-lactic acid sensor based on immobilized zno nanorods with lactate 
+oxidase. Sensors. 2012;12(3):2456–66. https://​doi.​org/​10.​3390/​s1203​02456.
+	 79.	 Jawaheer S, White SF, Rughooputh SDDV, Cullen DC. Development of a common biosensor format for an enzyme based biosensor 
+array to monitor fruit quality. Biosens Bioelectron. 2003;18(12):1429–37. https://​doi.​org/​10.​1016/​s0956-​5663(03)​00073-3.
+	 80.	 Kerry JP, O’Grady MN, Hogan SA. Past, current and potential utilisation of active and intelligent packaging systems for meat and 
+muscle-based products: a review. Meat Sci. 2006;74(1):113–30. https://​doi.​org/​10.​1016/j.​meats​ci.​2006.​04.​024.
+	 81.	 Bedi N, Srivastava DK, Srivastava A, Mahapatra S, Dkhar DS, Chandra P, et al. Marine biological macromolecules as matrix material 
+for biosensor fabrication. Biotechnol Bioeng. 2022;119(8):2046–63. https://​doi.​org/​10.​1002/​bit.​28122.
+	 82.	 George J, Kumar R, Aaliya B, Sunooj KV. Packaging solutions for monitoring food quality and safety. Food Eng Ser. 2023. https://​doi.​
+org/​10.​1007/​978-3-​031-​30683-9_​14.
+	 83.	 Alam AU, Rathi P, Beshai H, Sarabha GK, Deen MJ. Fruit quality monitoring with smart packaging. Sensors. 2021;21(4):1509. https://​
+doi.​org/​10.​3390/​s2104​1509.
+	 84.	 Kuswandi B, Jayus OR, Abdullah A, Heng LY. A novel on-package sticker sensor based on methyl red for real-time monitoring of 
+broiler chicken cut freshness. Pack Technol Sci. 2013;27(1):69–81. https://​doi.​org/​10.​1002/​pts.​2016.
+	 85.	 Smaoui S, Chérif I, Ben Hlima H, Khan MU, Rebezov M, Thiruvengadam M, et al. Zinc oxide nanoparticles in meat packaging: a sys-
+tematic review of recent literature. Food Packag Shelf Life. 2023;36:101045. https://​doi.​org/​10.​1016/j.​fpsl.​2023.​101045.
+	 86.	 Chaari M, Elhadef K, Akermi S, Ben Akacha B, Fourati M, Chakchouk Mtibaa A, et al. Novel active food packaging films based on 
+gelatin-sodium alginate containing beetroot peel extract. Antioxidants. 2022;11:2095. https://​doi.​org/​10.​3390/​antio​x1111​2095.
+	 87.	 Vilela C, Moreirinha C, Domingues EM, Figueiredo FM, Almeida A, Freire CS. Antimicrobial and conductive nanocellulose-based films 
+for active and intelligent food packaging. Nanomaterials. 2019;9(7):980. https://​doi.​org/​10.​3390/​nano9​070980.
+	 88.	 Caon T, Martelli SM, Fakhouri FM. New trends in the food industry: application of nanosensors in food packaging. Nanobiosensors. 
+2017. https://​doi.​org/​10.​1016/​b978-0-​12-​804301-​1.​00018-7.
+	 89.	 Puligundla P, Jung J, Ko S. Carbon dioxide sensors for intelligent food packaging applications. Food Control. 2012;25(1):328–33. 
+https://​doi.​org/​10.​1016/j.​foodc​ont.​2011.​10.​043.
+	 90.	 Shaalan NM, Ahmed F, Saber O, Kumar S. Gases in food production and monitoring: recent advances in target chemiresistive gas 
+sensors. Chemosensors. 2022;10(8):338. https://​doi.​org/​10.​3390/​chemo​senso​rs100​80338.
+	 91.	 Preethichandra DM, Gholami MD, Izake EL, O’Mullane AP, Sonar P. Conducting polymer based ammonia and hydrogen sulfide chemi-
+cal sensors and their suitability for detecting food spoilage. Adv Mater Technol. 2022. https://​doi.​org/​10.​1002/​admt.​20220​0841.
+	 92.	 Dervieux E, Théron M, Uhring W. Carbon dioxide sensing—biomedical applications to human subjects. Sensors. 2021;22(1):188. 
+https://​doi.​org/​10.​3390/​s2201​0188.
+	 93.	 Luo X, Zaitoon A, Lim L. A review on colourimetric indicators for monitoring product freshness in intelligent food packaging: indi-
+cator dyes, preparation methods, and applications. Comp Rev Food Sci Food Safe. 2022;21(3):2489–519. https://​doi.​org/​10.​1111/​
+1541-​4337.​12942.
+	 94.	 de Perez Vargas-Sansalvador IM, Erenas MM, Diamond D, Quilty B, Capitan-Vallvey LF. Water based-ionic liquid carbon dioxide sensor 
+for applications in the food industry. Sens Actuators B: Chem. 2017;253:302–9. https://​doi.​org/​10.​1016/j.​snb.​2017.​06.​047.
+	 95.	 Dai L, Wang Y, Zou X, Chen Z, Liu H, Ni Y. Ultrasensitive physical, bio, and chemical sensors derived from 1-, 2-, and 3-D nanocellulosic 
+materials. Small. 2020. https://​doi.​org/​10.​1002/​smll.​20190​6567.
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+	 96.	 Saqqa GA. Nanotechnology in food packaging and food safety. J Adv Res Food Sci Nutr. 2020;03(01):24–33. https://​doi.​org/​10.​24321/​
+2582.​3892.​202004.
+	 97.	 Mishra RK, Barfidokht A, Karajic A, Sempionatto JR, Wang J, Wang J. Wearable potentiometric tattoo biosensor for on-body detection of 
+G-type nerve agents simulants. Sens Actuators, B Chem. 2018;273:966–72. https://​doi.​org/​10.​1016/j.​snb.​2018.​07.​001.
+	 98.	 Ciui B, Martin A, Mishra RK, Nakagawa T, Dawkins TJ, Lyu M, et al. Chemical sensing at the robot fingertips: toward automated taste 
+discrimination in food samples. ACS Sens. 2018;3(11):2375–84. https://​doi.​org/​10.​1021/​acsse​nsors.​8b007​78.
+	 99.	 Wen F, He T, Liu H, Chen H-Y, Zhang T, Lee C. Advances in chemical sensing technology for enabling the next-generation self-sustainable 
+integrated wearable system in the IOT ERA. Nano Energy. 2020;78:105155. https://​doi.​org/​10.​1016/j.​nanoen.​2020.​105155.
+	100.	 Neethirajan S, Ragavan V, Weng X, Chand R. Biosensors for sustainable food engineering: challenges and perspectives. Basel: Multidis-
+ciplinary Digital Publishing Institute; 2018.
+	101.	 Wei L-N, Luo L, Wang B-Z, Lei H-T, Guan T, Shen Y-D, et al. Biosensors for detection of paralytic shellfish toxins: recognition elements and 
+transduction technologies. Trends Food Sci Technol. 2023;133:205–18. https://​doi.​org/​10.​1016/j.​tifs.​2023.​02.​012.
+	102.	 Lv M, Liu Y, Geng J, Kou X, Xin Z, Yang D. Engineering nanomaterials-based biosensors for food safety detection. Biosens Bioelectron. 
+2018;106:122–8. https://​doi.​org/​10.​1016/j.​bios.​2018.​01.​049.
+	103.	 Romero MR, Picchio ML. Biosensors based on nanomaterials: transducers and modified surfaces for diagnostics. Nanobiomater Eng. 
+2020. https://​doi.​org/​10.​1007/​978-​981-​32-​9840-8_2.
+	104.	 Siracusa V, Lotti N. Intelligent packaging to improve shelf life. Food Qual Shelf Life. 2019. https://​doi.​org/​10.​1016/​b978-0-​12-​817190-​5.​
+00008-2.
+	105.	 Tetyana P, Morgan Shumbula P, Njengele-Tetyana Z. Biosensors: design, development and applications. Nanopores. 2021. https://​doi.​
+org/​10.​5772/​intec​hopen.​97576.
+	106.	 Hansen JA, Wang J, Kawde A-N, Xiang Y, Gothelf KV, Collins G. Quantum-dot/aptamer-based ultrasensitive multi-analyte electrochemical 
+biosensor. J Am Chem Soc. 2006;128(7):2228–9. https://​doi.​org/​10.​1021/​ja060​005h.
+	107.	 Haes AJ, Van Duyne RP. A nanoscale optical biosensor: sensitivity and selectivity of an approach based on the localized surface plasmon 
+resonance spectroscopy of triangular silver nanoparticles. J Am Chem Soc. 2002;124(35):10596–604. https://​doi.​org/​10.​1021/​ja020​393x.
+	108.	 Sassolas A, Blum LJ, Leca-Bouvier BD. Immobilization strategies to develop enzymatic biosensors. Biotechnol Adv. 2012;30(3):489–511. 
+https://​doi.​org/​10.​1016/j.​biote​chadv.​2011.​09.​003.
+	109.	 Zhou X, Liu L, Hu M, Wang L, Hu J. Detection of hepatitis B virus by piezoelectric biosensor. J Pharm Biomed Anal. 2002;27(1–2):341–5. 
+https://​doi.​org/​10.​1016/​s0731-​7085(01)​00538-6.
+	110.	 Su L, Jia W, Hou C, Lei Y. Microbial biosensors: a review. Biosens Bioelectron. 2011;26(5):1788–99. https://​doi.​org/​10.​1016/j.​bios.​2010.​09.​
+005.
+	111.	 Pérez-López B, Merkoçi A. Nanomaterials based biosensors for food analysis applications. Trends Food Sci Technol. 2011;22(11):625–39. 
+https://​doi.​org/​10.​1016/j.​tifs.​2011.​04.​001.
+	112.	 Lang Y, Zhang B, Cai D, Tu W, Zhang J, Shentu X, et al. Determination methods of the risk factors in food based on nanozymes: a review. 
+Biosensors. 2022;13(1):69. https://​doi.​org/​10.​3390/​bios1​30100​69.
+	113.	 Singh P, Pandey VK, Srivastava S, Singh R. A systematic review on recent trends and perspectives of biosensors in food industries. J Food 
+Safe. 2023. https://​doi.​org/​10.​1111/​jfs.​13071.
+	114.	 Liao Y, Zhang R, Qian J. Printed electronics based on inorganic conductive nanomaterials and their applications in intelligent food 
+packaging. RSC Adv. 2019;9(50):29154–72. https://​doi.​org/​10.​1039/​c9ra0​5954g.
+	115.	 Bonnassieux Y, Brabec CJ, Cao Y, Carmichael TB, Chabinyc ML, Cheng K-T, et al. The 2021 FLEXIBLE and printed electronics roadmap. Flex 
+Print Electron. 2021;6(2):023001. https://​doi.​org/​10.​1088/​2058-​8585/​abf986.
+	116.	 Rao CH, Avinash K, Varaprasad BK, Goel S. A review on printed electronics with digital 3D printing: fabrication techniques, materials, 
+challenges and future opportunities. J Electron Mater. 2022;51(6):2747–65. https://​doi.​org/​10.​1007/​s11664-​022-​09579-7.
+	117.	 Muthamma K, Sunil D, Shetty P, Kulkarni SD, Anand PJ, Kekuda D. Eco-friendly flexographic ink from fluorene-based schiff base pigment 
+for anti-counterfeiting and printed electronics applications. Prog Org Coat. 2021;161:106463. https://​doi.​org/​10.​1016/j.​porgc​oat.​2021.​
+106463.
+	118.	 Dave PY. Short review on printing ink technology to prevent counterfeit of the products. J Adv Chem Sci. 2020;6(4):693–7. https://​doi.​
+org/​10.​30799/​jacs.​227.​20060​401.
+	119.	 Khan Y, Thielens A, Muin S, Ting J, Baumbauer C, Arias AC. A new frontier of printed electronics: flexible hybrid electronics. Adv Mater. 
+2019. https://​doi.​org/​10.​1002/​adma.​20190​5279.
+	120.	 Wilson A, Baietto M. Applications and advances in electronic-nose technologies. Sensors. 2009;9(7):5099–148. https://​doi.​org/​10.​3390/​
+s9070​5099.
+	121.	 Ghasemi-Varnamkhasti M, Mohtasebi SS, Siadat M, Balasubramanian S. Meat quality assessment by electronic nose (machine olfaction 
+technology). Sensors. 2009;9(8):6058–83. https://​doi.​org/​10.​3390/​s9080​6058.
+	122.	 Blanco-Rodríguez A, Camara VF, Campo F, Becherán L, Durán A, Vieira VD, et al. Development of an electronic nose to characterize odours 
+emitted from different stages in a wastewater treatment plant. Water Res. 2018;134:92–100. https://​doi.​org/​10.​1016/j.​watres.​2018.​01.​
+067.
+	123.	 Peris M, Escuder-Gilabert L. A 21st century technique for food control: electronic noses. Anal Chim Acta. 2009;638(1):1–15. https://​doi.​
+org/​10.​1016/j.​aca.​2009.​02.​009.
+	124.	 Blixt Y, Borch E. Using an electronic nose for determining the spoilage of vacuum-packaged beef. Int J Food Microbiol. 1999;46(2):123–34. 
+https://​doi.​org/​10.​1016/​s0168-​1605(98)​00192-5.
+	125.	 Du W-X, Kim J, Cornell JA, Huang T-S, Marshall MR, Wei C-I. Microbiological, sensory, and electronic nose evaluation of yellowfin tuna 
+under various storage conditions. J Food Prot. 2001;64(12):2027–36. https://​doi.​org/​10.​4315/​0362-​028x-​64.​12.​2027.
+	126.	 Gómez AH, Hu G, Wang J, Pereira AG. Evaluation of tomato maturity by electronic nose. Comput Electron Agric. 2006;54(1):44–52. https://​
+doi.​org/​10.​1016/j.​compag.​2006.​07.​002.
+	127.	 Rajamäki T, Alakomi H-L, Ritvanen T, Skyttä E, Smolander M, Ahvenainen R. Application of an electronic nose for quality assessment of 
+modified atmosphere packaged poultry meat. Food Control. 2006;17(1):5–13. https://​doi.​org/​10.​1016/j.​foodc​ont.​2004.​08.​002.
+Vol:.(1234567890)
+Review	
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7
+	128.	 Ramgir NS. Electronic nose based on nanomaterials: issues, challenges, and prospects. ISRN Nanomater. 2013;2013:1–21. https://​
+doi.​org/​10.​1155/​2013/​941581.
+	129.	 Fayaz U, Srivastava S, Dar AH, Bashir I, Manzoor S, Pandey VK, et al. Recent insights into E-tongue interventions in food processing 
+applications: an updated review. Curr Food Sci Technol Rep. 2024. https://​doi.​org/​10.​1007/​s43555-​024-​00028-6.
+	130.	 Mirza Alizadeh A, Masoomian M, Shakooie M, Zabihzadeh Khajavi M, Farhoodi M. Trends and applications of intelligent packaging 
+in dairy products: a review. Crit Rev Food Sci Nutr. 2020;62(2):383–97. https://​doi.​org/​10.​1080/​10408​398.​2020.​18178​47.
+	131.	 Chen Y, Chen G. Optimization of the intelligent asset management system based on WSN and RFID technology. J Sens. 2022;2022:1–
+11. https://​doi.​org/​10.​1155/​2022/​34365​30.
+	132.	 Ohanu CP, Christiana UO, Ogbuefi UC, Sutikno T. Implementation of a radio frequency identification and detection technology based 
+digital class attendance system for university students. Indonesian J Electr Eng Comput Sci. 2023;32(2):1206. https://​doi.​org/​10.​
+11591/​ijeecs.​v32.​i2.​pp1206-​1214.
+	133.	 Khan MG, Huda NU, Zaman UK. Smart warehouse management system: architecture, real-time implementation and prototype 
+design. Machines. 2022;10(2):150. https://​doi.​org/​10.​3390/​machi​nes10​020150.
+	134.	 Sharif A, Zhai G, Jia J, Min X, Zhu X, Zhang J. An accurate and efficient 1-D barcode detector for medium of deployment in IOT sys-
+tems. IEEE Internet Things J. 2021;8(2):889–900. https://​doi.​org/​10.​1109/​jiot.​2020.​30089​31.
+	135.	 Aksun ET. Using smart packaging in fish and fish based product. Turkish J Marit Marine Sci. 2016;2(1):8–18.
+	136.	 Kanugo A, Goyal R, Sharma S, Gautam RK. Recent advancement of nanotechnology in functional foods. Nanotechnol Funct Foods. 
+2022. https://​doi.​org/​10.​1002/​97811​19905​059.​ch12.
+	137.	 Gao JZ, Prakash L, Jagatesan R. Understanding 2D-barcode technology and applications in m-commerce - design and implemen-
+tation of a 2D barcode processing solution. 31st Annual International Computer Software and Applications Conference - Vol 2 - 
+(COMPSAC 2007). 2007; https://​doi.​org/​10.​1109/​comps​ac.​2007.​229
+	138.	 Hron J. Design of experiments for the analysis and optimization of barcodes of food and agricultural products. Agric Econ. 
+2012;58(12):549–56. https://​doi.​org/​10.​17221/​123/​2012-​agric​econ.
+	139.	 Clarke R. The influence of product and packaging characteristics on passive RFID readability. In: Kerry J, Butler P, editors. Smart 
+packaging technologies for fast moving consumer goods. 1st ed. West Sussex: John Wiley & Sons, Ltd.; 2008. p. 167–94.
+	140.	 Al-Shboul MA. RFID technology usage effect on enhancing warehouse internal processes in the 3PLS providers: an empirical investi-
+gation in Jordanian manufacturing firms. Uncertain Supply Chain Manag. 2023;11(3):977–90. https://​doi.​org/​10.​5267/j.​uscm.​2023.5.​
+222.
+	141.	 Zou Z, Chen Q, Uysal I, Zheng L. Radio frequency identification enabled wireless sensing for intelligent food logistics. Phil Trans R Soc. 
+2014;372(2017):20130313. https://​doi.​org/​10.​1098/​rsta.​2013.​0313.
+	142.	 Athauda T, Karmakar N. Chipped versus chipless RF identification: a comprehensive review. IEEE Microwave Mag. 2019;20(9):47–57. 
+https://​doi.​org/​10.​1109/​mmm.​2019.​29221​18.
+	143.	 Hassan S, Raza Shibli A, Raza R. Ubiquitous computing with radio frequency identification tags. Math Comput Sci. 2023. https://​doi.​org/​
+10.​11648/j.​mcs.​20230​803.​12.
+	144.	 Abraham J. Future of food packaging: intelligent packaging. Nanotechnol Intell Food Pack. 2022. https://​doi.​org/​10.​1002/​97811​19819​
+011.​ch16.
+	145.	 Lee SY, Lee SJ, Choi DS, Hur SJ. Current topics in active and intelligent food packaging for preservation of fresh foods. J Sci Food Agric. 
+2015;95(14):2799–810. https://​doi.​org/​10.​1002/​jsfa.​7218.
+	146.	 Fathi P, Karmakar NC, Bhattacharya M, Bhattacharya S. Potential chipless RFID sensors for food packaging applications: a review. IEEE 
+Sens J. 2020;20(17):9618–36. https://​doi.​org/​10.​1109/​jsen.​2020.​29917​51.
+	147.	 Unhelkar B, Joshi S, Sharma M, Prakash S, Mani AK, Prasad M. Enhancing supply chain performance using RFID technology and decision 
+support systems in the industry 4.0–a systematic literature review. Int J Inform Manag Data Insights. 2022;2(2):100084. https://​doi.​org/​
+10.​1016/j.​jjimei.​2022.​100084.
+	148.	 Khayyam S, Ramish A, Rehman K, Syed AR. Strategizing radio frequency identification (RFID) in the retail supply chains of Pakistan: a 
+multiple case study. Oper Supply Chain Manag: An Int J. 2022. https://​doi.​org/​10.​3138/​oscm0​480328.
+	149.	 Bibi F, Guillaume C, Gontard N, Sorli B. A review: RFID technology having sensing aptitudes for food industry and their contribution to 
+tracking and monitoring of food products. Trends Food Sci Technol. 2017;62:91–103. https://​doi.​org/​10.​1016/j.​tifs.​2017.​01.​013.
+	150.	 Singh A, Gutub A, Nayyar A, Khan MK. Redefining food safety traceability system through blockchain: findings, challenges and open 
+issues. Multimedia Tools Appl. 2022;82(14):21243–77. https://​doi.​org/​10.​1007/​s11042-​022-​14006-4.
+	151.	 Grant MJ, Wolfe KM, Harding CR, Welch GC. Biogenic amine sensors using organic π-conjugated materials as active sensing components 
+and their commercialization potential. J Mater Chem C. 2023;11(29):9749–67. https://​doi.​org/​10.​1039/​d3tc0​0383c.
+	152.	 Smits E, Schram J, Nagelkerke M, Kusters R, van Heck G, van Acht V, et al. 4.5.2 development of printed RFID sensor tags for smart food 
+packaging. Proc IMCS. 2012. https://​doi.​org/​10.​5162/​imcs2​012/4.​5.2.
+	153.	 Anir NA, Nizam MH, Masliyana A. The users perceptions and opportunities in malaysia in introducing rfid system for halal food tracking. 
+WSEAS Transactions on Information Science & Applications. 2008;843–52.
+	154.	 Sharma V, Hashmi M. Advances in the design techniques and applications of chipless RFIDs. IEEE Access. 2021;9:79264–77. https://​doi.​
+org/​10.​1109/​access.​2021.​30840​56.
+	155.	 Lou JJ, Andrechak G, Riben M, Yong WH. A review of radio frequency identification technology for the anatomic pathology or bioreposi-
+tory laboratory: much promise, some progress, and more work needed. J Pathol Inform. 2011;2(1):34. https://​doi.​org/​10.​4103/​2153-​3539.​
+83738.
+	156.	 Majrouhi SJ. Influence of RFID technology on automated management of construction materials and components. Sci Iran. 
+2012;19(3):381–92. https://​doi.​org/​10.​1016/j.​scient.​2012.​02.​023.
+	157.	 Manzoor S, Dar AH, Dash KK, Pandey VK, Srivastava S, Bashir I, et al. Carbon dots applications for development of sustainable technolo-
+gies for food safety: a comprehensive review. Appl Food Res. 2023;3:100263. https://​doi.​org/​10.​1016/j.​afres.​2023.​100263.
+	158.	 Pandey VK, Srivastava S, Dash KK, Singh R, Mukarram SA, Kovács B, et al. Machine learning algorithms and fundamentals as emerging 
+safety tools in preservation of fruits and vegetables: a review. Processes. 2023;11:1720. https://​doi.​org/​10.​3390/​pr110​61720.
+Vol.:(0123456789)
+Discover Sustainability           (2024) 5:160  
+| https://doi.org/10.1007/s43621-024-00371-7	
+Review
+	159.	 Irwanto F, Hasan U, Lays ES, De La Croix NJ, Mukanyiligira D, Sibomana L, et al. IOT and fuzzy logic integration for improved substrate 
+environment management in mushroom cultivation. Smart Agric Technol. 2024;7:100427. https://​doi.​org/​10.​1016/j.​atech.​2024.​100427.
+	160.	 Chaudhari P, Xiao Y, Cheng MM-C, Li T. Fundamentals, algorithms, and technologies of occupancy detection for smart buildings using 
+IOT sensors. Sensors. 2024;24:2123. https://​doi.​org/​10.​3390/​s2407​2123.
+	161.	 Chai R, Guo Y, Zuo Z, Chen K, Shin H-S, Tsourdos A. Cooperative motion planning and control for aerial-ground autonomous systems: 
+methods and applications. Prog Aerosp Sci. 2024;146:101005. https://​doi.​org/​10.​1016/j.​paero​sci.​2024.​101005.
+	162.	 Casillo M, Cecere L, Colace F, Lorusso A, Santaniello D. Integrating the internet of things (IOT) in Spa medicine: innovations and chal-
+lenges in digital wellness. Computers. 2024;13:67. https://​doi.​org/​10.​3390/​compu​ters1​30300​67.
+	163.	 da Costa TP, Gillespie J, Cama-Moncunill X, Ward S, Condell J, Ramanathan R, et al. A systematic review of real-time monitoring technolo-
+gies and its potential application to reduce food loss and waste: key elements of food supply chains and IOT technologies. Sustainability. 
+2022;15(1):614. https://​doi.​org/​10.​3390/​su150​10614.
+	164.	 Keefe RF, Zimbelman EG, Picchi G. Use of individual tree and product level data to improve operational forestry. Curr Forest Rep. 
+2022;8(2):148–65. https://​doi.​org/​10.​1007/​s40725-​022-​00160-3.
+	165.	 He Y, Tan M. Design of indoor temperature monitoring and energy saving control technology based on wireless sensor. Int J Online Eng. 
+2017;13(07):100. https://​doi.​org/​10.​3991/​ijoe.​v13i07.​7289.
+	166.	 Jeong J, Hong T, Ji C, Kim J, Lee M, Jeong K, et al. Development of a prediction model for the cost saving potentials in implementing the 
+building energy efficiency rating certification. Appl Energy. 2017;189:257–70. https://​doi.​org/​10.​1016/j.​apene​rgy.​2016.​12.​024.
+	167.	 Dai Y. Research on the design of green and low-carbon food packaging based on artificial intelligence technology. Glob NEST: Int J. 2023. 
+https://​doi.​org/​10.​30955/​gnj.​004705.
+	168.	 Kakani V, Nguyen VH, Kumar BP, Kim H, Pasupuleti VR. A critical review on computer vision and artificial intelligence in food industry. J 
+Agric Food Res. 2020;2:100033. https://​doi.​org/​10.​1016/j.​jafr.​2020.​100033.
+	169.	 Sarkar T, Salauddin M, Pati S, Chakraborty R, Shariati MA, Rebezov M, et al. The fuzzy cognitive map–based shelf-life modelling for food 
+storage. Food Anal Methods. 2021;15:579–97. https://​doi.​org/​10.​1007/​s12161-​021-​02147-5.
+	170.	 Strategic system assurance and business analytics. Asset Analytics. 2020; https://​doi.​org/​10.​1007/​978-​981-​15-​3647-2
+	171.	 Dewi T, Risma P, Oktarina Y. Fruit sorting robot based on colour and size for an agricultural product packaging system. Bull Electr Eng 
+Inform. 2020;9(4):1438–45. https://​doi.​org/​10.​11591/​eei.​v9i4.​2353.
+	172.	 Tsakanikas P, Karnavas A, Panagou EZ, Nychas G-J. A machine learning workflow for raw food spectroscopic classification in a future 
+industry. Sci Rep. 2020. https://​doi.​org/​10.​1038/​s41598-​020-​68156-2.
+	173.	 Pnishchuk MO. Opto-mechanical sorting of municipal solid waste. 2020. p. 514–88.
+	174.	 Worcester Polytechnic Institute. https://​www.​wpi.​edu/​proje​ct-​based-​learn​ing
+	175.	 Bharti S, Jaiswal S, Sharma VP. Perspective and challenges. Green Sustain Proc Chem Environ Eng Sci. 2023. https://​doi.​org/​10.​1016/​
+b978-0-​323-​95644-4.​00015-2.
+	176.	 Kler R, Elkady G, Rane K, Singh A, Hossain MS, Malhotra D, et al. Machine learning and artificial intelligence in the food industry: a sus-
+tainable approach. J Food Qual. 2022;2022:1–9. https://​doi.​org/​10.​1155/​2022/​85212​36.
+	177.	 Zhu J, Ren C. Analysis of the effect of artificial intelligence on role cognition in the education system. Occup Ther Int. 2022;2022:1–11. 
+https://​doi.​org/​10.​1155/​2022/​17816​62.
+	178.	 Li X, Liu D, Yumei P, Zhong Y. Recent advance of intelligent packaging aided by artificial intelligence for monitoring food freshness. 2023. 
+Foods-MDPI. https://​doi.​org/​10.​3390/​foods​12152​976.
+	179.	 Zhou L, Zhang C, Liu F, Qiu Z, He Y. Application of deep learning in food: a review. Comp Rev Food Sci Food Safe. 2019;18(6):1793–811. 
+https://​doi.​org/​10.​1111/​1541-​4337.​12492.
+	180.	 Guo L, Wang T, Wu Z, Wang J, Wang M, Cui Z, et al. Portable food-freshness prediction platform based on colourimetric barcode combi-
+natorics and deep convolutional neural networks. Adv Mater. 2020. https://​doi.​org/​10.​1002/​adma.​20200​4805.
+	181.	 Mohi-Alden K, Omid M, Soltani Firouz M, Nasiri A. Design and evaluation of an intelligent sorting system for bell pepper using deep 
+convolutional neural networks. J Food Sci. 2021;87(1):289–301. https://​doi.​org/​10.​1111/​1750-​3841.​15995.
+	182.	 De Santana FB, Borges Neto W, Poppi RJ. Random forest as one-class classifier and infrared spectroscopy for food adulteration detection. 
+Food Chem. 2019;293:323–32. https://​doi.​org/​10.​1016/j.​foodc​hem.​2019.​04.​073.
+Publisher’s Note  Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
