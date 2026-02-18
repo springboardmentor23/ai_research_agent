@@ -434,4 +434,4 @@ with gr.Blocks(css=custom_css) as app:
                 outputs=revised_download
             )
 
-app.launch()
+app.launch(share="True")
