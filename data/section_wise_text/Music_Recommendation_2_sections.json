@@ -1,5 +1,0 @@
-{
-    "abstract": "ABSTRACT\nMusic recommendation services collectively spin billions of songs\nfor millions of listeners on a daily basis. Users can typically listen to\na variety of songs tailored to their personal tastes and preferences.\nMusic is not the only type of content encountered in these services,\nhowever. Advertisements are generally interspersed throughout\nthe music stream to generate revenue for the business. Additional\ncontent may include artist messaging, ticketing, sports, news and\nweather. In this paper, we discuss issues that arise when multiple\ncontent providers are stakeholders in the recommendation process.\nTese stakeholders each have their own objectives and must work\nin concert to sustain a healthy music recommendation service.\n1",
-    "methodology": "",
-    "conclusion": ""
-}

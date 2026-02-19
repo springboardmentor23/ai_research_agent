@@ -122,8 +122,8 @@ print_similarity_matrix(similarity_matrix, list(key_findings.keys()))
 
 
 #milestone3
-from src.milestone_3.pattern_extractor import extract_common_patterns
-from src.milestone_3.draft_generator import generate_draft
+from src.draft_generator.pattern_extractor import extract_common_patterns
+from src.draft_generator.draft_generator import generate_draft
 import json
 
 with open("data/datasets/cleaned_dataset.json", "r") as f:

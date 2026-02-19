@@ -1,5 +1,0 @@
-{
-    "abstract": "Abstract\nIn this paper, we present a novel multi-modal\ndataset for obstacle detection in agriculture. The\ndataset comprises approximately 2 hours of raw sen-\nsor data from a tractor-mounted sensor system in a\ngrass mowing scenario in Denmark, October 2016.\nSensing modalities include stereo camera, thermal\ncamera, web camera, 360-degree camera, lidar, and\nradar, while precise localization is available from\nfused IMU and GNSS. Both static and moving obsta-\ncles are present including humans, mannequin dolls,\nrocks, barrels, buildings, vehicles, and vegetation.\nAll obstacles have ground truth object labels and\ngeographic coordinates.\nKeywords \u2014 dataset, agriculture, obstacle\ndetection, computer vision, cameras, stereo,\nthermal, lidar, radar, tracking\nI.",
-    "methodology": "",
-    "conclusion": ""
-}
