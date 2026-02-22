@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Data folders
+data/pdfs/
+data/output/
+data/exports/
+data/texts/
+data/history.json
+data/similarity_results.json
+
+# OS files
+.DS_Store
+Thumbs.db

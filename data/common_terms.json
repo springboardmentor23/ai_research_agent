@@ -1,0 +1,32 @@
+{
+    "datasets": {
+        "mnist": 21,
+        "imagenet": 17,
+        "mimic": 12,
+        "cifar": 5,
+        "uci": 5
+    },
+    "algorithms": {
+        "svm": 40,
+        "random forest": 10,
+        "gradient boosting": 2,
+        "knn": 2,
+        "xgboost": 1
+    },
+    "models": {
+        "transformer": 174,
+        "cnn": 54,
+        "deep cox": 42,
+        "resnet": 28,
+        "lstm": 27,
+        "bert": 21,
+        "rnn": 9
+    },
+    "techniques": {
+        "regularization": 154,
+        "calibration": 60,
+        "cross-validation": 12,
+        "monte carlo": 9,
+        "expectation-maximization": 1
+    }
+}

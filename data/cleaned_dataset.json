@@ -1,0 +1,43 @@
+[
+    {
+        "paperId": "2303.15563v1",
+        "title": "Privacy-preserving machine learning for healthcare: open challenges and future perspectives",
+        "authors": [
+            "Alejandro Guerra-Manzanares",
+            "L. Julian Lechuga Lopez",
+            "Michail Maniatakos",
+            "Farah E. Shamout"
+        ],
+        "year": "2023",
+        "url": "No URL",
+        "pdf_url": "https://arxiv.org/pdf/2303.15563v1",
+        "local_path": "data/pdfs/2303.15563v1.pdf"
+    },
+    {
+        "paperId": "1706.01513v2",
+        "title": "Beyond Volume: The Impact of Complex Healthcare Data on the Machine Learning Pipeline",
+        "authors": [
+            "Keith Feldman",
+            "Louis Faust",
+            "Xian Wu",
+            "Chao Huang",
+            "Nitesh V. Chawla"
+        ],
+        "year": "2017",
+        "url": "No URL",
+        "pdf_url": "https://arxiv.org/pdf/1706.01513v2",
+        "local_path": "data/pdfs/1706.01513v2.pdf"
+    },
+    {
+        "paperId": "2306.04338v1",
+        "title": "Changing Data Sources in the Age of Machine Learning for Official Statistics",
+        "authors": [
+            "Cedric De Boom",
+            "Michael Reusens"
+        ],
+        "year": "2023",
+        "url": "No URL",
+        "pdf_url": "https://arxiv.org/pdf/2306.04338v1",
+        "local_path": "data/pdfs/2306.04338v1.pdf"
+    }
+]
